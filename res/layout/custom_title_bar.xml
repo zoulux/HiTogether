@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.lyy.hitogether.view.CustomTitleBarView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ly="http://schemas.android.com/apk/res/com.lyy.hitogether"
+    android:id="@+id/id_cus"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/light_blue" >
+
+    <com.lyy.hitogether.view.TopbarBtView
+        android:id="@+id/id_topBarLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:padding="5dp"
+        android:visibility="gone"
+        ly:type="image" />
+
+    <TextView
+        android:id="@+id/id_topBartext"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="title"
+        android:textSize="18sp" />
+
+    <com.lyy.hitogether.view.TopbarBtView
+        android:id="@+id/id_topBarRight"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        ly:type="image" />
+
+</com.lyy.hitogether.view.CustomTitleBarView>
