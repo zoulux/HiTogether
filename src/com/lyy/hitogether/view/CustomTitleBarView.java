@@ -62,6 +62,16 @@ public class CustomTitleBarView extends RelativeLayout {
 	private float leftImagePaddingRight;
 	private float leftImagePaddingTop;
 	private float leftImagePaddingBottom;
+	//左边的系统按钮的属性
+	private int leftButtonBg;
+	private String leftButtonText;
+	private float leftButtonTextSize;
+	private int leftButtonTextColor;
+	private float leftButtonPadding;
+	private float leftButtonPaddingLeft;
+	private float leftButtonPaddingRight;
+	private float leftButtonPaddingTop;
+	private float leftButtonPaddingBottom;
 	//右边的文字的属性
 	private String rightText;
 	private int rightTextColor;
@@ -174,6 +184,7 @@ public class CustomTitleBarView extends RelativeLayout {
 		case LEFT_TYPE_BUTTON:
 			// Todo
 			leftButton = new Button(context);
+			initLeftButton(ta, context);
 			leftView = leftButton;
 			addView(leftView, lp1);
 			setLeftView(leftView);
@@ -240,6 +251,8 @@ public class CustomTitleBarView extends RelativeLayout {
 		ta.recycle();
 
 	}
+
+	
 
 	private void initEvent(final View leftView, final View rightView) {
 		leftView.setOnClickListener(new OnClickListener() {
@@ -380,6 +393,33 @@ public class CustomTitleBarView extends RelativeLayout {
 		leftTextPaddingBottom = DensityUtils.px2dp(context,
 				ta.getDimension(R.styleable.barView_leftTextPaddingBottom, 0));
 
+	}
+	/**
+	 * 初始化左边的系统按钮
+	 * @param ta
+	 * @param context
+	 */
+	private void initLeftButton(TypedArray ta, Context context) {
+		leftButtonBg = ta.getResourceId(R.styleable.barView_leftButtonBackground,
+				Color.GRAY);
+		leftButtonText = ta.getString(R.styleable.barView_leftButtonText);
+		leftButtonTextColor = ta.getColor(R.styleable.barView_leftTextColor,Color.WHITE);
+		leftButtonTextSize = ta.getDimension(R.styleable.barView_leftButtonTextSize,12.0f);
+		if (leftButtonTextSize != 12.0f) {
+			leftTextSize = DensityUtils.px2sp(context, leftTextSize);
+		}
+		
+		leftButtonPadding = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonPadding, 0));
+		leftButtonPaddingLeft = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonPaddingLeft, 0));
+		leftButtonPaddingRight = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonPaddingRight, 0));
+		leftButtonPaddingTop = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonPaddingTop, 0));
+		leftButtonPaddingBottom = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonPaddingBottom, 0));
+		
 	}
 
 	/**

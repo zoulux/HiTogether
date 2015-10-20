@@ -14,12 +14,14 @@
     <attr name="leftTextPaddingRight" format="reference|dimension" />
     <attr name="leftTextPaddingTop" format="reference|dimension" />
     <attr name="leftTextPaddingBottom" format="reference|dimension" />
+    
     <attr name="leftImageSource" format="reference|integer" />
     <attr name="leftImagePadding" format="reference|dimension" />
     <attr name="leftImagePaddingLeft" format="reference|dimension" />
     <attr name="leftImagePaddingRight" format="reference|dimension" />
     <attr name="leftImagePaddingTop" format="reference|dimension" />
     <attr name="leftImagePaddingBottom" format="reference|dimension" />
+    
     <attr name="leftButtonText" format="reference|string" />
     <attr name="leftButtonTextColor" format="reference|color" />
     <attr name="leftButtonTextSize" format="reference|dimension" />
