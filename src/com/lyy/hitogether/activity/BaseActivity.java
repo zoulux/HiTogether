@@ -5,6 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+/**
+ * test
+ * @author Administrator
+ *
+ */
 public class BaseActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
