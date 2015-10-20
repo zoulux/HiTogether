@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:lyman="http://schemas.android.com/apk/res/com.lyy.hitogether"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <include layout="@layout/custom_title_bar" />
+    <com.lyy.hitogether.view.CustomTitleBarView
+        android:id="@+id/id_share_my_traval_CustomTitleBarView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/light_blue"
+        lyman:leftType="image"
+        lyman:leftImageSource="@drawable/ic_launcher"
+        lyman:leftImagePaddingLeft="5dp"
+        lyman:rightType="image"
+        lyman:rightImageSource="@drawable/ic_launcher"
+        lyman:rightImagePaddingRight="5dp"
+         />
 
     <EditText
         android:layout_width="match_parent"

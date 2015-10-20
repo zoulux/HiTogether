@@ -9,9 +9,37 @@
 
     <include layout="@layout/main_title_bar" />
 
-    <include
-        layout="@layout/custom_title_bar"
-        android:visibility="gone" />
+    <com.lyy.hitogether.view.CustomTitleBarView
+        android:id="@+id/id_main_CustomTitleBarView_1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/light_blue"
+        android:visibility="gone"
+        lyman:centerType="text"
+        lyman:leftType="text"
+        lyman:rightType="text" />
+
+    <com.lyy.hitogether.view.CustomTitleBarView
+        android:id="@+id/id_main_CustomTitleBarView_2"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/light_blue"
+        android:visibility="gone"
+        lyman:centerType="text"
+        lyman:leftImagePaddingLeft="5dp"
+        lyman:leftImageSource="@drawable/ic_launcher"
+        lyman:leftType="image"
+        lyman:rightType="text" />
+
+    <com.lyy.hitogether.view.CustomTitleBarView
+        android:id="@+id/id_main_CustomTitleBarView_3"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/light_blue"
+        android:visibility="gone"
+        lyman:centerType="text"
+        lyman:leftType="text"
+        lyman:rightType="text" />
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"

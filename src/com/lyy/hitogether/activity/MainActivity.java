@@ -7,18 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.support.v4.widget.DrawerLayout;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,32 +26,27 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lyy.hitogether.R;
-import com.lyy.hitogether.activity.fragment.FourthFragment;
 import com.lyy.hitogether.activity.fragment.SecondFragment;
 import com.lyy.hitogether.activity.fragment.ThirdFragment;
 import com.lyy.hitogether.activity.fragment.first_fragment.FirstFragment;
-import com.lyy.hitogether.activity.fragment.first_fragment.FirstFragmentDestination;
-import com.lyy.hitogether.activity.fragment.first_fragment.FirstFragmentOfFriend;
 import com.lyy.hitogether.manager.SystemBarTintManager;
-import com.lyy.hitogether.test.TestActivity;
 import com.lyy.hitogether.view.ChangeColorIconWithText;
 import com.lyy.hitogether.view.CustomTitleBarView;
+import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
 import com.lyy.hitogether.view.MainTopbarView;
 import com.lyy.hitogether.view.MyViewPager;
-import com.lyy.hitogether.view.TopbarBtView;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
-	// 抽屉式菜单的标题
+
 	private String[] mPlanetTitles;
-	// 抽屉式菜单
+
 	private DrawerLayout mDrawerLayout;
-	// 抽屉式菜单的listView
+
 	private ListView mDrawerList;
-	// 用户头像
+
 	private ImageView imageViewAvar;
 	private RadioGroup radioGroup;
 	private RadioButton ra1;
@@ -68,11 +58,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private FragmentPagerAdapter mAdapter;
 
 	private MainTopbarView mainTopbarView;
-	private CustomTitleBarView customTitleBarView;
+	private CustomTitleBarView customTitleBarView_1;
+	private CustomTitleBarView customTitleBarView_2;
+	private CustomTitleBarView customTitleBarView_3;
 
 	private List<ChangeColorIconWithText> mTabIndicators = new ArrayList<ChangeColorIconWithText>();
-
-	private TopbarBtView topBarLeft;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,14 +70,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
-		// 透明状态栏
+
 		getWindow()
 				.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-		// 创建状态栏的管理实例
+
 		SystemBarTintManager tintManager = new SystemBarTintManager(this);
-		// 激活状态栏设置
 		tintManager.setStatusBarTintEnabled(true);
-		// 设置一个颜色给系统栏
 		tintManager.setTintColor(Color.parseColor("#5CACEE"));
 		init();
 	}
@@ -114,7 +102,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		});
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-		// 绑定Listview
+		// 锟斤拷Listview
 		mPlanetTitles = getResources().getStringArray(R.array.anim_type);
 		mDrawerList = (ListView) findViewById(R.id.left_drawer);
 		mDrawerList.setAdapter(new ArrayAdapter<String>(this,
@@ -177,7 +165,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	private void initView() {
-		customTitleBarView = (CustomTitleBarView) findViewById(R.id.id_cus);
+		customTitleBarView_1 = (CustomTitleBarView) findViewById(R.id.id_main_CustomTitleBarView_1);
+		customTitleBarView_2 = (CustomTitleBarView) findViewById(R.id.id_main_CustomTitleBarView_2);
+		customTitleBarView_3 = (CustomTitleBarView) findViewById(R.id.id_main_CustomTitleBarView_3);
 		mViewPager = (MyViewPager) findViewById(R.id.id_viewpager_main);
 		ChangeColorIconWithText one = (ChangeColorIconWithText) findViewById(R.id.id_one);
 		mTabIndicators.add(one);
@@ -211,40 +201,59 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		int id = v.getId();
 		switch (id) {
 		case R.id.id_one:
-			customTitleBarView.setVisibility(View.GONE);
+			customTitleBarView_1.setVisibility(View.GONE);
+			customTitleBarView_2.setVisibility(View.GONE);
+			customTitleBarView_3.setVisibility(View.GONE);
 			mainTopbarView.setVisibility(View.VISIBLE);
 			resetOtherTabs();
 			mTabIndicators.get(0).setIconAlpha(1.0f);
 			mViewPager.setCurrentItem(0, false);
 			break;
 		case R.id.id_two:
-			customTitleBarView.setVisibility(View.VISIBLE);
+			customTitleBarView_1.setVisibility(View.VISIBLE);
+			customTitleBarView_2.setVisibility(View.GONE);
+			customTitleBarView_3.setVisibility(View.GONE);
 			mainTopbarView.setVisibility(View.GONE);
-			topBarLeft = (TopbarBtView) findViewById(R.id.id_topBarLeft);
-			topBarLeft.setVisibility(View.VISIBLE);
-			topBarLeft.setTopbarImageDrawable(R.drawable.ic_launcher);
-			topBarLeft.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					Toast.makeText(MainActivity.this, "main", 1).show();
-				}
-			});
+			customTitleBarView_1
+					.setOnLeftBarViewClickListener(new onLeftBarViewClickListener() {
+
+						@Override
+						public void onclick(View v) {
+							Toast.makeText(MainActivity.this, "2", 1).show();
+
+						}
+					});
+
 			resetOtherTabs();
 			mTabIndicators.get(1).setIconAlpha(1.0f);
 			mViewPager.setCurrentItem(1, false);
 
 			break;
 		case R.id.id_three:
-			customTitleBarView.setVisibility(View.VISIBLE);
+			customTitleBarView_1.setVisibility(View.GONE);
+			customTitleBarView_2.setVisibility(View.VISIBLE);
+			customTitleBarView_3.setVisibility(View.GONE);
 			mainTopbarView.setVisibility(View.GONE);
+
+			customTitleBarView_2
+					.setOnLeftBarViewClickListener(new onLeftBarViewClickListener() {
+
+						@Override
+						public void onclick(View v) {
+							Toast.makeText(MainActivity.this, "3", 1).show();
+
+						}
+					});
 			resetOtherTabs();
 			mTabIndicators.get(2).setIconAlpha(1.0f);
 			mViewPager.setCurrentItem(2, false);
 			break;
 
 		case R.id.id_four:
-			customTitleBarView.setVisibility(View.VISIBLE);
+			customTitleBarView_1.setVisibility(View.GONE);
+			customTitleBarView_2.setVisibility(View.GONE);
+			customTitleBarView_3.setVisibility(View.VISIBLE);
 			mainTopbarView.setVisibility(View.GONE);
 			resetOtherTabs();
 			mTabIndicators.get(3).setIconAlpha(1.0f);
@@ -273,7 +282,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	/**
-	 * 重置其他的Indicator的颜色
+	 * 锟斤拷锟斤拷锟斤拷锟斤拷锟絀ndicator锟斤拷锟斤拷色
 	 */
 	private void resetOtherTabs() {
 		for (int i = 0; i < mTabIndicators.size(); i++) {
