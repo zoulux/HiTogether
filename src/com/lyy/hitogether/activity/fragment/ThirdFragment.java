@@ -45,9 +45,6 @@ public class ThirdFragment extends BaseFragment {
 
 					@Override
 					public void onBtclick(View v, int position) {
-
-						// Toast.makeText(ThirdFragment.this.getActivity(),
-						// position + "", 1).show();
 						ShowToast(position + "");
 					}
 				});
@@ -62,11 +59,14 @@ public class ThirdFragment extends BaseFragment {
 	}
 
 	private List<ThirdFragmentBean> getdatas() {
+		
+		
+
 		List<ThirdFragmentBean> bean = new ArrayList<ThirdFragmentBean>();
 		for (int i = 0; i < 30; i++) {
 			bean.add(new ThirdFragmentBean(R.drawable.p1,
-					R.drawable.default_avarter, "名字" + i, " 中国好景点" + i,
-					" 景点" + i, 2.5f));
+					R.drawable.default_avarter, "名字" + i, " 中国好景点" + i, " 景点"
+							+ i, 2.5f));
 		}
 		return bean;
 	}

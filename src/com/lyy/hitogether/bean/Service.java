@@ -9,13 +9,41 @@ public class Service {
 	 * 向导单
 	 */
 	String userId; // 用户Id
-	String ServiceId; // 向导单号
+	String userName;//用户名
+	String serviceId; // 向导单号
 	String destination; // 目的地
 	BmobDate goTime; // 出行时间
 	Double price; // 价格
 	String introduction;// 介绍
 	String summary; // 简介
 	List<String> photoPath;// 协同照片
+	String showImg; // 首页展示的图片
+	String extra; // 额外字段
+
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getShowImg() {
+		return showImg;
+	}
+
+	public void setShowImg(String showImg) {
+		this.showImg = showImg;
+	}
+
+	public String getExtra() {
+		return extra;
+	}
+
+	public void setExtra(String extra) {
+		this.extra = extra;
+	}
 
 	public String getUserId() {
 		return userId;
@@ -26,11 +54,11 @@ public class Service {
 	}
 
 	public String getServiceId() {
-		return ServiceId;
+		return serviceId;
 	}
 
 	public void setServiceId(String serviceId) {
-		ServiceId = serviceId;
+		this.serviceId = serviceId;
 	}
 
 	public String getDestination() {
