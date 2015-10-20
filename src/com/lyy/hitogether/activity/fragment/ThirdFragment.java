@@ -65,8 +65,8 @@ public class ThirdFragment extends BaseFragment {
 		List<ThirdFragmentBean> bean = new ArrayList<ThirdFragmentBean>();
 		for (int i = 0; i < 30; i++) {
 			bean.add(new ThirdFragmentBean(R.drawable.p1,
-					R.drawable.default_avarter, "Ñã¸ç" + i, "ÕâÊÇ¸öºÃµØ·½" + i, "ÖÐ¹ú"
-							+ i, 2.5f));
+					R.drawable.default_avarter, "åå­—" + i, " ä¸­å›½å¥½æ™¯ç‚¹" + i,
+					" æ™¯ç‚¹" + i, 2.5f));
 		}
 		return bean;
 	}

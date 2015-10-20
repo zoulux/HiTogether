@@ -15,20 +15,20 @@ import com.lyy.hitogether.view.MyLoginView.onLoginListener;
 
 public class LoginActivity extends BaseActivity {
 	
-	// 圆角头像
+	// 圆锟斤拷头锟斤拷
 	private CircleImageView userAvarterImg;
-	// 登录界面
+	// 锟斤拷录锟斤拷锟斤拷
 	private MyLoginView myLoginView;
-	// 登录按钮只能点一次，否走如果你连续速度很快的点登录按钮的话，dialog将会被连续触发，也就会产生很多个MainActivity
+	// 鐧诲綍鎸夐挳鍙兘鐐逛竴娆★紝鍚﹁蛋濡傛灉浣犺繛缁�熷害寰堝揩鐨勭偣鐧诲綍鎸夐挳鐨勮瘽锛宒ialog灏嗕細琚繛缁Е鍙戯紝涔熷氨浼氫骇鐢熷緢澶氫釜MainActivity
 	private boolean isFirstClick = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// 设置无标题栏
+		// 锟斤拷锟斤拷锟睫憋拷锟斤拷锟斤拷
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
-		// 透明状态栏
+		// 透锟斤拷状态锟斤拷
 		getWindow()
 				.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 		init();
@@ -49,7 +49,7 @@ public class LoginActivity extends BaseActivity {
 					isFirstClick = false;
 					final SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(
 							LoginActivity.this, 5);
-					sweetAlertDialog.setTitleText("登录中...");
+					sweetAlertDialog.setTitleText("锟斤拷录锟斤拷...");
 					sweetAlertDialog.showCancelButton(false);
 					sweetAlertDialog.show();
 					new Handler().postDelayed(new Runnable() {

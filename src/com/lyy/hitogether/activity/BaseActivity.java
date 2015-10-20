@@ -11,7 +11,7 @@ public class BaseActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 	}
-	
+
 	public void ShowLog(String msg) {
 		Log.i(">>>>", msg);
 	}
@@ -29,8 +29,7 @@ public class BaseActivity extends Activity {
 			public void run() {
 				// TODO Auto-generated method stub
 				if (mToast == null) {
-					mToast = Toast.makeText(
-							BaseActivity.this.getApplicationContext(), resId,
+					mToast = Toast.makeText(BaseActivity.this, resId,
 							Toast.LENGTH_LONG);
 				} else {
 					mToast.setText(resId);
@@ -47,8 +46,7 @@ public class BaseActivity extends Activity {
 			public void run() {
 				// TODO Auto-generated method stub
 				if (mToast == null) {
-					mToast = Toast.makeText(
-							BaseActivity.this.getApplicationContext(), string,
+					mToast = Toast.makeText(BaseActivity.this, string,
 							Toast.LENGTH_LONG);
 				} else {
 					mToast.setText(string);

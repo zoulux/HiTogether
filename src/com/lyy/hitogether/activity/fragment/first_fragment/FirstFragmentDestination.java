@@ -1,22 +1,15 @@
 package com.lyy.hitogether.activity.fragment.first_fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -30,8 +23,8 @@ import com.lyy.hitogether.view.MyViewPager;
 public class FirstFragmentDestination extends Fragment {
 
 	private GridView gridView;
-	private String[] scen = new String[] { "·ç¾°1", "·ç¾°2", "·ç¾°3", "·ç¾°4", "·ç¾°5",
-			"·ç¾°6", "·ç¾°7", "·ç¾°8", "·ç¾°9", "·ç¾°10" };
+	private String[] scen = new String[] { "é£Žæ™¯1", "é£Žæ™¯2", "é£Žæ™¯3", "é£Žæ™¯4", "é£Žæ™¯5",
+			"é£Žæ™¯6", "é£Žæ™¯7", "é£Žæ™¯8", "é£Žæ™¯9", "é£Žæ™¯10" };
 	private int[] pics = new int[] { R.drawable.p1, R.drawable.p2,
 			R.drawable.p3, R.drawable.p4, R.drawable.p1, R.drawable.p2,
 			R.drawable.p3, R.drawable.p4, R.drawable.p1, R.drawable.p2 };
@@ -94,12 +87,12 @@ public class FirstFragmentDestination extends Fragment {
 		v3.setLayoutParams(new LayoutParams(-1, -1));
 		v3.setScaleType(ScaleType.FIT_XY);
 		v3.setImageResource(R.drawable.p3);
-		adapter.addItem("µÚÒ»Ò³", v);
-		adapter.addItem("µÚ¶þÒ³", v2);
-		adapter.addItem("µÚÈýÒ³", v3);
+		adapter.addItem("ç¬¬ä¸€æ™¯ç‚¹", v);
+		adapter.addItem("ç¬¬äºŒæ™¯ç‚¹", v2);
+		adapter.addItem("ç¬¬ä¸‰æ™¯ç‚¹", v3);
 		myViewPager.setAdapter(adapter);
 		controllMyViewPager();
-		new Thread(new MyThread()).start();
+	//	new Thread(new MyThread()).start();
 
 	}
 
@@ -109,18 +102,18 @@ public class FirstFragmentDestination extends Fragment {
 		mHandler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
-				super.handleMessage(msg);
+
 				int count = msg.arg1;
 				switch (count) {
 				case 1:
-					myViewPager.setCurrentItem(0,false);
+					myViewPager.setCurrentItem(0, false);
 					break;
 				case 2:
-					myViewPager.setCurrentItem(1,false);
+					myViewPager.setCurrentItem(1, false);
 					break;
 
 				case 3:
-					myViewPager.setCurrentItem(2,false);
+					myViewPager.setCurrentItem(2, false);
 					break;
 
 				}
@@ -144,7 +137,7 @@ public class FirstFragmentDestination extends Fragment {
 				if (count == 4) {
 					count = 1;
 				}
-				// ´ÓÏûÏ¢³ØÖÐ»ñÈ¡ÏûÏ¢£¬Èç¹ûÃ»ÓÐÏûÏ¢£¬´´½¨Ò»¸öÏûÏ¢£¬Èç¹ûÓÐ£¬ÔòÈ¡³öÀ´ÏûÏ¢Ð¯´øÊý¾Ý£¬ÓÉhandler·¢ËÍ
+				// ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ð»ï¿½È¡ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ð¯ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½handlerï¿½ï¿½ï¿½ï¿½
 				Message message = Message.obtain();
 				message.arg1 = count;
 				count++;

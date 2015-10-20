@@ -22,7 +22,7 @@ public class Initialize extends BaseActivity {
 
 			@Override
 			public void success(String userId) {
-				ShowToast("连接成功");
+				ShowToast("杩炴帴鎴愬姛");
 				startActivity(new Intent(Initialize.this, MainActivity.class));
 				Initialize.this.finish();
 
@@ -30,12 +30,12 @@ public class Initialize extends BaseActivity {
 
 			@Override
 			public void faild() {
-				ShowToast("连接失败");
+				ShowToast("杩炴帴澶辫触");
 
 			}
 		});
 
-		// // 需要改动
+		// // 锟斤拷要锟侥讹拷
 		// new Handler().postDelayed(new Runnable() {
 		// public void run() {
 		// startActivity(new Intent(Initialize.this, MainActivity.class));
