@@ -1,11 +1,15 @@
 package com.lyy.hitogether.activity;
 
+import io.rong.imkit.fragment.ConversationListFragment;
+import io.rong.imlib.model.Conversation.ConversationType;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -46,13 +50,13 @@ import com.lyy.hitogether.view.MyViewPager;
 import com.lyy.hitogether.view.TopbarBtView;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
-	//抽屉式菜单的标题
+	// 抽屉式菜单的标题
 	private String[] mPlanetTitles;
-	//抽屉式菜单
+	// 抽屉式菜单
 	private DrawerLayout mDrawerLayout;
-	//抽屉式菜单的listView
+	// 抽屉式菜单的listView
 	private ListView mDrawerList;
-	//用户头像
+	// 用户头像
 	private ImageView imageViewAvar;
 	private RadioGroup radioGroup;
 	private RadioButton ra1;
@@ -65,13 +69,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	private MainTopbarView mainTopbarView;
 	private CustomTitleBarView customTitleBarView;
-	
+
 	private List<ChangeColorIconWithText> mTabIndicators = new ArrayList<ChangeColorIconWithText>();
-	
+
 	private TopbarBtView topBarLeft;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
@@ -141,7 +146,22 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mTabs.add(firstFragment);
 		mTabs.add(new SecondFragment());
 		mTabs.add(new ThirdFragment());
-		mTabs.add(new FourthFragment());
+
+		ConversationListFragment listFragment = ConversationListFragment
+				.getInstance();
+		Uri uri = Uri
+				.parse("rong://" + getApplicationInfo().packageName)
+				.buildUpon()
+				.appendPath("conversationlist")
+				.appendQueryParameter(ConversationType.PRIVATE.getName(),
+						"flase")
+				.appendQueryParameter(ConversationType.GROUP.getName(), "true")
+				.appendQueryParameter(ConversationType.SYSTEM.getName(), "true")
+				.build();
+		listFragment.setUri(uri);
+
+		mTabs.add(listFragment);
+		// mTabs.add(new FourthFragment());
 		mAdapter = new FragmentPagerAdapter(getSupportFragmentManager()) {
 
 			@Override
@@ -204,10 +224,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			topBarLeft.setVisibility(View.VISIBLE);
 			topBarLeft.setTopbarImageDrawable(R.drawable.ic_launcher);
 			topBarLeft.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
-						Toast.makeText(MainActivity.this, "main", 1).show();
+					Toast.makeText(MainActivity.this, "main", 1).show();
 				}
 			});
 			resetOtherTabs();
@@ -235,14 +255,16 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 			firstFragment.setItem(0);
 			ra2.setBackgroundColor(Color.alpha(0));
-			ra1.setBackground(getResources().getDrawable(R.drawable.main_title_radiobutton1));
+			ra1.setBackground(getResources().getDrawable(
+					R.drawable.main_title_radiobutton1));
 			break;
 
 		case R.id.id_main_title_bar_radio_group_radio_button_two:
 
 			firstFragment.setItem(1);
 			ra1.setBackgroundColor(Color.alpha(0));
-			ra2.setBackground(getResources().getDrawable(R.drawable.main_title_radiobutton2));
+			ra2.setBackground(getResources().getDrawable(
+					R.drawable.main_title_radiobutton2));
 
 			break;
 

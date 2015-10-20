@@ -12,7 +12,7 @@ import android.widget.Button;
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.ShareMyTravalActivity;
 
-public class SecondFragment extends Fragment {
+public class SecondFragment extends BaseFragment {
 	
 	private Button bt;
 	@Override

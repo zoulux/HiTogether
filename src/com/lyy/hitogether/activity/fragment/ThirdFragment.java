@@ -16,7 +16,7 @@ import com.lyy.hitogether.adapter.ThirdFragmentAdapter;
 import com.lyy.hitogether.adapter.ThirdFragmentAdapter.OnThirdFragmentBtListener;
 import com.lyy.hitogether.bean.ThirdFragmentBean;
 
-public class ThirdFragment extends Fragment {
+public class ThirdFragment extends BaseFragment {
 	private GridView mGriView;
 	private ThirdFragmentAdapter thirdFragmentAdapter;
 
@@ -40,17 +40,22 @@ public class ThirdFragment extends Fragment {
 	}
 
 	private void initEvent() {
-			thirdFragmentAdapter.setOnThirdFragmentBtListener(new OnThirdFragmentBtListener() {
-				
-				@Override
-				public void onBtclick(View v, int position) {
-						Toast.makeText(ThirdFragment.this.getActivity(), position+"", 1).show();
-				}
-			});
+		thirdFragmentAdapter
+				.setOnThirdFragmentBtListener(new OnThirdFragmentBtListener() {
+
+					@Override
+					public void onBtclick(View v, int position) {
+
+						// Toast.makeText(ThirdFragment.this.getActivity(),
+						// position + "", 1).show();
+						ShowToast(position + "");
+					}
+				});
 	}
 
 	private void initView(View view) {
-		thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(), getdatas());
+		thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(),
+				getdatas());
 		mGriView = (GridView) view
 				.findViewById(R.id.id_third_fragment_grideview);
 		mGriView.setAdapter(thirdFragmentAdapter);

@@ -1,6 +1,10 @@
 package com.lyy.hitogether.activity;
 
+import io.rong.imkit.RongIM;
+
 import com.lyy.hitogether.R;
+import com.lyy.hitogether.util.InitBmobAndRong;
+import com.lyy.hitogether.util.InitBmobAndRong.LinitLisetener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,12 +17,30 @@ public class Initialize extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_initialize);
-		//需要改动
-		new Handler().postDelayed(new Runnable() {
-			public void run() {
-				startActivity(new Intent(Initialize.this, LoginActivity.class));
+
+		InitBmobAndRong.init(Initialize.this, new LinitLisetener() {
+
+			@Override
+			public void success(String userId) {
+				ShowToast("连接成功");
+				startActivity(new Intent(Initialize.this, MainActivity.class));
 				Initialize.this.finish();
+
 			}
-		}, 1500);
+
+			@Override
+			public void faild() {
+				ShowToast("连接失败");
+
+			}
+		});
+
+		// // 需要改动
+		// new Handler().postDelayed(new Runnable() {
+		// public void run() {
+		// startActivity(new Intent(Initialize.this, MainActivity.class));
+		// Initialize.this.finish();
+		// }
+		// }, 1500);
 	}
 }

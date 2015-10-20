@@ -14,6 +14,7 @@ import com.lyy.hitogether.view.MyLoginView;
 import com.lyy.hitogether.view.MyLoginView.onLoginListener;
 
 public class LoginActivity extends BaseActivity {
+	
 	// Ô²½ÇÍ·Ïñ
 	private CircleImageView userAvarterImg;
 	// µÇÂ¼½çÃæ
