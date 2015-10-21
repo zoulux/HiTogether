@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -73,6 +72,11 @@ public class CustomTitleBarView extends RelativeLayout {
 	private float leftButtonPaddingRight;
 	private float leftButtonPaddingTop;
 	private float leftButtonPaddingBottom;
+	private float leftButtonMargIn;
+	private float leftButtonMargInLeft;
+	private float leftButtonMargInRight;
+	private float leftButtonMargInTop;
+	private float leftButtonMargInBottom;
 	// 右边的文字的属性
 	private String rightText;
 	private int rightTextColor;
@@ -89,6 +93,24 @@ public class CustomTitleBarView extends RelativeLayout {
 	private float rightImagePaddingRight;
 	private float rightImagePaddingTop;
 	private float rightImagePaddingBottom;
+
+	// 右边的系统按钮的属性
+	@SuppressWarnings("unused")
+	private int rightButtonBg;
+	private String rightButtonText;
+	private float rightButtonTextSize;
+	private int rightButtonTextColor;
+	private float rightButtonPadding;
+	private float rightButtonPaddingLeft;
+	private float rightButtonPaddingRight;
+	private float rightButtonPaddingTop;
+	private float rightButtonPaddingBottom;
+	private float rightButtonMargIn;
+	private float rightButtonMargInLeft;
+	private float rightButtonMargInRight;
+	private float rightButtonMargInTop;
+	private float rightButtonMargInBottom;
+	
 	// 中间的文字的属性
 	private String centerText;
 	private int centerTextColor;
@@ -183,10 +205,10 @@ public class CustomTitleBarView extends RelativeLayout {
 
 			break;
 		case LEFT_TYPE_BUTTON:
-			// Todo
 			leftButton = new Button(context);
-			initLeftButton(ta, context);
 			leftView = leftButton;
+			initLeftButton(ta, context);
+
 			addView(leftView, lp1);
 			setLeftView(leftView);
 			break;
@@ -212,9 +234,9 @@ public class CustomTitleBarView extends RelativeLayout {
 			setRightView(rightView);
 			break;
 		case RIGHT_TYPE_BUTTON:
-			// Todo
 			rightButton = new Button(context);
 			rightView = rightButton;
+			initRightButton(ta, context);
 			addView(rightView, lp2);
 			setRightView(rightView);
 			break;
@@ -252,6 +274,8 @@ public class CustomTitleBarView extends RelativeLayout {
 		ta.recycle();
 
 	}
+
+	
 
 	private void initEvent(final View leftView, final View rightView) {
 		if (leftView != null) {
@@ -407,16 +431,16 @@ public class CustomTitleBarView extends RelativeLayout {
 	 * @param context
 	 */
 	private void initLeftButton(TypedArray ta, Context context) {
-		// todo
 		leftButtonBg = ta.getResourceId(
 				R.styleable.barView_leftButtonBackground, Color.GRAY);
 		leftButtonText = ta.getString(R.styleable.barView_leftButtonText);
-		leftButtonTextColor = ta.getColor(R.styleable.barView_leftTextColor,
-				Color.WHITE);
+		leftButtonTextColor = ta.getColor(
+				R.styleable.barView_leftButtonTextColor, Color.WHITE);
 		leftButtonTextSize = ta.getDimension(
 				R.styleable.barView_leftButtonTextSize, 12.0f);
 		if (leftButtonTextSize != 12.0f) {
-			leftTextSize = DensityUtils.px2sp(context, leftTextSize);
+			leftButtonTextSize = DensityUtils
+					.px2sp(context, leftButtonTextSize);
 		}
 
 		leftButtonPadding = DensityUtils.px2dp(context,
@@ -431,6 +455,16 @@ public class CustomTitleBarView extends RelativeLayout {
 				.px2dp(context, ta.getDimension(
 						R.styleable.barView_leftButtonPaddingBottom, 0));
 
+		leftButtonMargIn = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonMargIn, 0));
+		leftButtonMargInLeft = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonMargInLeft, 0));
+		leftButtonMargInRight = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonMargInRight, 0));
+		leftButtonMargInTop = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonMargInTop, 0));
+		leftButtonMargInBottom = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_leftButtonMargInBottom, 0));
 	}
 
 	/**
@@ -470,21 +504,37 @@ public class CustomTitleBarView extends RelativeLayout {
 			}
 
 		} else if (leftView == leftButton) {
-				leftButton.setText(leftButtonText);
-				leftButton.setTextSize(leftButtonTextSize);
-				leftButton.setTextColor(leftButtonTextColor);
-				leftButton.setBackgroundResource(leftButtonBg);
-				if (leftButtonPadding == 0) {
+			leftButton.setText(leftButtonText);
+			leftButton.setTextSize(leftButtonTextSize);
+			leftButton.setTextColor(leftButtonTextColor);
+			leftButton.setBackgroundResource(leftButtonBg);
 
-					leftButton.setPadding((int) leftButtonPaddingLeft,
-							(int) leftButtonPaddingTop, (int) leftButtonPaddingRight,
-							(int) leftButtonPaddingBottom);
-				} else {
-					leftButton.setPadding((int) leftButtonPadding,
-							(int) leftButtonPadding, (int) leftButtonPadding,
-							(int) leftButtonPadding);
-				}
-				
+			if (leftButtonPadding == 0) {
+
+				leftButton.setPadding((int) leftButtonPaddingLeft,
+						(int) leftButtonPaddingTop,
+						(int) leftButtonPaddingRight,
+						(int) leftButtonPaddingBottom);
+			} else {
+				leftButton.setPadding((int) leftButtonPadding,
+						(int) leftButtonPadding, (int) leftButtonPadding,
+						(int) leftButtonPadding);
+			}
+			RelativeLayout.LayoutParams layoutParams = (LayoutParams) leftButton
+					.getLayoutParams();
+			if (leftButtonMargIn == 0) {
+
+				layoutParams.setMargins((int) leftButtonMargInLeft,
+						(int) leftButtonMargInTop, (int) leftButtonMargInRight,
+						(int) leftButtonMargInBottom);
+
+			} else {
+				layoutParams.setMargins((int) leftButtonMargIn,
+						(int) leftButtonMargIn, (int) leftButtonMargIn,
+						(int) leftButtonMargIn);
+			}
+			leftButton.setLayoutParams(layoutParams);
+
 		}
 
 	}
@@ -512,8 +562,7 @@ public class CustomTitleBarView extends RelativeLayout {
 						(int) rightTextPadding);
 			}
 			rightTextView.setGravity(Gravity.CENTER);
-		}
-		if (rightView == rightImage) {
+		}else if (rightView == rightImage) {
 			rightImage.setImageResource(rightImageSource);
 			if (rightImagePadding == 0) {
 
@@ -526,6 +575,38 @@ public class CustomTitleBarView extends RelativeLayout {
 						(int) rightImagePadding, (int) rightImagePadding,
 						(int) rightImagePadding);
 			}
+		}else if (rightView == rightButton) {
+			rightButton.setText(rightButtonText);
+			rightButton.setTextSize(rightButtonTextSize);
+			rightButton.setTextColor(rightButtonTextColor);
+			rightButton.setBackgroundResource(rightButtonBg);
+
+			if (rightButtonPadding == 0) {
+
+				rightButton.setPadding((int) rightButtonPaddingLeft,
+						(int) rightButtonPaddingTop,
+						(int) rightButtonPaddingRight,
+						(int) rightButtonPaddingBottom);
+			} else {
+				rightButton.setPadding((int) rightButtonPadding,
+						(int) rightButtonPadding, (int) rightButtonPadding,
+						(int) rightButtonPadding);
+			}
+			RelativeLayout.LayoutParams layoutParams = (LayoutParams) rightButton
+					.getLayoutParams();
+			if (rightButtonMargIn == 0) {
+
+				layoutParams.setMargins((int) rightButtonMargInLeft,
+						(int) rightButtonMargInTop, (int) rightButtonMargInRight,
+						(int) rightButtonMargInBottom);
+
+			} else {
+				layoutParams.setMargins((int) rightButtonMargIn,
+						(int) rightButtonMargIn, (int) rightButtonMargIn,
+						(int) rightButtonMargIn);
+			}
+			rightButton.setLayoutParams(layoutParams);
+
 		}
 	}
 
@@ -583,6 +664,44 @@ public class CustomTitleBarView extends RelativeLayout {
 		rightImagePaddingBottom = DensityUtils
 				.px2dp(context, ta.getDimension(
 						R.styleable.barView_rightImagePaddingBottom, 0));
+
+	}
+	
+	private void initRightButton(TypedArray ta, Context context) {
+		rightButtonBg = ta.getResourceId(
+				R.styleable.barView_rightButtonBackground, Color.GRAY);
+		rightButtonText = ta.getString(R.styleable.barView_rightButtonText);
+		rightButtonTextColor = ta.getColor(
+				R.styleable.barView_rightButtonTextColor, Color.WHITE);
+		rightButtonTextSize = ta.getDimension(
+				R.styleable.barView_rightButtonTextSize, 12.0f);
+		if (rightButtonTextSize != 12.0f) {
+			rightButtonTextSize = DensityUtils
+					.px2sp(context, rightButtonTextSize);
+		}
+
+		rightButtonPadding = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonPadding, 0));
+		rightButtonPaddingLeft = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonPaddingLeft, 0));
+		rightButtonPaddingRight = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonPaddingRight, 0));
+		rightButtonPaddingTop = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonPaddingTop, 0));
+		rightButtonPaddingBottom = DensityUtils
+				.px2dp(context, ta.getDimension(
+						R.styleable.barView_rightButtonPaddingBottom, 0));
+
+		rightButtonMargIn = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonMargIn, 0));
+		rightButtonMargInLeft = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonMargInLeft, 0));
+		rightButtonMargInRight = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonMargInRight, 0));
+		rightButtonMargInTop = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonMargInTop, 0));
+		rightButtonMargInBottom = DensityUtils.px2dp(context,
+				ta.getDimension(R.styleable.barView_rightButtonMargInBottom, 0));
 
 	}
 
