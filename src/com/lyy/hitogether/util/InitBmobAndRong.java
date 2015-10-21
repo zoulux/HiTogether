@@ -12,7 +12,7 @@ import android.util.Log;
 public class InitBmobAndRong {
 
 	private static final String APP_KEY = "c3cff4a755fce5957ddd4c9136d31039";
-	private static final String TOKEN = "YmWwy/E0fHZ7U/65SO2Yenu3UiGLoPgSbxp4DJGG0XGL9YbTAXGpa0r0yCPzopVKfYq5j0qNrXU=";
+	private static final String TOKEN = "rcmKDS3iPWd9DWEwXGMRgbLH6y7UDOEfTO3/Cy62PWh8p0wS4q5vHJc3fVPFV6yyiAaZHfkaKUSODfpq6tkn2GvISqKgMkgZ";
 
 	public interface LinitLisetener {
 		void success(String userId);

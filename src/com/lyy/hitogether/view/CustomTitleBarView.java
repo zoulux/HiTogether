@@ -7,6 +7,7 @@ import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -16,15 +17,15 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.util.DensityUtils;
 
 public class CustomTitleBarView extends RelativeLayout {
-	//图片View
+	// 图片View
 	private ImageView leftImage;
 	private ImageView rightImage;
 	private ImageView centerImage;
-	//文字View
+	// 文字View
 	private TextView leftTextView;
 	private TextView rightTextView;
 	private TextView centerTextView;
-	//按钮View
+	// 按钮View
 	private Button leftButton;
 	private Button rightButton;
 	private Button centerButton;
@@ -46,7 +47,7 @@ public class CustomTitleBarView extends RelativeLayout {
 	private static final int CENTER_TYPE_IMAGE = 1;
 
 	private static final int CENTER_TYPE_BUTTON = 2;
-	//左边的文字的属性
+	// 左边的文字的属性
 	private String leftText;
 	private int leftTextColor;
 	private float leftTextSize;
@@ -55,14 +56,14 @@ public class CustomTitleBarView extends RelativeLayout {
 	private float leftTextPaddingRight;
 	private float leftTextPaddingTop;
 	private float leftTextPaddingBottom;
-	//左边的图片的属性
+	// 左边的图片的属性
 	private int leftImageSource;
 	private float leftImagePadding;
 	private float leftImagePaddingLeft;
 	private float leftImagePaddingRight;
 	private float leftImagePaddingTop;
 	private float leftImagePaddingBottom;
-	//左边的系统按钮的属性
+	// 左边的系统按钮的属性
 	private int leftButtonBg;
 	private String leftButtonText;
 	private float leftButtonTextSize;
@@ -72,7 +73,7 @@ public class CustomTitleBarView extends RelativeLayout {
 	private float leftButtonPaddingRight;
 	private float leftButtonPaddingTop;
 	private float leftButtonPaddingBottom;
-	//右边的文字的属性
+	// 右边的文字的属性
 	private String rightText;
 	private int rightTextColor;
 	private float rightTextSize;
@@ -81,14 +82,14 @@ public class CustomTitleBarView extends RelativeLayout {
 	private float rightTextPaddingRight;
 	private float rightTextPaddingTop;
 	private float rightTextPaddingBottom;
-	//右边的图片的属性
+	// 右边的图片的属性
 	private int rightImageSource;
 	private float rightImagePadding;
 	private float rightImagePaddingLeft;
 	private float rightImagePaddingRight;
 	private float rightImagePaddingTop;
 	private float rightImagePaddingBottom;
-	//中间的文字的属性
+	// 中间的文字的属性
 	private String centerText;
 	private int centerTextColor;
 	private float centerTextSize;
@@ -97,7 +98,7 @@ public class CustomTitleBarView extends RelativeLayout {
 	private float centerTextPaddingRight;
 	private float centerTextPaddingTop;
 	private float centerTextPaddingBottom;
-	
+
 	private onLeftBarViewClickListener mLeftBarViewClickListener = null;
 	private onRightBarViewClickListener mRightBarViewClickListener = null;
 
@@ -142,7 +143,7 @@ public class CustomTitleBarView extends RelativeLayout {
 		View leftView = null;
 		View rightView = null;
 		View centerView = null;
-		
+
 		TypedArray ta = context.obtainStyledAttributes(attrs,
 				R.styleable.barView, defStyle, 0);
 		int leftType = ta.getInt(R.styleable.barView_leftType, -1);
@@ -153,7 +154,7 @@ public class CustomTitleBarView extends RelativeLayout {
 				ViewGroup.LayoutParams.WRAP_CONTENT,
 				ViewGroup.LayoutParams.MATCH_PARENT);
 		lp1.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-		
+
 		RelativeLayout.LayoutParams lp2 = new RelativeLayout.LayoutParams(
 				ViewGroup.LayoutParams.WRAP_CONTENT,
 				ViewGroup.LayoutParams.MATCH_PARENT);
@@ -163,7 +164,7 @@ public class CustomTitleBarView extends RelativeLayout {
 				ViewGroup.LayoutParams.WRAP_CONTENT,
 				ViewGroup.LayoutParams.MATCH_PARENT);
 		lp3.addRule(RelativeLayout.CENTER_IN_PARENT);
-		
+
 		switch (leftType) {
 
 		case LEFT_TYPE_IMAGE:
@@ -252,29 +253,33 @@ public class CustomTitleBarView extends RelativeLayout {
 
 	}
 
-	
-
 	private void initEvent(final View leftView, final View rightView) {
-		leftView.setOnClickListener(new OnClickListener() {
+		if (leftView != null) {
+			leftView.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				if (mLeftBarViewClickListener != null) {
-					mLeftBarViewClickListener.onclick(leftView);
+				@Override
+				public void onClick(View v) {
+					if (mLeftBarViewClickListener != null) {
+						mLeftBarViewClickListener.onclick(leftView);
+					}
+
 				}
+			});
+		}
 
-			}
-		});
-		rightView.setOnClickListener(new OnClickListener() {
+		if (rightView != null) {
+			rightView.setOnClickListener(new OnClickListener() {
 
-			@Override
-			public void onClick(View v) {
-				if (mRightBarViewClickListener != null) {
-					mRightBarViewClickListener.onclick(rightView);
+				@Override
+				public void onClick(View v) {
+					if (mRightBarViewClickListener != null) {
+						mRightBarViewClickListener.onclick(rightView);
+					}
+
 				}
+			});
+		}
 
-			}
-		});
 	}
 
 	/**
@@ -394,21 +399,26 @@ public class CustomTitleBarView extends RelativeLayout {
 				ta.getDimension(R.styleable.barView_leftTextPaddingBottom, 0));
 
 	}
+
 	/**
 	 * 初始化左边的系统按钮
+	 * 
 	 * @param ta
 	 * @param context
 	 */
 	private void initLeftButton(TypedArray ta, Context context) {
-		leftButtonBg = ta.getResourceId(R.styleable.barView_leftButtonBackground,
-				Color.GRAY);
+		// todo
+		leftButtonBg = ta.getResourceId(
+				R.styleable.barView_leftButtonBackground, Color.GRAY);
 		leftButtonText = ta.getString(R.styleable.barView_leftButtonText);
-		leftButtonTextColor = ta.getColor(R.styleable.barView_leftTextColor,Color.WHITE);
-		leftButtonTextSize = ta.getDimension(R.styleable.barView_leftButtonTextSize,12.0f);
+		leftButtonTextColor = ta.getColor(R.styleable.barView_leftTextColor,
+				Color.WHITE);
+		leftButtonTextSize = ta.getDimension(
+				R.styleable.barView_leftButtonTextSize, 12.0f);
 		if (leftButtonTextSize != 12.0f) {
 			leftTextSize = DensityUtils.px2sp(context, leftTextSize);
 		}
-		
+
 		leftButtonPadding = DensityUtils.px2dp(context,
 				ta.getDimension(R.styleable.barView_leftButtonPadding, 0));
 		leftButtonPaddingLeft = DensityUtils.px2dp(context,
@@ -417,9 +427,10 @@ public class CustomTitleBarView extends RelativeLayout {
 				ta.getDimension(R.styleable.barView_leftButtonPaddingRight, 0));
 		leftButtonPaddingTop = DensityUtils.px2dp(context,
 				ta.getDimension(R.styleable.barView_leftButtonPaddingTop, 0));
-		leftButtonPaddingBottom = DensityUtils.px2dp(context,
-				ta.getDimension(R.styleable.barView_leftButtonPaddingBottom, 0));
-		
+		leftButtonPaddingBottom = DensityUtils
+				.px2dp(context, ta.getDimension(
+						R.styleable.barView_leftButtonPaddingBottom, 0));
+
 	}
 
 	/**
@@ -458,6 +469,22 @@ public class CustomTitleBarView extends RelativeLayout {
 						(int) leftImagePadding);
 			}
 
+		} else if (leftView == leftButton) {
+				leftButton.setText(leftButtonText);
+				leftButton.setTextSize(leftButtonTextSize);
+				leftButton.setTextColor(leftButtonTextColor);
+				leftButton.setBackgroundResource(leftButtonBg);
+				if (leftButtonPadding == 0) {
+
+					leftButton.setPadding((int) leftButtonPaddingLeft,
+							(int) leftButtonPaddingTop, (int) leftButtonPaddingRight,
+							(int) leftButtonPaddingBottom);
+				} else {
+					leftButton.setPadding((int) leftButtonPadding,
+							(int) leftButtonPadding, (int) leftButtonPadding,
+							(int) leftButtonPadding);
+				}
+				
 		}
 
 	}
