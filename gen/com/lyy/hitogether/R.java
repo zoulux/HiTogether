@@ -167,246 +167,158 @@ containing a value of this type.
 </table>
          */
         public static final int RCStyle=0x7f010004;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int color=0x7f01001b;
-        /** <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int fromDeg=0x7f01001e;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int icon=0x7f010019;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int leftBackground=0x7f010014;
-        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int leftText=0x7f010015;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int leftTextColor=0x7f010013;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int matProg_barColor=0x7f010023;
-        /** <p>Must be an integer value, such as "<code>100</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int matProg_barSpinCycleTime=0x7f010027;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        public static final int centerButtonBackground=0x7f010051;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
          */
-        public static final int matProg_barWidth=0x7f01002a;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        public static final int centerButtonPadding=0x7f010052;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
          */
-        public static final int matProg_circleRadius=0x7f010028;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int matProg_fillRadius=0x7f010029;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int matProg_linearProgress=0x7f01002b;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int matProg_progressIndeterminate=0x7f010022;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int matProg_rimColor=0x7f010024;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        public static final int centerButtonPaddingBottom=0x7f010056;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
          */
-        public static final int matProg_rimWidth=0x7f010025;
-        /** <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
+        public static final int centerButtonPaddingLeft=0x7f010053;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
          */
-        public static final int matProg_spinSpeed=0x7f010026;
-        /** <p>Must be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
-The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
-some parent container.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
+        public static final int centerButtonPaddingRight=0x7f010054;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
          */
-        public static final int pivotX=0x7f010020;
-        /** <p>Must be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
-The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
-some parent container.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
+        public static final int centerButtonPaddingTop=0x7f010055;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
          */
-        public static final int pivotY=0x7f010021;
+        public static final int centerButtonText=0x7f01004e;
         /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
 <p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
          */
-        public static final int rightBackground=0x7f010017;
-        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int rightText=0x7f010018;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int rightTextColor=0x7f010016;
-        /** <p>Must be one of the following constant values.</p>
-<table>
-<colgroup align="left" />
-<colgroup align="left" />
-<colgroup align="left" />
-<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
-<tr><td><code>x</code></td><td>0</td><td></td></tr>
-<tr><td><code>y</code></td><td>1</td><td></td></tr>
-<tr><td><code>z</code></td><td>2</td><td></td></tr>
-</table>
-         */
-        public static final int rollType=0x7f01001d;
-        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int text=0x7f01001a;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        public static final int centerButtonTextColor=0x7f01004f;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
          */
-        public static final int text_size=0x7f01001c;
-        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static final int titleText=0x7f010010;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+        public static final int centerButtonTextSize=0x7f010050;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
          */
-        public static final int titleTextSize=0x7f010011;
-        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+        public static final int centerImagePadding=0x7f010049;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerImagePaddingBottom=0x7f01004d;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerImagePaddingLeft=0x7f01004a;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerImagePaddingRight=0x7f01004b;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerImagePaddingTop=0x7f01004c;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be an integer value, such as "<code>100</code>".
+         */
+        public static final int centerImageSource=0x7f010048;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+         */
+        public static final int centerText=0x7f010042;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
 "<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
          */
-        public static final int tittleTextColor=0x7f010012;
-        /** <p>Must be a floating point value, such as "<code>1.2</code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
+        public static final int centerTextColor=0x7f010040;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
          */
-        public static final int toDeg=0x7f01001f;
+        public static final int centerTextPadding=0x7f010043;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerTextPaddingBottom=0x7f010047;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerTextPaddingLeft=0x7f010044;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerTextPaddingRight=0x7f010045;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerTextPaddingTop=0x7f010046;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int centerTextSize=0x7f010041;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -418,7 +330,502 @@ containing a value of this type.
 <tr><td><code>button</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int type=0x7f01000f;
+        public static final int centerType=0x7f01003f;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int color=0x7f010059;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int fromDeg=0x7f01005c;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int icon=0x7f010057;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int leftButtonBackground=0x7f010021;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftButtonPadding=0x7f010022;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftButtonPaddingBottom=0x7f010026;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftButtonPaddingLeft=0x7f010023;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftButtonPaddingRight=0x7f010024;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftButtonPaddingTop=0x7f010025;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+         */
+        public static final int leftButtonText=0x7f01001e;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int leftButtonTextColor=0x7f01001f;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftButtonTextSize=0x7f010020;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftImagePadding=0x7f010019;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftImagePaddingBottom=0x7f01001d;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftImagePaddingLeft=0x7f01001a;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftImagePaddingRight=0x7f01001b;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftImagePaddingTop=0x7f01001c;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be an integer value, such as "<code>100</code>".
+         */
+        public static final int leftImageSource=0x7f010018;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+         */
+        public static final int leftText=0x7f010012;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int leftTextColor=0x7f010010;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftTextPadding=0x7f010013;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftTextPaddingBottom=0x7f010017;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftTextPaddingLeft=0x7f010014;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftTextPaddingRight=0x7f010015;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftTextPaddingTop=0x7f010016;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int leftTextSize=0x7f010011;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>text</code></td><td>0</td><td></td></tr>
+<tr><td><code>image</code></td><td>1</td><td></td></tr>
+<tr><td><code>button</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int leftType=0x7f01000f;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_barColor=0x7f010061;
+        /** <p>Must be an integer value, such as "<code>100</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_barSpinCycleTime=0x7f010065;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_barWidth=0x7f010068;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_circleRadius=0x7f010066;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_fillRadius=0x7f010067;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_linearProgress=0x7f010069;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_progressIndeterminate=0x7f010060;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_rimColor=0x7f010062;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_rimWidth=0x7f010063;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int matProg_spinSpeed=0x7f010064;
+        /** <p>Must be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
+The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
+some parent container.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pivotX=0x7f01005e;
+        /** <p>Must be a fractional value, which is a floating point number appended with either % or %p, such as "<code>14.5%</code>".
+The % suffix always means a percentage of the base size; the optional %p suffix provides a size relative to
+some parent container.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pivotY=0x7f01005f;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int rightButtonBackground=0x7f010039;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightButtonPadding=0x7f01003a;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightButtonPaddingBottom=0x7f01003e;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightButtonPaddingLeft=0x7f01003b;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightButtonPaddingRight=0x7f01003c;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightButtonPaddingTop=0x7f01003d;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+         */
+        public static final int rightButtonText=0x7f010036;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int rightButtonTextColor=0x7f010037;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightButtonTextSize=0x7f010038;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightImagePadding=0x7f010031;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightImagePaddingBottom=0x7f010035;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightImagePaddingLeft=0x7f010032;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightImagePaddingRight=0x7f010033;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightImagePaddingTop=0x7f010034;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be an integer value, such as "<code>100</code>".
+         */
+        public static final int rightImageSource=0x7f010030;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+         */
+        public static final int rightText=0x7f01002a;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int rightTextColor=0x7f010028;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightTextPadding=0x7f01002b;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightTextPaddingBottom=0x7f01002f;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightTextPaddingLeft=0x7f01002c;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightTextPaddingRight=0x7f01002d;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightTextPaddingTop=0x7f01002e;
+        /** <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+         */
+        public static final int rightTextSize=0x7f010029;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>text</code></td><td>0</td><td></td></tr>
+<tr><td><code>image</code></td><td>1</td><td></td></tr>
+<tr><td><code>button</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int rightType=0x7f010027;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>x</code></td><td>0</td><td></td></tr>
+<tr><td><code>y</code></td><td>1</td><td></td></tr>
+<tr><td><code>z</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int rollType=0x7f01005b;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int text=0x7f010058;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int text_size=0x7f01005a;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int toDeg=0x7f01005d;
     }
     public static final class bool {
         public static final int rc_is_show_warning_notification=0x7f080000;
@@ -872,112 +1279,113 @@ containing a value of this type.
         public static final int RCStroke=0x7f05000b;
         public static final int SC=0x7f050006;
         public static final int SCE=0x7f050002;
-        public static final int account=0x7f0500a3;
-        public static final int action_settings=0x7f0500be;
-        public static final int answer_id=0x7f050092;
-        public static final int btn_cancel=0x7f050089;
-        public static final int btn_isOK=0x7f05008b;
+        public static final int account=0x7f0500a4;
+        public static final int action_settings=0x7f0500bf;
+        public static final int answer_id=0x7f050093;
+        public static final int btn_cancel=0x7f05008a;
+        public static final int btn_isOK=0x7f05008c;
         public static final int button=0x7f05003f;
-        public static final int button1=0x7f050054;
-        public static final int call_finish=0x7f050093;
-        public static final int calling_state=0x7f050097;
-        public static final int cancel_button=0x7f050062;
+        public static final int button1=0x7f05006c;
+        public static final int call_finish=0x7f050094;
+        public static final int calling_state=0x7f050098;
+        public static final int cancel_button=0x7f050066;
         public static final int circle=0x7f050001;
-        public static final int confirm_button=0x7f050063;
-        public static final int container=0x7f05008f;
-        public static final int content_frame=0x7f050048;
-        public static final int content_text=0x7f050061;
-        public static final int custom_image=0x7f050056;
-        public static final int description=0x7f0500a6;
-        public static final int drawer_layout=0x7f050047;
-        public static final int enter=0x7f0500a7;
-        public static final int error_frame=0x7f050057;
-        public static final int error_x=0x7f050058;
-        public static final int follow=0x7f0500a8;
-        public static final int func=0x7f0500a5;
-        public static final int hands_off_id=0x7f05009a;
-        public static final int id_bottom_ly=0x7f050050;
-        public static final int id_cus=0x7f050064;
-        public static final int id_dir_count=0x7f050052;
-        public static final int id_dir_item_count=0x7f050071;
-        public static final int id_dir_item_image=0x7f05006f;
-        public static final int id_dir_item_name=0x7f050070;
-        public static final int id_dir_name=0x7f050051;
+        public static final int confirm_button=0x7f050067;
+        public static final int container=0x7f050090;
+        public static final int content_frame=0x7f05004b;
+        public static final int content_text=0x7f050065;
+        public static final int custom_image=0x7f05005a;
+        public static final int description=0x7f0500a7;
+        public static final int drawer_layout=0x7f05004a;
+        public static final int enter=0x7f0500a8;
+        public static final int error_frame=0x7f05005b;
+        public static final int error_x=0x7f05005c;
+        public static final int follow=0x7f0500a9;
+        public static final int func=0x7f0500a6;
+        public static final int hands_off_id=0x7f05009b;
+        public static final int id_bottom_ly=0x7f050053;
+        public static final int id_bt_test=0x7f050058;
+        public static final int id_dir_count=0x7f050055;
+        public static final int id_dir_item_count=0x7f050072;
+        public static final int id_dir_item_image=0x7f050070;
+        public static final int id_dir_item_name=0x7f050071;
+        public static final int id_dir_name=0x7f050054;
         public static final int id_forgotPwd=0x7f050045;
-        public static final int id_four=0x7f05004d;
-        public static final int id_fragment_bt_appointment=0x7f050078;
-        public static final int id_grideView=0x7f05004f;
+        public static final int id_four=0x7f050050;
+        public static final int id_fragment_bt_appointment=0x7f050079;
+        public static final int id_grideView=0x7f050052;
         public static final int id_gridview_des=0x7f05006b;
-        public static final int id_item_image=0x7f05006d;
-        public static final int id_item_select=0x7f05006e;
-        public static final int id_item_share_my_tralval=0x7f050072;
-        public static final int id_list_dir=0x7f050088;
-        public static final int id_loginBt=0x7f050085;
-        public static final int id_main_title_bar=0x7f05007b;
-        public static final int id_main_title_bar_avatar=0x7f05007c;
-        public static final int id_main_title_bar_go=0x7f050080;
-        public static final int id_main_title_bar_radio_group=0x7f05007d;
-        public static final int id_main_title_bar_radio_group_radio_button_one=0x7f05007e;
-        public static final int id_main_title_bar_radio_group_radio_button_two=0x7f05007f;
-        public static final int id_my_login_view=0x7f050082;
+        public static final int id_item_image=0x7f05006e;
+        public static final int id_item_select=0x7f05006f;
+        public static final int id_item_share_my_tralval=0x7f050073;
+        public static final int id_list_dir=0x7f050089;
+        public static final int id_loginBt=0x7f050086;
+        public static final int id_main_CustomTitleBarView_1=0x7f050047;
+        public static final int id_main_CustomTitleBarView_2=0x7f050048;
+        public static final int id_main_CustomTitleBarView_3=0x7f050049;
+        public static final int id_main_title_bar=0x7f05007c;
+        public static final int id_main_title_bar_avatar=0x7f05007d;
+        public static final int id_main_title_bar_go=0x7f050081;
+        public static final int id_main_title_bar_radio_group=0x7f05007e;
+        public static final int id_main_title_bar_radio_group_radio_button_one=0x7f05007f;
+        public static final int id_main_title_bar_radio_group_radio_button_two=0x7f050080;
+        public static final int id_my_login_view=0x7f050083;
         public static final int id_newuser=0x7f050046;
-        public static final int id_one=0x7f05004a;
+        public static final int id_one=0x7f05004d;
         public static final int id_search=0x7f050069;
-        public static final int id_share_my_traval_gridview=0x7f050053;
-        public static final int id_third_fragment_avater_linearlayout=0x7f050075;
-        public static final int id_third_fragment_desc=0x7f050074;
-        public static final int id_third_fragment_grade=0x7f05007a;
-        public static final int id_third_fragment_grideview=0x7f05006c;
-        public static final int id_third_fragment_guide_avartar=0x7f050076;
-        public static final int id_third_fragment_guide_name=0x7f050077;
-        public static final int id_third_fragment_place=0x7f050079;
-        public static final int id_third_fragment_scen_img=0x7f050073;
-        public static final int id_three=0x7f05004c;
-        public static final int id_title_bar_bt=0x7f050081;
-        public static final int id_topBarLeft=0x7f050065;
-        public static final int id_topBarRight=0x7f050067;
-        public static final int id_topBartext=0x7f050066;
-        public static final int id_two=0x7f05004b;
-        public static final int id_userName=0x7f050083;
-        public static final int id_userPwd=0x7f050084;
+        public static final int id_share_my_traval_CustomTitleBarView=0x7f050056;
+        public static final int id_share_my_traval_gridview=0x7f050057;
+        public static final int id_third_fragment_avater_linearlayout=0x7f050076;
+        public static final int id_third_fragment_desc=0x7f050075;
+        public static final int id_third_fragment_grade=0x7f05007b;
+        public static final int id_third_fragment_grideview=0x7f05006d;
+        public static final int id_third_fragment_guide_avartar=0x7f050077;
+        public static final int id_third_fragment_guide_name=0x7f050078;
+        public static final int id_third_fragment_place=0x7f05007a;
+        public static final int id_third_fragment_scen_img=0x7f050074;
+        public static final int id_three=0x7f05004f;
+        public static final int id_title_bar_bt=0x7f050082;
+        public static final int id_two=0x7f05004e;
+        public static final int id_userName=0x7f050084;
+        public static final int id_userPwd=0x7f050085;
         public static final int id_viewpager_fragment_first=0x7f050068;
         public static final int id_viewpager_fragment_first_dec=0x7f05006a;
-        public static final int id_viewpager_main=0x7f050049;
+        public static final int id_viewpager_main=0x7f05004c;
         public static final int image=0x7f05003e;
-        public static final int introduction=0x7f0500b1;
-        public static final int left_drawer=0x7f05004e;
-        public static final int loading=0x7f050055;
+        public static final int introduction=0x7f0500b2;
+        public static final int left_drawer=0x7f050051;
+        public static final int loading=0x7f050059;
         public static final int login_user_avarter=0x7f050044;
-        public static final int mask_layout=0x7f05009b;
-        public static final int mask_left=0x7f05005b;
-        public static final int mask_right=0x7f05005a;
-        public static final int name=0x7f0500a2;
-        public static final int portrait=0x7f0500a1;
-        public static final int progressWheel=0x7f05005f;
-        public static final int progress_dialog=0x7f05005e;
+        public static final int mask_layout=0x7f05009c;
+        public static final int mask_left=0x7f05005f;
+        public static final int mask_right=0x7f05005e;
+        public static final int name=0x7f0500a3;
+        public static final int portrait=0x7f0500a2;
+        public static final int progressWheel=0x7f050063;
+        public static final int progress_dialog=0x7f050062;
         public static final int rc_actionbar=0x7f050017;
         public static final int rc_back=0x7f050016;
         public static final int rc_btn_cancel=0x7f050037;
         public static final int rc_btn_ok=0x7f050038;
-        public static final int rc_chebox_pictrue=0x7f05008d;
+        public static final int rc_chebox_pictrue=0x7f05008e;
         public static final int rc_checkbox=0x7f050036;
         public static final int rc_content=0x7f050012;
         public static final int rc_conversation_content=0x7f05002c;
         public static final int rc_conversation_msg_block=0x7f05002e;
         public static final int rc_conversation_time=0x7f05002d;
         public static final int rc_conversation_title=0x7f05002b;
-        public static final int rc_ext=0x7f0500bc;
-        public static final int rc_flow=0x7f0500b3;
+        public static final int rc_ext=0x7f0500bd;
+        public static final int rc_flow=0x7f0500b4;
         public static final int rc_fragment=0x7f05003b;
         public static final int rc_frame=0x7f05003c;
         public static final int rc_icon=0x7f05000d;
         public static final int rc_img=0x7f050011;
-        public static final int rc_indicator=0x7f0500b4;
-        public static final int rc_input=0x7f05009d;
-        public static final int rc_input_custom_menu=0x7f0500ba;
+        public static final int rc_indicator=0x7f0500b5;
+        public static final int rc_input=0x7f05009e;
+        public static final int rc_input_custom_menu=0x7f0500bb;
         public static final int rc_input_extension=0x7f050035;
         public static final int rc_input_main=0x7f050034;
-        public static final int rc_input_menu=0x7f0500b8;
+        public static final int rc_input_menu=0x7f0500b9;
         public static final int rc_input_switch=0x7f050033;
         public static final int rc_item0=0x7f05001c;
         public static final int rc_item1=0x7f05001d;
@@ -994,61 +1402,61 @@ containing a value of this type.
         public static final int rc_left=0x7f050026;
         public static final int rc_list=0x7f05000e;
         public static final int rc_logo=0x7f050018;
-        public static final int rc_menu_item_text=0x7f0500af;
-        public static final int rc_menu_line=0x7f0500b0;
-        public static final int rc_menu_switch=0x7f0500b6;
+        public static final int rc_menu_item_text=0x7f0500b0;
+        public static final int rc_menu_line=0x7f0500b1;
+        public static final int rc_menu_switch=0x7f0500b7;
         public static final int rc_message_send_failed=0x7f050032;
         public static final int rc_msg=0x7f050010;
         public static final int rc_new=0x7f05001a;
-        public static final int rc_new_message_count=0x7f05009f;
-        public static final int rc_new_message_number=0x7f0500a0;
+        public static final int rc_new_message_count=0x7f0500a0;
+        public static final int rc_new_message_number=0x7f0500a1;
         public static final int rc_pager=0x7f050039;
-        public static final int rc_plugins=0x7f0500bb;
+        public static final int rc_plugins=0x7f0500bc;
         public static final int rc_portrait=0x7f050029;
         public static final int rc_portrait_right=0x7f05002a;
         public static final int rc_progress=0x7f050014;
         public static final int rc_right=0x7f050027;
-        public static final int rc_search_btn=0x7f0500ab;
-        public static final int rc_search_ed=0x7f0500aa;
-        public static final int rc_search_list=0x7f0500ac;
+        public static final int rc_search_btn=0x7f0500ac;
+        public static final int rc_search_ed=0x7f0500ab;
+        public static final int rc_search_list=0x7f0500ad;
         public static final int rc_send=0x7f05003a;
-        public static final int rc_sent_status=0x7f0500ae;
-        public static final int rc_setting_item=0x7f0500ad;
-        public static final int rc_switcher=0x7f0500b5;
-        public static final int rc_switcher1=0x7f0500b7;
-        public static final int rc_switcher2=0x7f0500b9;
+        public static final int rc_sent_status=0x7f0500af;
+        public static final int rc_setting_item=0x7f0500ae;
+        public static final int rc_switcher=0x7f0500b6;
+        public static final int rc_switcher1=0x7f0500b8;
+        public static final int rc_switcher2=0x7f0500ba;
         public static final int rc_time=0x7f050028;
         public static final int rc_title=0x7f050019;
         public static final int rc_title_layout=0x7f05001b;
         public static final int rc_txt=0x7f05000f;
         public static final int rc_unread_message=0x7f05002f;
-        public static final int rc_unread_message_count=0x7f05009e;
+        public static final int rc_unread_message_count=0x7f05009f;
         public static final int rc_unread_message_right=0x7f050030;
-        public static final int rc_voice_unread=0x7f0500b2;
-        public static final int rc_voip_called_layout=0x7f050090;
+        public static final int rc_voice_unread=0x7f0500b3;
+        public static final int rc_voip_called_layout=0x7f050091;
         public static final int rc_warning=0x7f050015;
-        public static final int rc_webview=0x7f05008e;
-        public static final int refuse_id=0x7f050091;
-        public static final int rel_group_intro=0x7f0500a4;
-        public static final int root=0x7f050086;
-        public static final int show_pictrue=0x7f05008a;
-        public static final int shownumber=0x7f05008c;
-        public static final int sound_off_container_id=0x7f05009c;
-        public static final int sound_off_id=0x7f050099;
+        public static final int rc_webview=0x7f05008f;
+        public static final int refuse_id=0x7f050092;
+        public static final int rel_group_intro=0x7f0500a5;
+        public static final int root=0x7f050087;
+        public static final int show_pictrue=0x7f05008b;
+        public static final int shownumber=0x7f05008d;
+        public static final int sound_off_container_id=0x7f05009d;
+        public static final int sound_off_id=0x7f05009a;
         public static final int square=0x7f050000;
-        public static final int success_frame=0x7f050059;
-        public static final int success_tick=0x7f05005c;
+        public static final int success_frame=0x7f05005d;
+        public static final int success_tick=0x7f050060;
         public static final int text=0x7f05003d;
         public static final int textView1=0x7f050043;
-        public static final int title=0x7f050087;
-        public static final int title_text=0x7f050060;
-        public static final int unfollow=0x7f0500a9;
-        public static final int user_name=0x7f050096;
-        public static final int user_photo=0x7f050095;
-        public static final int user_photo_container=0x7f050094;
-        public static final int vioce_control_container=0x7f050098;
-        public static final int volume_animation=0x7f0500bd;
-        public static final int warning_frame=0x7f05005d;
+        public static final int title=0x7f050088;
+        public static final int title_text=0x7f050064;
+        public static final int unfollow=0x7f0500aa;
+        public static final int user_name=0x7f050097;
+        public static final int user_photo=0x7f050096;
+        public static final int user_photo_container=0x7f050095;
+        public static final int vioce_control_container=0x7f050099;
+        public static final int volume_animation=0x7f0500be;
+        public static final int warning_frame=0x7f050061;
         public static final int x=0x7f050040;
         public static final int y=0x7f050041;
         public static final int z=0x7f050042;
@@ -1064,84 +1472,83 @@ containing a value of this type.
         public static final int activity_share_my_traval=0x7f030004;
         public static final int activity_test=0x7f030005;
         public static final int alert_dialog=0x7f030006;
-        public static final int custom_title_bar=0x7f030007;
-        public static final int fragment_first=0x7f030008;
-        public static final int fragment_first_destination=0x7f030009;
-        public static final int fragment_first_of_friend=0x7f03000a;
-        public static final int fragment_fourth=0x7f03000b;
-        public static final int fragment_second=0x7f03000c;
-        public static final int fragment_third=0x7f03000d;
-        public static final int item_gride_view=0x7f03000e;
-        public static final int item_popup=0x7f03000f;
-        public static final int item_share_my_traval_gridview=0x7f030010;
-        public static final int item_third_fragment=0x7f030011;
-        public static final int main_title_bar=0x7f030012;
-        public static final int my_album_title_bar=0x7f030013;
-        public static final int my_login_view=0x7f030014;
-        public static final int picture_text_item=0x7f030015;
-        public static final int popup_main=0x7f030016;
-        public static final int rc_ac_albums=0x7f030017;
-        public static final int rc_ac_camera=0x7f030018;
-        public static final int rc_ac_preview=0x7f030019;
-        public static final int rc_ac_selected_pictrue=0x7f03001a;
-        public static final int rc_ac_webview=0x7f03001b;
-        public static final int rc_activity=0x7f03001c;
-        public static final int rc_calledside_layout=0x7f03001d;
-        public static final int rc_callside_layout=0x7f03001e;
-        public static final int rc_fr_conversation=0x7f03001f;
-        public static final int rc_fr_conversation_member_list=0x7f030020;
-        public static final int rc_fr_conversationlist=0x7f030021;
-        public static final int rc_fr_dialog_alter=0x7f030022;
-        public static final int rc_fr_messageinput=0x7f030023;
-        public static final int rc_fr_messagelist=0x7f030024;
-        public static final int rc_fr_photo=0x7f030025;
-        public static final int rc_fr_photo2=0x7f030026;
-        public static final int rc_fr_public_service_inf=0x7f030027;
-        public static final int rc_fr_public_service_search=0x7f030028;
-        public static final int rc_fr_public_service_sub_list=0x7f030029;
-        public static final int rc_fr_test=0x7f03002a;
-        public static final int rc_fragment_base_setting=0x7f03002b;
-        public static final int rc_item_albums=0x7f03002c;
-        public static final int rc_item_app_service_conversation=0x7f03002d;
-        public static final int rc_item_base_conversation=0x7f03002e;
-        public static final int rc_item_conversation=0x7f03002f;
-        public static final int rc_item_conversation_member=0x7f030030;
-        public static final int rc_item_discussion_conversation=0x7f030031;
-        public static final int rc_item_discussion_notification_message=0x7f030032;
-        public static final int rc_item_group_conversation=0x7f030033;
-        public static final int rc_item_image_message=0x7f030034;
-        public static final int rc_item_information_notification_message=0x7f030035;
-        public static final int rc_item_location_message=0x7f030036;
-        public static final int rc_item_message=0x7f030037;
-        public static final int rc_item_preview_fragment=0x7f030038;
-        public static final int rc_item_progress=0x7f030039;
-        public static final int rc_item_public_service_conversation=0x7f03003a;
-        public static final int rc_item_public_service_input_menu=0x7f03003b;
-        public static final int rc_item_public_service_input_menu_item=0x7f03003c;
-        public static final int rc_item_public_service_input_menus=0x7f03003d;
-        public static final int rc_item_public_service_list=0x7f03003e;
-        public static final int rc_item_public_service_message=0x7f03003f;
-        public static final int rc_item_public_service_multi_rich_content_message=0x7f030040;
-        public static final int rc_item_public_service_rich_content_message=0x7f030041;
-        public static final int rc_item_public_service_search=0x7f030042;
-        public static final int rc_item_rich_content_message=0x7f030043;
-        public static final int rc_item_system_conversation=0x7f030044;
-        public static final int rc_item_text_message=0x7f030045;
-        public static final int rc_item_voice_message=0x7f030046;
-        public static final int rc_ui_voice_cover=0x7f030047;
-        public static final int rc_wi_block=0x7f030048;
-        public static final int rc_wi_block_popup=0x7f030049;
-        public static final int rc_wi_emoji_grid=0x7f03004a;
-        public static final int rc_wi_emoji_txt=0x7f03004b;
-        public static final int rc_wi_ext_pager=0x7f03004c;
-        public static final int rc_wi_input=0x7f03004d;
-        public static final int rc_wi_notice=0x7f03004e;
-        public static final int rc_wi_notification_loading=0x7f03004f;
-        public static final int rc_wi_plugins=0x7f030050;
-        public static final int rc_wi_text_btn=0x7f030051;
-        public static final int rc_wi_txt_provider=0x7f030052;
-        public static final int rc_wi_vo_popup=0x7f030053;
-        public static final int rc_wi_vo_provider=0x7f030054;
+        public static final int fragment_first=0x7f030007;
+        public static final int fragment_first_destination=0x7f030008;
+        public static final int fragment_first_of_friend=0x7f030009;
+        public static final int fragment_fourth=0x7f03000a;
+        public static final int fragment_second=0x7f03000b;
+        public static final int fragment_third=0x7f03000c;
+        public static final int item_gride_view=0x7f03000d;
+        public static final int item_popup=0x7f03000e;
+        public static final int item_share_my_traval_gridview=0x7f03000f;
+        public static final int item_third_fragment=0x7f030010;
+        public static final int main_title_bar=0x7f030011;
+        public static final int my_album_title_bar=0x7f030012;
+        public static final int my_login_view=0x7f030013;
+        public static final int picture_text_item=0x7f030014;
+        public static final int popup_main=0x7f030015;
+        public static final int rc_ac_albums=0x7f030016;
+        public static final int rc_ac_camera=0x7f030017;
+        public static final int rc_ac_preview=0x7f030018;
+        public static final int rc_ac_selected_pictrue=0x7f030019;
+        public static final int rc_ac_webview=0x7f03001a;
+        public static final int rc_activity=0x7f03001b;
+        public static final int rc_calledside_layout=0x7f03001c;
+        public static final int rc_callside_layout=0x7f03001d;
+        public static final int rc_fr_conversation=0x7f03001e;
+        public static final int rc_fr_conversation_member_list=0x7f03001f;
+        public static final int rc_fr_conversationlist=0x7f030020;
+        public static final int rc_fr_dialog_alter=0x7f030021;
+        public static final int rc_fr_messageinput=0x7f030022;
+        public static final int rc_fr_messagelist=0x7f030023;
+        public static final int rc_fr_photo=0x7f030024;
+        public static final int rc_fr_photo2=0x7f030025;
+        public static final int rc_fr_public_service_inf=0x7f030026;
+        public static final int rc_fr_public_service_search=0x7f030027;
+        public static final int rc_fr_public_service_sub_list=0x7f030028;
+        public static final int rc_fr_test=0x7f030029;
+        public static final int rc_fragment_base_setting=0x7f03002a;
+        public static final int rc_item_albums=0x7f03002b;
+        public static final int rc_item_app_service_conversation=0x7f03002c;
+        public static final int rc_item_base_conversation=0x7f03002d;
+        public static final int rc_item_conversation=0x7f03002e;
+        public static final int rc_item_conversation_member=0x7f03002f;
+        public static final int rc_item_discussion_conversation=0x7f030030;
+        public static final int rc_item_discussion_notification_message=0x7f030031;
+        public static final int rc_item_group_conversation=0x7f030032;
+        public static final int rc_item_image_message=0x7f030033;
+        public static final int rc_item_information_notification_message=0x7f030034;
+        public static final int rc_item_location_message=0x7f030035;
+        public static final int rc_item_message=0x7f030036;
+        public static final int rc_item_preview_fragment=0x7f030037;
+        public static final int rc_item_progress=0x7f030038;
+        public static final int rc_item_public_service_conversation=0x7f030039;
+        public static final int rc_item_public_service_input_menu=0x7f03003a;
+        public static final int rc_item_public_service_input_menu_item=0x7f03003b;
+        public static final int rc_item_public_service_input_menus=0x7f03003c;
+        public static final int rc_item_public_service_list=0x7f03003d;
+        public static final int rc_item_public_service_message=0x7f03003e;
+        public static final int rc_item_public_service_multi_rich_content_message=0x7f03003f;
+        public static final int rc_item_public_service_rich_content_message=0x7f030040;
+        public static final int rc_item_public_service_search=0x7f030041;
+        public static final int rc_item_rich_content_message=0x7f030042;
+        public static final int rc_item_system_conversation=0x7f030043;
+        public static final int rc_item_text_message=0x7f030044;
+        public static final int rc_item_voice_message=0x7f030045;
+        public static final int rc_ui_voice_cover=0x7f030046;
+        public static final int rc_wi_block=0x7f030047;
+        public static final int rc_wi_block_popup=0x7f030048;
+        public static final int rc_wi_emoji_grid=0x7f030049;
+        public static final int rc_wi_emoji_txt=0x7f03004a;
+        public static final int rc_wi_ext_pager=0x7f03004b;
+        public static final int rc_wi_input=0x7f03004c;
+        public static final int rc_wi_notice=0x7f03004d;
+        public static final int rc_wi_notification_loading=0x7f03004e;
+        public static final int rc_wi_plugins=0x7f03004f;
+        public static final int rc_wi_text_btn=0x7f030050;
+        public static final int rc_wi_txt_provider=0x7f030051;
+        public static final int rc_wi_vo_popup=0x7f030052;
+        public static final int rc_wi_vo_provider=0x7f030053;
     }
     public static final class menu {
         public static final int main=0x7f0d0000;
@@ -1443,7 +1850,7 @@ containing a value of this type.
            @see #ChangeColorIconWithText_text_size
          */
         public static final int[] ChangeColorIconWithText = {
-            0x7f010019, 0x7f01001a, 0x7f01001b, 0x7f01001c
+            0x7f010057, 0x7f010058, 0x7f010059, 0x7f01005a
         };
         /**
           <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#color}
@@ -1566,9 +1973,9 @@ containing a value of this type.
            @see #ProgressWheel_matProg_spinSpeed
          */
         public static final int[] ProgressWheel = {
-            0x7f010022, 0x7f010023, 0x7f010024, 0x7f010025,
-            0x7f010026, 0x7f010027, 0x7f010028, 0x7f010029,
-            0x7f01002a, 0x7f01002b
+            0x7f010060, 0x7f010061, 0x7f010062, 0x7f010063,
+            0x7f010064, 0x7f010065, 0x7f010066, 0x7f010067,
+            0x7f010068, 0x7f010069
         };
         /**
           <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#matProg_barColor}
@@ -1933,8 +2340,8 @@ containing a value of this type.
            @see #Rotate3dAnimation_toDeg
          */
         public static final int[] Rotate3dAnimation = {
-            0x7f01001d, 0x7f01001e, 0x7f01001f, 0x7f010020,
-            0x7f010021
+            0x7f01005b, 0x7f01005c, 0x7f01005d, 0x7f01005e,
+            0x7f01005f
         };
         /**
           <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#fromDeg}
@@ -2014,179 +2421,455 @@ containing a value of this type.
           @attr name com.lyy.hitogether:toDeg
         */
         public static final int Rotate3dAnimation_toDeg = 2;
-        /** Attributes that can be used with a TopBar.
-           <p>Includes the following attributes:</p>
-           <table>
-           <colgroup align="left" />
-           <colgroup align="left" />
-           <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #TopBar_leftBackground com.lyy.hitogether:leftBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #TopBar_leftText com.lyy.hitogether:leftText}</code></td><td></td></tr>
-           <tr><td><code>{@link #TopBar_leftTextColor com.lyy.hitogether:leftTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TopBar_rightBackground com.lyy.hitogether:rightBackground}</code></td><td></td></tr>
-           <tr><td><code>{@link #TopBar_rightText com.lyy.hitogether:rightText}</code></td><td></td></tr>
-           <tr><td><code>{@link #TopBar_rightTextColor com.lyy.hitogether:rightTextColor}</code></td><td></td></tr>
-           <tr><td><code>{@link #TopBar_titleText com.lyy.hitogether:titleText}</code></td><td></td></tr>
-           <tr><td><code>{@link #TopBar_titleTextSize com.lyy.hitogether:titleTextSize}</code></td><td></td></tr>
-           <tr><td><code>{@link #TopBar_tittleTextColor com.lyy.hitogether:tittleTextColor}</code></td><td></td></tr>
-           </table>
-           @see #TopBar_leftBackground
-           @see #TopBar_leftText
-           @see #TopBar_leftTextColor
-           @see #TopBar_rightBackground
-           @see #TopBar_rightText
-           @see #TopBar_rightTextColor
-           @see #TopBar_titleText
-           @see #TopBar_titleTextSize
-           @see #TopBar_tittleTextColor
-         */
-        public static final int[] TopBar = {
-            0x7f010010, 0x7f010011, 0x7f010012, 0x7f010013,
-            0x7f010014, 0x7f010015, 0x7f010016, 0x7f010017,
-            0x7f010018
-        };
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftBackground}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name com.lyy.hitogether:leftBackground
-        */
-        public static final int TopBar_leftBackground = 4;
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftText}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lyy.hitogether:leftText
-        */
-        public static final int TopBar_leftText = 5;
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftTextColor}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lyy.hitogether:leftTextColor
-        */
-        public static final int TopBar_leftTextColor = 3;
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightBackground}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-          @attr name com.lyy.hitogether:rightBackground
-        */
-        public static final int TopBar_rightBackground = 7;
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightText}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lyy.hitogether:rightText
-        */
-        public static final int TopBar_rightText = 8;
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightTextColor}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lyy.hitogether:rightTextColor
-        */
-        public static final int TopBar_rightTextColor = 6;
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#titleText}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lyy.hitogether:titleText
-        */
-        public static final int TopBar_titleText = 0;
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#titleTextSize}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lyy.hitogether:titleTextSize
-        */
-        public static final int TopBar_titleTextSize = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#tittleTextColor}
-          attribute's value can be found in the {@link #TopBar} array.
-
-
-          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
-"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.lyy.hitogether:tittleTextColor
-        */
-        public static final int TopBar_tittleTextColor = 2;
         /** Attributes that can be used with a barView.
            <p>Includes the following attributes:</p>
            <table>
            <colgroup align="left" />
            <colgroup align="left" />
            <tr><th>Attribute</th><th>Description</th></tr>
-           <tr><td><code>{@link #barView_type com.lyy.hitogether:type}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerButtonBackground com.lyy.hitogether:centerButtonBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerButtonPadding com.lyy.hitogether:centerButtonPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerButtonPaddingLeft com.lyy.hitogether:centerButtonPaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerButtonPaddingRight com.lyy.hitogether:centerButtonPaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerButtonPaddingTop com.lyy.hitogether:centerButtonPaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerButtonText com.lyy.hitogether:centerButtonText}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerButtonTextColor com.lyy.hitogether:centerButtonTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerButtonTextSize com.lyy.hitogether:centerButtonTextSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerImagePadding com.lyy.hitogether:centerImagePadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerImagePaddingBottom com.lyy.hitogether:centerImagePaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerImagePaddingLeft com.lyy.hitogether:centerImagePaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerImagePaddingRight com.lyy.hitogether:centerImagePaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerImagePaddingTop com.lyy.hitogether:centerImagePaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerImageSource com.lyy.hitogether:centerImageSource}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerText com.lyy.hitogether:centerText}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerTextColor com.lyy.hitogether:centerTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerTextPadding com.lyy.hitogether:centerTextPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerTextPaddingBottom com.lyy.hitogether:centerTextPaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerTextPaddingLeft com.lyy.hitogether:centerTextPaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerTextPaddingRight com.lyy.hitogether:centerTextPaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerTextPaddingTop com.lyy.hitogether:centerTextPaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerTextSize com.lyy.hitogether:centerTextSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_centerType com.lyy.hitogether:centerType}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonBackground com.lyy.hitogether:leftButtonBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonPadding com.lyy.hitogether:leftButtonPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonPaddingBottom com.lyy.hitogether:leftButtonPaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonPaddingLeft com.lyy.hitogether:leftButtonPaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonPaddingRight com.lyy.hitogether:leftButtonPaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonPaddingTop com.lyy.hitogether:leftButtonPaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonText com.lyy.hitogether:leftButtonText}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonTextColor com.lyy.hitogether:leftButtonTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftButtonTextSize com.lyy.hitogether:leftButtonTextSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftImagePadding com.lyy.hitogether:leftImagePadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftImagePaddingBottom com.lyy.hitogether:leftImagePaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftImagePaddingLeft com.lyy.hitogether:leftImagePaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftImagePaddingRight com.lyy.hitogether:leftImagePaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftImagePaddingTop com.lyy.hitogether:leftImagePaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftImageSource com.lyy.hitogether:leftImageSource}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftText com.lyy.hitogether:leftText}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftTextColor com.lyy.hitogether:leftTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftTextPadding com.lyy.hitogether:leftTextPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftTextPaddingBottom com.lyy.hitogether:leftTextPaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftTextPaddingLeft com.lyy.hitogether:leftTextPaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftTextPaddingRight com.lyy.hitogether:leftTextPaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftTextPaddingTop com.lyy.hitogether:leftTextPaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftTextSize com.lyy.hitogether:leftTextSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_leftType com.lyy.hitogether:leftType}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonBackground com.lyy.hitogether:rightButtonBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonPadding com.lyy.hitogether:rightButtonPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonPaddingBottom com.lyy.hitogether:rightButtonPaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonPaddingLeft com.lyy.hitogether:rightButtonPaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonPaddingRight com.lyy.hitogether:rightButtonPaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonPaddingTop com.lyy.hitogether:rightButtonPaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonText com.lyy.hitogether:rightButtonText}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonTextColor com.lyy.hitogether:rightButtonTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightButtonTextSize com.lyy.hitogether:rightButtonTextSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightImagePadding com.lyy.hitogether:rightImagePadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightImagePaddingBottom com.lyy.hitogether:rightImagePaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightImagePaddingLeft com.lyy.hitogether:rightImagePaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightImagePaddingRight com.lyy.hitogether:rightImagePaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightImagePaddingTop com.lyy.hitogether:rightImagePaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightImageSource com.lyy.hitogether:rightImageSource}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightText com.lyy.hitogether:rightText}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightTextColor com.lyy.hitogether:rightTextColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightTextPadding com.lyy.hitogether:rightTextPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightTextPaddingBottom com.lyy.hitogether:rightTextPaddingBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightTextPaddingLeft com.lyy.hitogether:rightTextPaddingLeft}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightTextPaddingRight com.lyy.hitogether:rightTextPaddingRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightTextPaddingTop com.lyy.hitogether:rightTextPaddingTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightTextSize com.lyy.hitogether:rightTextSize}</code></td><td></td></tr>
+           <tr><td><code>{@link #barView_rightType com.lyy.hitogether:rightType}</code></td><td></td></tr>
            </table>
-           @see #barView_type
+           @see #barView_centerButtonBackground
+           @see #barView_centerButtonPadding
+           @see #barView_centerButtonPaddingLeft
+           @see #barView_centerButtonPaddingRight
+           @see #barView_centerButtonPaddingTop
+           @see #barView_centerButtonText
+           @see #barView_centerButtonTextColor
+           @see #barView_centerButtonTextSize
+           @see #barView_centerImagePadding
+           @see #barView_centerImagePaddingBottom
+           @see #barView_centerImagePaddingLeft
+           @see #barView_centerImagePaddingRight
+           @see #barView_centerImagePaddingTop
+           @see #barView_centerImageSource
+           @see #barView_centerText
+           @see #barView_centerTextColor
+           @see #barView_centerTextPadding
+           @see #barView_centerTextPaddingBottom
+           @see #barView_centerTextPaddingLeft
+           @see #barView_centerTextPaddingRight
+           @see #barView_centerTextPaddingTop
+           @see #barView_centerTextSize
+           @see #barView_centerType
+           @see #barView_leftButtonBackground
+           @see #barView_leftButtonPadding
+           @see #barView_leftButtonPaddingBottom
+           @see #barView_leftButtonPaddingLeft
+           @see #barView_leftButtonPaddingRight
+           @see #barView_leftButtonPaddingTop
+           @see #barView_leftButtonText
+           @see #barView_leftButtonTextColor
+           @see #barView_leftButtonTextSize
+           @see #barView_leftImagePadding
+           @see #barView_leftImagePaddingBottom
+           @see #barView_leftImagePaddingLeft
+           @see #barView_leftImagePaddingRight
+           @see #barView_leftImagePaddingTop
+           @see #barView_leftImageSource
+           @see #barView_leftText
+           @see #barView_leftTextColor
+           @see #barView_leftTextPadding
+           @see #barView_leftTextPaddingBottom
+           @see #barView_leftTextPaddingLeft
+           @see #barView_leftTextPaddingRight
+           @see #barView_leftTextPaddingTop
+           @see #barView_leftTextSize
+           @see #barView_leftType
+           @see #barView_rightButtonBackground
+           @see #barView_rightButtonPadding
+           @see #barView_rightButtonPaddingBottom
+           @see #barView_rightButtonPaddingLeft
+           @see #barView_rightButtonPaddingRight
+           @see #barView_rightButtonPaddingTop
+           @see #barView_rightButtonText
+           @see #barView_rightButtonTextColor
+           @see #barView_rightButtonTextSize
+           @see #barView_rightImagePadding
+           @see #barView_rightImagePaddingBottom
+           @see #barView_rightImagePaddingLeft
+           @see #barView_rightImagePaddingRight
+           @see #barView_rightImagePaddingTop
+           @see #barView_rightImageSource
+           @see #barView_rightText
+           @see #barView_rightTextColor
+           @see #barView_rightTextPadding
+           @see #barView_rightTextPaddingBottom
+           @see #barView_rightTextPaddingLeft
+           @see #barView_rightTextPaddingRight
+           @see #barView_rightTextPaddingTop
+           @see #barView_rightTextSize
+           @see #barView_rightType
          */
         public static final int[] barView = {
-            0x7f01000f
+            0x7f01000f, 0x7f010010, 0x7f010011, 0x7f010012,
+            0x7f010013, 0x7f010014, 0x7f010015, 0x7f010016,
+            0x7f010017, 0x7f010018, 0x7f010019, 0x7f01001a,
+            0x7f01001b, 0x7f01001c, 0x7f01001d, 0x7f01001e,
+            0x7f01001f, 0x7f010020, 0x7f010021, 0x7f010022,
+            0x7f010023, 0x7f010024, 0x7f010025, 0x7f010026,
+            0x7f010027, 0x7f010028, 0x7f010029, 0x7f01002a,
+            0x7f01002b, 0x7f01002c, 0x7f01002d, 0x7f01002e,
+            0x7f01002f, 0x7f010030, 0x7f010031, 0x7f010032,
+            0x7f010033, 0x7f010034, 0x7f010035, 0x7f010036,
+            0x7f010037, 0x7f010038, 0x7f010039, 0x7f01003a,
+            0x7f01003b, 0x7f01003c, 0x7f01003d, 0x7f01003e,
+            0x7f01003f, 0x7f010040, 0x7f010041, 0x7f010042,
+            0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046,
+            0x7f010047, 0x7f010048, 0x7f010049, 0x7f01004a,
+            0x7f01004b, 0x7f01004c, 0x7f01004d, 0x7f01004e,
+            0x7f01004f, 0x7f010050, 0x7f010051, 0x7f010052,
+            0x7f010053, 0x7f010054, 0x7f010055
         };
         /**
-          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#type}
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerButtonBackground}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:centerButtonBackground
+        */
+        public static final int barView_centerButtonBackground = 66;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerButtonPadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerButtonPadding
+        */
+        public static final int barView_centerButtonPadding = 67;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerButtonPaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerButtonPaddingLeft
+        */
+        public static final int barView_centerButtonPaddingLeft = 68;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerButtonPaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerButtonPaddingRight
+        */
+        public static final int barView_centerButtonPaddingRight = 69;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerButtonPaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerButtonPaddingTop
+        */
+        public static final int barView_centerButtonPaddingTop = 70;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerButtonText}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+          @attr name com.lyy.hitogether:centerButtonText
+        */
+        public static final int barView_centerButtonText = 63;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerButtonTextColor}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:centerButtonTextColor
+        */
+        public static final int barView_centerButtonTextColor = 64;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerButtonTextSize}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerButtonTextSize
+        */
+        public static final int barView_centerButtonTextSize = 65;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerImagePadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerImagePadding
+        */
+        public static final int barView_centerImagePadding = 58;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerImagePaddingBottom}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerImagePaddingBottom
+        */
+        public static final int barView_centerImagePaddingBottom = 62;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerImagePaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerImagePaddingLeft
+        */
+        public static final int barView_centerImagePaddingLeft = 59;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerImagePaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerImagePaddingRight
+        */
+        public static final int barView_centerImagePaddingRight = 60;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerImagePaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerImagePaddingTop
+        */
+        public static final int barView_centerImagePaddingTop = 61;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerImageSource}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be an integer value, such as "<code>100</code>".
+          @attr name com.lyy.hitogether:centerImageSource
+        */
+        public static final int barView_centerImageSource = 57;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerText}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+          @attr name com.lyy.hitogether:centerText
+        */
+        public static final int barView_centerText = 51;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerTextColor}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:centerTextColor
+        */
+        public static final int barView_centerTextColor = 49;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerTextPadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerTextPadding
+        */
+        public static final int barView_centerTextPadding = 52;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerTextPaddingBottom}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerTextPaddingBottom
+        */
+        public static final int barView_centerTextPaddingBottom = 56;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerTextPaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerTextPaddingLeft
+        */
+        public static final int barView_centerTextPaddingLeft = 53;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerTextPaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerTextPaddingRight
+        */
+        public static final int barView_centerTextPaddingRight = 54;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerTextPaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerTextPaddingTop
+        */
+        public static final int barView_centerTextPaddingTop = 55;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerTextSize}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:centerTextSize
+        */
+        public static final int barView_centerTextSize = 50;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#centerType}
           attribute's value can be found in the {@link #barView} array.
 
 
@@ -2200,8 +2883,624 @@ containing a value of this type.
 <tr><td><code>image</code></td><td>1</td><td></td></tr>
 <tr><td><code>button</code></td><td>2</td><td></td></tr>
 </table>
-          @attr name com.lyy.hitogether:type
+          @attr name com.lyy.hitogether:centerType
         */
-        public static final int barView_type = 0;
+        public static final int barView_centerType = 48;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonBackground}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:leftButtonBackground
+        */
+        public static final int barView_leftButtonBackground = 18;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonPadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftButtonPadding
+        */
+        public static final int barView_leftButtonPadding = 19;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonPaddingBottom}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftButtonPaddingBottom
+        */
+        public static final int barView_leftButtonPaddingBottom = 23;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonPaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftButtonPaddingLeft
+        */
+        public static final int barView_leftButtonPaddingLeft = 20;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonPaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftButtonPaddingRight
+        */
+        public static final int barView_leftButtonPaddingRight = 21;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonPaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftButtonPaddingTop
+        */
+        public static final int barView_leftButtonPaddingTop = 22;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonText}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+          @attr name com.lyy.hitogether:leftButtonText
+        */
+        public static final int barView_leftButtonText = 15;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonTextColor}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:leftButtonTextColor
+        */
+        public static final int barView_leftButtonTextColor = 16;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftButtonTextSize}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftButtonTextSize
+        */
+        public static final int barView_leftButtonTextSize = 17;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftImagePadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftImagePadding
+        */
+        public static final int barView_leftImagePadding = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftImagePaddingBottom}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftImagePaddingBottom
+        */
+        public static final int barView_leftImagePaddingBottom = 14;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftImagePaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftImagePaddingLeft
+        */
+        public static final int barView_leftImagePaddingLeft = 11;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftImagePaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftImagePaddingRight
+        */
+        public static final int barView_leftImagePaddingRight = 12;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftImagePaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftImagePaddingTop
+        */
+        public static final int barView_leftImagePaddingTop = 13;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftImageSource}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be an integer value, such as "<code>100</code>".
+          @attr name com.lyy.hitogether:leftImageSource
+        */
+        public static final int barView_leftImageSource = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftText}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+          @attr name com.lyy.hitogether:leftText
+        */
+        public static final int barView_leftText = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftTextColor}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:leftTextColor
+        */
+        public static final int barView_leftTextColor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftTextPadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftTextPadding
+        */
+        public static final int barView_leftTextPadding = 4;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftTextPaddingBottom}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftTextPaddingBottom
+        */
+        public static final int barView_leftTextPaddingBottom = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftTextPaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftTextPaddingLeft
+        */
+        public static final int barView_leftTextPaddingLeft = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftTextPaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftTextPaddingRight
+        */
+        public static final int barView_leftTextPaddingRight = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftTextPaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftTextPaddingTop
+        */
+        public static final int barView_leftTextPaddingTop = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftTextSize}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:leftTextSize
+        */
+        public static final int barView_leftTextSize = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#leftType}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>text</code></td><td>0</td><td></td></tr>
+<tr><td><code>image</code></td><td>1</td><td></td></tr>
+<tr><td><code>button</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name com.lyy.hitogether:leftType
+        */
+        public static final int barView_leftType = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonBackground}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:rightButtonBackground
+        */
+        public static final int barView_rightButtonBackground = 42;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonPadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightButtonPadding
+        */
+        public static final int barView_rightButtonPadding = 43;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonPaddingBottom}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightButtonPaddingBottom
+        */
+        public static final int barView_rightButtonPaddingBottom = 47;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonPaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightButtonPaddingLeft
+        */
+        public static final int barView_rightButtonPaddingLeft = 44;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonPaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightButtonPaddingRight
+        */
+        public static final int barView_rightButtonPaddingRight = 45;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonPaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightButtonPaddingTop
+        */
+        public static final int barView_rightButtonPaddingTop = 46;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonText}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+          @attr name com.lyy.hitogether:rightButtonText
+        */
+        public static final int barView_rightButtonText = 39;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonTextColor}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:rightButtonTextColor
+        */
+        public static final int barView_rightButtonTextColor = 40;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightButtonTextSize}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightButtonTextSize
+        */
+        public static final int barView_rightButtonTextSize = 41;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightImagePadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightImagePadding
+        */
+        public static final int barView_rightImagePadding = 34;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightImagePaddingBottom}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightImagePaddingBottom
+        */
+        public static final int barView_rightImagePaddingBottom = 38;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightImagePaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightImagePaddingLeft
+        */
+        public static final int barView_rightImagePaddingLeft = 35;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightImagePaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightImagePaddingRight
+        */
+        public static final int barView_rightImagePaddingRight = 36;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightImagePaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightImagePaddingTop
+        */
+        public static final int barView_rightImagePaddingTop = 37;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightImageSource}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be an integer value, such as "<code>100</code>".
+          @attr name com.lyy.hitogether:rightImageSource
+        */
+        public static final int barView_rightImageSource = 33;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightText}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+          @attr name com.lyy.hitogether:rightText
+        */
+        public static final int barView_rightText = 27;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightTextColor}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          @attr name com.lyy.hitogether:rightTextColor
+        */
+        public static final int barView_rightTextColor = 25;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightTextPadding}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightTextPadding
+        */
+        public static final int barView_rightTextPadding = 28;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightTextPaddingBottom}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightTextPaddingBottom
+        */
+        public static final int barView_rightTextPaddingBottom = 32;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightTextPaddingLeft}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightTextPaddingLeft
+        */
+        public static final int barView_rightTextPaddingLeft = 29;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightTextPaddingRight}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightTextPaddingRight
+        */
+        public static final int barView_rightTextPaddingRight = 30;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightTextPaddingTop}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightTextPaddingTop
+        */
+        public static final int barView_rightTextPaddingTop = 31;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightTextSize}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+          @attr name com.lyy.hitogether:rightTextSize
+        */
+        public static final int barView_rightTextSize = 26;
+        /**
+          <p>This symbol is the offset where the {@link com.lyy.hitogether.R.attr#rightType}
+          attribute's value can be found in the {@link #barView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>text</code></td><td>0</td><td></td></tr>
+<tr><td><code>image</code></td><td>1</td><td></td></tr>
+<tr><td><code>button</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name com.lyy.hitogether:rightType
+        */
+        public static final int barView_rightType = 24;
     };
 }

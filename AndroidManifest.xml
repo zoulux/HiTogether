@@ -200,6 +200,7 @@
             </intent-filter>
         </service>
         <!-- bmob end -->
+       
 
     </application>
 

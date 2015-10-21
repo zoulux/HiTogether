@@ -6,34 +6,30 @@ import java.util.List;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.EditText;
 import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.adapter.ShareMyaTravalAdapter;
 import com.lyy.hitogether.util.DensityUtils;
-import com.lyy.hitogether.util.SPUtils;
-import com.lyy.hitogether.view.TopbarBtView;
+import com.lyy.hitogether.view.CustomTitleBarView;
+import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
+import com.lyy.hitogether.view.CustomTitleBarView.onRightBarViewClickListener;
+
 
 public class ShareMyTravalActivity extends BaseActivity {
-	// ·ÖÏíµÄÄÚÈÝ
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private EditText shareText;
 	private GridView mGridView;
-	// ¹ØÓÚ±¾ÀàµÄÊÊÅäÆ÷
+	// ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private ShareMyaTravalAdapter adapter;
-	// ±êÌâÀ¸µÄ×ó±ß°´Å¥
-	private TopbarBtView topBarLeft;
-	// ±êÌâÀ¸µÄÓÒ±ß°´Å¥
-	private TopbarBtView topBarRight;
-	//»ñÈ¡µ½µÄÍ¼Æ¬µÄÂ·¾¶
+	
+	private CustomTitleBarView customTitleBarView;
+	
 	List<String> getPicPath = new ArrayList<String>();
 
 	private final int MY_ALBUM = 0;
@@ -48,7 +44,7 @@ public class ShareMyTravalActivity extends BaseActivity {
 
 	
 	/**
-	 * ³õÊ¼»¯
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½
 	 */
 	private void init() {
 		initView();
@@ -58,7 +54,7 @@ public class ShareMyTravalActivity extends BaseActivity {
 	}
 
 	/**
-	 * ³õÊ¼»¯GridView
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½GridView
 	 */
 	private void initGridView() {
 		getPicPath.add("");
@@ -82,10 +78,10 @@ public class ShareMyTravalActivity extends BaseActivity {
 	}
 
 	
-	//Ñ¡ÔñµÄÍ¼Æ¬µÄÊýÁ¿
+	//Ñ¡ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	int picSize = 0;
 	/**
-	 * Ñ¡ÔñÍ¼Æ¬ºó·µ»ØµÄÊý¾Ý¼ÓÔØÑ¡ÔñµÄÍ¼Æ¬
+	 * Ñ¡ï¿½ï¿½Í¼Æ¬ï¿½ó·µ»Øµï¿½ï¿½ï¿½Ý¼ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Í¼Æ¬
 	 */
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
@@ -113,38 +109,39 @@ public class ShareMyTravalActivity extends BaseActivity {
 
 
 	private void initView() {
-		// ³õÊ¼»¯±êÌâÀ¸
-
-		topBarLeft = (TopbarBtView) findViewById(R.id.id_topBarLeft);
-		topBarLeft.setVisibility(View.VISIBLE);
-		topBarLeft.setTopbarImageDrawable(R.drawable.back_indicator);
-		topBarLeft.setGravity(Gravity.CENTER_VERTICAL);
-
-		topBarRight = (TopbarBtView) findViewById(R.id.id_topBarRight);
-		topBarRight.setVisibility(View.VISIBLE);
-		topBarRight.setTopbarImageDrawable(R.drawable.ic_menu_share_holo_dark);
-		topBarRight.setGravity(Gravity.CENTER_VERTICAL);
+		customTitleBarView = (CustomTitleBarView) findViewById(R.id.id_share_my_traval_CustomTitleBarView);
+		
+		//		topBarLeft = (TopbarBtView) findViewById(R.id.id_topBarLeft);
+//		topBarLeft.setVisibility(View.VISIBLE);
+//		topBarLeft.setTopbarImageDrawable(R.drawable.back_indicator);
+//		topBarLeft.setGravity(Gravity.CENTER_VERTICAL);
+//
+//		topBarRight = (TopbarBtView) findViewById(R.id.id_topBarRight);
+//		topBarRight.setVisibility(View.VISIBLE);
+//		topBarRight.setTopbarImageDrawable(R.drawable.ic_menu_share_holo_dark);
+//		topBarRight.setGravity(Gravity.CENTER_VERTICAL);
 
 	}
 
 	/**
-	 * ³õÊ¼»¯¼àÌýÊÂ¼þ
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 	 */
 	private void initEvent() {
-		topBarLeft.setOnClickListener(new OnClickListener() {
-
+		customTitleBarView.setOnLeftBarViewClickListener(new onLeftBarViewClickListener() {
+			
 			@Override
-			public void onClick(View v) {
+			public void onclick(View v) {
 				ShareMyTravalActivity.this.finish();
+				
 			}
 		});
-
-		topBarRight.setOnClickListener(new OnClickListener() {
-
+		
+customTitleBarView.setOnRightBarViewClickListener(new onRightBarViewClickListener() {
+			
 			@Override
-			public void onClick(View v) {
-				ShowToast("·ÖÏí");
-
+			public void onclick(View v) {
+				ShowToast("åˆ†äº«");
+				
 			}
 		});
 	}

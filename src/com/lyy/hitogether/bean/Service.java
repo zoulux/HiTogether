@@ -109,4 +109,13 @@ public class Service {
 		this.photoPath = photoPath;
 	}
 
+	@Override
+	public String toString() {
+		return "Service [userId=" + userId + ", userName=" + userName
+				+ ", serviceId=" + serviceId + ", destination=" + destination
+				+ ", goTime=" + goTime + ", price=" + price + ", introduction="
+				+ introduction + ", summary=" + summary + ", photoPath="
+				+ photoPath + ", showImg=" + showImg + ", extra=" + extra + "]";
+	}
+
 }

@@ -3,6 +3,7 @@ package com.lyy.hitogether.activity;
 import io.rong.imkit.RongIM;
 
 import com.lyy.hitogether.R;
+import com.lyy.hitogether.test.TestActivity;
 import com.lyy.hitogether.util.InitBmobAndRong;
 import com.lyy.hitogether.util.InitBmobAndRong.LinitLisetener;
 
