@@ -14,14 +14,12 @@
     <attr name="leftTextPaddingRight" format="reference|dimension" />
     <attr name="leftTextPaddingTop" format="reference|dimension" />
     <attr name="leftTextPaddingBottom" format="reference|dimension" />
-    
     <attr name="leftImageSource" format="reference|integer" />
     <attr name="leftImagePadding" format="reference|dimension" />
     <attr name="leftImagePaddingLeft" format="reference|dimension" />
     <attr name="leftImagePaddingRight" format="reference|dimension" />
     <attr name="leftImagePaddingTop" format="reference|dimension" />
     <attr name="leftImagePaddingBottom" format="reference|dimension" />
-    
     <attr name="leftButtonText" format="reference|string" />
     <attr name="leftButtonTextColor" format="reference|color" />
     <attr name="leftButtonTextSize" format="reference|dimension" />
@@ -31,6 +29,11 @@
     <attr name="leftButtonPaddingRight" format="reference|dimension" />
     <attr name="leftButtonPaddingTop" format="reference|dimension" />
     <attr name="leftButtonPaddingBottom" format="reference|dimension" />
+    <attr name="leftButtonMargIn" format="reference|dimension" />
+    <attr name="leftButtonMargInLeft" format="reference|dimension" />
+    <attr name="leftButtonMargInRight" format="reference|dimension" />
+    <attr name="leftButtonMargInTop" format="reference|dimension" />
+    <attr name="leftButtonMargInBottom" format="reference|dimension" />
     <attr name="rightType">
         <enum name="text" value="0" />
         <enum name="image" value="1" />
@@ -59,6 +62,11 @@
     <attr name="rightButtonPaddingRight" format="reference|dimension" />
     <attr name="rightButtonPaddingTop" format="reference|dimension" />
     <attr name="rightButtonPaddingBottom" format="reference|dimension" />
+    <attr name="rightButtonMargIn" format="reference|dimension" />
+    <attr name="rightButtonMargInLeft" format="reference|dimension" />
+    <attr name="rightButtonMargInRight" format="reference|dimension" />
+    <attr name="rightButtonMargInTop" format="reference|dimension" />
+    <attr name="rightButtonMargInBottom" format="reference|dimension" />
     <attr name="centerType">
         <enum name="text" value="0" />
         <enum name="image" value="1" />
@@ -115,6 +123,11 @@
         <attr name="leftButtonPaddingRight" />
         <attr name="leftButtonPaddingTop" />
         <attr name="leftButtonPaddingBottom" />
+        <attr name="leftButtonMargIn" />
+        <attr name="leftButtonMargInLeft" />
+        <attr name="leftButtonMargInRight" />
+        <attr name="leftButtonMargInTop" />
+        <attr name="leftButtonMargInBottom" />
         <attr name="rightTextColor" />
         <attr name="rightTextSize" />
         <attr name="rightText" />
@@ -138,6 +151,11 @@
         <attr name="rightButtonPaddingRight" />
         <attr name="rightButtonPaddingTop" />
         <attr name="rightButtonPaddingBottom" />
+        <attr name="rightButtonMargIn" />
+        <attr name="rightButtonMargInLeft" />
+        <attr name="rightButtonMargInRight" />
+        <attr name="rightButtonMargInTop" />
+        <attr name="rightButtonMargInBottom" />
         <attr name="centerTextColor" />
         <attr name="centerTextSize" />
         <attr name="centerText" />
@@ -161,8 +179,7 @@
         <attr name="centerButtonPaddingRight" />
         <attr name="centerButtonPaddingTop" />
     </declare-styleable>
-    
-    
+
     <attr name="icon" format="reference" />
     <attr name="text" format="string" />
     <attr name="color" format="color" />
@@ -197,6 +214,5 @@
         <attr name="matProg_barWidth" format="dimension" />
         <attr name="matProg_linearProgress" format="boolean" />
     </declare-styleable>
-    
 
 </resources>
