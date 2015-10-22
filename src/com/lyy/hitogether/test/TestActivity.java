@@ -92,12 +92,12 @@ public class TestActivity extends BaseActivity {
 	protected void getIntentPic() {
 		String uri = "http://img5.imgtn.bdimg.com/it/u=977178979,3700482650&fm=21&gp=0.jpg";
 		options = new DisplayImageOptions.Builder()
-				.showStubImage(R.drawable.logo)
-				.bitmapConfig(Bitmap.Config.ARGB_8888)
-				.showImageForEmptyUri(R.drawable.logo)
-				.showImageOnFail(R.drawable.logo).cacheInMemory(true)
-				.cacheOnDisc(true).displayer(new FadeInBitmapDisplayer(2000))
-				.build();
+		.showStubImage(R.drawable.logo)
+		.bitmapConfig(Bitmap.Config.ARGB_8888)
+		.showImageForEmptyUri(R.drawable.logo)
+		.showImageOnFail(R.drawable.logo).cacheInMemory(true)
+		.cacheOnDisc(true).displayer(new FadeInBitmapDisplayer(2000))
+		.build();
 
 		ImageLoader.getInstance().displayImage(uri, mImageViewPic, options);
 	}

@@ -24,7 +24,7 @@ public class Initialize extends BaseActivity {
 			@Override
 			public void success(String userId) {
 				ShowToast("连接成功");
-				startActivity(new Intent(Initialize.this, TestActivity.class));
+				startActivity(new Intent(Initialize.this, MainActivity.class));
 				Initialize.this.finish();
 
 			}

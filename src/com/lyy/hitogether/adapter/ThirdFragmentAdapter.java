@@ -3,6 +3,7 @@ package com.lyy.hitogether.adapter;
 import java.util.List;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -16,9 +17,19 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.bean.Service;
 import com.lyy.hitogether.bean.ThirdFragmentBean;
 import com.lyy.hitogether.view.CircleImageView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 	private OnThirdFragmentBtListener mThirdFragmentBtListener;
+	private DisplayImageOptions options = new DisplayImageOptions.Builder()
+			.showImageOnLoading(R.drawable.logo)
+			.bitmapConfig(Bitmap.Config.ARGB_8888)
+			.showImageForEmptyUri(R.drawable.logo)
+			.showImageOnFail(R.drawable.logo).cacheInMemory(true)
+			.cacheOnDisk(true).displayer(new FadeInBitmapDisplayer(2000))
+			.build();
 
 	public interface OnThirdFragmentBtListener {
 		void onBtclick(View v, int position);
@@ -27,6 +38,7 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 	public void setOnThirdFragmentBtListener(
 			OnThirdFragmentBtListener thirdFragmentBtListener) {
 		this.mThirdFragmentBtListener = thirdFragmentBtListener;
+
 	}
 
 	public ThirdFragmentAdapter(Context context, List<Service> commonDatas) {
@@ -62,10 +74,16 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
-		viewHolder.guideImage.setImageResource(R.drawable.icon);
+		ImageLoader.getInstance().displayImage(
+				commonDatas.get(position).getShowImg(), viewHolder.scenImage,
+				options);
+		ImageLoader.getInstance().displayImage(
+				commonDatas.get(position).getUser().getAvatar(),
+				viewHolder.guideImage, options);
+
 		viewHolder.guideName.setText(commonDatas.get(position).getUser()
 				.getUsername());
-		viewHolder.scenImage.setImageResource(R.drawable.p2);
+		// viewHolder.guideImage.setImageResource(R.drawable.icon);
 		viewHolder.description.setText(commonDatas.get(position).getSummary());
 		viewHolder.place.setText(commonDatas.get(position).getDestination());
 		viewHolder.grade.setRating((float) (Math.random() * 5));

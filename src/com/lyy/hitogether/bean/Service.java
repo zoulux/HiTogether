@@ -23,6 +23,8 @@ public class Service {
 	String showImg; // 首页展示的图片
 	String extra; // 额外字段
 
+	
+	
 	public MyUser getUser() {
 		return user;
 	}
