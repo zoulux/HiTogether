@@ -14,6 +14,15 @@ public class MyUser extends BmobChatUser {
 	Integer star; // 用户评星
 	List<String> collectionDemands; // 收藏单号
 	Integer age;
+	String token;
+
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
 
 	public Integer getAge() {
 		return age;
@@ -77,5 +86,16 @@ public class MyUser extends BmobChatUser {
 
 	public void setStar(Integer star) {
 		this.star = star;
+
 	}
+
+	@Override
+	public String toString() {
+		return "MyUser [userName=" + super.getUsername() + ", gender=" + gender
+				+ ", birthday=" + birthday + ", label=" + label
+				+ ", isAuthentication=" + isAuthentication + ", identity="
+				+ identity + ", star=" + star + ", collectionDemands="
+				+ collectionDemands + ", age=" + age + ", token=" + token + "]";
+	}
+
 }

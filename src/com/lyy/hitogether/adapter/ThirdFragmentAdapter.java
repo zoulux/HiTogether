@@ -13,10 +13,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.lyy.hitogether.R;
+import com.lyy.hitogether.bean.Service;
 import com.lyy.hitogether.bean.ThirdFragmentBean;
 import com.lyy.hitogether.view.CircleImageView;
 
-public class ThirdFragmentAdapter extends MyBaseAdapter<ThirdFragmentBean> {
+public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 	private OnThirdFragmentBtListener mThirdFragmentBtListener;
 
 	public interface OnThirdFragmentBtListener {
@@ -28,8 +29,7 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<ThirdFragmentBean> {
 		this.mThirdFragmentBtListener = thirdFragmentBtListener;
 	}
 
-	public ThirdFragmentAdapter(Context context,
-			List<ThirdFragmentBean> commonDatas) {
+	public ThirdFragmentAdapter(Context context, List<Service> commonDatas) {
 		super(context, commonDatas);
 
 	}
@@ -41,7 +41,7 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<ThirdFragmentBean> {
 			viewHolder = new ViewHolder();
 			convertView = commomInflater.inflate(R.layout.item_third_fragment,
 					null);
-			
+
 			viewHolder.guideImage = (CircleImageView) convertView
 					.findViewById(R.id.id_third_fragment_guide_avartar);
 			viewHolder.guideName = (TextView) convertView
@@ -61,15 +61,14 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<ThirdFragmentBean> {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		viewHolder.guideImage.setImageResource(commonDatas.get(position)
-				.getGuideImgId());
-		viewHolder.guideName.setText(commonDatas.get(position).getGuideName());
-		viewHolder.scenImage.setImageResource(commonDatas.get(position)
-				.getScenImgId());
-		viewHolder.description.setText(commonDatas.get(position)
-				.getDescription());
-		viewHolder.place.setText(commonDatas.get(position).getPlace());
-		viewHolder.grade.setRating(commonDatas.get(position).getGrade());
+
+		viewHolder.guideImage.setImageResource(R.drawable.icon);
+		viewHolder.guideName.setText(commonDatas.get(position).getUser()
+				.getUsername());
+		viewHolder.scenImage.setImageResource(R.drawable.p2);
+		viewHolder.description.setText(commonDatas.get(position).getSummary());
+		viewHolder.place.setText(commonDatas.get(position).getDestination());
+		viewHolder.grade.setRating((float) (Math.random() * 5));
 		viewHolder.apointmentBt.setOnClickListener(new OnClickListener() {
 
 			@Override

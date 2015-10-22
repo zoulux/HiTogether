@@ -4,7 +4,33 @@ import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.widget.Toast;
 
-public class BaseFragment extends Fragment {
+public abstract class BaseFragment extends Fragment {
+	protected boolean isVisible;
+
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		super.setUserVisibleHint(isVisibleToUser);
+		if (getUserVisibleHint()) {
+			isVisible = true;
+			onVisible();
+		} else {
+			isVisible = false;
+			onInvisible();
+		}
+
+	}
+
+	protected void onVisible() {
+		Log.i("TAG", "1");
+		lazyLoad();
+	}
+
+	protected void onInvisible() {
+
+	}
+
+	protected abstract void lazyLoad();
+
 	public void ShowLog(String msg) {
 		Log.i(">>>>", msg);
 	}

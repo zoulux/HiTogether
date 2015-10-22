@@ -1,4 +1,4 @@
-package com.lyy.hitogether.rong;
+package com.lyy.hitogether.global;
 
 import android.content.Context;
 

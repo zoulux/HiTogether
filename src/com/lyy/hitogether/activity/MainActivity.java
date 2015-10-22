@@ -14,6 +14,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -159,6 +160,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 			@Override
 			public Fragment getItem(int arg0) {
+				Log.i("Fragment", "getItem");
 				return mTabs.get(arg0);
 			}
 		};
@@ -169,6 +171,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		customTitleBarView_2 = (CustomTitleBarView) findViewById(R.id.id_main_CustomTitleBarView_2);
 		customTitleBarView_3 = (CustomTitleBarView) findViewById(R.id.id_main_CustomTitleBarView_3);
 		mViewPager = (MyViewPager) findViewById(R.id.id_viewpager_main);
+		mViewPager.setOffscreenPageLimit(1);
 		ChangeColorIconWithText one = (ChangeColorIconWithText) findViewById(R.id.id_one);
 		mTabIndicators.add(one);
 		ChangeColorIconWithText two = (ChangeColorIconWithText) findViewById(R.id.id_two);
@@ -207,7 +210,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			mainTopbarView.setVisibility(View.VISIBLE);
 			resetOtherTabs();
 			mTabIndicators.get(0).setIconAlpha(1.0f);
-			mViewPager.setCurrentItem(0, false);
+			mViewPager.setCurrentItem(0, true);
 			break;
 		case R.id.id_two:
 			customTitleBarView_1.setVisibility(View.VISIBLE);
@@ -227,7 +230,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 			resetOtherTabs();
 			mTabIndicators.get(1).setIconAlpha(1.0f);
-			mViewPager.setCurrentItem(1, false);
+			mViewPager.setCurrentItem(1, true);
 
 			break;
 		case R.id.id_three:

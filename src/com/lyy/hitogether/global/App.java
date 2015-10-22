@@ -1,4 +1,7 @@
-package com.lyy.hitogether.rong;
+package com.lyy.hitogether.global;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import io.rong.imkit.RongIM;
 import android.app.ActivityManager;
@@ -12,6 +15,7 @@ public class App extends Application {
 	public void onCreate() {
 
 		super.onCreate();
+
 		if (getApplicationInfo().packageName
 				.equals(getCurrenPro(getApplicationContext()))
 				|| "io.rong.push".equals(getCurrenPro(getApplicationContext()))) {
@@ -21,6 +25,8 @@ public class App extends Application {
 					.equals(getCurrenPro(getApplicationContext()))) {
 				AppContext.init(this);
 				RongCloudEvent.init(this);
+				ImageLoader.getInstance().init(
+						ImageLoaderConfiguration.createDefault(this));
 			}
 		}
 

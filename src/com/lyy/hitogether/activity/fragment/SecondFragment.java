@@ -13,12 +13,13 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.ShareMyTravalActivity;
 
 public class SecondFragment extends BaseFragment {
-	
+
 	private Button bt;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_second, null);
+		return inflater.inflate(R.layout.fragment_second, container, false);
 	}
 
 	@Override
@@ -30,19 +31,25 @@ public class SecondFragment extends BaseFragment {
 
 	private void initEvent() {
 		bt.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(SecondFragment.this.getActivity(), ShareMyTravalActivity.class));
+				startActivity(new Intent(SecondFragment.this.getActivity(),
+						ShareMyTravalActivity.class));
 			}
 		});
-		
+
 	}
 
 	private void initView(View view) {
 		bt = (Button) view.findViewById(R.id.button1);
-		
+
 	}
 
-	
+	@Override
+	protected void lazyLoad() {
+		
+
+	}
+
 }

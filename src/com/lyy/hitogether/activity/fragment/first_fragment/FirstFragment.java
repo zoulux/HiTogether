@@ -31,12 +31,12 @@ public class FirstFragment extends Fragment {
 	private FragmentPagerAdapter mAdapter;
 
 
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.fragment_first, null);
 	}
-
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -66,8 +66,8 @@ public class FirstFragment extends Fragment {
 	}
 
 	public void setItem(int pos) {
-		viewPager.setCurrentItem(pos,false);
-		
+		viewPager.setCurrentItem(pos, false);
+
 	}
 
 	private void initView(View v) {

@@ -8,8 +8,11 @@ public class Service {
 	/**
 	 * 向导单
 	 */
+
 	String userId; // 用户Id
-	String userName;//用户名
+	MyUser user;
+
+	String userName;// 用户名
 	String serviceId; // 向导单号
 	String destination; // 目的地
 	BmobDate goTime; // 出行时间
@@ -20,7 +23,14 @@ public class Service {
 	String showImg; // 首页展示的图片
 	String extra; // 额外字段
 
-	
+	public MyUser getUser() {
+		return user;
+	}
+
+	public void setUser(MyUser user) {
+		this.user = user;
+	}
+
 	public String getUserName() {
 		return userName;
 	}
@@ -111,11 +121,13 @@ public class Service {
 
 	@Override
 	public String toString() {
-		return "Service [userId=" + userId + ", userName=" + userName
-				+ ", serviceId=" + serviceId + ", destination=" + destination
-				+ ", goTime=" + goTime + ", price=" + price + ", introduction="
-				+ introduction + ", summary=" + summary + ", photoPath="
-				+ photoPath + ", showImg=" + showImg + ", extra=" + extra + "]";
+		return "Service [userId=" + userId + ", user=" + user + ", userName="
+				+ userName + ", serviceId=" + serviceId + ", destination="
+				+ destination + ", goTime=" + goTime + ", price=" + price
+				+ ", introduction=" + introduction + ", summary=" + summary
+				+ ", photoPath=" + photoPath + ", showImg=" + showImg
+				+ ", extra=" + extra + "]";
 	}
+
 
 }

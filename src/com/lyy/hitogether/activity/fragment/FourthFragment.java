@@ -19,4 +19,10 @@ public class FourthFragment extends BaseFragment {
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 	}
+
+	@Override
+	protected void lazyLoad() {
+		// TODO Auto-generated method stub
+		
+	}
 }
