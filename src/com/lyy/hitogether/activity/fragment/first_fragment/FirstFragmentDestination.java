@@ -1,5 +1,7 @@
 package com.lyy.hitogether.activity.fragment.first_fragment;
 
+import java.util.List;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,10 +18,15 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.BaseFragment;
 import com.lyy.hitogether.adapter.MyPagerAdapter;
 import com.lyy.hitogether.adapter.PictureAndTextAdapter;
+import com.lyy.hitogether.adapter.ThirdFragmentAdapter;
+import com.lyy.hitogether.bean.HotScenic;
+import com.lyy.hitogether.bean.Service;
 import com.lyy.hitogether.view.MyViewPager;
 
 public class FirstFragmentDestination extends BaseFragment {
@@ -36,19 +43,17 @@ public class FirstFragmentDestination extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.fragment_first_destination, null);
-	}
 
-	@Override
-	public void onViewCreated(View view, Bundle savedInstanceState) {
-		super.onViewCreated(view, savedInstanceState);
+		View view = inflater.inflate(R.layout.fragment_first_destination, null);
+		isPrepared = true;
 		init(view);
-
+		lazyLoad();
+		return view;
 	}
 
 	private void init(View view) {
 		initView(view);
-		gridView.setAdapter(new PictureAndTextAdapter(scen, pics, getActivity()));
+
 		initEvent();
 	}
 
@@ -160,17 +165,53 @@ public class FirstFragmentDestination extends BaseFragment {
 		}
 
 		Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
-		
-		postAsync();
-	}
 
-	private void postAsync() {
-		
-	}	
+		baseProgress.show();
+		postAsync("getAllHotScenic", null);
+	}
 
 	@Override
 	public void onPause() {
 		isPrepared = false;
 		super.onPause();
 	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+		switch (msg.what) {
+		case GET_SUCCESS:
+			handleSuccess(msg.obj.toString());
+			break;
+		case GET_FAILD:
+			handleFaild(msg.obj.toString());
+			break;
+		default:
+			break;
+		}
+
+		return false;
+	}
+
+	private void handleFaild(String string) {
+		baseProgress.cancel();
+
+	}
+
+	private void handleSuccess(String json) {
+		baseProgress.cancel();
+
+		Log.i("FirstFragmentDestination", "handleSuccess");
+		Log.i("handleSuccess", json);
+		baseProgress.cancel();
+		Gson gson = new Gson();
+		List<HotScenic> list = gson.fromJson(json,
+				new TypeToken<List<HotScenic>>() {
+				}.getType());
+
+		// Log.i("TAG", list.toString());
+		PictureAndTextAdapter adapter = new PictureAndTextAdapter(
+				getActivity(), list);
+		gridView.setAdapter(adapter);
+	}
+
 }

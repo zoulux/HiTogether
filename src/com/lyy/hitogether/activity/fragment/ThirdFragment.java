@@ -26,13 +26,10 @@ import com.lyy.hitogether.util.HttpUtils;
 public class ThirdFragment extends BaseFragment {
 	private GridView mGriView;
 	private ThirdFragmentAdapter thirdFragmentAdapter;
-	private static final int GET_ALL_SERVICE_SUCCESS = 0x110;
-	private static final int GET_ALL_SERVICE_FAILD = 0x111;
 
 	private boolean isPrepared;
-	// private boolean mHasLoadOnce=false;
 
-	ProgressDialog progress = null;
+	// private boolean mHasLoadOnce=false;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,23 +57,11 @@ public class ThirdFragment extends BaseFragment {
 	}
 
 	private void initView(View view) {
-		initProgress();
 
 		// thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(), null);
 		mGriView = (GridView) view
 				.findViewById(R.id.id_third_fragment_grideview);
 		// mGriView.setAdapter(thirdFragmentAdapter);
-
-	}
-
-	/**
-	 * 创建进度条
-	 */
-	private void initProgress() {
-		progress = new ProgressDialog(getActivity());
-		progress.setCancelable(false);
-		progress.setMessage("正在加载。。。");
-		progress.setTitle("提示");
 
 	}
 
@@ -92,52 +77,6 @@ public class ThirdFragment extends BaseFragment {
 	}
 
 	/**
-	 * 服务器请求数据
-	 */
-	private void postAsync() {
-		Log.i("ThirdFragment", "postAsync");
-		// progress.show();
-		HttpUtils.getHttpData(getActivity(), "getAllService", null,
-				new CloudCodeListener() {
-
-					@Override
-					public void onSuccess(Object results) {
-						Log.i("ThirdFragment", "onSuccess");
-						Message msg = Message.obtain();
-						msg.what = GET_ALL_SERVICE_SUCCESS;
-						msg.obj = results;
-						mhHandler.sendMessage(msg);
-					}
-
-					@Override
-					public void onFailure(int code, String arg1) {
-						Log.i("ThirdFragment", "onFailure");
-						Message msg = Message.obtain();
-						msg.what = GET_ALL_SERVICE_FAILD;
-						msg.obj = code;
-						mhHandler.sendMessage(msg);
-					}
-				});
-
-	}
-
-	private Handler mhHandler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			switch (msg.what) {
-			case GET_ALL_SERVICE_SUCCESS:
-				handleSuccess(msg.obj.toString());
-				break;
-			case GET_ALL_SERVICE_FAILD:
-				handleFaild(msg.obj.toString());
-				break;
-
-			default:
-				break;
-			}
-		};
-	};
-
-	/**
 	 * 返回正确结果，接下来去写适配器
 	 * 
 	 * @param json
@@ -145,7 +84,7 @@ public class ThirdFragment extends BaseFragment {
 	 */
 	protected void handleSuccess(String json) {
 		Log.i("ThirdFragment", "handleSuccess");
-		progress.cancel();
+		baseProgress.cancel();
 		Gson gson = new Gson();
 		List<Service> list = gson.fromJson(json,
 				new TypeToken<List<Service>>() {
@@ -166,7 +105,7 @@ public class ThirdFragment extends BaseFragment {
 
 	protected void handleFaild(String code) {
 		Log.i("ThirdFragment", "handleFaild");
-		progress.cancel();
+		baseProgress.cancel();
 		ShowToast("加载失败，sorry!");
 	}
 
@@ -182,13 +121,30 @@ public class ThirdFragment extends BaseFragment {
 		}
 
 		Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
-		progress.show();
-		postAsync();
+		baseProgress.show();
+		postAsync("getAllService", null);
 	}
 
 	@Override
 	public void onPause() {
 		isPrepared = false;
 		super.onPause();
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+
+		switch (msg.what) {
+		case GET_SUCCESS:
+			handleSuccess(msg.obj.toString());
+			break;
+		case GET_FAILD:
+			handleFaild(msg.obj.toString());
+			break;
+		default:
+			break;
+		}
+
+		return false;
 	}
 }

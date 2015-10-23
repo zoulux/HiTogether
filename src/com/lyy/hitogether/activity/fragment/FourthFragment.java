@@ -3,6 +3,7 @@ package com.lyy.hitogether.activity.fragment;
 import com.lyy.hitogether.R;
 
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,5 +25,11 @@ public class FourthFragment extends BaseFragment {
 	protected void lazyLoad() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public boolean handleMessage(Message arg0) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

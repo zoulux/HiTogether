@@ -2,18 +2,30 @@ package com.lyy.hitogether.adapter;
 
 import java.util.List;
 
+import com.lyy.hitogether.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 public class MyBaseAdapter<T> extends BaseAdapter {
+	protected DisplayImageOptions baseOptions = new DisplayImageOptions.Builder()
+			.showImageOnLoading(R.drawable.logo)
+			.bitmapConfig(Bitmap.Config.ARGB_8888)
+			.showImageForEmptyUri(R.drawable.logo)
+			.showImageOnFail(R.drawable.logo).cacheInMemory(true)
+			.cacheOnDisk(true).displayer(new FadeInBitmapDisplayer(2000))
+			.build();
 
 	public LayoutInflater commomInflater;
 	public List<T> commonDatas;
-	 
-	public MyBaseAdapter(Context context,List<T> commonDatas) {
+
+	public MyBaseAdapter(Context context, List<T> commonDatas) {
 		super();
 		this.commonDatas = commonDatas;
 		commomInflater = LayoutInflater.from(context);

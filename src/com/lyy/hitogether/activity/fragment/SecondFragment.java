@@ -2,6 +2,7 @@ package com.lyy.hitogether.activity.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,6 +51,12 @@ public class SecondFragment extends BaseFragment {
 	protected void lazyLoad() {
 		
 
+	}
+
+	@Override
+	public boolean handleMessage(Message arg0) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

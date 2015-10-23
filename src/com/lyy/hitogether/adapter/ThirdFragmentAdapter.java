@@ -23,13 +23,6 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 	private OnThirdFragmentBtListener mThirdFragmentBtListener;
-	private DisplayImageOptions options = new DisplayImageOptions.Builder()
-			.showImageOnLoading(R.drawable.logo)
-			.bitmapConfig(Bitmap.Config.ARGB_8888)
-			.showImageForEmptyUri(R.drawable.logo)
-			.showImageOnFail(R.drawable.logo).cacheInMemory(true)
-			.cacheOnDisk(true).displayer(new FadeInBitmapDisplayer(2000))
-			.build();
 
 	public interface OnThirdFragmentBtListener {
 		void onBtclick(View v, int position);
@@ -76,10 +69,10 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 
 		ImageLoader.getInstance().displayImage(
 				commonDatas.get(position).getShowImg(), viewHolder.scenImage,
-				options);
+				baseOptions);
 		ImageLoader.getInstance().displayImage(
 				commonDatas.get(position).getUser().getAvatar(),
-				viewHolder.guideImage, options);
+				viewHolder.guideImage, baseOptions);
 
 		viewHolder.guideName.setText(commonDatas.get(position).getUser()
 				.getUsername());
