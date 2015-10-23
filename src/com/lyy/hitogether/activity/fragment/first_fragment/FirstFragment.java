@@ -3,25 +3,16 @@ package com.lyy.hitogether.activity.fragment.first_fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.webkit.WebView.FindListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
-import android.widget.GridView;
-import android.widget.Toast;
 
 import com.lyy.hitogether.R;
-import com.lyy.hitogether.activity.fragment.SecondFragment;
-import com.lyy.hitogether.adapter.PictureAndTextAdapter;
 import com.lyy.hitogether.view.MyViewPager;
 
 public class FirstFragment extends Fragment {
@@ -30,11 +21,11 @@ public class FirstFragment extends Fragment {
 	private List<Fragment> mTabs = new ArrayList<Fragment>();
 	private FragmentPagerAdapter mAdapter;
 
-
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		System.err.println("FirstFragment onCreateView");
+		firstFragmentDestination.setCountMin();
 		return inflater.inflate(R.layout.fragment_first, null);
 	}
 
@@ -48,8 +39,12 @@ public class FirstFragment extends Fragment {
 		viewPager.setScanScroll(false);
 	}
 
+	private FirstFragmentDestination firstFragmentDestination= new FirstFragmentDestination();
+
 	private void initData() {
-		mTabs.add(new FirstFragmentDestination());
+		
+
+		mTabs.add(firstFragmentDestination);
 		mTabs.add(new FirstFragmentOfFriend());
 		mAdapter = new FragmentPagerAdapter(getChildFragmentManager()) {
 
@@ -75,5 +70,33 @@ public class FirstFragment extends Fragment {
 				.findViewById(R.id.id_viewpager_fragment_first);
 
 	}
+
+	@Override
+	public void onDestroyView() {
+		System.err.println("onDestroyViewMax");
+		firstFragmentDestination.setCountMax();
+
+		super.onDestroy();
+	}
+	
+	public void setMin(){
+		
+	}
+
+	 
+	  
+	  
+	  
+	    
+	  
+	  
+	   
+	  
+	 
+	  
+	   
+	  
+	    
+	  
 
 }

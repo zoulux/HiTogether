@@ -2,10 +2,10 @@ package com.lyy.hitogether.activity.fragment.first_fragment;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,9 +24,7 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.BaseFragment;
 import com.lyy.hitogether.adapter.MyPagerAdapter;
 import com.lyy.hitogether.adapter.PictureAndTextAdapter;
-import com.lyy.hitogether.adapter.ThirdFragmentAdapter;
 import com.lyy.hitogether.bean.HotScenic;
-import com.lyy.hitogether.bean.Service;
 import com.lyy.hitogether.view.MyViewPager;
 
 public class FirstFragmentDestination extends BaseFragment {
@@ -43,7 +41,6 @@ public class FirstFragmentDestination extends BaseFragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
 		View view = inflater.inflate(R.layout.fragment_first_destination, null);
 		isPrepared = true;
 		init(view);
@@ -78,7 +75,7 @@ public class FirstFragmentDestination extends BaseFragment {
 
 	private MyPagerAdapter adapter;
 
-	private void initAdapter() {
+	public void initAdapter() {
 		adapter = new MyPagerAdapter();
 		ImageView v = new ImageView(getActivity());
 		v.setLayoutParams(new LayoutParams(-1, -1));
@@ -99,7 +96,7 @@ public class FirstFragmentDestination extends BaseFragment {
 		adapter.addItem("第三景点", v3);
 		myViewPager.setAdapter(adapter);
 		controllMyViewPager();
-		// new Thread(new MyThread()).start();
+		new Thread(new MyThread()).start();
 
 	}
 
@@ -112,6 +109,7 @@ public class FirstFragmentDestination extends BaseFragment {
 			public void handleMessage(Message msg) {
 
 				int count = msg.arg1;
+
 				switch (count) {
 				case 1:
 					myViewPager.setCurrentItem(0, false);
@@ -130,28 +128,14 @@ public class FirstFragmentDestination extends BaseFragment {
 		};
 	}
 
+	private int count = 1;
+
 	public class MyThread extends Thread {
-		int count = 1;
 
 		@Override
 		public void run() {
 			super.run();
-			while (true) {
-				try {
-					Thread.sleep(3000);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				if (count == 4) {
-					count = 1;
-				}
-				//
-				Message message = Message.obtain();
-				message.arg1 = count;
-				count++;
-				mHandler.sendMessage(message);
-
-			}
+			logic();
 
 		}
 	}
@@ -160,19 +144,45 @@ public class FirstFragmentDestination extends BaseFragment {
 	protected void lazyLoad() {
 
 		if (!isPrepared || !isVisible) {
-			Log.i("lazyLoad1", isPrepared + ":" + isPrepared);
+			// Log.i("lazyLoad1", isPrepared + ":" + isPrepared);
 			return;
 		}
 
-		Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
+		// Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
 
 		baseProgress.show();
 		postAsync("getAllHotScenic", null);
 	}
 
+	public synchronized void logic() {
+		while (true) {
+			try {
+				Thread.sleep(3000);
+				if (count > 4) {
+					break;
+				} else {
+					if (count == 4) {
+						count = 1;
+					}
+					Message message = Message.obtain();
+					message.arg1 = count;
+					count++;
+					mHandler.sendMessage(message);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			//
+
+		}
+
+	}
+
 	@Override
 	public void onPause() {
 		isPrepared = false;
+		// Log.d("Fragment 1", "onPause");
 		super.onPause();
 	}
 
@@ -200,8 +210,8 @@ public class FirstFragmentDestination extends BaseFragment {
 	private void handleSuccess(String json) {
 		baseProgress.cancel();
 
-		Log.i("FirstFragmentDestination", "handleSuccess");
-		Log.i("handleSuccess", json);
+		// Log.i("FirstFragmentDestination", "handleSuccess");
+		// Log.i("handleSuccess", json);
 		baseProgress.cancel();
 		Gson gson = new Gson();
 		List<HotScenic> list = gson.fromJson(json,
@@ -212,6 +222,17 @@ public class FirstFragmentDestination extends BaseFragment {
 		PictureAndTextAdapter adapter = new PictureAndTextAdapter(
 				getActivity(), list);
 		gridView.setAdapter(adapter);
+	}
+
+	public void setCountMax() {
+
+		count = 100;
+
+	}
+
+	public void setCountMin() {
+		count = 1;
+
 	}
 
 }

@@ -188,6 +188,10 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			@Override
 			public Fragment getItem(int arg0) {
 				Log.i("Fragment", "getItem");
+				if (arg0==0) {
+					//System.err.println("firstFragment.setMin()>>>>>>>>>>>>>>>>>");
+					//firstFragment.setMin();
+				}
 				return mTabs.get(arg0);
 			}
 		};
