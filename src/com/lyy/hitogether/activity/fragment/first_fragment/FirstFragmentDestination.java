@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,12 @@ import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
 
 import com.lyy.hitogether.R;
+import com.lyy.hitogether.activity.fragment.BaseFragment;
 import com.lyy.hitogether.adapter.MyPagerAdapter;
 import com.lyy.hitogether.adapter.PictureAndTextAdapter;
 import com.lyy.hitogether.view.MyViewPager;
 
-public class FirstFragmentDestination extends Fragment {
+public class FirstFragmentDestination extends BaseFragment {
 
 	private GridView gridView;
 	private String[] scen = new String[] { "风景1", "风景2", "风景3", "风景4", "风景5",
@@ -92,11 +94,12 @@ public class FirstFragmentDestination extends Fragment {
 		adapter.addItem("第三景点", v3);
 		myViewPager.setAdapter(adapter);
 		controllMyViewPager();
-	//	new Thread(new MyThread()).start();
+		// new Thread(new MyThread()).start();
 
 	}
 
 	private Handler mHandler;
+	private boolean isPrepared;
 
 	private void controllMyViewPager() {
 		mHandler = new Handler() {
@@ -137,7 +140,7 @@ public class FirstFragmentDestination extends Fragment {
 				if (count == 4) {
 					count = 1;
 				}
-				// ����Ϣ���л�ȡ��Ϣ�����û����Ϣ������һ����Ϣ������У���ȡ������ϢЯ����ݣ���handler����
+				//
 				Message message = Message.obtain();
 				message.arg1 = count;
 				count++;
@@ -148,4 +151,26 @@ public class FirstFragmentDestination extends Fragment {
 		}
 	}
 
+	@Override
+	protected void lazyLoad() {
+
+		if (!isPrepared || !isVisible) {
+			Log.i("lazyLoad1", isPrepared + ":" + isPrepared);
+			return;
+		}
+
+		Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
+		
+		postAsync();
+	}
+
+	private void postAsync() {
+		
+	}	
+
+	@Override
+	public void onPause() {
+		isPrepared = false;
+		super.onPause();
+	}
 }

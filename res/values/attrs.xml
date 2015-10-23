@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <declare-styleable name="GifImageView">
+        <attr name="auto_play" format="boolean"></attr>
+    </declare-styleable>
+
     <attr name="leftType">
         <enum name="text" value="0" />
         <enum name="image" value="1" />
@@ -159,8 +163,7 @@
         <attr name="centerButtonPaddingRight" />
         <attr name="centerButtonPaddingTop" />
     </declare-styleable>
-    
-    
+
     <attr name="icon" format="reference" />
     <attr name="text" format="string" />
     <attr name="color" format="color" />
@@ -195,6 +198,5 @@
         <attr name="matProg_barWidth" format="dimension" />
         <attr name="matProg_linearProgress" format="boolean" />
     </declare-styleable>
-    
 
 </resources>

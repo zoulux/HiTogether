@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/root"
-    android:orientation="vertical"  
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"  
-    android:layout_marginTop="5dp"
-    >
-    <ImageView  
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp" >
+
+    <ImageView
         android:id="@+id/image"
         android:layout_width="180dp"
-        android:layout_height="190dp"  
+        android:layout_height="190dp"
         android:layout_gravity="center"
-        android:scaleType="fitXY"
         android:padding="4dp"
-        android:src="@drawable/ic_launcher"
-       />
-    <TextView  
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"  
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:gravity="center_horizontal"
-        android:text="adsda"
-        />
-</LinearLayout>
+        android:text="name" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/image"
+        android:layout_alignLeft="@id/image"
+        android:paddingLeft="4dp" >
+
+        <ImageView
+            android:id="@+id/id_iv_hot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/hot" />
+
+        <TextView
+            android:id="@+id/id_tv_enjoy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/id_iv_hot"
+            android:layout_toRightOf="@id/id_iv_hot"
+            android:paddingLeft="5dp"
+            android:text="300人"
+            android:textSize="10sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
