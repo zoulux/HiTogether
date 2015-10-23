@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -62,6 +63,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private CustomTitleBarView customTitleBarView_1;
 	private CustomTitleBarView customTitleBarView_2;
 	private CustomTitleBarView customTitleBarView_3;
+	
+	private static final int MENU_ITEM_QUIT = 9; 
 
 	private List<ChangeColorIconWithText> mTabIndicators = new ArrayList<ChangeColorIconWithText>();
 
@@ -112,6 +115,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
+				//Toast.makeText(MainActivity.this, position+"", 1).show();
+				/**
+				 * 左侧侧滑菜单的设置
+				 * @param position
+				 */
+				menuItemeEvent(position);
 				mDrawerList.setItemChecked(position, true);
 				mDrawerLayout.closeDrawer(mDrawerList);
 
@@ -122,6 +131,24 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mViewPager.setAdapter(mAdapter);
 		initEvent();
 
+	}
+	
+	
+	/**
+	 * 左侧侧滑菜单的设置
+	 * @param position
+	 */
+	protected void menuItemeEvent(int position) {
+				switch (position) {
+				case MENU_ITEM_QUIT:
+					startActivity(new Intent(MainActivity.this,LoginActivity.class));
+					MainActivity.this.finish();
+					break;
+
+				default:
+					break;
+				}
+		
 	}
 
 	private void initEvent() {
