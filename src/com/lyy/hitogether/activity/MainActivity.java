@@ -86,12 +86,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	private void init() {
 		imageViewAvar = (ImageView) findViewById(R.id.id_main_title_bar_avatar);
-		// topBarTitleText = (TextView) findViewById(R.id.id_topBartext);
-		// left = (TopbarBtView) findViewById(R.id.id_topBarLeft);
-		// topBarTitleText.setText(R.string.app_name);
-		// left.setVisibility(View.VISIBLE);
-		// left.setGravity(Gravity.CENTER_VERTICAL);
-		// left.setTopbarCircleImageDrawable(R.drawable.default_avarter);
 		imageViewAvar.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -188,10 +182,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			@Override
 			public Fragment getItem(int arg0) {
 				Log.i("Fragment", "getItem");
-				if (arg0==0) {
-					//System.err.println("firstFragment.setMin()>>>>>>>>>>>>>>>>>");
-					//firstFragment.setMin();
-				}
 				return mTabs.get(arg0);
 			}
 		};
@@ -315,9 +305,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	}
 
-	/**
-	 * ���������Indicator����ɫ
-	 */
+	
 	private void resetOtherTabs() {
 		for (int i = 0; i < mTabIndicators.size(); i++) {
 			mTabIndicators.get(i).setIconAlpha(0);
