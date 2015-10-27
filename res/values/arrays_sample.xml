@@ -10,5 +10,6 @@
         <item>我的收藏</item>
         <item>个人设置</item>
         <item>关于我们</item>
+        <item>退出登录</item>
     </string-array>
 </resources>
