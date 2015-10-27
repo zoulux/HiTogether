@@ -75,7 +75,7 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 				viewHolder.guideImage, baseOptions);
 
 		viewHolder.guideName.setText(commonDatas.get(position).getUser()
-				.getUsername());
+				.getNick());
 		// viewHolder.guideImage.setImageResource(R.drawable.icon);
 		viewHolder.description.setText(commonDatas.get(position).getSummary());
 		viewHolder.place.setText(commonDatas.get(position).getDestination());

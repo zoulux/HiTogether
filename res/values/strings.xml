@@ -8,20 +8,19 @@
     <string name="dialog_ok">OK</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="LOADING">Loading...</string>
-    
-  <!-- activity_main -->
-  <string name="activity_main_ChangeColorIconWithText_id_one_lyman_text">发需求</string>
-  <string name="activity_main_ChangeColorIconWithText_id_two_lyman_text">找向导</string>
-  <string name="activity_main_ChangeColorIconWithText_id_three_lyman_text">群聊</string>
-    
+
+    <!-- activity_main -->
+    <string name="activity_main_ChangeColorIconWithText_id_one_lyman_text">发需求</string>
+    <string name="activity_main_ChangeColorIconWithText_id_two_lyman_text">找向导</string>
+    <string name="activity_main_ChangeColorIconWithText_id_three_lyman_text">会话</string>
+
     <!-- ActivityLogin -->
-	<string name="login_can_not_login">忘记密码？</string>
-	<string name="login_new_user">新用户</string>
-	
-	<!-- my_login_view -->
-	<string name="login_view_user_name">乐悠游帐号</string>
-	<string name="login_view_user_passsword">密码</string>
-	<string name="login_view_bt_text">登录</string>
-	
-	
+    <string name="login_can_not_login">忘记密码？</string>
+    <string name="login_new_user">新用户</string>
+
+    <!-- my_login_view -->
+    <string name="login_view_user_name">乐悠游帐号</string>
+    <string name="login_view_user_passsword">密码</string>
+    <string name="login_view_bt_text">登录</string>
+
 </resources>

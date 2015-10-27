@@ -27,6 +27,7 @@ import com.lyy.hitogether.adapter.PictureAndTextAdapter;
 import com.lyy.hitogether.adapter.ThirdFragmentAdapter;
 import com.lyy.hitogether.bean.HotScenic;
 import com.lyy.hitogether.bean.Service;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
 import com.lyy.hitogether.view.MyViewPager;
 
 public class FirstFragmentDestination extends BaseFragment {
@@ -39,6 +40,8 @@ public class FirstFragmentDestination extends BaseFragment {
 			R.drawable.p3, R.drawable.p4, R.drawable.p1, R.drawable.p2 };
 
 	private MyViewPager myViewPager;
+
+//	private SweetAlertDialog alertDialog;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,13 +66,15 @@ public class FirstFragmentDestination extends BaseFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Toast.makeText(getActivity(), position + "", 1).show();
+				ShowToast(position + "");
 
 			}
 		});
 	}
 
 	private void initView(View view) {
+//		alertDialog = new SweetAlertDialog(getActivity(),
+//				SweetAlertDialog.PROGRESS_TYPE);
 		gridView = (GridView) view.findViewById(R.id.id_gridview_des);
 		myViewPager = (MyViewPager) view
 				.findViewById(R.id.id_viewpager_fragment_first_dec);
@@ -172,7 +177,8 @@ public class FirstFragmentDestination extends BaseFragment {
 
 	@Override
 	public void onPause() {
-		isPrepared = false;
+		isVisible = false;
+		baseProgress.dismiss();
 		super.onPause();
 	}
 
@@ -193,16 +199,13 @@ public class FirstFragmentDestination extends BaseFragment {
 	}
 
 	private void handleFaild(String string) {
-		baseProgress.cancel();
+		baseProgress.dismiss();
 
 	}
 
 	private void handleSuccess(String json) {
-		baseProgress.cancel();
+		baseProgress.dismiss();
 
-		Log.i("FirstFragmentDestination", "handleSuccess");
-		Log.i("handleSuccess", json);
-		baseProgress.cancel();
 		Gson gson = new Gson();
 		List<HotScenic> list = gson.fromJson(json,
 				new TypeToken<List<HotScenic>>() {

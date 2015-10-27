@@ -12,6 +12,7 @@ import android.util.Log;
 import android.widget.Toast;
 import cn.bmob.v3.listener.CloudCodeListener;
 
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
 import com.lyy.hitogether.util.HttpUtils;
 
 public abstract class BaseFragment extends Fragment implements Callback {
@@ -20,7 +21,7 @@ public abstract class BaseFragment extends Fragment implements Callback {
 	protected Handler baseHandler = new Handler(this);
 	protected boolean isVisible;
 
-	protected ProgressDialog baseProgress = null;
+	 protected ProgressDialog baseProgress = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,15 +29,9 @@ public abstract class BaseFragment extends Fragment implements Callback {
 		super.onCreate(savedInstanceState);
 	}
 
-	/**
-	 * 创建进度条
-	 */
 	private void initProgress() {
-		baseProgress = new ProgressDialog(getActivity());
-		baseProgress.setCancelable(false);
-		baseProgress.setMessage("正在加载。。。");
-		baseProgress.setTitle("提示");
-
+		baseProgress=new ProgressDialog(getActivity());
+		baseProgress.setTitle("Loading");
 	}
 
 	protected void postAsync(String mosth, JSONObject params) {

@@ -15,10 +15,10 @@ import android.widget.BaseAdapter;
 
 public class MyBaseAdapter<T> extends BaseAdapter {
 	protected DisplayImageOptions baseOptions = new DisplayImageOptions.Builder()
-			.showImageOnLoading(R.drawable.logo)
+			.showImageOnLoading(R.drawable.icon)
 			.bitmapConfig(Bitmap.Config.ARGB_8888)
-			.showImageForEmptyUri(R.drawable.logo)
-			.showImageOnFail(R.drawable.logo).cacheInMemory(true)
+			.showImageForEmptyUri(R.drawable.icon)
+			.showImageOnFail(R.drawable.icon).cacheInMemory(true)
 			.cacheOnDisk(true).displayer(new FadeInBitmapDisplayer(2000))
 			.build();
 

@@ -1,16 +1,16 @@
 package com.lyy.hitogether.activity;
 
-import io.rong.imkit.RongIM;
-
-import com.lyy.hitogether.R;
-import com.lyy.hitogether.test.TestActivity;
-import com.lyy.hitogether.util.InitBmobAndRong;
-import com.lyy.hitogether.util.InitBmobAndRong.LinitLisetener;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
+import cn.bmob.v3.Bmob;
+
+import com.lidroid.xutils.ViewUtils;
+import com.lyy.hitogether.R;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
+import com.lyy.hitogether.test.TestActivity;
+import com.lyy.hitogether.util.Config;
 
 public class Initialize extends BaseActivity {
 	@Override
@@ -19,22 +19,48 @@ public class Initialize extends BaseActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_initialize);
 
-		InitBmobAndRong.init(Initialize.this, new LinitLisetener() {
+		ViewUtils.inject(this);
+		Bmob.initialize(this, Config.APP_KEY);
 
-			@Override
-			public void success(String userId) {
-				ShowToast("连接成功");
-				startActivity(new Intent(Initialize.this, MainActivity.class));
-				Initialize.this.finish();
+	
 
-			}
+		 new Handler().postDelayed(new Runnable() {
+		
+		 @Override
+		 public void run() {
+		
+		 startActivity(new Intent(Initialize.this, LoginActivity.class));
+		 Initialize.this.finish();
+		 }
+		 }, 2000);
+		
 
-			@Override
-			public void faild() {
-				ShowToast("连接失败");
-
-			}
-		});
+		// InitBmobAndRong.init(Initialize.this, new LinitLisetener() {
+		//
+		// @Override
+		// public void success(String userId) {
+		// ShowToast("连接成功");
+		//
+		// try {
+		//
+		// startActivity(new Intent(Initialize.this,
+		// LoginActivity.class));
+		// Initialize.this.finish();
+		//
+		// } catch (Exception e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+		//
+		// }
+		//
+		// @Override
+		// public void faild() {
+		// Initialize.this.finish();
+		// ShowToast("连接失败");
+		//
+		// }
+		// });
 
 		// // ��Ҫ�Ķ�
 		// new Handler().postDelayed(new Runnable() {
@@ -44,4 +70,5 @@ public class Initialize extends BaseActivity {
 		// }
 		// }, 1500);
 	}
+
 }

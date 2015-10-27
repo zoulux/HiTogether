@@ -1,18 +1,41 @@
 package com.lyy.hitogether.global;
 
-import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import java.util.ArrayList;
+import java.util.List;
 
+import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
+import io.rong.imlib.model.UserInfo;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
 
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
 public class App extends Application {
+
+	private static App mInstance;
+
+	public static App getInsatnce() {
+		return mInstance;
+	}
+
+	List<UserInfo> userInfos = new ArrayList<UserInfo>();
+
+	public List<UserInfo> getUserInfos() {
+		return userInfos;
+	}
+
+	public void setUserInfos(List<UserInfo> userInfos) {
+		this.userInfos = userInfos;
+	}
+
 	@Override
 	public void onCreate() {
+		mInstance = this;
 
 		super.onCreate();
 
@@ -23,7 +46,9 @@ public class App extends Application {
 
 			if (getApplicationInfo().packageName
 					.equals(getCurrenPro(getApplicationContext()))) {
-				AppContext.init(this);
+
+				RongContext.init(this);
+
 				RongCloudEvent.init(this);
 				ImageLoader.getInstance().init(
 						ImageLoaderConfiguration.createDefault(this));

@@ -1,5 +1,6 @@
 package com.lyy.hitogether.test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
@@ -23,13 +24,10 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.BaseActivity;
 import com.lyy.hitogether.bean.Service;
 import com.lyy.hitogether.util.HttpUtils;
-import com.lyy.hitogether.util.JsonUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 public class TestActivity extends BaseActivity {
@@ -39,7 +37,9 @@ public class TestActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_test);
+	//	ViewUtils.inject(this);  
 		Button bt = (Button) findViewById(R.id.id_bt_test);
 		mImageViewPic = (ImageView) findViewById(R.id.id_iv_pic);
 
@@ -92,12 +92,12 @@ public class TestActivity extends BaseActivity {
 	protected void getIntentPic() {
 		String uri = "http://img5.imgtn.bdimg.com/it/u=977178979,3700482650&fm=21&gp=0.jpg";
 		options = new DisplayImageOptions.Builder()
-		.showStubImage(R.drawable.logo)
-		.bitmapConfig(Bitmap.Config.ARGB_8888)
-		.showImageForEmptyUri(R.drawable.logo)
-		.showImageOnFail(R.drawable.logo).cacheInMemory(true)
-		.cacheOnDisc(true).displayer(new FadeInBitmapDisplayer(2000))
-		.build();
+				.showStubImage(R.drawable.icon)
+				.bitmapConfig(Bitmap.Config.ARGB_8888)
+				.showImageForEmptyUri(R.drawable.icon)
+				.showImageOnFail(R.drawable.icon).cacheInMemory(true)
+				.cacheOnDisc(true).displayer(new FadeInBitmapDisplayer(2000))
+				.build();
 
 		ImageLoader.getInstance().displayImage(uri, mImageViewPic, options);
 	}
@@ -161,4 +161,5 @@ public class TestActivity extends BaseActivity {
 			// }
 		};
 	};
+
 }

@@ -32,4 +32,9 @@ public class FourthFragment extends BaseFragment {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+	}
 }

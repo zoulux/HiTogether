@@ -23,8 +23,6 @@ public class Service {
 	String showImg; // 首页展示的图片
 	String extra; // 额外字段
 
-	
-	
 	public MyUser getUser() {
 		return user;
 	}
@@ -33,10 +31,12 @@ public class Service {
 		this.user = user;
 	}
 
+	@Deprecated
 	public String getUserName() {
 		return userName;
 	}
 
+	@Deprecated
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -57,10 +57,12 @@ public class Service {
 		this.extra = extra;
 	}
 
+	@Deprecated
 	public String getUserId() {
 		return userId;
 	}
 
+	@Deprecated
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
@@ -130,6 +132,5 @@ public class Service {
 				+ ", photoPath=" + photoPath + ", showImg=" + showImg
 				+ ", extra=" + extra + "]";
 	}
-
 
 }

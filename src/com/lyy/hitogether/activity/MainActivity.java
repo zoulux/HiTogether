@@ -1,8 +1,11 @@
 package com.lyy.hitogether.activity;
 
+import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.model.Conversation.ConversationType;
+import io.rong.imlib.model.UserInfo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +32,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import cn.bmob.im.BmobUserManager;
+
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.SecondFragment;
 import com.lyy.hitogether.activity.fragment.ThirdFragment;
@@ -39,8 +44,10 @@ import com.lyy.hitogether.view.CustomTitleBarView;
 import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
 import com.lyy.hitogether.view.MainTopbarView;
 import com.lyy.hitogether.view.MyViewPager;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
+	public static final String ACTION_DMEO_RECEIVE_MESSAGE = "ACTION_DMEO_RECEIVE_MESSAGE";
 
 	private String[] mPlanetTitles;
 
@@ -121,7 +128,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		initData();
 		mViewPager.setAdapter(mAdapter);
 		initEvent();
-
+		
 	}
 
 	private void initEvent() {
@@ -285,12 +292,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	}
 
 	/**
-	 * ���������Indicator����ɫ
+	 *
 	 */
 	private void resetOtherTabs() {
 		for (int i = 0; i < mTabIndicators.size(); i++) {
 			mTabIndicators.get(i).setIconAlpha(0);
 		}
 	}
+
+
 
 }
