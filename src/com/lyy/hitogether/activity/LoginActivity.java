@@ -94,8 +94,11 @@ public class LoginActivity extends BaseActivity {
 
 							@Override
 							public void onSuccess(List<UserInfo> users) {
-								for (UserInfo userInfo : users) {
-									Log.i("ConnectRong", userInfo.getName());
+								if (users != null && users.size() > 0) {
+
+									for (UserInfo userInfo : users) {
+										Log.i("ConnectRong", userInfo.getName());
+									}
 								}
 
 								sweetAlertDialog.dismiss();
@@ -162,7 +165,7 @@ public class LoginActivity extends BaseActivity {
 	};
 
 	protected void login() {
-		
+
 		if (judge()) {
 
 			MyUser user = new MyUser();

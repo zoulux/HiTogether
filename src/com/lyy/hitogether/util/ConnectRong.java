@@ -78,6 +78,11 @@ public class ConnectRong {
 
 		if (conversationList == null || conversationList.size() == 0) {
 
+			if (listener != null) {
+
+				listener.onSuccess(null);
+			}
+
 			return;
 		}
 
