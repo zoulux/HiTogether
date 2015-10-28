@@ -76,6 +76,11 @@ public class ConnectRong {
 
 		List<String> userIds = new ArrayList<String>();
 
+		if (conversationList == null || conversationList.size() == 0) {
+
+			return;
+		}
+
 		for (Conversation conversation : conversationList) {
 			userIds.add(conversation.getTargetId());
 		}
@@ -85,8 +90,8 @@ public class ConnectRong {
 			public void onSuccess(List<UserInfo> users) {
 
 				App.getInsatnce().setUserInfos(users);
-				if (listener!=null) {
-					
+				if (listener != null) {
+
 					listener.onSuccess(users);
 				}
 
@@ -95,8 +100,8 @@ public class ConnectRong {
 			@Override
 			public void onFaild(int code, String err) {
 
-				if (listener!=null) {
-					
+				if (listener != null) {
+
 					listener.onFaild(code + "" + err);
 				}
 			}
