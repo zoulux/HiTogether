@@ -10,6 +10,17 @@ public class Group {
 	Integer currentCount;// 当前人数
 	String introduction;// 介绍
 	String summary; // 简介
+	String groupImg;//群头像
+	
+	
+
+	public String getGroupImg() {
+		return groupImg;
+	}
+
+	public void setGroupImg(String groupImg) {
+		this.groupImg = groupImg;
+	}
 
 	public String getGroupId() {
 		return groupId;
