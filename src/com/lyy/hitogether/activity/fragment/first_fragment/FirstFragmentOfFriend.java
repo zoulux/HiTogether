@@ -1,5 +1,8 @@
 package com.lyy.hitogether.activity.fragment.first_fragment;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,14 +15,18 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.lyy.hitogether.R;
+import com.lyy.hitogether.adapter.FirstFragmentOfFriendAdapter;
 import com.lyy.hitogether.adapter.PictureAndTextAdapter;
+import com.lyy.hitogether.bean.FirstFragmentOfFriendbean;
 
 public class FirstFragmentOfFriend extends Fragment {
 
-	
+	private ListView listView;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -29,8 +36,32 @@ public class FirstFragmentOfFriend extends Fragment {
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
+		initView(view);
+		initData();
 	}
 
+	private void initView(View view) {
+		listView = (ListView) view
+				.findViewById(R.id.id_first_fragment_of_friend_list);
+	}
 
+	private void initData() {
+		listView.setAdapter(new FirstFragmentOfFriendAdapter(
+				FirstFragmentOfFriend.this.getActivity(), getDatas()));
+
+	}
+
+	int a = 0;
+
+	private List<FirstFragmentOfFriendbean> getDatas() {
+		List<FirstFragmentOfFriendbean> list = new ArrayList<FirstFragmentOfFriendbean>();
+		for (int i = 0; i < 20; i++) {
+			a = (int) (Math.random() * 10);
+			list.add(new FirstFragmentOfFriendbean("大雁" + i, i,
+					"我想去火星啊！！！" + i, "12:" + i, a));
+		}
+
+		return list;
+	}
 
 }
