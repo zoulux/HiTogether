@@ -1,11 +1,8 @@
 package com.lyy.hitogether.activity;
 
-import io.rong.imkit.RongIM;
 import io.rong.imkit.fragment.ConversationListFragment;
 import io.rong.imlib.model.Conversation.ConversationType;
-import io.rong.imlib.model.UserInfo;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,8 +30,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import cn.bmob.im.BmobUserManager;
-
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.SecondFragment;
 import com.lyy.hitogether.activity.fragment.ThirdFragment;
@@ -43,9 +38,9 @@ import com.lyy.hitogether.manager.SystemBarTintManager;
 import com.lyy.hitogether.view.ChangeColorIconWithText;
 import com.lyy.hitogether.view.CustomTitleBarView;
 import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
+import com.lyy.hitogether.view.CustomTitleBarView.onRightBarViewClickListener;
 import com.lyy.hitogether.view.MainTopbarView;
 import com.lyy.hitogether.view.MyViewPager;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MainActivity extends FragmentActivity implements OnClickListener {
 	public static final String ACTION_DMEO_RECEIVE_MESSAGE = "ACTION_DMEO_RECEIVE_MESSAGE";
@@ -292,6 +287,16 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			customTitleBarView_2.setVisibility(View.GONE);
 			customTitleBarView_3.setVisibility(View.VISIBLE);
 			mainTopbarView.setVisibility(View.GONE);
+			
+			customTitleBarView_3
+			.setOnRightBarViewClickListener(new onRightBarViewClickListener() {
+
+				@Override
+				public void onclick(View v) {
+					Toast.makeText(MainActivity.this, "添加", 1).show();
+
+				}
+			});
 			resetOtherTabs();
 			mTabIndicators.get(3).setIconAlpha(1.0f);
 			mViewPager.setCurrentItem(3, false);

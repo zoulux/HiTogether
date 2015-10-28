@@ -37,8 +37,13 @@
         android:layout_height="50dp"
         android:background="@color/light_blue"
         android:visibility="gone"
+        lyman:centerText="会话"
+        lyman:centerTextSize="20sp"
         lyman:centerType="text"
-        lyman:leftType="text"
+        lyman:rightText="添加"
+        lyman:rightTextSize="18sp"
+        lyman:rightTextPaddingRight="10dp"
+        lyman:rightTextColor="@android:color/white"
         lyman:rightType="text" />
 
     <android.support.v4.widget.DrawerLayout
