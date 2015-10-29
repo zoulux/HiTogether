@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-public class MyBaseAdapter<T> extends BaseAdapter {
+public abstract class MyBaseAdapter<T> extends BaseAdapter {
 	protected DisplayImageOptions baseOptions = new DisplayImageOptions.Builder()
 			.showImageOnLoading(R.drawable.icon)
 			.bitmapConfig(Bitmap.Config.ARGB_8888)
@@ -47,9 +47,7 @@ public class MyBaseAdapter<T> extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract View getView(int position, View convertView,
+			ViewGroup parent);
 
 }

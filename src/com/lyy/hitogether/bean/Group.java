@@ -6,13 +6,20 @@ public class Group {
 	 */
 	String groupId;// 群id
 	String groupName;// 群名
-	Integer maxCount; // 最大人数
-	Integer currentCount;// 当前人数
+	String maxCount; // 最大人数
+	String currentCount;// 当前人数
 	String introduction;// 介绍
 	String summary; // 简介
-	String groupImg;//群头像
-	
-	
+	String groupImg;// 群头像
+	String recentMsg;// 最后一条消息
+
+	public String getRecentMsg() {
+		return recentMsg;
+	}
+
+	public void setRecentMsg(String recentMsg) {
+		this.recentMsg = recentMsg;
+	}
 
 	public String getGroupImg() {
 		return groupImg;
@@ -38,19 +45,19 @@ public class Group {
 		this.groupName = groupName;
 	}
 
-	public Integer getMaxCount() {
+	public String getMaxCount() {
 		return maxCount;
 	}
 
-	public void setMaxCount(Integer maxCount) {
+	public void setMaxCount(String maxCount) {
 		this.maxCount = maxCount;
 	}
 
-	public Integer getCurrentCount() {
+	public String getCurrentCount() {
 		return currentCount;
 	}
 
-	public void setCurrentCount(Integer currentCount) {
+	public void setCurrentCount(String currentCount) {
 		this.currentCount = currentCount;
 	}
 

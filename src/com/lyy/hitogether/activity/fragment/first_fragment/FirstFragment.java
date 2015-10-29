@@ -39,10 +39,9 @@ public class FirstFragment extends Fragment {
 		viewPager.setScanScroll(false);
 	}
 
-	private FirstFragmentDestination firstFragmentDestination= new FirstFragmentDestination();
+	private FirstFragmentDestination firstFragmentDestination = new FirstFragmentDestination();
 
 	private void initData() {
-		
 
 		mTabs.add(firstFragmentDestination);
 		mTabs.add(new FirstFragmentOfFriend());
@@ -70,7 +69,6 @@ public class FirstFragment extends Fragment {
 				.findViewById(R.id.id_viewpager_fragment_first);
 
 	}
-
 	@Override
 	public void onDestroyView() {
 		System.err.println("onDestroyViewMax");
@@ -78,25 +76,9 @@ public class FirstFragment extends Fragment {
 
 		super.onDestroy();
 	}
-	
-	public void setMin(){
-		
-	}
 
-	 
-	  
-	  
-	  
-	    
-	  
-	  
-	   
-	  
-	 
-	  
-	   
-	  
-	    
-	  
+	public void setMin() {
+
+	}
 
 }

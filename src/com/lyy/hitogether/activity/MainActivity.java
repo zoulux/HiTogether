@@ -34,6 +34,8 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.SecondFragment;
 import com.lyy.hitogether.activity.fragment.ThirdFragment;
 import com.lyy.hitogether.activity.fragment.first_fragment.FirstFragment;
+import com.lyy.hitogether.adapter.GroupAdapter;
+import com.lyy.hitogether.bean.Group;
 import com.lyy.hitogether.manager.SystemBarTintManager;
 import com.lyy.hitogether.view.ChangeColorIconWithText;
 import com.lyy.hitogether.view.CustomTitleBarView;
@@ -287,16 +289,20 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			customTitleBarView_2.setVisibility(View.GONE);
 			customTitleBarView_3.setVisibility(View.VISIBLE);
 			mainTopbarView.setVisibility(View.GONE);
-			
+
 			customTitleBarView_3
-			.setOnRightBarViewClickListener(new onRightBarViewClickListener() {
+					.setOnRightBarViewClickListener(new onRightBarViewClickListener() {
 
-				@Override
-				public void onclick(View v) {
-					Toast.makeText(MainActivity.this, "添加", 1).show();
-
-				}
-			});
+						@Override
+						public void onclick(View v) {
+							
+							Intent intent=new Intent(MainActivity.this, GroupActivity.class);
+							startActivity(intent);
+							
+							
+						//	Toast.makeText(MainActivity.this, "添加", 1).show();
+						}
+					});
 			resetOtherTabs();
 			mTabIndicators.get(3).setIconAlpha(1.0f);
 			mViewPager.setCurrentItem(3, false);
@@ -328,5 +334,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			mTabIndicators.get(i).setIconAlpha(0);
 		}
 	}
+
 
 }

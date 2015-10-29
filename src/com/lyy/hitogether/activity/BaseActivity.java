@@ -7,8 +7,9 @@ import android.widget.Toast;
 
 /**
  * test
+ * 
  * @author Administrator
- *
+ * 
  */
 public class BaseActivity extends Activity {
 	@Override
@@ -28,27 +29,27 @@ public class BaseActivity extends Activity {
 	Toast mToast;
 
 	public void ShowToast(final int resId) {
-		runOnUiThread(new Runnable() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				if (mToast == null) {
-					mToast = Toast.makeText(BaseActivity.this, resId,
-							Toast.LENGTH_LONG);
-				} else {
-					mToast.setText(resId);
-				}
-				mToast.show();
-			}
-		});
+		// runOnUiThread(new Runnable() {
+		//
+		// @Override
+		// public void run() {
+		// // TODO Auto-generated method stub
+		if (mToast == null) {
+			mToast = Toast
+					.makeText(BaseActivity.this, resId, Toast.LENGTH_LONG);
+		} else {
+			mToast.setText(resId);
+		}
+		mToast.show();
+		// }
+		// });
 	}
 
 	public void ShowToast(final String string) {
-		runOnUiThread(new Runnable() {
-
-			@Override
-			public void run() {
+//		runOnUiThread(new Runnable() {
+//
+//			@Override
+//			public void run() {
 				// TODO Auto-generated method stub
 				if (mToast == null) {
 					mToast = Toast.makeText(BaseActivity.this, string,
@@ -57,7 +58,7 @@ public class BaseActivity extends Activity {
 					mToast.setText(string);
 				}
 				mToast.show();
-			}
-		});
+//			}
+//		});
 	}
 }
