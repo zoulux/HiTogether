@@ -469,10 +469,25 @@ public final class RongCloudEvent implements
 		 * demo 代码 开发者需替换成自己的代码。
 		 */
 
-		if (RongContext.getInstance().getGroupInfoCache() == null)
-			return null;
+		List<com.lyy.hitogether.bean.Group> groupList = App.getInsatnce()
+				.getGroupList();
 
-		return RongContext.getInstance().getGroupInfoFromCache(groupId);
+		for (com.lyy.hitogether.bean.Group g : groupList) {
+			if (groupId.equals(g.getGroupId())) {
+				Uri uri = Uri.parse(g.getGroupImg());
+				return new Group(groupId, g.getGroupName(), uri);
+			}
+
+		}
+
+		// Group group=new Group(id, name, portraitUri)
+		//
+		//
+		// if (RongContext.getInstance().getGroupInfoCache() == null)
+		// return null;
+
+		// return RongContext.getInstance().getGroupInfoFromCache(groupId);
+		return null;
 	}
 
 	/**

@@ -46,19 +46,19 @@ public class BaseActivity extends Activity {
 	}
 
 	public void ShowToast(final String string) {
-//		runOnUiThread(new Runnable() {
-//
-//			@Override
-//			public void run() {
-				// TODO Auto-generated method stub
-				if (mToast == null) {
-					mToast = Toast.makeText(BaseActivity.this, string,
-							Toast.LENGTH_LONG);
-				} else {
-					mToast.setText(string);
-				}
-				mToast.show();
-//			}
-//		});
+		// runOnUiThread(new Runnable() {
+		//
+		// @Override
+		// public void run() {
+		// TODO Auto-generated method stub
+		if (mToast == null) {
+			mToast = Toast.makeText(BaseActivity.this, string,
+					Toast.LENGTH_LONG);
+		} else {
+			mToast.setText(string);
+		}
+		mToast.show();
+		// }
+		// });
 	}
 }

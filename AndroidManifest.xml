@@ -44,9 +44,10 @@
     <application
         android:name="com.lyy.hitogether.global.App"
         android:allowBackup="true"
+        android:allowClearUserData="false"
         android:icon="@drawable/icon"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" android:allowClearUserData="false">
+        android:theme="@style/AppTheme" >
         <activity
             android:name="com.lyy.hitogether.activity.Initialize"
             android:theme="@android:style/Theme.Translucent" >
@@ -201,7 +202,10 @@
         </service>
         <!-- bmob end -->
 
-        <activity android:name="com.lyy.hitogether.activity.ConversationActivity" >
+        <activity
+            android:name="com.lyy.hitogether.activity.ConversationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -213,7 +217,23 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.GroupActivity"></activity>
+        <activity
+            android:name="com.lyy.hitogether.activity.SubConversationListActivtiy"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="com.lyy.hitogether"
+                    android:pathPrefix="/subconversationlist"
+                    android:scheme="rong" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.GroupActivity" >
+        </activity>
     </application>
 
 </manifest>

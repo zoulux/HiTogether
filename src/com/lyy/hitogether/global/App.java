@@ -12,6 +12,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Process;
 
+import com.lyy.hitogether.bean.Group;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
@@ -21,6 +22,24 @@ public class App extends Application {
 
 	public static App getInsatnce() {
 		return mInstance;
+	}
+
+	List<Group> groupList = new ArrayList<Group>();
+
+	public static App getmInstance() {
+		return mInstance;
+	}
+
+	public static void setmInstance(App mInstance) {
+		App.mInstance = mInstance;
+	}
+
+	public List<Group> getGroupList() {
+		return groupList;
+	}
+
+	public void setGroupList(List<Group> groupList) {
+		this.groupList = groupList;
 	}
 
 	List<UserInfo> userInfos = new ArrayList<UserInfo>();

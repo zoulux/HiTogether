@@ -175,7 +175,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				.appendPath("conversationlist")
 				.appendQueryParameter(ConversationType.PRIVATE.getName(),
 						"flase")
-				.appendQueryParameter(ConversationType.GROUP.getName(), "true")
+				.appendQueryParameter(ConversationType.GROUP.getName(), "flase")
 				.appendQueryParameter(ConversationType.SYSTEM.getName(), "true")
 				.build();
 		listFragment.setUri(uri);

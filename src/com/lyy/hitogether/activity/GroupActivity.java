@@ -1,5 +1,9 @@
 package com.lyy.hitogether.activity;
 
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient.ErrorCode;
+import io.rong.imlib.RongIMClient.OperationCallback;
+
 import java.util.List;
 
 import android.content.Context;
@@ -19,9 +23,10 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.adapter.GroupAdapter;
 import com.lyy.hitogether.adapter.GroupAdapter.GroupListener;
 import com.lyy.hitogether.bean.Group;
+import com.lyy.hitogether.global.App;
 import com.lyy.hitogether.util.HttpUtils;
 
-public class GroupActivity extends BaseActivity {
+public class GroupActivity extends BaseActivity implements GroupListener {
 
 	private Context mContext = GroupActivity.this;
 	private String Tag = GroupActivity.class.getSimpleName();
@@ -31,50 +36,45 @@ public class GroupActivity extends BaseActivity {
 	@ViewInject(R.id.id_lv_group_list)
 	private ListView mListView;
 
-	private Handler mHandler = new Handler() {
-
-		public void handleMessage(android.os.Message msg) {
-			String json = (String) msg.obj;
-			Log.i(Tag, json);
-			Gson gson = new Gson();
-
-			mData = gson.fromJson(json, new TypeToken<List<Group>>() {
-			}.getType());
-
-			groupAdapter = new GroupAdapter(GroupActivity.this, mData);
-			mListView.setAdapter(groupAdapter);
-			groupAdapter.setOnBtClick(new GroupListener() {
-
-				@Override
-				public void onClick(View v, int position) {
-					ShowToast(position+"");
-
-				}
-			});
-		};
-	};
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_group);
 		ViewUtils.inject(this);
 
-		HttpUtils.getHttpData(mContext, "getAllGroup", null,
-				new CloudCodeListener() {
+		init();
 
-					@Override
-					public void onSuccess(Object result) {
-						Message msg = Message.obtain();
-						msg.obj = result;
-						mHandler.sendMessage(msg);
-					}
+	}
 
-					@Override
-					public void onFailure(int code, String err) {
+	private void init() {
+		mData = App.getInsatnce().getGroupList();
+		groupAdapter = new GroupAdapter(mContext, mData);
+		mListView.setAdapter(groupAdapter);
+		groupAdapter.setOnBtClick(this);
 
-					}
-				});
+	}
 
+	@Override
+	public void onClick(View v, int position) {
+		final Group group = mData.get(position);
+		RongIM.getInstance()
+				.getRongIMClient()
+				.joinGroup(group.getGroupId(), group.getGroupName(),
+						new OperationCallback() {
+
+							@Override
+							public void onSuccess() {
+								ShowToast("加入成功");
+								RongIM.getInstance().startGroupChat(mContext,
+										group.getGroupId(), "标题");
+
+							}
+
+							@Override
+							public void onError(ErrorCode errorCode) {
+								ShowToast("加入失败");
+
+							}
+						});
 	}
 }

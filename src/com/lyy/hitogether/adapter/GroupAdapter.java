@@ -7,6 +7,7 @@ import com.lyy.hitogether.bean.Group;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -36,8 +37,8 @@ public class GroupAdapter extends MyBaseAdapter<Group> {
 					.findViewById(R.id.id_tv_group_count_current);
 			viewHolder.maxCount = (TextView) convertView
 					.findViewById(R.id.id_tv_group_count_max);
-			viewHolder.recentMsg = (TextView) convertView
-					.findViewById(R.id.id_tv_group_recent_msg);
+			viewHolder.summary = (TextView) convertView
+					.findViewById(R.id.id_tv_group_summary);
 			viewHolder.addGroup = (Button) convertView
 					.findViewById(R.id.id_bt_add_group);
 
@@ -53,7 +54,7 @@ public class GroupAdapter extends MyBaseAdapter<Group> {
 		viewHolder.name.setText(group.getGroupName());
 		viewHolder.currentCount.setText(group.getCurrentCount() + "");
 		viewHolder.maxCount.setText(group.getMaxCount() + "");
-		viewHolder.recentMsg.setText(group.getRecentMsg());
+		viewHolder.summary.setText(group.getSummary());
 		// TODO 加入显示已加入不可点击，没加入显示加入
 
 		// viewHolder.addGroup.setText(group.get)
@@ -82,7 +83,7 @@ public class GroupAdapter extends MyBaseAdapter<Group> {
 		TextView name;
 		TextView currentCount;
 		TextView maxCount;
-		TextView recentMsg;
+		TextView summary;
 		Button addGroup;
 
 	}

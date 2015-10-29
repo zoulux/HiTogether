@@ -13,11 +13,17 @@ import java.util.List;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
+import android.widget.Toast;
 import cn.bmob.im.BmobUserManager;
 import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.listener.CloudCodeListener;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.lyy.hitogether.activity.LoginActivity;
+import com.lyy.hitogether.bean.Group;
 import com.lyy.hitogether.bean.MyUser;
 import com.lyy.hitogether.global.App;
 import com.lyy.hitogether.util.HttpUtils.MyFindListener;
@@ -33,8 +39,9 @@ public class ConnectRong {
 
 	protected static int WHAT = 0x211;
 
-	public static void connect(Context context, final MyConnectListener listener) {
+	public static void connect(Context context, MyConnectListener listener) {
 		mContext = context;
+		setMyConnectListener(listener);
 		/**
 		 * 连接融云
 		 */
@@ -51,24 +58,80 @@ public class ConnectRong {
 				// mHandler.sendEmptyMessage(WHAT);
 
 				initUserInfo();
-				updateFrindsInfo(listener);
+
+				/**
+				 * 更新好友消息
+				 */
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						updateFrindsInfo();
+
+					}
+				}).start();
+
+				/**
+				 * 更新群组消息
+				 */
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						updateGroupsInfo();
+
+					}
+
+				}).start();
+
 			}
 
 			@Override
 			public void onError(ErrorCode arg0) {
-				listener.onFaild("faild");
+				mListener.onFaild("faild");
 			}
 
 			@Override
 			public void onTokenIncorrect() {
-				listener.onFaild("faild");
+				mListener.onFaild("faild");
 
 			}
 		});
 
 	}
 
-	public static void updateFrindsInfo(final MyConnectListener listener) {
+	private static MyConnectListener mListener;
+
+	public static void setMyConnectListener(MyConnectListener listener) {
+		mListener = listener;
+	}
+
+	private static void updateGroupsInfo() {
+
+		HttpUtils.getHttpData(mContext, "getAllGroup", null,
+				new CloudCodeListener() {
+
+					@Override
+					public void onSuccess(Object result) {
+						String json = (String) result;
+						Gson gson = new Gson();
+						List<Group> groupList = gson.fromJson(json,
+								new TypeToken<List<Group>>() {
+								}.getType());
+
+						App.getInsatnce().setGroupList(groupList);
+					}
+
+					@Override
+					public void onFailure(int code, String err) {
+						Toast.makeText(mContext, "获取群组消息失败", Toast.LENGTH_SHORT)
+								.show();
+					}
+				});
+
+	}
+
+	public static void updateFrindsInfo() {
 
 		List<Conversation> conversationList = RongIM.getInstance()
 				.getRongIMClient()
@@ -78,9 +141,9 @@ public class ConnectRong {
 
 		if (conversationList == null || conversationList.size() == 0) {
 
-			if (listener != null) {
+			if (mListener != null) {
 
-				listener.onSuccess(null);
+				mListener.onSuccess(null);
 			}
 
 			return;
@@ -95,9 +158,9 @@ public class ConnectRong {
 			public void onSuccess(List<UserInfo> users) {
 
 				App.getInsatnce().setUserInfos(users);
-				if (listener != null) {
+				if (mListener != null) {
 
-					listener.onSuccess(users);
+					mListener.onSuccess(users);
 				}
 
 			}
@@ -105,9 +168,9 @@ public class ConnectRong {
 			@Override
 			public void onFaild(int code, String err) {
 
-				if (listener != null) {
+				if (mListener != null) {
 
-					listener.onFaild(code + "" + err);
+					mListener.onFaild(code + "" + err);
 				}
 			}
 		});
