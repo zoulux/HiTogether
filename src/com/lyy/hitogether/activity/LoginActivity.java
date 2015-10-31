@@ -24,12 +24,17 @@ import cn.bmob.v3.BmobInstallation;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.SaveListener;
 
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.bean.MyUser;
 import com.lyy.hitogether.global.App;
+import com.lyy.hitogether.global.RongCloudEvent;
 import com.lyy.hitogether.mydialog.SweetAlertDialog;
 import com.lyy.hitogether.util.ConnectRong;
 import com.lyy.hitogether.util.ConnectRong.MyConnectListener;
+import com.lyy.hitogether.util.HttpUtils;
+import com.lyy.hitogether.util.HttpUtils.MyResultListener;
 import com.lyy.hitogether.view.CircleImageView;
 import com.lyy.hitogether.view.MyLoginView;
 import com.lyy.hitogether.view.MyLoginView.onLoginListener;
@@ -50,9 +55,11 @@ public class LoginActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		// �����ޱ�����
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
+		ViewUtils.inject(this);
 		// ͸��״̬��
 		getWindow()
 				.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -94,6 +101,8 @@ public class LoginActivity extends BaseActivity {
 
 							@Override
 							public void onSuccess(List<UserInfo> users) {
+
+								RongCloudEvent.getInstance().setOtherListener();
 								if (users != null && users.size() > 0) {
 
 									for (UserInfo userInfo : users) {
@@ -242,5 +251,22 @@ public class LoginActivity extends BaseActivity {
 	public void onBackPressed() {
 		isFirstClick = true;
 		super.onBackPressed();
+	}
+
+	@OnClick(R.id.id_newuser)
+	public void newUser(View v) {
+		HttpUtils.getGroup(LoginActivity.this, "00001",
+				new MyResultListener<String>() {
+
+					@Override
+					public void onSuccess(List<String> list) {
+						Log.i("HttpUtils", list.toString());
+					}
+
+					@Override
+					public void onFaild(int code, String err) {
+
+					}
+				});
 	}
 }

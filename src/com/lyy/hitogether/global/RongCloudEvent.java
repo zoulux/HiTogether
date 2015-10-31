@@ -47,6 +47,7 @@ import com.lyy.hitogether.datebase.DBManager;
 import com.lyy.hitogether.datebase.UserInfos;
 import com.lyy.hitogether.datebase.UserInfosDao;
 import com.lyy.hitogether.provider.ContactsProvider;
+import com.lyy.hitogether.provider.NewCameraInputProvider;
 import com.lyy.hitogether.provider.PhotoCollectionsProvider;
 import com.lyy.hitogether.provider.RealTimeLocationInputProvider;
 
@@ -143,8 +144,10 @@ public final class RongCloudEvent implements
 		// 扩展功能自定义
 		InputProvider.ExtendProvider[] provider = {
 				new PhotoCollectionsProvider(RongContext.getInstance()),// 图片
-				new CameraInputProvider(RongContext.getInstance()),// 相机
-				new RealTimeLocationInputProvider(RongContext.getInstance()),// 地理位置
+				new NewCameraInputProvider(RongContext.getInstance()),// 相机
+				// new
+				// RealTimeLocationInputProvider(RongContext.getInstance()),//
+				// 地理位置
 				new VoIPInputProvider(RongContext.getInstance()),// 语音通话
 				new ContactsProvider(RongContext.getInstance()),// 通讯录
 		};

@@ -26,7 +26,7 @@ import com.lyy.hitogether.activity.LoginActivity;
 import com.lyy.hitogether.bean.Group;
 import com.lyy.hitogether.bean.MyUser;
 import com.lyy.hitogether.global.App;
-import com.lyy.hitogether.util.HttpUtils.MyFindListener;
+import com.lyy.hitogether.util.HttpUtils.MyResultListener;
 
 public class ConnectRong {
 	private static Context mContext;
@@ -152,7 +152,7 @@ public class ConnectRong {
 		for (Conversation conversation : conversationList) {
 			userIds.add(conversation.getTargetId());
 		}
-		HttpUtils.getFrends(mContext, userIds, new MyFindListener() {
+		HttpUtils.getFrends(mContext, userIds, new MyResultListener<UserInfo>() {
 
 			@Override
 			public void onSuccess(List<UserInfo> users) {

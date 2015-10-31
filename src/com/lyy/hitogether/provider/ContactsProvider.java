@@ -15,7 +15,7 @@ public class ContactsProvider extends ExtendProvider {
 
 	@Override
 	public Drawable obtainPluginDrawable(Context arg0) {
-		// TODO Auto-generated method stub
+	
 		return null;
 	}
 

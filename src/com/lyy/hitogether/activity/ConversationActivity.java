@@ -17,11 +17,12 @@ public class ConversationActivity extends FragmentActivity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_conversation);
 		// getIntent().getStringExtra(name)
-		getWindow()
-				.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-		SystemBarTintManager tintManager = new SystemBarTintManager(this);
-		tintManager.setStatusBarTintEnabled(true);
-		tintManager.setTintColor(Color.parseColor("#5CACEE"));
+		
+//		getWindow()
+//				.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//		SystemBarTintManager tintManager = new SystemBarTintManager(this);
+//		tintManager.setStatusBarTintEnabled(true);
+//		tintManager.setTintColor(Color.parseColor("#5CACEE"));
 	}
 
 }
