@@ -102,7 +102,7 @@ public class LoginActivity extends BaseActivity {
 							@Override
 							public void onSuccess(List<UserInfo> users) {
 
-								RongCloudEvent.getInstance().setOtherListener();
+							
 								if (users != null && users.size() > 0) {
 
 									for (UserInfo userInfo : users) {

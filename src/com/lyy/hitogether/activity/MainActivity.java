@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
@@ -167,8 +168,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		mTabs.add(new SecondFragment());
 		mTabs.add(new ThirdFragment());
 
-		ConversationListFragment listFragment = ConversationListFragment
-				.getInstance();
+		ConversationListFragment listFragment = new ConversationListFragment();
 		Uri uri = Uri
 				.parse("rong://" + getApplicationInfo().packageName)
 				.buildUpon()
@@ -295,12 +295,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 						@Override
 						public void onclick(View v) {
-							
-							Intent intent=new Intent(MainActivity.this, GroupActivity.class);
+
+							Intent intent = new Intent(MainActivity.this,
+									GroupActivity.class);
 							startActivity(intent);
-							
-							
-						//	Toast.makeText(MainActivity.this, "添加", 1).show();
+
+							// Toast.makeText(MainActivity.this, "添加",
+							// 1).show();
 						}
 					});
 			resetOtherTabs();
@@ -334,6 +335,5 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			mTabIndicators.get(i).setIconAlpha(0);
 		}
 	}
-
 
 }
