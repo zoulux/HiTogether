@@ -55,7 +55,7 @@ public class LoginActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		// �����ޱ�����
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_login);
@@ -197,7 +197,7 @@ public class LoginActivity extends BaseActivity {
 
 						@Override
 						public void onFailure(int arg0, String arg1) {
-							sweetAlertDialog.cancel();
+							sweetAlertDialog.dismiss();
 							isFirstClick = true;
 							ShowToast("账号或密码有误");
 
@@ -205,7 +205,7 @@ public class LoginActivity extends BaseActivity {
 					});
 
 		} else {
-			sweetAlertDialog.cancel();
+			sweetAlertDialog.dismiss();
 			isFirstClick = true;
 			ShowToast("输入有误");
 		}
@@ -249,8 +249,12 @@ public class LoginActivity extends BaseActivity {
 
 	@Override
 	public void onBackPressed() {
-		isFirstClick = true;
+
+		// sweetAlertDialog.dismiss();
+		//Todo 随时取消登录
 		super.onBackPressed();
+		isFirstClick = true;
+		mHandler.removeMessages(HANDLE_WHAT);
 	}
 
 	@OnClick(R.id.id_newuser)
@@ -269,4 +273,5 @@ public class LoginActivity extends BaseActivity {
 					}
 				});
 	}
+
 }
