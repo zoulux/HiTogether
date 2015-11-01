@@ -49,7 +49,7 @@ public class NewCameraInputProvider extends InputProvider.ExtendProvider {
 	@Override
 	public Drawable obtainPluginDrawable(Context arg0) {
 		// TODO Auto-generated method stub
-		return arg0.getResources().getDrawable(R.drawable.rc_ic_picture);
+		return arg0.getResources().getDrawable(R.drawable.rc_ic_camera);
 	}
 
 	@Override

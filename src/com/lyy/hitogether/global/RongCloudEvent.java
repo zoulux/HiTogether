@@ -1,8 +1,5 @@
 package com.lyy.hitogether.global;
 
-import java.io.File;
-import java.util.List;
-
 import io.rong.imkit.PushNotificationManager;
 import io.rong.imkit.RongContext;
 import io.rong.imkit.RongIM;
@@ -12,9 +9,11 @@ import io.rong.imkit.widget.provider.CameraInputProvider;
 import io.rong.imkit.widget.provider.InputProvider;
 import io.rong.imkit.widget.provider.VoIPInputProvider;
 import io.rong.imlib.RongIMClient;
+import io.rong.imlib.RongIMClient.ConnectionStatusListener.ConnectionStatus;
 import io.rong.imlib.location.RealTimeLocationConstant;
 import io.rong.imlib.location.message.RealTimeLocationStartMessage;
 import io.rong.imlib.model.Conversation;
+import io.rong.imlib.model.Conversation.ConversationType;
 import io.rong.imlib.model.Group;
 import io.rong.imlib.model.Message;
 import io.rong.imlib.model.MessageContent;
@@ -26,6 +25,9 @@ import io.rong.message.RichContentMessage;
 import io.rong.message.TextMessage;
 import io.rong.message.VoiceMessage;
 import io.rong.notification.PushNotificationMessage;
+
+import java.util.List;
+
 import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -43,8 +45,6 @@ import android.view.View;
 
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.MainActivity;
-import com.lyy.hitogether.datebase.DBManager;
-import com.lyy.hitogether.datebase.UserInfos;
 import com.lyy.hitogether.datebase.UserInfosDao;
 import com.lyy.hitogether.provider.ContactsProvider;
 import com.lyy.hitogether.provider.NewCameraInputProvider;
@@ -145,9 +145,6 @@ public final class RongCloudEvent implements
 		InputProvider.ExtendProvider[] provider = {
 				new PhotoCollectionsProvider(RongContext.getInstance()),// 图片
 				new NewCameraInputProvider(RongContext.getInstance()),// 相机
-				// new
-				// RealTimeLocationInputProvider(RongContext.getInstance()),//
-				// 地理位置
 				new VoIPInputProvider(RongContext.getInstance()),// 语音通话
 				new ContactsProvider(RongContext.getInstance()),// 通讯录
 		};
@@ -160,6 +157,7 @@ public final class RongCloudEvent implements
 
 		RongIM.getInstance().resetInputExtensionProvider(
 				Conversation.ConversationType.PRIVATE, provider);
+
 		RongIM.getInstance().resetInputExtensionProvider(
 				Conversation.ConversationType.DISCUSSION, provider1);
 		RongIM.getInstance().resetInputExtensionProvider(
@@ -652,6 +650,7 @@ public final class RongCloudEvent implements
 		Log.d("Begavior",
 				message.getObjectName() + ":" + message.getMessageId());
 
+		Log.i("onMessageClick", "onMessageClick");
 		return false;
 	}
 
@@ -750,9 +749,27 @@ public final class RongCloudEvent implements
 	public boolean onConversationClick(Context context, View view,
 			UIConversation conversation) {
 		MessageContent messageContent = conversation.getMessageContent();
-		// Uri uri = Uri.fromFile(new File("/sdcard/gcc.png"));
-		// conversation.setIconUrl(uri);
-		// conversation.setUIConversationTitle("hao");
+
+		// if
+		// (conversation.getConversationType().equals(ConversationType.PRIVATE))
+		// {
+		// Log.e("onConversationClick", "PRIVATE");
+		//
+		// RongIM.getInstance().startConversation(context,
+		// ConversationType.PRIVATE,
+		// conversation.getConversationTargetId(), "hhh");
+
+		// Intent intent = new Intent(context, ConversationActivity.class);
+		// intent.putExtra("type", ConversationType.PRIVATE);
+		// context.startActivity(intent);
+		// }
+
+		if (conversation.getConversationType().equals(ConversationType.GROUP)) {
+			RongIM.getInstance().startConversation(context,
+					ConversationType.GROUP,
+					conversation.getConversationTargetId(), "hhh");
+			Log.e("onConversationClick", "GROUP");
+		}
 
 		if (messageContent instanceof TextMessage) {// 文本消息
 
@@ -764,6 +781,8 @@ public final class RongCloudEvent implements
 			context.startActivity(new Intent(context, MainActivity.class));
 			return true;
 		}
+
+		Log.e("onConversationClick", "onConversationClick");
 		return false;
 	}
 

@@ -26,7 +26,7 @@ public class BaseActivity extends Activity {
 		Log.i(">>>>", msg + "");
 	}
 
-	Toast mToast;
+	Toast mToast; 
 
 	public void ShowToast(final int resId) {
 		// runOnUiThread(new Runnable() {

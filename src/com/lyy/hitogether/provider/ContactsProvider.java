@@ -20,7 +20,6 @@ import android.view.View;
 
 import com.lyy.hitogether.R;
 
-
 public class ContactsProvider extends InputProvider.ExtendProvider {
 
 	HandlerThread mWorkThread;
@@ -71,9 +70,8 @@ public class ContactsProvider extends InputProvider.ExtendProvider {
 		Intent intent = new Intent();
 		intent.setAction(Intent.ACTION_PICK);
 		intent.setData(ContactsContract.Contacts.CONTENT_URI);
-		startActivityForResult(intent, 
-				REQUEST_CONTACT);
-		
+		startActivityForResult(intent, REQUEST_CONTACT);
+
 	}
 
 	@Override
