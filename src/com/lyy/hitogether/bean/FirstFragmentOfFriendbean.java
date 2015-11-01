@@ -7,6 +7,8 @@ public class FirstFragmentOfFriendbean {
 	private String yourDesc;
 	private String sendTime;
 	private int picCount;
+	private String orderNo;
+	private String collectionId;
 
 	public int getMyFriendAvartar() {
 		return myFriendAvartar;
@@ -56,6 +58,26 @@ public class FirstFragmentOfFriendbean {
 		this.picCount = picCount;
 	}
 
+	
+
+	public String getOrderNo() {
+		return orderNo;
+	}
+
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
+	}
+	
+	
+
+	public String getCollectionId() {
+		return collectionId;
+	}
+
+	public void setCollectionId(String collectionId) {
+		this.collectionId = collectionId;
+	}
+
 	public FirstFragmentOfFriendbean(int myFriendAvartar, String myFriendName,
 			int praiseCount, String sendTime, String yourDesc) {
 		super();
@@ -67,13 +89,26 @@ public class FirstFragmentOfFriendbean {
 	}
 
 	public FirstFragmentOfFriendbean(String myFriendName, int praiseCount,
-			String yourDesc, String sendTime, int picCount) {
+			String yourDesc, String sendTime, int picCount, String orderNo,String collectionId) {
 		super();
 		this.myFriendName = myFriendName;
 		this.praiseCount = praiseCount;
 		this.yourDesc = yourDesc;
 		this.sendTime = sendTime;
 		this.picCount = picCount;
+		this.orderNo = orderNo;
+		this.collectionId = collectionId;
+	}
+	
+	public FirstFragmentOfFriendbean(String myFriendName, 
+			String yourDesc, String sendTime, int picCount, String orderNo) {
+		super();
+		this.myFriendName = myFriendName;
+		this.yourDesc = yourDesc;
+		this.sendTime = sendTime;
+		this.picCount = picCount;
+		this.orderNo = orderNo;
+	
 	}
 
 }

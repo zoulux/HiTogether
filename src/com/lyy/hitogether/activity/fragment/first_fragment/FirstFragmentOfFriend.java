@@ -17,7 +17,6 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.adapter.FirstFragmentOfFriendAdapter;
 import com.lyy.hitogether.adapter.PictureAndTextAdapter;
@@ -52,13 +51,16 @@ public class FirstFragmentOfFriend extends Fragment {
 	}
 
 	int a = 0;
+	int left = 0;
 
 	private List<FirstFragmentOfFriendbean> getDatas() {
 		List<FirstFragmentOfFriendbean> list = new ArrayList<FirstFragmentOfFriendbean>();
 		for (int i = 0; i < 20; i++) {
 			a = (int) (Math.random() * 10);
+			left =1000 + (int) (Math.random() * 1000);
 			list.add(new FirstFragmentOfFriendbean("大雁" + i, i,
-					"我想去火星啊！！！" + i, "12:" + i, a));
+					"我想去火星啊！！！" + i, "12:" + i, a, "8888888888888"+left, String
+							.valueOf(i)));
 		}
 
 		return list;
