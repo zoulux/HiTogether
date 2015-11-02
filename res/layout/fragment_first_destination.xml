@@ -75,14 +75,24 @@
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <GridView
+        <com.handmark.pulltorefresh.library.PullToRefreshGridView
+            xmlns:ptr="http://schemas.android.com/apk/res-auto"
             android:id="@+id/id_gridview_des"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_gravity="center_horizontal"
             android:numColumns="2"
-            android:scrollbars="none" >
-        </GridView>
+            android:scrollbars="none"
+            ptr:ptrAnimationStyle="flip"
+            ptr:ptrHeaderBackground="@android:color/background_light"
+            ptr:ptrHeaderSubTextColor="@android:color/holo_blue_dark"
+            ptr:ptrHeaderTextColor="@android:color/holo_blue_dark"
+            ptr:ptrListViewExtrasEnabled="false"
+            ptr:ptrDrawable="@drawable/arrow"
+            ptr:ptrMode="pullFromStart"
+            ptr:ptrRefreshableViewBackground="@android:color/background_light"
+            ptr:ptrScrollingWhileRefreshingEnabled="true"
+            ptr:ptrShowIndicator="false" />
     </LinearLayout>
 
 </LinearLayout>
