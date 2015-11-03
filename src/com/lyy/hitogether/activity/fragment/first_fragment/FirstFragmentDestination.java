@@ -2,35 +2,44 @@ package com.lyy.hitogether.activity.fragment.first_fragment;
 
 import java.util.List;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.Toast;
-
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.handmark.pulltorefresh.library.ILoadingLayout;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshGridView;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.BaseFragment;
 import com.lyy.hitogether.adapter.MyPagerAdapter;
 import com.lyy.hitogether.adapter.PictureAndTextAdapter;
 import com.lyy.hitogether.bean.HotScenic;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
 import com.lyy.hitogether.view.MyViewPager;
+
 //github.com/zoulux/HiTogether
 
 public class FirstFragmentDestination extends BaseFragment {
 
-	private GridView gridView;
+	private PullToRefreshGridView gridView;
+	private SweetAlertDialog sweetAlertDialog;
 	private String[] scen = new String[] { "风景1", "风景2", "风景3", "风景4", "风景5",
 			"风景6", "风景7", "风景8", "风景9", "风景10" };
 	private int[] pics = new int[] { R.drawable.p1, R.drawable.p2,
@@ -39,7 +48,7 @@ public class FirstFragmentDestination extends BaseFragment {
 
 	private MyViewPager myViewPager;
 
-//	private SweetAlertDialog alertDialog;
+	// private SweetAlertDialog alertDialog;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,8 +56,45 @@ public class FirstFragmentDestination extends BaseFragment {
 		View view = inflater.inflate(R.layout.fragment_first_destination, null);
 		isPrepared = true;
 		init(view);
+
 		lazyLoad();
 		return view;
+	}
+
+	private void initIndicator() {
+		ILoadingLayout startLabels = gridView
+				.getLoadingLayoutProxy(true, false);
+		startLabels.setPullLabel("下拉刷新");// 刚下拉时，显示的提示
+		startLabels.setRefreshingLabel("正在刷新...");// 刷新时
+		startLabels.setReleaseLabel("松开刷新数据");// 下来达到一定距离时，显示的提示
+
+		// ILoadingLayout endLabels = gridView.getLoadingLayoutProxy(
+		// false, true);
+		// endLabels.setPullLabel("你可劲拉，拉2...");// 刚下拉时，显示的提示
+		// endLabels.setRefreshingLabel("好嘞，正在刷新2...");// 刷新时
+		// endLabels.setReleaseLabel("你敢放，我就敢刷新2...");// 下来达到一定距离时，显示的提示
+
+	}
+
+	private class GetDataTask extends AsyncTask<Void, Void, Void> {
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			try {
+				// Thread.sleep(2000);
+				postAsync("getAllHotScenic", null);
+			} catch (Exception e) {
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			// mListItems.add("" + mItemCount++);
+			// mAdapter.notifyDataSetChanged();
+			// Call onRefreshComplete when the list has been refreshed.
+			gridView.onRefreshComplete();
+		}
 	}
 
 	private void init(View view) {
@@ -70,12 +116,18 @@ public class FirstFragmentDestination extends BaseFragment {
 	}
 
 	private void initView(View view) {
-//		alertDialog = new SweetAlertDialog(getActivity(),
-//				SweetAlertDialog.PROGRESS_TYPE);
-		gridView = (GridView) view.findViewById(R.id.id_gridview_des);
+		// alertDialog = new SweetAlertDialog(getActivity(),
+		// SweetAlertDialog.PROGRESS_TYPE);
+		gridView = (PullToRefreshGridView) view
+				.findViewById(R.id.id_gridview_des);
 		myViewPager = (MyViewPager) view
 				.findViewById(R.id.id_viewpager_fragment_first_dec);
 		initAdapter();
+
+		sweetAlertDialog = new SweetAlertDialog(
+				FirstFragmentDestination.this.getActivity(), 5);
+		sweetAlertDialog.setTitleText("加载中...");
+		sweetAlertDialog.showCancelButton(false);
 
 	}
 
@@ -145,6 +197,7 @@ public class FirstFragmentDestination extends BaseFragment {
 
 	private Handler mHandler;
 	private boolean isPrepared;
+
 	/**
 	 * 根据message获取的值来设定ViewPager的item
 	 */
@@ -199,7 +252,8 @@ public class FirstFragmentDestination extends BaseFragment {
 
 		// Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
 
-		baseProgress.show();
+		//baseProgress.show();
+		sweetAlertDialog.show();
 		postAsync("getAllHotScenic", null);
 	}
 
@@ -235,7 +289,6 @@ public class FirstFragmentDestination extends BaseFragment {
 
 	}
 
-	
 	/**
 	 * 当每个页面自动切换时，获得当前的view，然后做监听
 	 */
@@ -256,7 +309,8 @@ public class FirstFragmentDestination extends BaseFragment {
 	public void onPause() {
 
 		isVisible = false;
-		baseProgress.dismiss();
+		sweetAlertDialog.dismiss();
+		//baseProgress.dismiss();
 
 		isPrepared = false;
 
@@ -280,23 +334,25 @@ public class FirstFragmentDestination extends BaseFragment {
 	}
 
 	private void handleFaild(String string) {
-		baseProgress.dismiss();
-
+		//baseProgress.dismiss();
+		sweetAlertDialog.dismiss();
+		ShowToast("请检查网络");
 	}
 
 	private void handleSuccess(String json) {
-		baseProgress.dismiss();
-
-
+		//baseProgress.dismiss();
+		sweetAlertDialog.dismiss();
 		Gson gson = new Gson();
 		List<HotScenic> list = gson.fromJson(json,
 				new TypeToken<List<HotScenic>>() {
 				}.getType());
-
+		initIndicator();
 		// Log.i("TAG", list.toString());
 		PictureAndTextAdapter adapter = new PictureAndTextAdapter(
 				getActivity(), list);
 		gridView.setAdapter(adapter);
+
+		
 	}
 
 	public void setCountMax() {
@@ -308,6 +364,39 @@ public class FirstFragmentDestination extends BaseFragment {
 	public void setCountMin() {
 		count = 1;
 
+	}
+	
+	@Override
+	public void onResume() {
+		
+		super.onResume();
+		gridView.setOnRefreshListener(new OnRefreshListener2<GridView>() {
+
+			@Override
+			public void onPullDownToRefresh(
+					PullToRefreshBase<GridView> refreshView) {
+				Log.e("TAG", "onPullDownToRefresh"); // Do work to
+				String label = DateUtils.formatDateTime(
+						FirstFragmentDestination.this.getActivity(),
+						System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME
+								| DateUtils.FORMAT_SHOW_DATE
+								| DateUtils.FORMAT_ABBREV_ALL);
+
+				// Update the LastUpdatedLabel
+				refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+
+				new GetDataTask().execute();
+			}
+
+			@Override
+			public void onPullUpToRefresh(
+					PullToRefreshBase<GridView> refreshView) {
+				Log.e("TAG", "onPullUpToRefresh"); // Do work to refresh
+													// the list here.
+				new GetDataTask().execute();
+			}
+		});
+		
 	}
 
 }
