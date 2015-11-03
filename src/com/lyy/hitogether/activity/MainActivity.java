@@ -69,7 +69,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private CustomTitleBarView customTitleBarView_2;
 	private CustomTitleBarView customTitleBarView_3;
 
-	private static final int MENU_ITEM_QUIT = 9;
+	private static final int MENU_ITEM_QUIT = 10;
+	private static final int MENU_ITEM_update = 9;
 	private static final int MENU_ITEM_GROUP = 4;
 
 	private List<ChangeColorIconWithText> mTabIndicators = new ArrayList<ChangeColorIconWithText>();
@@ -150,6 +151,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			MainActivity.this.finish();
 			break;
 
+			case MENU_ITEM_update:
+			
 		default:
 			break;
 		}
