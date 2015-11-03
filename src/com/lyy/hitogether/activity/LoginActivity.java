@@ -102,7 +102,6 @@ public class LoginActivity extends BaseActivity {
 							@Override
 							public void onSuccess(List<UserInfo> users) {
 
-							
 								if (users != null && users.size() > 0) {
 
 									for (UserInfo userInfo : users) {
@@ -251,7 +250,7 @@ public class LoginActivity extends BaseActivity {
 	public void onBackPressed() {
 
 		// sweetAlertDialog.dismiss();
-		//Todo 随时取消登录
+		// Todo 随时取消登录
 		super.onBackPressed();
 		isFirstClick = true;
 		mHandler.removeMessages(HANDLE_WHAT);
@@ -259,19 +258,24 @@ public class LoginActivity extends BaseActivity {
 
 	@OnClick(R.id.id_newuser)
 	public void newUser(View v) {
-		HttpUtils.getGroup(LoginActivity.this, "00001",
-				new MyResultListener<String>() {
 
-					@Override
-					public void onSuccess(List<String> list) {
-						Log.i("HttpUtils", list.toString());
-					}
+		Intent intent = new Intent(LoginActivity.this,
+				RegisterActivityGetNumber.class);
+		startActivity(intent);
 
-					@Override
-					public void onFaild(int code, String err) {
-
-					}
-				});
+		// HttpUtils.getGroup(LoginActivity.this, "00001",
+		// new MyResultListener<String>() {
+		//
+		// @Override
+		// public void onSuccess(List<String> list) {
+		// Log.i("HttpUtils", list.toString());
+		// }
+		//
+		// @Override
+		// public void onFaild(int code, String err) {
+		//
+		// }
+		// });
 	}
 
 }
