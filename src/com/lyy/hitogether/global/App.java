@@ -66,7 +66,7 @@ public class App extends Application {
 			if (getApplicationInfo().packageName
 					.equals(getCurrenPro(getApplicationContext()))) {
 
-				RongContext.init(this);
+		//		RongContext.init(this);
 
 				RongCloudEvent.init(this);
 				ImageLoader.getInstance().init(

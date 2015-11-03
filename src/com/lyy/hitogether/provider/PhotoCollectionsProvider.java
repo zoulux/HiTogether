@@ -21,7 +21,6 @@ public class PhotoCollectionsProvider extends ExtendProvider {
 
 	@Override
 	public Drawable obtainPluginDrawable(Context context) {
-
 		return context.getResources().getDrawable(R.drawable.rc_ic_picture);
 	}
 

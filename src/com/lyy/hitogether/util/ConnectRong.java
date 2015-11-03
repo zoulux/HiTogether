@@ -26,6 +26,7 @@ import com.lyy.hitogether.activity.LoginActivity;
 import com.lyy.hitogether.bean.Group;
 import com.lyy.hitogether.bean.MyUser;
 import com.lyy.hitogether.global.App;
+import com.lyy.hitogether.global.RongCloudEvent;
 import com.lyy.hitogether.util.HttpUtils.MyResultListener;
 
 public class ConnectRong {
@@ -113,6 +114,7 @@ public class ConnectRong {
 
 					@Override
 					public void onSuccess(Object result) {
+						RongCloudEvent.getInstance().setOtherListener();
 						String json = (String) result;
 						Gson gson = new Gson();
 						List<Group> groupList = gson.fromJson(json,
