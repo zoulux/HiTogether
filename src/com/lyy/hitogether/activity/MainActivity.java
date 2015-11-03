@@ -227,7 +227,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		one.setIconAlpha(1.0f);
 
 	}
-
+int temp=3;
 	@SuppressLint("NewApi")
 	@Override
 	public void onClick(View v) {
@@ -241,6 +241,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			mainTopbarView.setVisibility(View.VISIBLE);
 			resetOtherTabs();
 			mTabIndicators.get(0).setIconAlpha(1.0f);
+			//Toast.makeText(MainActivity.this,mViewPager.getChildCount()+"", Toast.LENGTH_SHORT).show();
 			mViewPager.setCurrentItem(0, true);
 			break;
 		case R.id.id_two:
@@ -312,13 +313,14 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		case R.id.id_main_title_bar_radio_group_radio_button_one:
 
 			firstFragment.setItem(0);
+			temp=1;
 			ra2.setBackgroundColor(Color.alpha(0));
 			ra1.setBackground(getResources().getDrawable(
 					R.drawable.main_title_radiobutton1));
 			break;
 
 		case R.id.id_main_title_bar_radio_group_radio_button_two:
-
+			temp=2;
 			firstFragment.setItem(1);
 			ra1.setBackgroundColor(Color.alpha(0));
 			ra2.setBackground(getResources().getDrawable(
