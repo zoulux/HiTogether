@@ -31,6 +31,7 @@ import com.lyy.hitogether.bean.MyUser;
 import com.lyy.hitogether.bean.Service;
 import com.lyy.hitogether.bean.ThirdFragmentBean;
 import com.lyy.hitogether.global.App;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
 
 public class ThirdFragment extends BaseFragment {
 	private PullToRefreshGridView mGridView;
@@ -38,7 +39,7 @@ public class ThirdFragment extends BaseFragment {
 
 	private boolean isPrepared;
 	private List<Service> list;
-
+	private SweetAlertDialog sweetAlertDialog;
 	// private SweetAlertDialog alertDialog;
 
 	// private boolean mHasLoadOnce=false;
@@ -108,6 +109,9 @@ public class ThirdFragment extends BaseFragment {
 		// thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(), null);
 		mGridView = (PullToRefreshGridView) view
 				.findViewById(R.id.id_third_fragment_grideview);
+		sweetAlertDialog = new SweetAlertDialog(getActivity(), 5);
+		sweetAlertDialog.setTitleText("加载中...");
+		sweetAlertDialog.showCancelButton(false);
 		// mGriView.setAdapter(thirdFragmentAdapter);
 
 	}
@@ -172,7 +176,9 @@ public class ThirdFragment extends BaseFragment {
 	 */
 	protected void handleSuccess(String json) {
 		Log.i("ThirdFragment", "handleSuccess");
-		baseProgress.cancel();
+		//ShowToast("handle");
+		sweetAlertDialog.dismiss();
+		//baseProgress.cancel();
 		Gson gson = new Gson();
 		list = gson.fromJson(json, new TypeToken<List<Service>>() {
 		}.getType());
@@ -181,6 +187,72 @@ public class ThirdFragment extends BaseFragment {
 		thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(), list);
 		mGridView.setAdapter(thirdFragmentAdapter);
 		
+		
+
+		initEvent();
+		// mHasLoadOnce = true;
+	}
+
+	/**
+	 * 返回错误结果，提示。。
+	 * 
+	 * @param code
+	 *            错误代码
+	 */
+
+	protected void handleFaild(String code) {
+		Log.i("ThirdFragment", "handleFaild");
+		sweetAlertDialog.dismiss();
+		//baseProgress.cancel();
+		ShowToast("请检查网络");
+	}
+
+	/**
+	 * 不可见不加载，没准备好不加载
+	 */
+	@Override
+	protected void lazyLoad() {
+
+		if (!isPrepared || !isVisible) {
+			Log.i("lazyLoad1", isPrepared + ":" + isPrepared);
+			return;
+		}
+
+		Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
+		//baseProgress.show();
+		
+		sweetAlertDialog.show();
+		postAsync("getAllService", null);
+	}
+
+	@Override
+	public void onPause() {
+		isVisible = false;
+		isPrepared = false;
+		sweetAlertDialog.dismiss();
+		super.onPause();
+	}
+
+	@Override
+	public boolean handleMessage(Message msg) {
+
+		switch (msg.what) {
+		case GET_SUCCESS:
+			handleSuccess(msg.obj.toString());
+			break;
+		case GET_FAILD:
+			handleFaild(msg.obj.toString());
+			break;
+		default:
+			break;
+		}
+
+		return false;
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
 		mGridView
 		.setOnRefreshListener(new OnRefreshListener2<GridView>()
 		{
@@ -213,60 +285,5 @@ public class ThirdFragment extends BaseFragment {
 				new GetDataTask().execute();
 			}
 		});
-
-		initEvent();
-		// mHasLoadOnce = true;
-	}
-
-	/**
-	 * 返回错误结果，提示。。
-	 * 
-	 * @param code
-	 *            错误代码
-	 */
-
-	protected void handleFaild(String code) {
-		Log.i("ThirdFragment", "handleFaild");
-		baseProgress.cancel();
-		ShowToast("加载失败，sorry!");
-	}
-
-	/**
-	 * 不可见不加载，没准备好不加载
-	 */
-	@Override
-	protected void lazyLoad() {
-
-		if (!isPrepared || !isVisible) {
-			Log.i("lazyLoad1", isPrepared + ":" + isPrepared);
-			return;
-		}
-
-		Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
-		baseProgress.show();
-		postAsync("getAllService", null);
-	}
-
-	@Override
-	public void onPause() {
-		isVisible = false;
-		super.onPause();
-	}
-
-	@Override
-	public boolean handleMessage(Message msg) {
-
-		switch (msg.what) {
-		case GET_SUCCESS:
-			handleSuccess(msg.obj.toString());
-			break;
-		case GET_FAILD:
-			handleFaild(msg.obj.toString());
-			break;
-		default:
-			break;
-		}
-
-		return false;
 	}
 }
