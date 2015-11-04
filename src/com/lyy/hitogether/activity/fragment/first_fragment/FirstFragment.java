@@ -24,7 +24,7 @@ public class FirstFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		System.err.println("FirstFragment onCreateView");
+		//System.err.println("FirstFragment onCreateView");
 		firstFragmentDestination.setCountMin();
 		return inflater.inflate(R.layout.fragment_first, null);
 	}
@@ -53,8 +53,23 @@ public class FirstFragment extends Fragment {
 			}
 
 			@Override
-			public Fragment getItem(int arg0) {
-				return mTabs.get(arg0);
+			public Fragment getItem(int position) {
+				
+				System.out.println(position+"position>>>>>>>>>>>>>>>>>>>");
+//				 Fragment page = null;
+//			        if (mTabs.size() > position) {
+//			            page = mTabs.get(position);
+//			            if (page != null) {
+//			                return page;
+//			            }
+//			        }
+
+//			        while (position>=mTabs.size()) {
+//			        	mTabs.add(null);
+//			        }
+//			        page = Fragment.newPage(mTabs.get(position),position);
+//			        mTabs.set(position, page);
+			        return mTabs.get(position);
 			}
 		};
 	}

@@ -16,8 +16,13 @@
         android:background="@color/light_blue"
         android:visibility="gone"
         lyman:centerType="text"
-        lyman:leftType="text"
-        lyman:rightType="text" />
+        lyman:centerText="发需求"
+        lyman:centerTextSize="20sp"
+        lyman:centerTextColor="@android:color/white"
+        lyman:leftType="image"
+        lyman:leftImageSource="@drawable/switch_draw_menu"
+        lyman:leftImagePadding="2dp"
+         />
 
     <com.lyy.hitogether.view.CustomTitleBarView
         android:id="@+id/id_main_CustomTitleBarView_2"
@@ -26,10 +31,12 @@
         android:background="@color/light_blue"
         android:visibility="gone"
         lyman:centerType="text"
-        lyman:leftImagePaddingLeft="5dp"
-        lyman:leftImageSource="@drawable/ic_launcher"
+        lyman:centerText="找向导"
+        lyman:centerTextSize="20sp"
+        lyman:centerTextColor="@android:color/white"
         lyman:leftType="image"
-        lyman:rightType="text" />
+        lyman:leftImageSource="@drawable/switch_draw_menu"
+        lyman:leftImagePadding="2dp"/>
 
     <com.lyy.hitogether.view.CustomTitleBarView
         android:id="@+id/id_main_CustomTitleBarView_3"
@@ -39,12 +46,18 @@
         android:visibility="gone"
         lyman:centerText="会话"
         lyman:centerTextSize="20sp"
+        lyman:centerTextColor="@android:color/white"
         lyman:centerType="text"
         lyman:rightText="添加"
         lyman:rightTextSize="18sp"
         lyman:rightTextPaddingRight="10dp"
         lyman:rightTextColor="@android:color/white"
-        lyman:rightType="text" />
+        lyman:rightType="text"
+        lyman:leftType="image"
+        lyman:leftImageSource="@drawable/switch_draw_menu"
+        lyman:leftImagePadding="2dp"
+         />
+    
 
     <android.support.v4.widget.DrawerLayout
         android:id="@+id/drawer_layout"
