@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import cn.bmob.v3.Bmob;
+import cn.bmob.v3.update.BmobUpdateAgent;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lyy.hitogether.R;
@@ -22,18 +23,15 @@ public class Initialize extends BaseActivity {
 		ViewUtils.inject(this);
 		Bmob.initialize(this, Config.APP_KEY);
 
-	
+		new Handler().postDelayed(new Runnable() {
 
-		 new Handler().postDelayed(new Runnable() {
-		
-		 @Override
-		 public void run() {
-		
-		 startActivity(new Intent(Initialize.this, LoginActivity.class));
-		 Initialize.this.finish();
-		 }
-		 }, 2000);
-		
+			@Override
+			public void run() {
+
+				startActivity(new Intent(Initialize.this, LoginActivity.class));
+				Initialize.this.finish();
+			}
+		}, 2000);
 
 		// InitBmobAndRong.init(Initialize.this, new LinitLisetener() {
 		//

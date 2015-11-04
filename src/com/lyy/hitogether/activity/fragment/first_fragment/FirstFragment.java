@@ -60,7 +60,7 @@ public class FirstFragment extends Fragment {
 	}
 
 	public void setItem(int pos) {
-		viewPager.setCurrentItem(pos, false);
+		viewPager.setCurrentItem(pos, true);
 
 	}
 

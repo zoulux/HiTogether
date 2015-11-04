@@ -9,7 +9,7 @@ import android.widget.Toast;
  * test
  * 
  * @author Administrator
- * 
+ *  
  */
 public class BaseActivity extends Activity {
 	@Override

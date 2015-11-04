@@ -14,7 +14,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Gravity;
@@ -30,13 +29,15 @@ import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+import cn.bmob.v3.listener.BmobUpdateListener;
+import cn.bmob.v3.update.BmobUpdateAgent;
+import cn.bmob.v3.update.UpdateResponse;
+import cn.bmob.v3.update.UpdateStatus;
 
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.SecondFragment;
 import com.lyy.hitogether.activity.fragment.ThirdFragment;
 import com.lyy.hitogether.activity.fragment.first_fragment.FirstFragment;
-import com.lyy.hitogether.adapter.GroupAdapter;
-import com.lyy.hitogether.bean.Group;
 import com.lyy.hitogether.manager.SystemBarTintManager;
 import com.lyy.hitogether.view.ChangeColorIconWithText;
 import com.lyy.hitogether.view.CustomTitleBarView;
@@ -70,10 +71,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private CustomTitleBarView customTitleBarView_3;
 
 	private static final int MENU_ITEM_QUIT = 10;
-	private static final int MENU_ITEM_update = 9;
+	private static final int MENU_ITEM_UPDATE = 9;
 	private static final int MENU_ITEM_GROUP = 4;
 
 	private List<ChangeColorIconWithText> mTabIndicators = new ArrayList<ChangeColorIconWithText>();
+
+	private int updateStatus = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,10 +91,40 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		SystemBarTintManager tintManager = new SystemBarTintManager(this);
 		tintManager.setStatusBarTintEnabled(true);
 		tintManager.setTintColor(Color.parseColor("#5CACEE"));
+		initUpdate();
 		init();
 	}
 
+	private void initUpdate() {
+		BmobUpdateAgent.setUpdateListener(new BmobUpdateListener() {
+
+			@Override
+			public void onUpdateReturned(int updateStatus,
+					UpdateResponse updateResponse) {
+				Toast.makeText(MainActivity.this, updateStatus + "状态", 1)
+						.show();
+				Log.i("BmobUpdateAgent",  updateStatus + "状态");
+				
+				
+				
+				// MainActivity.this.updateStatus = updateStatus;
+				//
+				// switch (updateStatus) {
+				// case UpdateStatus.Yes:
+				// BmobUpdateAgent.forceUpdate(MainActivity.this);
+				// break;
+				//
+				// default:
+				// break;
+				// }
+
+			}
+		});
+
+	}
+
 	private void init() {
+
 		imageViewAvar = (ImageView) findViewById(R.id.id_main_title_bar_avatar);
 		imageViewAvar.setOnClickListener(new OnClickListener() {
 
@@ -151,11 +184,27 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			MainActivity.this.finish();
 			break;
 
-			case MENU_ITEM_update:
-			
+		case MENU_ITEM_UPDATE:
+			// Toast.makeText(MainActivity.this, "click", 1).show();
+			updateClient();
+			// BmobUpdateAgent.forceUpdate(MainActivity.this);
 		default:
 			break;
 		}
+
+	}
+
+	private void updateClient() {
+
+		if (updateStatus == UpdateStatus.No) {
+			Toast.makeText(MainActivity.this, "没有更新", Toast.LENGTH_SHORT)
+					.show();
+		} else if (updateStatus == UpdateStatus.Yes) {
+			BmobUpdateAgent.forceUpdate(MainActivity.this);
+
+		}
+
+		// BmobUpdateAgent.update(this);
 
 	}
 

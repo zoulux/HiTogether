@@ -15,9 +15,9 @@ import com.lyy.hitogether.R;
 
 public class ConversationActivity extends FragmentActivity {
 
-	  /**
+	  /** 
 	   * 目标 Id
-	   */
+	   */ 
 	    private String mTargetId;
 
 	    /**

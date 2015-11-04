@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lyy.hitogether"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.1" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -275,6 +275,16 @@
         <activity android:name=".activity.RegisterActivityGetNumber" >
         </activity>
         <activity android:name=".activity.RegisterActivityVerifyCode" >
+        </activity>
+
+        <!-- 自动更新组件渠道标签 -->
+        <meta-data
+            android:name="BMOB_CHANNEL"
+            android:value="androidHitogether" />
+
+        <activity
+            android:name="cn.bmob.v3.update.UpdateDialogActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
         </activity>
     </application>
 
