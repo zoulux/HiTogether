@@ -16,13 +16,21 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
-
+/**
+ * PopupWindow地点滚轮选择器
+ * @author Administrator
+ *
+ */
 public class SwitchDesPopUpWindow extends PopupWindow {
 
 	private Context context;
+	//PopupWindow的宽度
 	private int mWidth;
+	//PopupWindow的高度
 	private int mHeight;
+	//获取PopupWindow的view
 	private View mConvertView;
+	//确认选择的按钮
 	private ImageView yesImg;
 
 	String[] shengs = { "安徽", "福建", "广西", "贵州", "海南", "北京" };
@@ -34,7 +42,7 @@ public class SwitchDesPopUpWindow extends PopupWindow {
 	String[] scene06 = { "故宫", "颐和园", "长城" };
 
 	private WheelView shengWV = null;
-	private WheelView shiWV = null;
+	private WheelView sceneWV = null;
 	private onCorrectClickListener mListener;
 
 	public interface onCorrectClickListener {
@@ -83,7 +91,7 @@ public class SwitchDesPopUpWindow extends PopupWindow {
 			@Override
 			public void onClick(View v) {
 				if (mListener != null) {
-					mListener.onCorrectClick(v, currentProvence, currentCity);
+					mListener.onCorrectClick(v, currentProvence, currentScene);
 					SwitchDesPopUpWindow.this.dismiss();
 				}
 
@@ -97,14 +105,14 @@ public class SwitchDesPopUpWindow extends PopupWindow {
 
 	private void initId() {
 		shengWV = (WheelView) mConvertView.findViewById(R.id.other_place_sheng);
-		shiWV = (WheelView) mConvertView.findViewById(R.id.other_place_shi);
+		sceneWV = (WheelView) mConvertView.findViewById(R.id.other_place_shi);
 		yesImg = (ImageView) mConvertView.findViewById(R.id.id_yes);
 
 		shengWV.setVisibleItems(5);
-		shiWV.setVisibleItems(5);
+		sceneWV.setVisibleItems(5);
 
 		shengWV.setCyclic(false);
-		shiWV.setCyclic(false);
+		sceneWV.setCyclic(false);
 		chosePlce();
 
 	}
@@ -114,87 +122,82 @@ public class SwitchDesPopUpWindow extends PopupWindow {
 	}
 
 	public String getSmallLable() {
-		return shiWV.getLabel();
+		return sceneWV.getLabel();
 	}
 
 	private String currentProvence;
-	private String currentCity;
+	private String currentScene;
 
 	private void chosePlce() {
 		shengWV.setAdapter(new ArrayWheelAdapter<String>(shengs));
-		shiWV.setAdapter(new ArrayWheelAdapter<String>(scene01));
+		sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene01));
 		shengWV.setLabel("省");
-		shiWV.setLabel("景区");
+		sceneWV.setLabel("景区");
 		currentProvence = shengs[shengWV.getCurrentItem()];
-		currentCity = scene01[shiWV.getCurrentItem()];
-		// placeTV.setText("您选的是:" + shengs[shengWV.getCurrentItem()]
-		// + shengWV.getLabel() + beijing[shiWV.getCurrentItem()]
-		// + shiWV.getLabel());
+		currentScene = scene01[sceneWV.getCurrentItem()];
 
 		shengWV.addChangingListener(new OnWheelChangedListener() {
 
 			@Override
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
 				// TODO Auto-generated method stub
-				shiWV.setCurrentItem(0);
+				sceneWV.setCurrentItem(0);
 				String sheng = shengs[newValue];
-				String shi = "";
+				String scene = "";
 				if (sheng.equals("北京")) {
 					shengWV.setLabel("市");
-					shiWV.setLabel("景区");
-					shiWV.setAdapter(new ArrayWheelAdapter<String>(scene06));
-					shi = scene06[shiWV.getCurrentItem()];
+					sceneWV.setLabel("景区");
+					sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene06));
+					scene = scene06[sceneWV.getCurrentItem()];
 				} else {
 					shengWV.setLabel("省");
-					shiWV.setLabel("景区");
+					sceneWV.setLabel("景区");
 
 					if (sheng.equals("安徽")) {
-						shiWV.setAdapter(new ArrayWheelAdapter<String>(scene01));
-						shi = scene01[shiWV.getCurrentItem()];
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene01));
+						scene = scene01[sceneWV.getCurrentItem()];
 					} else if (sheng.equals("福建")) {
 
-						shiWV.setAdapter(new ArrayWheelAdapter<String>(scene02));
-						shi = scene02[shiWV.getCurrentItem()];
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene02));
+						scene = scene02[sceneWV.getCurrentItem()];
 					} else if (sheng.equals("广西")) {
-						shiWV.setAdapter(new ArrayWheelAdapter<String>(scene03));
-						shi = scene03[shiWV.getCurrentItem()];
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene03));
+						scene = scene03[sceneWV.getCurrentItem()];
 					} else if (sheng.equals("贵州")) {
-						shiWV.setAdapter(new ArrayWheelAdapter<String>(scene04));
-						shi = scene04[shiWV.getCurrentItem()];
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene04));
+						scene = scene04[sceneWV.getCurrentItem()];
 					} else if (sheng.equals("海南")) {
-						shiWV.setAdapter(new ArrayWheelAdapter<String>(scene05));
-						shi = scene05[shiWV.getCurrentItem()];
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene05));
+						scene = scene05[sceneWV.getCurrentItem()];
 					}
 
 				}
 				currentProvence = shengs[shengWV.getCurrentItem()];
-				currentCity = shi;
+				currentScene = scene;
 			}
 		});
 
-		shiWV.addChangingListener(new OnWheelChangedListener() {
+		sceneWV.addChangingListener(new OnWheelChangedListener() {
 
 			@Override
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
 				// TODO Auto-generated method stub
 				String sheng = shengs[shengWV.getCurrentItem()];
-				String shi = "";
+				String scene = "";
 				if (sheng.equals("北京")) {
-					shi = scene06[shiWV.getCurrentItem()];
+					scene = scene06[sceneWV.getCurrentItem()];
 				} else if (sheng.equals("安徽")) {
-					shi = scene01[shiWV.getCurrentItem()];
+					scene = scene01[sceneWV.getCurrentItem()];
 				} else if (sheng.equals("福建")) {
-					shi = scene02[shiWV.getCurrentItem()];
+					scene = scene02[sceneWV.getCurrentItem()];
 				} else if (sheng.equals("广西")) {
-					shi = scene03[shiWV.getCurrentItem()];
+					scene = scene03[sceneWV.getCurrentItem()];
 				} else if (sheng.equals("贵州")) {
-					shi = scene04[shiWV.getCurrentItem()];
+					scene = scene04[sceneWV.getCurrentItem()];
 				} else if (sheng.equals("海南")) {
-					shi = scene05[shiWV.getCurrentItem()];
+					scene = scene05[sceneWV.getCurrentItem()];
 				}
-				currentCity = shi;
-				// placeTV.setText("您选的是:" + sheng + shengWV.getLabel() + shi
-				// + shiWV.getLabel());
+				currentScene = scene;
 			}
 		});
 	}

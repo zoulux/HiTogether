@@ -16,20 +16,28 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
-
+/**
+ * PopupWindow人数滚轮选择器
+ * @author Administrator
+ *
+ */
 public class SwitchPeoplePopUpWindow extends PopupWindow {
 
 	private Context context;
+//PopupWindow的宽度
 	private int mWidth;
+	//PopupWindow的高度
 	private int mHeight;
+	//获取PopupWindow的view
 	private View mConvertView;
+	//确认选择 的按钮
 	private ImageView yesImg;
-
+	
 	private WheelView peopleWV = null;
 	private onCorrectClickListener3 mListener;
 
 	private String peoples[] = new String[100];
-
+	//定义一个人数确认的回调接口
 	public interface onCorrectClickListener3 {
 		void onCorrectClick3(View v, int count);
 	}
@@ -97,7 +105,7 @@ public class SwitchPeoplePopUpWindow extends PopupWindow {
 		choseCount();
 
 	}
-
+	//当前选择的人数
 	private String currentCount;
 
 	private void choseCount() {
@@ -114,7 +122,7 @@ public class SwitchPeoplePopUpWindow extends PopupWindow {
 		});
 
 	}
-
+	//计算PopupWindow的宽高
 	private void culculateWidthAndHeight() {
 		WindowManager wm = (WindowManager) context
 				.getSystemService(Context.WINDOW_SERVICE);

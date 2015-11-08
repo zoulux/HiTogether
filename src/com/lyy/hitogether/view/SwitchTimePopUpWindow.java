@@ -18,12 +18,21 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.adapter.ArrayWheelAdapter;
 import com.lyy.hitogether.view.WheelView.OnWheelChangedListener;
 
+/**
+ * PopUpWindow选择时间的滚轮选择器
+ * @author Administrator
+ *
+ */
 public class SwitchTimePopUpWindow extends PopupWindow {
 
 	private Context context;
+	//PopUpWindow的宽度
 	private int mWidth;
+	//PopUpWindow的高度
 	private int mHeight;
+	//获取PopUpWindow的view
 	private View mConvertView;
+	//确认选择的按钮
 	private ImageView yesImg;
 	// 滚轮的年份
 	private WheelView yearWV = null;
@@ -35,15 +44,19 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 	String[] yearArrayString = null;
 	String[] dayArrayString = null;
 	String[] monthArrayString = null;
+	//当前选择的年份
 	private String currentYear;
+	//当前选择的月份
 	private String currentMonth;
+	//当前选择的日期
 	private String currentDay;
-	private int leftMonthLenth;
 	Calendar c = null;
+	//当期系统的年份
 	private int nowTimeYear;
+	//当前系统的月份
 	private int nowTimeMonth;
 	private onCorrectClickListener2 mListener;
-
+	//创建确认选择的回调接口
 	public interface onCorrectClickListener2 {
 		void onCorrectClick2(View v, String Year, String Month, String Day);
 	}
@@ -163,31 +176,30 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 		yearWV.addChangingListener(new OnWheelChangedListener() {
 			@Override
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
+				
+				currentYear = yearArrayString[yearWV.getCurrentItem()];
+				
 				monthWV.setCurrentItem(0);
 				dayWV.setCurrentItem(0);
 				if (newValue != 0) {
 					monthArrayString = getMonthArray(12);
+					currentMonth = monthArrayString[monthWV.getCurrentItem()];
 					dayArrayString = getDayArray(getDay(
 							Integer.parseInt(currentYear),
 							Integer.parseInt(currentMonth)));
+
 				} else {
 					monthArrayString = getMonthArray(c.get(Calendar.MONTH),
 							12 - c.get(Calendar.MONTH));
-					
+					currentMonth = monthArrayString[monthWV.getCurrentItem()];
 					dayArrayString = getDayArray(
 							c.get(Calendar.DAY_OF_MONTH),
 							getDay(Integer.parseInt(currentYear),
 									Integer.parseInt(currentMonth))
 									- c.get(Calendar.DAY_OF_MONTH));
 				}
-				// 获取年和月
-				// year =
-				// Integer.parseInt(yearArrayString[yearWV.getCurrentItem()]);
-				// month =
-				// Integer.parseInt(monthArrayString[monthWV.getCurrentItem()]);
-				// 根据年和月生成天数数组
-				//dayArrayString = getDayArray(getDay(year, month));
-				monthWV.setAdapter(new ArrayWheelAdapter<String>(monthArrayString));
+				monthWV.setAdapter(new ArrayWheelAdapter<String>(
+						monthArrayString));
 				// 给天数的滚轮设置数据
 				dayWV.setAdapter(new ArrayWheelAdapter<String>(dayArrayString));
 				// 防止数组越界
@@ -206,9 +218,8 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
 				// TODO Auto-generated method stub
 				// 获取年和月
-				year = Integer.parseInt(yearArrayString[yearWV.getCurrentItem()]);
-				month = Integer.parseInt(monthArrayString[monthWV
-						.getCurrentItem()]);
+				//year = Integer.parseInt(yearArrayString[yearWV.getCurrentItem()]);
+				currentMonth = monthArrayString[monthWV.getCurrentItem()];
 				// 根据年和月生成天数数组
 				dayArrayString = getDayArray(getDay(
 						Integer.parseInt(currentYear),
@@ -247,9 +258,6 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 		month = Integer.parseInt(monthArrayString[monthWV.getCurrentItem()]);
 		dayArrayString = getDayArray(c.get(Calendar.DAY_OF_MONTH),
 				getDay(year, month) - c.get(Calendar.DAY_OF_MONTH));
-		// System.out.println(c.get(Calendar.DAY_OF_MONTH)+"  "+(getDay(year,
-		// month)-c.get(Calendar.DAY_OF_MONTH)));
-		// dayArrayString = getDayArray(getDay(year, month));
 		dayWV.setAdapter(new ArrayWheelAdapter<String>(dayArrayString));
 		dayWV.setCurrentItem(getNumData(c.get(Calendar.DAY_OF_MONTH) + "",
 				dayArrayString));
@@ -303,8 +311,6 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 				monthArrayString[monthWV.getCurrentItem()],
 				dayArrayString[dayWV.getCurrentItem()]);
 
-		 System.out.println(yearWV.getCurrentItem()+">>>>>>>>"+monthWV.getCurrentItem()+"<<<<<<"+dayWV.getCurrentItem());
-
 	}
 
 	// 生成时间
@@ -312,8 +318,6 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 		currentYear = year;
 		currentMonth = month;
 		currentDay = day;
-		System.out.println(currentYear + " year" + currentMonth + " month"
-				+ currentDay + " day");
 	}
 
 	// 根据当前年份和月份判断这个月的天数
