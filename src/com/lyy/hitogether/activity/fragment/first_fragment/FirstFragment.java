@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
@@ -20,19 +21,21 @@ public class FirstFragment extends Fragment {
 	private MyViewPager viewPager;
 	private List<Fragment> mTabs = new ArrayList<Fragment>();
 	private FragmentPagerAdapter mAdapter;
+	//private View v;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		//System.err.println("FirstFragment onCreateView");
 		firstFragmentDestination.setCountMin();
 		return inflater.inflate(R.layout.fragment_first, null);
+
 	}
 
 	@Override
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
-
+		System.out.println("onViewCreated");
+		//v = view;
 		initView(view);
 		initData();
 		viewPager.setAdapter(mAdapter);
@@ -54,22 +57,7 @@ public class FirstFragment extends Fragment {
 
 			@Override
 			public Fragment getItem(int position) {
-				
-				System.out.println(position+"position>>>>>>>>>>>>>>>>>>>");
-//				 Fragment page = null;
-//			        if (mTabs.size() > position) {
-//			            page = mTabs.get(position);
-//			            if (page != null) {
-//			                return page;
-//			            }
-//			        }
-
-//			        while (position>=mTabs.size()) {
-//			        	mTabs.add(null);
-//			        }
-//			        page = Fragment.newPage(mTabs.get(position),position);
-//			        mTabs.set(position, page);
-			        return mTabs.get(position);
+				return mTabs.get(position);
 			}
 		};
 	}
@@ -84,12 +72,46 @@ public class FirstFragment extends Fragment {
 				.findViewById(R.id.id_viewpager_fragment_first);
 
 	}
+
 	@Override
 	public void onDestroyView() {
 		System.err.println("onDestroyViewMax");
 		firstFragmentDestination.setCountMax();
 
 		super.onDestroy();
+	}
+
+	@Override
+	public void onResume() {
+		System.out.println("onResume");
+		System.out.println(mTabs.size() + ">>>>>>>>>>>>>>>>>>>>");
+		super.onResume();
+	}
+
+	@Override
+	public void onAttach(Activity activity) {
+		System.out.println("onAttach");
+		super.onAttach(activity);
+	}
+
+	@Override
+	public void onCreate(@Nullable Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		System.out.println("onCreate");
+	}
+
+	@Override
+	public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onActivityCreated(savedInstanceState);
+		System.out.println("onActivityCreated");
+	}
+
+	@Override
+	public void onPause() {
+		mTabs.clear();
+		super.onPause();
 	}
 
 	public void setMin() {

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/first_fragment_of_friend_list_item_bg"
+ 
     android:layout_margin="5dp"
     android:orientation="vertical" >
 
@@ -26,7 +26,7 @@
             android:layout_marginLeft="12dp"
             android:layout_toRightOf="@+id/id_first_fragment_of_friend_list_avartar"
             android:text="乐友游"
-            android:textColor="@android:color/white" />
+           />
 
         <TextView
             android:id="@+id/id_first_fragment_of_friend_list_send_time"
@@ -37,7 +37,7 @@
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@+id/id_first_fragment_of_friend_list_avartar"
             android:text="11:11"
-            android:textColor="@android:color/white" />
+             />
     </RelativeLayout>
 
     <TextView
@@ -47,7 +47,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:text="今天是个好日子，有没有想去玩的啊！！！"
-        android:textColor="@android:color/white" />
+         />
 
     <com.lyy.hitogether.view.CustomGalleryView
         android:id="@+id/id_first_fragment_of_friend_list_customGalleryView"
@@ -71,7 +71,7 @@
             android:textSize="12sp"
             android:src="@drawable/no_praise"
             android:text="取消收藏"
-            android:textColor="@android:color/white" />
+           />
 
         <Button
             android:id="@+id/id_first_fragment_of_friend_list_No"
@@ -83,7 +83,7 @@
             android:padding="3dp"
             android:layout_marginLeft="5dp"
             android:text="订单编号"
-            android:textColor="@android:color/white"
+           
             android:textSize="12sp" />
 
         <TextView
@@ -97,7 +97,7 @@
             android:gravity="center"
             android:padding="2dp"
             android:text="赞"
-            android:textColor="@android:color/white"
+   
             android:textSize="10sp" />
 
         <Button
@@ -109,7 +109,7 @@
             android:layout_marginRight="5dp"
             android:background="@drawable/first_fragment_of_friend_bt_selector"
             android:text="聊天"
-            android:textColor="@android:color/white"
+   
             android:textSize="12sp" />
     </RelativeLayout>
 
