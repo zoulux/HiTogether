@@ -52,7 +52,10 @@
     <com.lyy.hitogether.view.CustomGalleryView
         android:id="@+id/id_first_fragment_of_friend_list_customGalleryView"
         android:layout_width="fill_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+         />
 
     <RelativeLayout
         android:layout_width="match_parent"

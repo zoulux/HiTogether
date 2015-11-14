@@ -295,6 +295,7 @@ int temp=3;
 			mTabIndicators.get(0).setIconAlpha(1.0f);
 			//Toast.makeText(MainActivity.this,mViewPager.getChildCount()+"", Toast.LENGTH_SHORT).show();
 			mViewPager.setCurrentItem(0, true);
+			
 			break;
 		case R.id.id_two:
 			customTitleBarView_1.setVisibility(View.VISIBLE);
@@ -335,6 +336,7 @@ int temp=3;
 			resetOtherTabs();
 			mTabIndicators.get(2).setIconAlpha(1.0f);
 			mViewPager.setCurrentItem(2, false);
+			firstFragment.clearTab();
 			break;
 
 		case R.id.id_four:
@@ -360,6 +362,7 @@ int temp=3;
 			resetOtherTabs();
 			mTabIndicators.get(3).setIconAlpha(1.0f);
 			mViewPager.setCurrentItem(3, false);
+			firstFragment.clearTab();
 			break;
 
 		case R.id.id_main_title_bar_radio_group_radio_button_one:

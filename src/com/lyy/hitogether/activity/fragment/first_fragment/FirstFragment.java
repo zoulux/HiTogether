@@ -107,15 +107,25 @@ public class FirstFragment extends Fragment {
 		super.onActivityCreated(savedInstanceState);
 		System.out.println("onActivityCreated");
 	}
+	
+	public void clearTab(){
+		mTabs.clear();
+	}
 
 	@Override
 	public void onPause() {
-		mTabs.clear();
+		//mTabs.clear();
 		super.onPause();
+		System.out.println("onPause");
 	}
 
 	public void setMin() {
 
+	}
+	@Override
+	public void onStop() {
+		super.onStop();
+		System.out.println("onStop");
 	}
 
 }
