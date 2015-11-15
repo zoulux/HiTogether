@@ -43,6 +43,11 @@ public class LoginActivity extends BaseActivity {
 
 	private EditText mEditTextUserName;
 	private EditText mEditTextPwd;
+	//
+	// final ClearActivity username = (ClearActivity)
+	// findViewById(R.id.id_userName);
+	// final ClearActivity password = (ClearActivity)
+	// findViewById(R.id.id_userPwd);
 
 	SweetAlertDialog sweetAlertDialog = null;
 	// Բ��ͷ��

@@ -6,24 +6,34 @@
     android:background="@drawable/login_bg"
     android:orientation="vertical" >
 
-    <EditText
+    <com.lyy.hitogether.activity.ClearActivity
         android:id="@+id/id_userName"
         style="?android:attr/textViewStyle"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@android:color/background_light"
-        android:hint="@string/login_view_user_name"
-        android:paddingLeft="15dp" >
-    </EditText>
+        android:drawableLeft="@drawable/icon_user"
+        android:drawableRight="@drawable/delete_selector"
+        android:hint="输入用户名"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:singleLine="true" >
+    </com.lyy.hitogether.activity.ClearActivity>
 
-    <EditText
+    <com.lyy.hitogether.activity.ClearActivity
         android:id="@+id/id_userPwd"
         style="?android:attr/textViewStyle"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@android:color/background_light"
-        android:hint="@string/login_view_user_passsword"
-        android:paddingLeft="15dp" />
+        android:drawableLeft="@drawable/account_icon"
+        android:drawableRight="@drawable/delete_selector"
+        android:hint="输入密码"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:password="true"
+        android:singleLine="true" >
+    </com.lyy.hitogether.activity.ClearActivity>
 
     <Button
         android:id="@+id/id_loginBt"
