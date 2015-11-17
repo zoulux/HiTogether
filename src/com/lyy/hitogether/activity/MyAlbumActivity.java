@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -41,27 +42,27 @@ import com.lyy.hitogether.view.ListImageDirPopUpWindow.onDirSelectListener;
 
 public class MyAlbumActivity extends BaseActivity {
 	private GridView mGridView;
-	// ËùÓĞÍ¼Æ¬ËùÔÚµÄÂ·¾¶
+	// ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½Úµï¿½Â·ï¿½ï¿½
 	private List<String> mImgs;
-	// Ïà²áÀï¼ÓÔØÍ¼Æ¬µÄÊÊÅäÆ÷
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private ImageAdapter mImageAdapter;
-	// ×îµ×ÏÂÏÔÊ¾µÄ²¼¾Ö
+	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä²ï¿½ï¿½ï¿½
 	private RelativeLayout mBottomLy;
-	// Ä¿Â¼µÄÃû³Æ
+	// Ä¿Â¼ï¿½ï¿½ï¿½ï¿½ï¿½
 	private TextView mDirName;
-	// Ä¿Â¼µ×ÏÂÍ¼Æ¬µÄÊıÁ¿
+	// Ä¿Â¼ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private TextView mDirCount;
-	// µ±Ç°Ä¿Â¼ËùÔÚµÄÎÄ¼ş¼Ğ
+	// ï¿½ï¿½Ç°Ä¿Â¼ï¿½ï¿½ï¿½Úµï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 	private File mCurrentDir;
-	// Í¼Æ¬µÄ×î´óÊıÁ¿
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	private int mMaxCount;
 
 	private ProgressDialog mProgressDialog;
 
 	private static final int DATA_LOADED = 0X110;
-	// ´Óµ×ÏÂµ¯³öµÄ²Ëµ¥PopUpWindow
+	// ï¿½Óµï¿½ï¿½Âµï¿½ï¿½ï¿½ï¿½Ä²Ëµï¿½PopUpWindow
 	private ListImageDirPopUpWindow mDirPopUpWindow;
-	// È·¶¨Ñ¡ÔñµÄ°´Å¥
+	// È·ï¿½ï¿½Ñ¡ï¿½ï¿½Ä°ï¿½Å¥
 	private Button titleBtSend;
 
 	private Handler mHandle = new Handler() {
@@ -136,11 +137,11 @@ public class MyAlbumActivity extends BaseActivity {
 	}
 
 	/**
-	 * ¼ÓÔØÍ¼Æ¬
+	 * ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
 	 */
 	protected void data2View() {
 		if (mCurrentDir == null) {
-			Toast.makeText(this, "Î´É¨Ãèµ½ÈÎºÎÍ¼Æ¬", 1).show();
+			Toast.makeText(this, "Î´É¨ï¿½èµ½ï¿½Îºï¿½Í¼Æ¬", 1).show();
 			return;
 		}
 		mImgs = Arrays.asList(mCurrentDir.list());
@@ -169,20 +170,27 @@ public class MyAlbumActivity extends BaseActivity {
 			public void onClick(View v) {
 				// selectedPicCount = mImageAdapter.getSelectedImgSize();
 
-				Intent intent = new Intent(MyAlbumActivity.this,
-						ShareMyTravalActivity.class);
-				intent.putStringArrayListExtra("path",
-						(ArrayList<String>) mImageAdapter.getSelectedImgPath());
-				MyAlbumActivity.this.setResult(RESULT_OK, intent);
-				MyAlbumActivity.this.finish();
-				mImageAdapter.end(MyAlbumActivity.this);
+				
+				
+				startIntent((ArrayList<String>) mImageAdapter.getSelectedImgPath());
 			}
 		});
 
 	}
 
+	protected void startIntent(ArrayList<String> path) {
+		Intent intent = new Intent(MyAlbumActivity.this,
+				ShareMyTravalActivity.class);
+		intent.putStringArrayListExtra("path",
+				path);
+		MyAlbumActivity.this.setResult(RESULT_OK, intent);
+		MyAlbumActivity.this.finish();
+		mImageAdapter.end(MyAlbumActivity.this);
+		
+	}
+
 	/**
-	 * ÄÚÈİÇøÓò±äÁÁ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	protected void lightOn() {
 		WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -192,7 +200,7 @@ public class MyAlbumActivity extends BaseActivity {
 	}
 
 	/**
-	 * ÄÚÈİÇøÓò±ä°µ
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ä°µ
 	 */
 	protected void lightOff() {
 		WindowManager.LayoutParams lp = getWindow().getAttributes();
@@ -202,15 +210,15 @@ public class MyAlbumActivity extends BaseActivity {
 	}
 
 	/**
-	 * ÀûÓÃcontentProviderÉ¨ÃèÊÖ»úÖĞµÄÍ¼Æ¬
+	 * ï¿½ï¿½ï¿½ï¿½contentProviderÉ¨ï¿½ï¿½ï¿½Ö»ï¿½ï¿½Ğµï¿½Í¼Æ¬
 	 */
 	private void initDatas() {
 		if (!Environment.getExternalStorageState().equals(
 				Environment.MEDIA_MOUNTED)) {
-			Toast.makeText(this, "sd¿¨²»¿ÉÓÃ", 1).show();
+			Toast.makeText(this, "sdå¡ä¸å¯ç”¨", 1).show();
 			return;
 		}
-		mProgressDialog = ProgressDialog.show(this, null, "ÕıÔÚ¼ÓÔØ...");
+		mProgressDialog = ProgressDialog.show(this, null, "åŠ è½½ä¸­...");
 		new Thread() {
 			public void run() {
 				Uri mImageUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
@@ -267,7 +275,7 @@ public class MyAlbumActivity extends BaseActivity {
 
 				}
 				cursor.close();
-				// Í¨ÖªhandlerÉ¨ÃèÍ¼±êÍê³É
+				// Í¨ÖªhandlerÉ¨ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½
 				mHandle.sendEmptyMessage(DATA_LOADED);
 			};
 		}.start();
@@ -282,5 +290,17 @@ public class MyAlbumActivity extends BaseActivity {
 		titleBtSend = (Button) findViewById(R.id.id_title_bar_bt);
 
 	}
+	
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK
+				&& event.getAction() == KeyEvent.ACTION_DOWN) {
+			startIntent(new ArrayList<String>());
+		}
+		return true;
+	}
+	
+	
 
 }

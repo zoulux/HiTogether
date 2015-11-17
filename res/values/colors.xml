@@ -26,4 +26,9 @@
     
     <color name="lightgray">#D3D3D3</color><!--亮灰色 -->
     <color name="light_blue">#5CACEE</color>
+    
+    
+    <!-- RadioButton TextColor -->
+    <color name="radio_button_text_select_color">#5CACEE</color>
+    <color name="radio_button_text_unselect_color">#9E9E9E</color>
 </resources>

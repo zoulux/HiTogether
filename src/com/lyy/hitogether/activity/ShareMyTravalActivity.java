@@ -20,16 +20,15 @@ import com.lyy.hitogether.view.CustomTitleBarView;
 import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
 import com.lyy.hitogether.view.CustomTitleBarView.onRightBarViewClickListener;
 
-
 public class ShareMyTravalActivity extends BaseActivity {
 	// ���������
 	private EditText shareText;
 	private GridView mGridView;
 	// ���ڱ����������
 	private ShareMyaTravalAdapter adapter;
-	
+
 	private CustomTitleBarView customTitleBarView;
-	
+
 	List<String> getPicPath = new ArrayList<String>();
 
 	private final int MY_ALBUM = 0;
@@ -42,7 +41,6 @@ public class ShareMyTravalActivity extends BaseActivity {
 		init();
 	}
 
-	
 	/**
 	 * ��ʼ��
 	 */
@@ -77,9 +75,9 @@ public class ShareMyTravalActivity extends BaseActivity {
 		});
 	}
 
-	
-	//ѡ���ͼƬ������
+	// ѡ���ͼƬ������
 	int picSize = 0;
+
 	/**
 	 * ѡ��ͼƬ�󷵻ص���ݼ���ѡ���ͼƬ
 	 */
@@ -107,19 +105,18 @@ public class ShareMyTravalActivity extends BaseActivity {
 
 	}
 
-
 	private void initView() {
 		customTitleBarView = (CustomTitleBarView) findViewById(R.id.id_share_my_traval_CustomTitleBarView);
-		
-		//		topBarLeft = (TopbarBtView) findViewById(R.id.id_topBarLeft);
-//		topBarLeft.setVisibility(View.VISIBLE);
-//		topBarLeft.setTopbarImageDrawable(R.drawable.back_indicator);
-//		topBarLeft.setGravity(Gravity.CENTER_VERTICAL);
-//
-//		topBarRight = (TopbarBtView) findViewById(R.id.id_topBarRight);
-//		topBarRight.setVisibility(View.VISIBLE);
-//		topBarRight.setTopbarImageDrawable(R.drawable.ic_menu_share_holo_dark);
-//		topBarRight.setGravity(Gravity.CENTER_VERTICAL);
+
+		// topBarLeft = (TopbarBtView) findViewById(R.id.id_topBarLeft);
+		// topBarLeft.setVisibility(View.VISIBLE);
+		// topBarLeft.setTopbarImageDrawable(R.drawable.back_indicator);
+		// topBarLeft.setGravity(Gravity.CENTER_VERTICAL);
+		//
+		// topBarRight = (TopbarBtView) findViewById(R.id.id_topBarRight);
+		// topBarRight.setVisibility(View.VISIBLE);
+		// topBarRight.setTopbarImageDrawable(R.drawable.ic_menu_share_holo_dark);
+		// topBarRight.setGravity(Gravity.CENTER_VERTICAL);
 
 	}
 
@@ -127,23 +124,25 @@ public class ShareMyTravalActivity extends BaseActivity {
 	 * ��ʼ�������¼�
 	 */
 	private void initEvent() {
-		customTitleBarView.setOnLeftBarViewClickListener(new onLeftBarViewClickListener() {
-			
-			@Override
-			public void onclick(View v) {
-				ShareMyTravalActivity.this.finish();
-				
-			}
-		});
-		
-customTitleBarView.setOnRightBarViewClickListener(new onRightBarViewClickListener() {
-			
-			@Override
-			public void onclick(View v) {
-				ShowToast("分享");
-				
-			}
-		});
+		customTitleBarView
+				.setOnLeftBarViewClickListener(new onLeftBarViewClickListener() {
+
+					@Override
+					public void onclick(View v) {
+						ShareMyTravalActivity.this.finish();
+
+					}
+				});
+
+		customTitleBarView
+				.setOnRightBarViewClickListener(new onRightBarViewClickListener() {
+
+					@Override
+					public void onclick(View v) {
+						ShowToast("分享");
+
+					}
+				});
 	}
 
 }

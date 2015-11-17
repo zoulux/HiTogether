@@ -280,7 +280,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 
 	}
 int temp=3;
-	@SuppressLint("NewApi")
+	
+	@SuppressLint({ "NewApi" })
 	@Override
 	public void onClick(View v) {
 
@@ -369,6 +370,8 @@ int temp=3;
 
 			firstFragment.setItem(0);
 			temp=1;
+			ra1.setTextColor(getResources().getColor(R.color.radio_button_text_select_color));
+			ra2.setTextColor(getResources().getColor(R.color.radio_button_text_unselect_color));
 			ra2.setBackgroundColor(Color.alpha(0));
 			ra1.setBackground(getResources().getDrawable(
 					R.drawable.main_title_radiobutton1));
@@ -380,6 +383,9 @@ int temp=3;
 			ra1.setBackgroundColor(Color.alpha(0));
 			ra2.setBackground(getResources().getDrawable(
 					R.drawable.main_title_radiobutton2));
+			
+			ra2.setTextColor(getResources().getColor(R.color.radio_button_text_select_color));
+			ra1.setTextColor(getResources().getColor(R.color.radio_button_text_unselect_color));
 
 			break;
 

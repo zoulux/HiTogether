@@ -1,7 +1,11 @@
 package com.lyy.hitogether.activity.fragment.first_fragment;
 
+import io.rong.imkit.RongIM;
+import io.rong.imlib.model.UserInfo;
+
 import java.util.List;
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,21 +35,27 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.BaseFragment;
 import com.lyy.hitogether.adapter.MyPagerAdapter;
 import com.lyy.hitogether.adapter.PictureAndTextAdapter;
+import com.lyy.hitogether.adapter.ThirdFragmentAdapter;
+import com.lyy.hitogether.adapter.ThirdFragmentAdapter.OnThirdFragmentBtListener;
 import com.lyy.hitogether.bean.HotScenic;
+import com.lyy.hitogether.bean.MyUser;
+import com.lyy.hitogether.bean.Service;
+import com.lyy.hitogether.global.App;
 import com.lyy.hitogether.mydialog.SweetAlertDialog;
 import com.lyy.hitogether.view.MyViewPager;
 
-//github.com/zoulux/HiTogether
 
 public class FirstFragmentDestination extends BaseFragment {
+	
+	private PullToRefreshGridView mGridView;
+	private ThirdFragmentAdapter thirdFragmentAdapter;
+//
+	private boolean isPrepared;
+	private List<Service> list;
 
-	private PullToRefreshGridView gridView;
+	//private PullToRefreshGridView gridView;
 	private SweetAlertDialog sweetAlertDialog;
-	private String[] scen = new String[] { "风景1", "风景2", "风景3", "风景4", "风景5",
-			"风景6", "风景7", "风景8", "风景9", "风景10" };
-	private int[] pics = new int[] { R.drawable.p1, R.drawable.p2,
-			R.drawable.p3, R.drawable.p4, R.drawable.p1, R.drawable.p2,
-			R.drawable.p3, R.drawable.p4, R.drawable.p1, R.drawable.p2 };
+
 
 	private MyViewPager myViewPager;
 
@@ -63,7 +73,7 @@ public class FirstFragmentDestination extends BaseFragment {
 	}
 
 	private void initIndicator() {
-		ILoadingLayout startLabels = gridView
+		ILoadingLayout startLabels = mGridView
 				.getLoadingLayoutProxy(true, false);
 		startLabels.setPullLabel("下拉刷新");// 刚下拉时，显示的提示
 		startLabels.setRefreshingLabel("正在刷新...");// 刷新时
@@ -83,7 +93,7 @@ public class FirstFragmentDestination extends BaseFragment {
 		protected Void doInBackground(Void... params) {
 			try {
 				// Thread.sleep(2000);
-				postAsync("getAllHotScenic", null);
+				postAsync("getAllService", null);
 			} catch (Exception e) {
 			}
 			return null;
@@ -94,32 +104,65 @@ public class FirstFragmentDestination extends BaseFragment {
 			// mListItems.add("" + mItemCount++);
 			// mAdapter.notifyDataSetChanged();
 			// Call onRefreshComplete when the list has been refreshed.
-			gridView.onRefreshComplete();
+			mGridView.onRefreshComplete();
 		}
 	}
 
 	private void init(View view) {
 		initView(view);
 
-		initEvent();
+		//initEvent();
 	}
 
 	private void initEvent() {
-		gridView.setOnItemClickListener(new OnItemClickListener() {
+		thirdFragmentAdapter
+		.setOnThirdFragmentBtListener(new OnThirdFragmentBtListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				ShowToast(position + "");
+			public void onBtclick(View v, int position) {
+				// ShowToast(position + "");
+
+				chatWithGuide(position);
+				if (!isContain(position)) {
+					MyUser user = list.get(position).getUser();
+					Uri uri = Uri.parse(user.getAvatar());
+					App.getInsatnce()
+							.getUserInfos()
+							.add(new UserInfo(user.getObjectId(), user
+									.getNick(), uri));
+					// ConnectRong.updateFrindsInfo(null);
+				}
 
 			}
 		});
 	}
+	
+	protected void chatWithGuide(int position) {
+		String targetUserId = list.get(position).getUser().getObjectId();
+		String targetUserName = list.get(position).getUser().getUsername();
+		RongIM.getInstance().startPrivateChat(getActivity(), targetUserId,
+				"与" + targetUserName + "聊天中");
+
+	}
+	
+	protected boolean isContain(int position) {
+
+		for (UserInfo user : App.getInsatnce().getUserInfos()) {
+
+			if (user.getUserId().equals(
+					list.get(position).getUser().getObjectId())) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 
 	private void initView(View view) {
 		// alertDialog = new SweetAlertDialog(getActivity(),
 		// SweetAlertDialog.PROGRESS_TYPE);
-		gridView = (PullToRefreshGridView) view
+		mGridView = (PullToRefreshGridView) view
 				.findViewById(R.id.id_gridview_des);
 		myViewPager = (MyViewPager) view
 				.findViewById(R.id.id_viewpager_fragment_first_dec);
@@ -197,7 +240,6 @@ public class FirstFragmentDestination extends BaseFragment {
 	}
 
 	private Handler mHandler;
-	private boolean isPrepared;
 
 	/**
 	 * 根据message获取的值来设定ViewPager的item
@@ -255,7 +297,7 @@ public class FirstFragmentDestination extends BaseFragment {
 
 		//baseProgress.show();
 		sweetAlertDialog.show();
-		postAsync("getAllHotScenic", null);
+		postAsync("getAllService", null);
 	}
 
 	/**
@@ -344,14 +386,13 @@ public class FirstFragmentDestination extends BaseFragment {
 		//baseProgress.dismiss();
 		sweetAlertDialog.dismiss();
 		Gson gson = new Gson();
-		List<HotScenic> list = gson.fromJson(json,
-				new TypeToken<List<HotScenic>>() {
-				}.getType());
+		list = gson.fromJson(json, new TypeToken<List<Service>>() {
+		}.getType());
 		initIndicator();
 		// Log.i("TAG", list.toString());
-		PictureAndTextAdapter adapter = new PictureAndTextAdapter(
-				getActivity(), list);
-		gridView.setAdapter(adapter);
+		thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(), list);
+		mGridView.setAdapter(thirdFragmentAdapter);
+		initEvent();
 
 		
 	}
@@ -371,33 +412,38 @@ public class FirstFragmentDestination extends BaseFragment {
 	public void onResume() {
 		
 		super.onResume();
-		gridView.setOnRefreshListener(new OnRefreshListener2<GridView>() {
+		mGridView
+		.setOnRefreshListener(new OnRefreshListener2<GridView>()
+		{
 
 			@Override
 			public void onPullDownToRefresh(
-					PullToRefreshBase<GridView> refreshView) {
+					PullToRefreshBase<GridView> refreshView)
+			{
 				Log.e("TAG", "onPullDownToRefresh"); // Do work to
 				String label = DateUtils.formatDateTime(
 						FirstFragmentDestination.this.getActivity(),
-						System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME
+						System.currentTimeMillis(),
+						DateUtils.FORMAT_SHOW_TIME
 								| DateUtils.FORMAT_SHOW_DATE
 								| DateUtils.FORMAT_ABBREV_ALL);
 
 				// Update the LastUpdatedLabel
-				refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
+				refreshView.getLoadingLayoutProxy()
+						.setLastUpdatedLabel(label);
 
 				new GetDataTask().execute();
 			}
 
 			@Override
 			public void onPullUpToRefresh(
-					PullToRefreshBase<GridView> refreshView) {
+					PullToRefreshBase<GridView> refreshView)
+			{
 				Log.e("TAG", "onPullUpToRefresh"); // Do work to refresh
 													// the list here.
 				new GetDataTask().execute();
 			}
 		});
-		
 	}
 
 }

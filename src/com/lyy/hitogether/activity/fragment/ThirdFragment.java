@@ -15,6 +15,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.google.gson.Gson;
@@ -25,8 +27,10 @@ import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.first_fragment.FirstFragmentDestination;
+import com.lyy.hitogether.adapter.PictureAndTextAdapter;
 import com.lyy.hitogether.adapter.ThirdFragmentAdapter;
 import com.lyy.hitogether.adapter.ThirdFragmentAdapter.OnThirdFragmentBtListener;
+import com.lyy.hitogether.bean.HotScenic;
 import com.lyy.hitogether.bean.MyUser;
 import com.lyy.hitogether.bean.Service;
 import com.lyy.hitogether.bean.ThirdFragmentBean;
@@ -34,12 +38,21 @@ import com.lyy.hitogether.global.App;
 import com.lyy.hitogether.mydialog.SweetAlertDialog;
 
 public class ThirdFragment extends BaseFragment {
-	private PullToRefreshGridView mGridView;
-	private ThirdFragmentAdapter thirdFragmentAdapter;
+	//private PullToRefreshGridView mGridView;
+	//private ThirdFragmentAdapter thirdFragmentAdapter;
 
 	private boolean isPrepared;
-	private List<Service> list;
+	//private List<Service> list;
 	private SweetAlertDialog sweetAlertDialog;
+	
+	
+	private PullToRefreshGridView gridView;
+//	private SweetAlertDialog sweetAlertDialog;
+	private String[] scen = new String[] { "风景1", "风景2", "风景3", "风景4", "风景5",
+			"风景6", "风景7", "风景8", "风景9", "风景10" };
+	private int[] pics = new int[] { R.drawable.p1, R.drawable.p2,
+			R.drawable.p3, R.drawable.p4, R.drawable.p1, R.drawable.p2,
+			R.drawable.p3, R.drawable.p4, R.drawable.p1, R.drawable.p2 };
 	// private SweetAlertDialog alertDialog;
 
 	// private boolean mHasLoadOnce=false;
@@ -49,8 +62,7 @@ public class ThirdFragment extends BaseFragment {
 			Bundle savedInstanceState) {
 		Log.i("ThirdFragment", "onCreateView");
 		View view = inflater.inflate(R.layout.fragment_third, container, false);
-
-		initView(view);
+		init(view);
 		isPrepared = true;
 
 		Log.i("TAG", "2");
@@ -59,76 +71,43 @@ public class ThirdFragment extends BaseFragment {
 		return view;
 	}
 
+	private void init(View view) {
+		initView(view);
+
+		initEvent();
+		
+	}
+
 	private void initEvent() {
-		thirdFragmentAdapter
-				.setOnThirdFragmentBtListener(new OnThirdFragmentBtListener() {
+		gridView.setOnItemClickListener(new OnItemClickListener() {
 
-					@Override
-					public void onBtclick(View v, int position) {
-						// ShowToast(position + "");
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				ShowToast(position + "");
 
-						chatWithGuide(position);
-						if (!isContain(position)) {
-							MyUser user = list.get(position).getUser();
-							Uri uri = Uri.parse(user.getAvatar());
-							App.getInsatnce()
-									.getUserInfos()
-									.add(new UserInfo(user.getObjectId(), user
-											.getNick(), uri));
-							// ConnectRong.updateFrindsInfo(null);
-						}
-
-					}
-				});
-	}
-
-	protected boolean isContain(int position) {
-
-		for (UserInfo user : App.getInsatnce().getUserInfos()) {
-
-			if (user.getUserId().equals(
-					list.get(position).getUser().getObjectId())) {
-				return true;
 			}
-		}
-
-		return false;
+		});
 	}
 
-	protected void chatWithGuide(int position) {
-		String targetUserId = list.get(position).getUser().getObjectId();
-		String targetUserName = list.get(position).getUser().getUsername();
-		RongIM.getInstance().startPrivateChat(getActivity(), targetUserId,
-				"与" + targetUserName + "聊天中");
 
-	}
+
 
 	private void initView(View view) {
-		// alertDialog=new SweetAlertDialog(getActivity(),
-		// SweetAlertDialog.PROGRESS_TYPE);
-		// thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(), null);
-		mGridView = (PullToRefreshGridView) view
+		gridView = (PullToRefreshGridView) view
 				.findViewById(R.id.id_third_fragment_grideview);
 		sweetAlertDialog = new SweetAlertDialog(getActivity(), 5);
 		sweetAlertDialog.setTitleText("加载中...");
 		sweetAlertDialog.showCancelButton(false);
-		// mGriView.setAdapter(thirdFragmentAdapter);
 
 	}
 	
 	private void initIndicator() {
-		ILoadingLayout startLabels = mGridView
+		ILoadingLayout startLabels = gridView
 				.getLoadingLayoutProxy(true, false);
 		startLabels.setPullLabel("下拉刷新");// 刚下拉时，显示的提示
 		startLabels.setRefreshingLabel("正在刷新...");// 刷新时
 		startLabels.setReleaseLabel("松开刷新数据");// 下来达到一定距离时，显示的提示
-
-//		ILoadingLayout endLabels = gridView.getLoadingLayoutProxy(
-//				false, true);
-//		endLabels.setPullLabel("你可劲拉，拉2...");// 刚下拉时，显示的提示
-//		endLabels.setRefreshingLabel("好嘞，正在刷新2...");// 刷新时
-//		endLabels.setReleaseLabel("你敢放，我就敢刷新2...");// 下来达到一定距离时，显示的提示
-	
 }
 	
 	private class GetDataTask extends AsyncTask<Void, Void, Void>
@@ -140,7 +119,7 @@ public class ThirdFragment extends BaseFragment {
 			try
 			{
 				//Thread.sleep(2000);
-				postAsync("getAllService", null);
+				postAsync("getAllHotScenic", null);
 			} catch (Exception e)
 			{
 			}
@@ -150,23 +129,20 @@ public class ThirdFragment extends BaseFragment {
 		@Override
 		protected void onPostExecute(Void result)
 		{
-//			mListItems.add("" + mItemCount++);
-//			mAdapter.notifyDataSetChanged();
-			// Call onRefreshComplete when the list has been refreshed.
-			mGridView.onRefreshComplete();
+			gridView.onRefreshComplete();
 		}
 	}
 
-	private List<ThirdFragmentBean> getdatas() {
-
-		List<ThirdFragmentBean> bean = new ArrayList<ThirdFragmentBean>();
-		for (int i = 0; i < 30; i++) {
-			bean.add(new ThirdFragmentBean(R.drawable.p1,
-					R.drawable.default_avarter, "名字" + i, " 中国好景点" + i, " 景点"
-							+ i, 2.5f));
-		}
-		return bean;
-	}
+//	private List<ThirdFragmentBean> getdatas() {
+//
+//		List<ThirdFragmentBean> bean = new ArrayList<ThirdFragmentBean>();
+//		for (int i = 0; i < 30; i++) {
+//			bean.add(new ThirdFragmentBean(R.drawable.p1,
+//					R.drawable.default_avarter, "名字" + i, " 中国好景点" + i, " 景点"
+//							+ i, 2.5f));
+//		}
+//		return bean;
+//	}
 
 	/**
 	 * 返回正确结果，接下来去写适配器
@@ -176,21 +152,17 @@ public class ThirdFragment extends BaseFragment {
 	 */
 	protected void handleSuccess(String json) {
 		Log.i("ThirdFragment", "handleSuccess");
-		//ShowToast("handle");
 		sweetAlertDialog.dismiss();
-		//baseProgress.cancel();
 		Gson gson = new Gson();
-		list = gson.fromJson(json, new TypeToken<List<Service>>() {
-		}.getType());
+		List<HotScenic> list = gson.fromJson(json,
+				new TypeToken<List<HotScenic>>() {
+				}.getType());
 		initIndicator();
-		// Log.i("TAG", list.toString());
-		thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(), list);
-		mGridView.setAdapter(thirdFragmentAdapter);
-		
-		
+		PictureAndTextAdapter adapter = new PictureAndTextAdapter(
+				getActivity(), list);
+		gridView.setAdapter(adapter);
 
-		initEvent();
-		// mHasLoadOnce = true;
+		//initEvent();
 	}
 
 	/**
@@ -222,7 +194,7 @@ public class ThirdFragment extends BaseFragment {
 		//baseProgress.show();
 		
 		sweetAlertDialog.show();
-		postAsync("getAllService", null);
+		postAsync("getAllHotScenic", null);
 	}
 
 	@Override
@@ -253,33 +225,27 @@ public class ThirdFragment extends BaseFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		mGridView
-		.setOnRefreshListener(new OnRefreshListener2<GridView>()
-		{
+		gridView.setOnRefreshListener(new OnRefreshListener2<GridView>() {
 
 			@Override
 			public void onPullDownToRefresh(
-					PullToRefreshBase<GridView> refreshView)
-			{
+					PullToRefreshBase<GridView> refreshView) {
 				Log.e("TAG", "onPullDownToRefresh"); // Do work to
 				String label = DateUtils.formatDateTime(
 						ThirdFragment.this.getActivity(),
-						System.currentTimeMillis(),
-						DateUtils.FORMAT_SHOW_TIME
+						System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME
 								| DateUtils.FORMAT_SHOW_DATE
 								| DateUtils.FORMAT_ABBREV_ALL);
 
 				// Update the LastUpdatedLabel
-				refreshView.getLoadingLayoutProxy()
-						.setLastUpdatedLabel(label);
+				refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
 
 				new GetDataTask().execute();
 			}
 
 			@Override
 			public void onPullUpToRefresh(
-					PullToRefreshBase<GridView> refreshView)
-			{
+					PullToRefreshBase<GridView> refreshView) {
 				Log.e("TAG", "onPullUpToRefresh"); // Do work to refresh
 													// the list here.
 				new GetDataTask().execute();
