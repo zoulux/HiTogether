@@ -81,6 +81,13 @@
             android:name="com.lyy.hitogether.activity.MyAlbumActivity"
             android:screenOrientation="portrait" >
         </activity>
+        
+        <activity
+            android:name="com.lyy.hitogether.activity.ShowSceneDetailsActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        
+        
 
         <!-- begin imlib request -->
 

@@ -47,7 +47,7 @@ public class CircleImageView extends ImageView {
 	private boolean mSetupPending;
 
 	public CircleImageView(Context context) {
-		super(context);
+		this(context,null);
 	}
 
 	public CircleImageView(Context context, AttributeSet attrs) {
@@ -116,6 +116,15 @@ public class CircleImageView extends ImageView {
 		mBitmap = getBitmapFromDrawable(getDrawable());
 		setup();
 	}
+	private int borderColor = Color.WHITE;
+	private int strokeWidth = 1;
+	public void setBorderColor(int color){
+		this.borderColor = color;
+	}
+	
+	public void setBorderStrokeWidth(int width){
+		strokeWidth = width;
+	}
 
 	private Bitmap getBitmapFromDrawable(Drawable drawable) {
 		if (drawable == null) {
@@ -164,8 +173,8 @@ public class CircleImageView extends ImageView {
 
 		mBorderPaint.setStyle(Paint.Style.STROKE);
 		mBorderPaint.setAntiAlias(true);
-		mBorderPaint.setColor(Color.WHITE);
-		mBorderPaint.setStrokeWidth(2);
+		mBorderPaint.setColor(borderColor);
+		mBorderPaint.setStrokeWidth(strokeWidth);
 
 		mBitmapHeight = mBitmap.getHeight();
 		mBitmapWidth = mBitmap.getWidth();
