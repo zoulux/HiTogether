@@ -18,124 +18,126 @@
         lyman:leftType="image" >
     </com.lyy.hitogether.view.CustomTitleBarView>
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/id_title" >
+        android:layout_height="match_parent" >
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/id_scene_detail_img"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/p1" />
+
+        <LinearLayout
+            android:id="@+id/id_guide_flag_layout"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/id_scene_detail_img"
+            android:layout_margin="5dp"
+            android:orientation="vertical" >
 
             <ImageView
-                android:id="@+id/id_scene_detail_img"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/p1" />
-
-            <LinearLayout
-                android:id="@+id/id_guide_flag_layout"
+                android:id="@+id/id_guide_flag"
                 android:layout_width="40dp"
-                android:layout_height="60dp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/id_scene_detail_img"
-                android:layout_margin="5dp"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:id="@+id/id_guide_flag"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/guideflag" />
-
-                <TextView
-                    android:id="@+id/id_guideText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:text="导游" />
-            </LinearLayout>
-
-            <com.lyy.hitogether.view.MyGuideOrTravalersLayout
-                android:id="@+id/id_guide_layout"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@+id/id_scene_detail_img"
-                android:layout_margin="5dp"
-                android:layout_toRightOf="@+id/id_guide_flag_layout" >
-            </com.lyy.hitogether.view.MyGuideOrTravalersLayout>
+                android:layout_height="40dp"
+                android:src="@drawable/guideflag" />
 
             <TextView
-                android:id="@+id/id_guids_more"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/id_scene_detail_img"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/text_shape"
-                android:gravity="center"
-                android:text="更多"
-                android:textSize="12sp" />
-
-            <LinearLayout
-                android:id="@+id/id_guide_flag_layout2"
-                android:layout_width="40dp"
-                android:layout_height="60dp"
-                android:layout_alignParentLeft="true"
-                android:layout_below="@+id/id_guide_flag_layout"
-                android:layout_margin="5dp"
-                android:orientation="vertical" >
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_menu_allfriends" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    android:text="游客" />
-            </LinearLayout>
-
-            <com.lyy.hitogether.view.MyGuideOrTravalersLayout
-                android:id="@+id/id_travaler_layout"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_below="@+id/id_guide_flag_layout"
-                android:layout_margin="5dp"
-                android:layout_toRightOf="@+id/id_guide_flag_layout2" >
-            </com.lyy.hitogether.view.MyGuideOrTravalersLayout>
-
-            <TextView
-                android:id="@+id/id_travalers_more"
-                android:layout_width="46dp"
-                android:layout_height="46dp"
-                android:layout_alignParentRight="true"
-                android:layout_below="@+id/id_guide_flag_layout"
-                android:layout_marginBottom="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/text_shape"
-                android:gravity="center"
-                android:text="更多"
-                android:textSize="12sp" />
-
-            <cn.sharesdk.socialization.QuickCommentBar
-                android:id="@+id/id_qcb_reply"
+                android:id="@+id/id_guideText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentRight="true"
-                android:background="@android:color/white" />
-         
-        </RelativeLayout>
-    </ScrollView>
+                android:layout_marginLeft="3dp"
+                android:text="导游" />
+        </LinearLayout>
+
+        <com.lyy.hitogether.view.MyGuideOrTravalersLayout
+            android:id="@+id/id_guide_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/id_scene_detail_img"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/id_guide_flag_layout" >
+        </com.lyy.hitogether.view.MyGuideOrTravalersLayout>
+
+        <TextView
+            android:id="@+id/id_guids_more"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/id_scene_detail_img"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/text_shape"
+            android:gravity="center"
+            android:text="更多"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/id_guide_flag_layout2"
+            android:layout_width="40dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/id_guide_flag_layout"
+            android:layout_margin="5dp"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_menu_allfriends" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="游客" />
+        </LinearLayout>
+
+        <com.lyy.hitogether.view.MyGuideOrTravalersLayout
+            android:id="@+id/id_travaler_layout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/id_guide_flag_layout"
+            android:layout_margin="5dp"
+            android:layout_toRightOf="@+id/id_guide_flag_layout2" >
+        </com.lyy.hitogether.view.MyGuideOrTravalersLayout>
+
+        <TextView
+            android:id="@+id/id_travalers_more"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/id_guide_flag_layout"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/text_shape"
+            android:gravity="center"
+            android:text="更多"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+    <cn.sharesdk.socialization.QuickCommentBar
+        android:id="@+id/id_qcb_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+      
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/white" />
+
+<!--     <Button
+        android:id="@+id/id_bt_share"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="分享" /> -->
 
 </RelativeLayout>

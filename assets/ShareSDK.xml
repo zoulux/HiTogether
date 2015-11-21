@@ -53,7 +53,7 @@
     -->
     
     <ShareSDK 
-        AppKey = "androidv1101"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
+        AppKey = "c8a44db0e90e"/> <!-- 修改成你在sharesdk后台注册的应用的appkey"-->
     
     <!-- ShareByAppClient标识是否使用微博客户端分享，默认是false -->
     <SinaWeibo
@@ -61,7 +61,7 @@
         SortId="1"
         AppKey="475771638"
         AppSecret="2a3d10cf9ff344ef9b2a69d682437d07"
-        RedirectUrl="http://www.sharesdk.cn"
+        RedirectUrl="http://www.pgyer.com/hitogether"
         ShareByAppClient="false"
         Enable="true" />
 
