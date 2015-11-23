@@ -76,6 +76,7 @@ public class ShowSceneDetailsActivity extends BaseActivity implements
 	}
 
 	private void initOnekeyShare() {
+	
 		ShareSDK.initSDK(this);
 		ShareSDK.registerService(Socialization.class);
 		socialization = ShareSDK.getService(Socialization.class);
@@ -97,7 +98,7 @@ public class ShowSceneDetailsActivity extends BaseActivity implements
 
 		oks.setSite("乐友游");
 		oks.setSiteUrl("http://www.pgyer.com/hitogether");
-
+		
 		
 
 	}
