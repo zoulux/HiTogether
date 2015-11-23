@@ -16,5 +16,6 @@
     <dimen name="activity_main_ChangeColorIconWithText_text_size">12sp</dimen>
      <dimen name="activity_main_listView_layout_width">250dp</dimen>
      <dimen name="activity_main_listView_dividerHeight">1dp</dimen>
+       <dimen name="hotscene_detail_sp">0.5dp</dimen>
 
 </resources>

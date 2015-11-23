@@ -20,6 +20,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
+import cn.bmob.push.a.in;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.handmark.pulltorefresh.library.ILoadingLayout;
@@ -46,6 +48,8 @@ public class ThirdFragment extends BaseFragment {
 	private boolean isPrepared;
 	// private List<Service> list;
 	private SweetAlertDialog sweetAlertDialog;
+
+	private List<HotScenic> hotScenicList;
 
 	private PullToRefreshGridView gridView;
 	// private SweetAlertDialog sweetAlertDialog;
@@ -86,8 +90,14 @@ public class ThirdFragment extends BaseFragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				startActivity(new Intent(ThirdFragment.this.getActivity(),
-						ShowSceneDetailsActivity.class));
+				Intent intent = new Intent(ThirdFragment.this.getActivity(),
+						ShowSceneDetailsActivity.class);
+				if (hotScenicList != null) {
+					HotScenic hotScenic = hotScenicList.get(position);
+					intent.putExtra(HotScenic.TAG, hotScenic);
+				}
+
+				startActivity(intent);
 			}
 		});
 	}
@@ -148,12 +158,15 @@ public class ThirdFragment extends BaseFragment {
 		Log.i("ThirdFragment", "handleSuccess");
 		sweetAlertDialog.dismiss();
 		Gson gson = new Gson();
-		List<HotScenic> list = gson.fromJson(json,
-				new TypeToken<List<HotScenic>>() {
-				}.getType());
+		if (hotScenicList == null) {
+			hotScenicList = gson.fromJson(json,
+					new TypeToken<List<HotScenic>>() {
+					}.getType());
+		}
+
 		initIndicator();
 		PictureAndTextAdapter adapter = new PictureAndTextAdapter(
-				getActivity(), list);
+				getActivity(), hotScenicList);
 		gridView.setAdapter(adapter);
 
 		// initEvent();

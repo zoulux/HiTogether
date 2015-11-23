@@ -1,6 +1,9 @@
 package com.lyy.hitogether.bean;
 
-public class HotScenic {
+import java.io.Serializable;
+
+public class HotScenic implements Serializable{
+	public static final String TAG="HotScenic";
 	/**
 	 * 热门景点
 	 */
@@ -9,6 +12,17 @@ public class HotScenic {
 	String photoPath;// 图片路径
 	String extra; // 额外的
 	String enjoy; // 正在参加的人
+	String introduce;//景点介绍
+	
+	
+
+	public String getIntroduce() {
+		return introduce;
+	}
+
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
 
 	public String getEnjoy() {
 		return enjoy;
@@ -50,4 +64,12 @@ public class HotScenic {
 		this.extra = extra;
 	}
 
+	@Override
+	public String toString() {
+		return "HotScenic [hotId=" + hotId + ", hotName=" + hotName
+				+ ", photoPath=" + photoPath + ", extra=" + extra + ", enjoy="
+				+ enjoy + "]";
+	}
+
+	
 }
