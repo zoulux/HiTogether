@@ -5,17 +5,12 @@
     android:layout_height="match_parent" >
 
     <com.lyy.hitogether.view.CustomTitleBarView
-        android:id="@+id/id_title"
+        android:id="@+id/id_show_scen_detail_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="@android:color/holo_blue_dark"
-        lyman:centerText="故宫"
-        lyman:centerTextColor="@android:color/white"
-        lyman:centerTextSize="20sp"
+        android:background="@color/light_blue"
         lyman:centerType="text"
-        lyman:leftImagePadding="2dp"
-        lyman:leftImageSource="@drawable/ic_launcher"
         lyman:leftType="image" >
     </com.lyy.hitogether.view.CustomTitleBarView>
 
@@ -23,7 +18,7 @@
         android:id="@+id/id_scene_detail_img"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@id/id_title"
+        android:layout_below="@id/id_show_scen_detail_title"
         android:scaleType="fitXY"
         android:src="@drawable/p1" />
 

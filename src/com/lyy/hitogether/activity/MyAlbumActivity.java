@@ -127,6 +127,7 @@ public class MyAlbumActivity extends BaseActivity {
 
 				mImageAdapter = new ImageAdapter(MyAlbumActivity.this,
 						mCurrentDir.getAbsolutePath(), mImgs);
+				System.out.println(mCurrentDir.getAbsolutePath()+">>>>>>>>>>>>");
 
 				mGridView.setAdapter(mImageAdapter);
 				mDirCount.setText(mImgs.size() + "");

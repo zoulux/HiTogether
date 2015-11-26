@@ -2,8 +2,8 @@ package com.lyy.hitogether.activity;
 
 import java.util.Date;
 
+import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -22,6 +22,7 @@ import com.lyy.hitogether.R;
 import com.lyy.hitogether.bean.HotScenic;
 import com.lyy.hitogether.share.MyPlatform;
 import com.lyy.hitogether.view.CustomTitleBarView;
+import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
 import com.lyy.hitogether.view.MyGuideOrTravalersLayout;
 import com.lyy.hitogether.view.MyGuideOrTravalersLayout.onGuideItemClickListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -45,7 +46,7 @@ public class ShowSceneDetailsActivity extends BaseActivity implements
 	@ViewInject(R.id.id_tv_hot_scene_introduce)
 	private TextView mTvIntroduce;
 
-	@ViewInject(R.id.id_title)
+	@ViewInject(R.id.id_show_scen_detail_title)
 	private CustomTitleBarView bar;
 
 	@ViewInject(R.id.id_scene_detail_img)
@@ -88,7 +89,14 @@ public class ShowSceneDetailsActivity extends BaseActivity implements
 
 		oks = new OnekeyShare();
 		oks.disableSSOWhenAuthorize();
+		
 
+		//
+		bar.setCenterText(mcurrentScenic.getHotName());
+		bar.setLeftImageSuorce(R.drawable.back_indicator);
+		bar.setLeftImagePaddingLeft(10);
+		bar.setCenterTextColor(Color.WHITE);
+		bar.setCenterTextSize(18);
 		oks.setTitle(" 一起去" + mcurrentScenic.getHotName() + "吧！那就赶快下载这个碉堡的App");
 		oks.setTitleUrl("http://www.pgyer.com/hitogether");
 		oks.setText("带TA去旅行，乐友游...");
@@ -156,6 +164,13 @@ public class ShowSceneDetailsActivity extends BaseActivity implements
 						ShowToast(pos + "");
 					}
 				});
+		bar.setOnLeftBarViewClickListener(new onLeftBarViewClickListener() {
+			
+			@Override
+			public void onclick(View v) {
+					ShowSceneDetailsActivity.this.finish();
+			}
+		});
 
 	}
 

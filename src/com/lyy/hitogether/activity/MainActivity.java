@@ -42,7 +42,6 @@ import com.lyy.hitogether.activity.fragment.SecondFragment;
 import com.lyy.hitogether.activity.fragment.ThirdFragment;
 import com.lyy.hitogether.activity.fragment.first_fragment.FirstFragment;
 import com.lyy.hitogether.manager.SystemBarTintManager;
-import com.lyy.hitogether.share.MyPlatform;
 import com.lyy.hitogether.view.ChangeColorIconWithText;
 import com.lyy.hitogether.view.CustomTitleBarView;
 import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;

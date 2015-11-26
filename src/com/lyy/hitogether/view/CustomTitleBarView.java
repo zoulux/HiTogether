@@ -1,8 +1,5 @@
 package com.lyy.hitogether.view;
 
-import com.lyy.hitogether.R;
-import com.lyy.hitogether.util.DensityUtils;
-
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -14,6 +11,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.lyy.hitogether.R;
+import com.lyy.hitogether.util.DensityUtils;
+
 
 
 public class CustomTitleBarView extends RelativeLayout {
@@ -175,6 +176,8 @@ public class CustomTitleBarView extends RelativeLayout {
 	private RelativeLayout.LayoutParams lp2;
 	private RelativeLayout.LayoutParams lp3;
 	private RelativeLayout.LayoutParams lp4;
+	private RelativeLayout.LayoutParams lp5;
+	private RelativeLayout.LayoutParams lp6;
 
 	private void initXmlLeftLayoutParams() {
 		lp1 = new RelativeLayout.LayoutParams(
@@ -204,6 +207,20 @@ public class CustomTitleBarView extends RelativeLayout {
 		lp4.addRule(RelativeLayout.CENTER_IN_PARENT);
 	}
 
+	private void initJavaLeftLayoutParams() {
+		lp5 = new RelativeLayout.LayoutParams(
+				ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.MATCH_PARENT);
+		lp5.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+	}
+	
+	private void initJavaRightLayoutParams() {
+		lp6 = new RelativeLayout.LayoutParams(
+				ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.MATCH_PARENT);
+		lp6.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+	}
+
 	public CustomTitleBarView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		leftView = null;
@@ -221,52 +238,63 @@ public class CustomTitleBarView extends RelativeLayout {
 		initXmlRightLayoutParams();
 
 		initXmlCenterLayoutParams();
+		
+			switch (leftType) {
 
-		switch (leftType) {
+			case LEFT_TYPE_IMAGE:
+				leftImage = new ImageView(context);
+				leftView = leftImage;
+				if (ta.getResourceId(R.styleable.barView_leftImageSource,-1)!=-1) {
+					initLeftImage(ta, context);
+					addView(leftView, lp1);
+					setLeftView(leftView);	
+				}
+				
+				break;
+			case LEFT_TYPE_TEXT:
+				leftTextView = new TextView(context);
+				leftView = leftTextView;
+				if (ta.getString(R.styleable.barView_leftText) != null) {
+					initLeftText(ta, context);
+					addView(leftView, lp1);
+					setLeftView(leftView);
+				}
+				break;
+			case LEFT_TYPE_BUTTON:
+				leftButton = new Button(context);
+				leftView = leftButton;
+				initLeftButton(ta, context);
 
-		case LEFT_TYPE_IMAGE:
-			leftImage = new ImageView(context);
-			leftView = leftImage;
-			initLeftImage(ta, context);
-			addView(leftView, lp1);
-			setLeftView(leftView);
-			break;
-		case LEFT_TYPE_TEXT:
-			leftTextView = new TextView(context);
-			leftView = leftTextView;
-			initLeftText(ta, context);
-			addView(leftView, lp1);
-			setLeftView(leftView);
+				addView(leftView, lp1);
+				setLeftView(leftView);
+				break;
+			default:
+				break;
 
-			break;
-		case LEFT_TYPE_BUTTON:
-			leftButton = new Button(context);
-			leftView = leftButton;
-			initLeftButton(ta, context);
-
-			addView(leftView, lp1);
-			setLeftView(leftView);
-			break;
-		default:
-			break;
-
-		}
+			}
+		
 
 		switch (rightType) {
 
 		case RIGHT_TYPE_IMAGE:
 			rightImage = new ImageView(context);
 			rightView = rightImage;
-			initRighttImage(ta, context);
-			addView(rightView, lp2);
-			setRightView(rightView);
+			if (ta.getResourceId(R.styleable.barView_rightImageSource,-1)!=-1) {
+				initRightImage(ta, context);
+				addView(rightView, lp2);
+				setLeftView(rightView);	
+			}
 			break;
 		case RIGHT_TYPE_TEXT:
 			rightTextView = new TextView(context);
 			rightView = rightTextView;
-			initRightText(ta, context);
-			addView(rightView, lp2);
-			setRightView(rightView);
+			
+			if (ta.getString(R.styleable.barView_rightText) != null) {
+				initRightText(ta, context);
+				addView(rightView, lp2);
+				setRightView(rightView);
+			}
+			
 			break;
 		case RIGHT_TYPE_BUTTON:
 			rightButton = new Button(context);
@@ -315,6 +343,11 @@ public class CustomTitleBarView extends RelativeLayout {
 
 	}
 
+	/**
+	 * java代码控制中间的文字的属性
+	 * 
+	 * @param text
+	 */
 	public void setCenterText(String text) {
 		initJavaCenterLayoutParams();
 		centerTextView = new TextView(context);
@@ -330,6 +363,138 @@ public class CustomTitleBarView extends RelativeLayout {
 
 	public void setCenterTextSize(float size) {
 		centerTextView.setTextSize(size);
+	}
+	
+	public void setLeftText(String text) {
+		initJavaLeftLayoutParams();
+		leftTextView = new TextView(context);
+
+		leftTextView.setText(text);
+		leftTextView.setGravity(Gravity.CENTER);
+		addView(leftTextView, lp5);
+		leftView = leftTextView;
+		initEvent(leftView, rightView);
+
+	}
+
+	public void setLeftTextColor(int color) {
+		leftTextView.setTextColor(color);
+	}
+
+	public void setLeftTextSize(float size) {
+		leftTextView.setTextSize(size);
+	}
+	
+	public void setLeftTextPadding(int padding){
+		leftTextView.setPadding(padding, padding, padding, padding);
+	}
+	
+	public void setLeftTextPaddingLeft(int left){
+		leftTextView.setPadding(left, 0, 0, 0);
+	}
+	public void setLeftTextPaddingRight(int right){
+		leftTextView.setPadding(0, 0, right, 0);
+	}
+	
+	public void setLeftTextPaddingTop(int top){
+		leftTextView.setPadding(0, top, 0, 0);
+	}
+	public void setLeftTextPaddingBottom(int bottom){
+		leftTextView.setPadding(0, 0, 0, bottom);
+	}
+
+	public void setLeftImageSuorce(int source) {
+		initJavaLeftLayoutParams();
+		leftImage = new ImageView(context);
+		leftImage.setImageResource(source);
+		addView(leftImage, lp5);
+		leftView = leftImage;
+		initEvent(leftView, rightView);
+		
+	}
+	
+	public void setLeftImagePadding(int padding){
+		leftImage.setPadding(padding, padding, padding, padding);
+	}
+	
+	public void setLeftImagePaddingLeft(int left){
+		leftImage.setPadding(left, 0, 0, 0);
+	}
+	public void setLeftImagePaddingRight(int right){
+		leftImage.setPadding(0, 0, right, 0);
+	}
+	
+	public void setLeftImagePaddingTop(int top){
+		leftImage.setPadding(0, top, 0, 0);
+	}
+	public void setLeftImagePaddingBottom(int bottom){
+		leftImage.setPadding(0, 0, 0, bottom);
+	}
+	
+	public void setRightImageSuorce(int source) {
+		initJavaRightLayoutParams();
+		rightImage = new ImageView(context);
+		rightImage.setImageResource(source);
+		addView(rightImage, lp6);
+		rightView = rightImage;
+		initEvent(leftView, rightView);
+		
+	}
+	
+	public void setRightImagePadding(int padding){
+		rightImage.setPadding(padding, padding, padding, padding);
+	}
+	
+	public void setRightImagePaddingLeft(int left){
+		rightImage.setPadding(left, 0, 0, 0);
+	}
+	public void setRightImagePaddingRight(int right){
+		rightImage.setPadding(0, 0, right, 0);
+	}
+	
+	public void setRightImagePaddingTop(int top){
+		rightImage.setPadding(0, top, 0, 0);
+	}
+	public void setRightImagePaddingBottom(int bottom){
+		rightImage.setPadding(0, 0, 0, bottom);
+	}
+	
+	public void setRightText(String text) {
+		initJavaRightLayoutParams();
+		rightTextView = new TextView(context);
+
+		rightTextView.setText(text);
+		rightTextView.setGravity(Gravity.CENTER);
+		addView(rightTextView, lp6);
+		rightView = rightTextView;
+		initEvent(leftView, rightView);
+
+	}
+
+	public void setRightTextColor(int color) {
+		rightTextView.setTextColor(color);
+	}
+
+	public void setRightTextSize(float size) {
+		rightTextView.setTextSize(size);
+	}
+	
+	public void setRightTextPadding(int padding){
+		rightTextView.setPadding(padding, padding, padding, padding);
+	}
+	
+	public void setRightTextPaddingLeft(int left){
+		rightTextView.setPadding(left, 0, 0, 0);
+	}
+	public void setRightTextPaddingRight(int right){
+		rightTextView.setPadding(0, 0, right, 0);
+	}
+	
+	public void setRightTextPaddingTop(int top){
+		rightTextView.setPadding(0, top, 0, 0);
+	}
+	public void setRightTextPaddingBottom(int bottom){
+		rightTextView.setPadding(0, 0, 0, bottom);
 	}
 
 	private void initEvent(final View leftView, final View rightView) {
@@ -706,7 +871,7 @@ public class CustomTitleBarView extends RelativeLayout {
 	 * @param ta
 	 * @param context
 	 */
-	private void initRighttImage(TypedArray ta, Context context) {
+	private void initRightImage(TypedArray ta, Context context) {
 		rightImageSource = ta.getResourceId(
 				R.styleable.barView_rightImageSource, R.drawable.ic_launcher);
 		rightImagePadding = DensityUtils.px2dp(context,
