@@ -1,6 +1,11 @@
 package com.lyy.hitogether.activity;
 
+import com.lyy.hitogether.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -9,9 +14,17 @@ import android.widget.Toast;
  * test
  * 
  * @author Administrator
- *  
+ * 
  */
 public class BaseActivity extends Activity {
+	protected DisplayImageOptions baseOptions = new DisplayImageOptions.Builder()
+			.showImageOnLoading(R.drawable.icon)
+			.bitmapConfig(Bitmap.Config.ARGB_8888)
+			.showImageForEmptyUri(R.drawable.icon)
+			.showImageOnFail(R.drawable.icon).cacheInMemory(true)
+			.cacheOnDisk(true).displayer(new FadeInBitmapDisplayer(2000))
+			.build();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,7 +39,7 @@ public class BaseActivity extends Activity {
 		Log.i(">>>>", msg + "");
 	}
 
-	Toast mToast; 
+	Toast mToast;
 
 	public void ShowToast(final int resId) {
 		// runOnUiThread(new Runnable() {

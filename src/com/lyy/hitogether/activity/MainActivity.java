@@ -33,12 +33,16 @@ import cn.bmob.v3.listener.BmobUpdateListener;
 import cn.bmob.v3.update.BmobUpdateAgent;
 import cn.bmob.v3.update.UpdateResponse;
 import cn.bmob.v3.update.UpdateStatus;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.socialization.Socialization;
 
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.fragment.SecondFragment;
 import com.lyy.hitogether.activity.fragment.ThirdFragment;
 import com.lyy.hitogether.activity.fragment.first_fragment.FirstFragment;
 import com.lyy.hitogether.manager.SystemBarTintManager;
+import com.lyy.hitogether.share.MyPlatform;
 import com.lyy.hitogether.view.ChangeColorIconWithText;
 import com.lyy.hitogether.view.CustomTitleBarView;
 import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
@@ -103,10 +107,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 					UpdateResponse updateResponse) {
 				Toast.makeText(MainActivity.this, updateStatus + "状态", 1)
 						.show();
-				Log.i("BmobUpdateAgent",  updateStatus + "状态");
-				
-				
-				
+				Log.i("BmobUpdateAgent", updateStatus + "状态");
+
 				// MainActivity.this.updateStatus = updateStatus;
 				//
 				// switch (updateStatus) {
@@ -177,6 +179,15 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		switch (position) {
 		case MENU_ITEM_QUIT:
 			startActivity(new Intent(MainActivity.this, LoginActivity.class));
+			Socialization socialization = ShareSDK
+					.getService(Socialization.class);
+			Platform[] platformList = ShareSDK.getPlatformList();
+			if (platformList != null && platformList.length != 0) {
+				for (Platform platform : platformList) {
+					platform.removeAccount(true);
+				}
+			}
+
 			MainActivity.this.finish();
 			break;
 		case MENU_ITEM_GROUP:
@@ -279,8 +290,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		one.setIconAlpha(1.0f);
 
 	}
-int temp=3;
-	
+
+	int temp = 3;
+
 	@SuppressLint({ "NewApi" })
 	@Override
 	public void onClick(View v) {
@@ -294,9 +306,10 @@ int temp=3;
 			mainTopbarView.setVisibility(View.VISIBLE);
 			resetOtherTabs();
 			mTabIndicators.get(0).setIconAlpha(1.0f);
-			//Toast.makeText(MainActivity.this,mViewPager.getChildCount()+"", Toast.LENGTH_SHORT).show();
+			// Toast.makeText(MainActivity.this,mViewPager.getChildCount()+"",
+			// Toast.LENGTH_SHORT).show();
 			mViewPager.setCurrentItem(0, true);
-			
+
 			break;
 		case R.id.id_two:
 			customTitleBarView_1.setVisibility(View.VISIBLE);
@@ -369,23 +382,27 @@ int temp=3;
 		case R.id.id_main_title_bar_radio_group_radio_button_one:
 
 			firstFragment.setItem(0);
-			temp=1;
-			ra1.setTextColor(getResources().getColor(R.color.radio_button_text_select_color));
-			ra2.setTextColor(getResources().getColor(R.color.radio_button_text_unselect_color));
+			temp = 1;
+			ra1.setTextColor(getResources().getColor(
+					R.color.radio_button_text_select_color));
+			ra2.setTextColor(getResources().getColor(
+					R.color.radio_button_text_unselect_color));
 			ra2.setBackgroundColor(Color.alpha(0));
 			ra1.setBackground(getResources().getDrawable(
 					R.drawable.main_title_radiobutton1));
 			break;
 
 		case R.id.id_main_title_bar_radio_group_radio_button_two:
-			temp=2;
+			temp = 2;
 			firstFragment.setItem(1);
 			ra1.setBackgroundColor(Color.alpha(0));
 			ra2.setBackground(getResources().getDrawable(
 					R.drawable.main_title_radiobutton2));
-			
-			ra2.setTextColor(getResources().getColor(R.color.radio_button_text_select_color));
-			ra1.setTextColor(getResources().getColor(R.color.radio_button_text_unselect_color));
+
+			ra2.setTextColor(getResources().getColor(
+					R.color.radio_button_text_select_color));
+			ra1.setTextColor(getResources().getColor(
+					R.color.radio_button_text_unselect_color));
 
 			break;
 
