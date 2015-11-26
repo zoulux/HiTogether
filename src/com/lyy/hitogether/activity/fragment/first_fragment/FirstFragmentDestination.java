@@ -193,9 +193,9 @@ public class FirstFragmentDestination extends BaseFragment {
 		v3.setLayoutParams(new LayoutParams(-1, -1));
 		v3.setScaleType(ScaleType.FIT_XY);
 		v3.setImageResource(R.drawable.p3);
-		adapter.addItem("第一景点", v);
-		adapter.addItem("第二景点", v2);
-		adapter.addItem("第三景点", v3);
+		adapter.addItem("", v);
+		adapter.addItem("", v2);
+		adapter.addItem("", v3);
 		myViewPager.setAdapter(adapter);
 
 		// adapter.getp

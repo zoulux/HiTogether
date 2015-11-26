@@ -25,14 +25,13 @@
             android:layout_centerInParent="true"
             android:text="地点"
             android:textSize="18sp"
-            android:textStyle="bold"
-             />
+            android:textStyle="bold" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_margin="2dp"
             android:layout_alignParentLeft="true"
+            android:layout_margin="2dp"
             android:src="@drawable/no" />
     </RelativeLayout>
 
@@ -50,14 +49,14 @@
         <com.lyy.hitogether.view.WheelView
             android:id="@+id/other_place_sheng"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_weight="1" />
 
         <com.lyy.hitogether.view.WheelView
             android:id="@+id/other_place_shi"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1" />
     </LinearLayout>
 

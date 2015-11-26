@@ -48,10 +48,7 @@
         <com.lyy.hitogether.view.WheelView
             android:id="@+id/id_people_count"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-             />
-
-       
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </LinearLayout>
