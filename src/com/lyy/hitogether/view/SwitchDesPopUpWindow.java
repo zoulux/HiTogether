@@ -16,21 +16,17 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
+
 /**
  * PopupWindow地点滚轮选择器
+ * 
  * @author Administrator
- *
+ * 
  */
-public class SwitchDesPopUpWindow extends PopupWindow {
+public class SwitchDesPopUpWindow extends BasePopUpWindow {
 
 	private Context context;
-	//PopupWindow的宽度
-	private int mWidth;
-	//PopupWindow的高度
-	private int mHeight;
-	//获取PopupWindow的view
-	private View mConvertView;
-	//确认选择的按钮
+	// 确认选择的按钮
 	private ImageView yesImg;
 
 	String[] shengs = { "安徽", "福建", "广西", "贵州", "海南", "北京" };
@@ -54,56 +50,12 @@ public class SwitchDesPopUpWindow extends PopupWindow {
 	}
 
 	public SwitchDesPopUpWindow(Context context) {
-
 		this.context = context;
-		culculateWidthAndHeight();
-		mConvertView = LayoutInflater.from(context).inflate(
-				R.layout.pop_des_window, null);
-		setContentView(mConvertView);
-		setWidth(mWidth);
-		setHeight(mHeight);
-
-		setFocusable(true);
-		setTouchable(true);
-		setOutsideTouchable(true);
-		setBackgroundDrawable(new BitmapDrawable());
-
-		setTouchInterceptor(new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-					dismiss();
-					return true;
-				}
-				return false;
-			}
-		});
-
-		initId();
-		initEvent();
-
+		setLayout(context, R.layout.pop_des_window, 0.3f);
 	}
 
-	private void initEvent() {
-		yesImg.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (mListener != null) {
-					mListener.onCorrectClick(v, currentProvence, currentScene);
-					SwitchDesPopUpWindow.this.dismiss();
-				}
-
-				// Toast.makeText(context, currentProvence + "" + currentCity,
-				// Toast.LENGTH_SHORT).show();
-
-			}
-		});
-
-	}
-
-	private void initId() {
+	@Override
+	public void initId() {
 		shengWV = (WheelView) mConvertView.findViewById(R.id.other_place_sheng);
 		sceneWV = (WheelView) mConvertView.findViewById(R.id.other_place_shi);
 		yesImg = (ImageView) mConvertView.findViewById(R.id.id_yes);
@@ -114,6 +66,22 @@ public class SwitchDesPopUpWindow extends PopupWindow {
 		shengWV.setCyclic(false);
 		sceneWV.setCyclic(false);
 		chosePlce();
+
+	}
+
+	@Override
+	public void initEvent() {
+		yesImg.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				if (mListener != null) {
+					mListener.onCorrectClick(v, currentProvence, currentScene);
+					SwitchDesPopUpWindow.this.dismiss();
+				}
+
+			}
+		});
 
 	}
 
@@ -154,20 +122,25 @@ public class SwitchDesPopUpWindow extends PopupWindow {
 					sceneWV.setLabel("景区");
 
 					if (sheng.equals("安徽")) {
-						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene01));
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(
+								scene01));
 						scene = scene01[sceneWV.getCurrentItem()];
 					} else if (sheng.equals("福建")) {
 
-						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene02));
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(
+								scene02));
 						scene = scene02[sceneWV.getCurrentItem()];
 					} else if (sheng.equals("广西")) {
-						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene03));
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(
+								scene03));
 						scene = scene03[sceneWV.getCurrentItem()];
 					} else if (sheng.equals("贵州")) {
-						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene04));
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(
+								scene04));
 						scene = scene04[sceneWV.getCurrentItem()];
 					} else if (sheng.equals("海南")) {
-						sceneWV.setAdapter(new ArrayWheelAdapter<String>(scene05));
+						sceneWV.setAdapter(new ArrayWheelAdapter<String>(
+								scene05));
 						scene = scene05[sceneWV.getCurrentItem()];
 					}
 
@@ -200,17 +173,6 @@ public class SwitchDesPopUpWindow extends PopupWindow {
 				currentScene = scene;
 			}
 		});
-	}
-
-	private void culculateWidthAndHeight() {
-		WindowManager wm = (WindowManager) context
-				.getSystemService(Context.WINDOW_SERVICE);
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		wm.getDefaultDisplay().getMetrics(displayMetrics);
-
-		mWidth = displayMetrics.widthPixels;
-		mHeight = (int) (displayMetrics.heightPixels * 0.3);
-
 	}
 
 }

@@ -102,7 +102,7 @@ public class MyAlbumActivity extends BaseActivity {
 
 			@Override
 			public void onDismiss() {
-				lightOn();
+				mDirPopUpWindow.lightOn(MyAlbumActivity.this);
 			}
 		});
 
@@ -161,7 +161,7 @@ public class MyAlbumActivity extends BaseActivity {
 			@Override
 			public void onClick(View v) {
 				mDirPopUpWindow.showAsDropDown(mBottomLy, 0, 0);
-				lightOff();
+				mDirPopUpWindow.lightOff(MyAlbumActivity.this);
 			}
 		});
 
@@ -190,25 +190,7 @@ public class MyAlbumActivity extends BaseActivity {
 		
 	}
 
-	/**
-	 * �����������
-	 */
-	protected void lightOn() {
-		WindowManager.LayoutParams lp = getWindow().getAttributes();
-		lp.alpha = 1.0f;
-		getWindow().setAttributes(lp);
-
-	}
-
-	/**
-	 * ��������䰵
-	 */
-	protected void lightOff() {
-		WindowManager.LayoutParams lp = getWindow().getAttributes();
-		lp.alpha = .3f;
-		getWindow().setAttributes(lp);
-
-	}
+	
 
 	/**
 	 * ����contentProviderɨ���ֻ��е�ͼƬ

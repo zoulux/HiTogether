@@ -23,12 +23,11 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-public class ListImageDirPopUpWindow extends PopupWindow {
-	private int mWidth;
-	private int mHeight;
-	private View mConvertView;
+public class ListImageDirPopUpWindow extends BasePopUpWindow {
+
 	private ListView mListView;
 	private List<FolderBean> mDatas;
+	private Context context;
 
 	public interface onDirSelectListener {
 		void onSelected(FolderBean folderBean);
@@ -46,38 +45,20 @@ public class ListImageDirPopUpWindow extends PopupWindow {
 
 	}
 
-	public ListImageDirPopUpWindow(Context context, List<FolderBean> mDatas) {
-		calWidthAndHeight(context);
-		mConvertView = LayoutInflater.from(context).inflate(
-				R.layout.popup_main, null);
+	public ListImageDirPopUpWindow(Context context, final List<FolderBean> mDatas) {
+		this.context = context;
 		this.mDatas = mDatas;
-		setContentView(mConvertView);
-		setWidth(mWidth);
-		setHeight(mHeight);
-
-		setFocusable(true);
-		setTouchable(true);
-		setOutsideTouchable(true);
-		setBackgroundDrawable(new BitmapDrawable());
-
-		setTouchInterceptor(new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-					dismiss();
-					return true;
-				}
-				return false;
-			}
-		});
-
-		initViews(context);
-		initEvent();
-
+		setLayout(context, R.layout.popup_main, 0.7f);
+	}
+	
+	@Override
+	public void initId() {
+		mListView = (ListView) mConvertView.findViewById(R.id.id_list_dir);
+		mListView.setAdapter(new ListDirAdapter(context, mDatas));
 	}
 
-	private void initEvent() {
+	@Override
+	public void initEvent() {
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -88,28 +69,10 @@ public class ListImageDirPopUpWindow extends PopupWindow {
 				}
 			}
 		});
+		
 	}
 
-	private void initViews(Context context) {
-		mListView = (ListView) mConvertView.findViewById(R.id.id_list_dir);
-		mListView.setAdapter(new ListDirAdapter(context, mDatas));
-	}
 
-	/**
-	 * 计算popupwindow的宽度和高度
-	 * 
-	 * @param context
-	 */
-	private void calWidthAndHeight(Context context) {
-		WindowManager wm = (WindowManager) context
-				.getSystemService(Context.WINDOW_SERVICE);
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		wm.getDefaultDisplay().getMetrics(displayMetrics);
-
-		mWidth = displayMetrics.widthPixels;
-		mHeight = (int) (displayMetrics.heightPixels * 0.7);
-
-	}
 
 	private class ListDirAdapter extends ArrayAdapter<FolderBean> {
 		private LayoutInflater mInflater;
@@ -138,7 +101,7 @@ public class ListImageDirPopUpWindow extends PopupWindow {
 			}
 
 			FolderBean folderBean = getItem(position);
-			// 重置
+			// 锟斤拷锟斤拷
 			viewHolder.mImage.setImageResource(R.drawable.pictures_no);
 			ImageLoader.getInstance().LoadImage(folderBean.getFirstImagePath(),
 					viewHolder.mImage);
@@ -155,5 +118,7 @@ public class ListImageDirPopUpWindow extends PopupWindow {
 		}
 
 	}
+
+	
 
 }

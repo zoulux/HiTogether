@@ -21,15 +21,9 @@ import android.widget.Toast;
  * @author Administrator
  *
  */
-public class SwitchPeoplePopUpWindow extends PopupWindow {
+public class SwitchPeoplePopUpWindow extends BasePopUpWindow {
 
 	private Context context;
-//PopupWindow的宽度
-	private int mWidth;
-	//PopupWindow的高度
-	private int mHeight;
-	//获取PopupWindow的view
-	private View mConvertView;
 	//确认选择 的按钮
 	private ImageView yesImg;
 	
@@ -52,36 +46,21 @@ public class SwitchPeoplePopUpWindow extends PopupWindow {
 		for (int i = 0; i < 100; i++) {
 			peoples[i] = i + 1 + "人";
 		}
-		culculateWidthAndHeight();
-		mConvertView = LayoutInflater.from(context).inflate(
-				R.layout.pop_people_window, null);
-		setContentView(mConvertView);
-		setWidth(mWidth);
-		setHeight(mHeight);
-
-		setFocusable(true);
-		setTouchable(true);
-		setOutsideTouchable(true);
-		setBackgroundDrawable(new BitmapDrawable());
-
-		setTouchInterceptor(new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-					dismiss();
-					return true;
-				}
-				return false;
-			}
-		});
-
-		initId();
-		initEvent();
-
+		setLayout(context, R.layout.pop_people_window, 0.3f);
+	}
+	
+	@Override
+	public void initId() {
+		peopleWV = (WheelView) mConvertView.findViewById(R.id.id_people_count);
+		yesImg = (ImageView) mConvertView.findViewById(R.id.id_yes);
+		peopleWV.setVisibleItems(5);
+		peopleWV.setCyclic(false);
+		choseCount();
+		
 	}
 
-	private void initEvent() {
+	@Override
+	public void initEvent() {
 		yesImg.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -92,18 +71,7 @@ public class SwitchPeoplePopUpWindow extends PopupWindow {
 				}
 			}
 		});
-
-	}
-
-	private void initId() {
-		peopleWV = (WheelView) mConvertView.findViewById(R.id.id_people_count);
-		yesImg = (ImageView) mConvertView.findViewById(R.id.id_yes);
-
-		peopleWV.setVisibleItems(5);
-
-		peopleWV.setCyclic(false);
-		choseCount();
-
+		
 	}
 	//当前选择的人数
 	private String currentCount;
@@ -120,17 +88,6 @@ public class SwitchPeoplePopUpWindow extends PopupWindow {
 						peoples[newValue].length() - 1);
 			}
 		});
-
-	}
-	//计算PopupWindow的宽高
-	private void culculateWidthAndHeight() {
-		WindowManager wm = (WindowManager) context
-				.getSystemService(Context.WINDOW_SERVICE);
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		wm.getDefaultDisplay().getMetrics(displayMetrics);
-
-		mWidth = displayMetrics.widthPixels;
-		mHeight = (int) (displayMetrics.heightPixels * 0.3);
 
 	}
 

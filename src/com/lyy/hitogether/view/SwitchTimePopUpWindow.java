@@ -20,19 +20,14 @@ import com.lyy.hitogether.view.WheelView.OnWheelChangedListener;
 
 /**
  * PopUpWindow选择时间的滚轮选择器
+ * 
  * @author Administrator
- *
+ * 
  */
-public class SwitchTimePopUpWindow extends PopupWindow {
+public class SwitchTimePopUpWindow extends BasePopUpWindow {
 
 	private Context context;
-	//PopUpWindow的宽度
-	private int mWidth;
-	//PopUpWindow的高度
-	private int mHeight;
-	//获取PopUpWindow的view
-	private View mConvertView;
-	//确认选择的按钮
+	// 确认选择的按钮
 	private ImageView yesImg;
 	// 滚轮的年份
 	private WheelView yearWV = null;
@@ -44,19 +39,20 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 	String[] yearArrayString = null;
 	String[] dayArrayString = null;
 	String[] monthArrayString = null;
-	//当前选择的年份
+	// 当前选择的年份
 	private String currentYear;
-	//当前选择的月份
+	// 当前选择的月份
 	private String currentMonth;
-	//当前选择的日期
+	// 当前选择的日期
 	private String currentDay;
 	Calendar c = null;
-	//当期系统的年份
+	// 当期系统的年份
 	private int nowTimeYear;
-	//当前系统的月份
+	// 当前系统的月份
 	private int nowTimeMonth;
 	private onCorrectClickListener2 mListener;
-	//创建确认选择的回调接口
+
+	// 创建确认选择的回调接口
 	public interface onCorrectClickListener2 {
 		void onCorrectClick2(View v, String Year, String Month, String Day);
 	}
@@ -66,64 +62,22 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 	}
 
 	public SwitchTimePopUpWindow(Context context) {
+		this.context = context;
 		// 获取当前系统时间
 		c = Calendar.getInstance();
 		nowTimeYear = c.get(Calendar.YEAR);
 		nowTimeMonth = c.get(Calendar.MONTH);
 		currentYear = c.get(Calendar.YEAR) + "";
 		currentMonth = c.get(Calendar.MONTH) + "";
-		this.context = context;
-		culculateWidthAndHeight();
-		mConvertView = LayoutInflater.from(context).inflate(
-				R.layout.pop_time_window, null);
-		setContentView(mConvertView);
-		setWidth(mWidth);
-		setHeight(mHeight);
-
-		setFocusable(true);
-		setTouchable(true);
-		setOutsideTouchable(true);
-		// 这句话必加，要不然点击window外围不会dismiss
-		setBackgroundDrawable(new BitmapDrawable());
-
-		setTouchInterceptor(new OnTouchListener() {
-
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-				if (event.getAction() == MotionEvent.ACTION_OUTSIDE) {
-					dismiss();
-					return true;
-				}
-				return false;
-			}
-		});
 
 		yearArrayString = getYEARArray(c.get(Calendar.YEAR), 10);
 		monthArrayString = getMonthArray(c.get(Calendar.MONTH),
 				12 - c.get(Calendar.MONTH));
-
-		initId();
-		initEvent();
-
+		setLayout(context, R.layout.pop_time_window, 0.3f);
 	}
 
-	private void initEvent() {
-		yesImg.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-
-				mListener.onCorrectClick2(v, currentYear, currentMonth,
-						currentDay);
-				c = Calendar.getInstance();
-				setOriTime();
-				dismiss();
-			}
-		});
-
-	}
-
-	private void initId() {
+	@Override
+	public void initId() {
 		yesImg = (ImageView) mConvertView.findViewById(R.id.id_time_yes);
 		yearWV = (WheelView) mConvertView.findViewById(R.id.id_time_year);
 		monthWV = (WheelView) mConvertView.findViewById(R.id.id_time_month);
@@ -148,17 +102,21 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 
 	}
 
-	/**
-	 * 计算popUpWindow显示出的宽和高
-	 */
-	private void culculateWidthAndHeight() {
-		WindowManager wm = (WindowManager) context
-				.getSystemService(Context.WINDOW_SERVICE);
-		DisplayMetrics displayMetrics = new DisplayMetrics();
-		wm.getDefaultDisplay().getMetrics(displayMetrics);
+	@Override
+	public void initEvent() {
+		yesImg.setOnClickListener(new OnClickListener() {
 
-		mWidth = displayMetrics.widthPixels;
-		mHeight = (int) (displayMetrics.heightPixels * 0.3);
+			@Override
+			public void onClick(View v) {
+
+				mListener.onCorrectClick2(v, currentYear, currentMonth,
+						currentDay);
+				c = Calendar.getInstance();
+				setOriTime();
+				dismiss();
+			}
+		});
+
 	}
 
 	// int year, month;
@@ -176,9 +134,9 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 		yearWV.addChangingListener(new OnWheelChangedListener() {
 			@Override
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
-				
+
 				currentYear = yearArrayString[yearWV.getCurrentItem()];
-				
+
 				monthWV.setCurrentItem(0);
 				dayWV.setCurrentItem(0);
 				if (newValue != 0) {
@@ -218,7 +176,8 @@ public class SwitchTimePopUpWindow extends PopupWindow {
 			public void onChanged(WheelView wheel, int oldValue, int newValue) {
 				// TODO Auto-generated method stub
 				// 获取年和月
-				//year = Integer.parseInt(yearArrayString[yearWV.getCurrentItem()]);
+				// year =
+				// Integer.parseInt(yearArrayString[yearWV.getCurrentItem()]);
 				currentMonth = monthArrayString[monthWV.getCurrentItem()];
 				// 根据年和月生成天数数组
 				dayArrayString = getDayArray(getDay(
