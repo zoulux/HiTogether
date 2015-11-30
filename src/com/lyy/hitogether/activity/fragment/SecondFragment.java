@@ -169,8 +169,8 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 
 			@Override
 			public void onFailure(int arg0, String arg1) {
+				ShowToast("提交失败,再试一次吧...");
 				ShowLog("提交失败");
-
 			}
 		});
 
