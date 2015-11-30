@@ -91,6 +91,11 @@
             android:name="com.lyy.hitogether.activity.ShowSceneDetailsActivity"
             android:screenOrientation="portrait" >
         </activity>
+        
+        <activity
+            android:name="com.lyy.hitogether.activity.MyServiceActivity"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <!-- begin imlib request -->
 
@@ -183,6 +188,8 @@
             android:name="io.rong.imkit.widget.provider.TakingPicturesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
+        
+        
 
         <service
             android:name="io.rong.imlib.ipc.RongService"
