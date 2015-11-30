@@ -23,10 +23,12 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import cn.bmob.push.a.be;
+
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.adapter.MyJourneySetAdapter;
 import com.lyy.hitogether.adapter.MyJourneySetAdapter.ItemClickListener;
-import com.lyy.hitogether.bean.MyJourneySetBean;
+import com.lyy.hitogether.bean.TripLocal;
 import com.lyy.hitogether.util.FileService;
 import com.lyy.hitogether.util.ImageUir;
 import com.lyy.hitogether.view.CustomTitleBarView;
@@ -43,7 +45,7 @@ public class MyServiceActivity extends BaseActivity implements
 	private ListView mListView;
 
 	private MyJourneySetAdapter mAdapter;
-	private List<MyJourneySetBean> mList;
+	private List<TripLocal> mList;
 	private MyJourneyPopupWindow mMyJourneyPopupWindow;
 
 	private int CODE_ALBUM = 0x001;
@@ -69,16 +71,16 @@ public class MyServiceActivity extends BaseActivity implements
 	private void init() {
 		mListView = (ListView) findViewById(R.id.id_activity_my_service_lv);
 		titleBar = (CustomTitleBarView) findViewById(R.id.id_my_service_title_bar);
-		mList = new ArrayList<MyJourneySetBean>();
+		mList = new ArrayList<TripLocal>();
 
-		MyJourneySetBean bt = new MyJourneySetBean();
-		bt.beanType = MyJourneySetBean.BUTTON;
+		TripLocal bt = new TripLocal();
+		bt.beanType = TripLocal.BUTTON;
 		mList.add(bt);
 
-		MyJourneySetBean detail = new MyJourneySetBean();
-		detail.beanType = MyJourneySetBean.DETAIL;
+		TripLocal detail = new TripLocal();
+		detail.beanType = TripLocal.DETAIL;
 		detail.picPath = "drawable://" + R.drawable.pictures_no;
-		detail.txt = System.currentTimeMillis() + "";
+		detail.txt = "添加文字描述";
 		mList.add(0, detail);
 
 		mAdapter = new MyJourneySetAdapter(this, mList);
@@ -93,14 +95,17 @@ public class MyServiceActivity extends BaseActivity implements
 
 	private void setTitleBarListener() {
 		titleBar.setOnRightBarViewClickListener(new onRightBarViewClickListener() {
-			
+
 			@Override
 			public void onclick(View v) {
-				ShowToast("提交");
-				
+				for (TripLocal bean : mList) {
+					ShowLog(bean.toString());
+
+				}
+
 			}
 		});
-		
+
 	}
 
 	private void setMyJourneyPopupWindowListener() {
@@ -243,9 +248,8 @@ public class MyServiceActivity extends BaseActivity implements
 
 	private void addItem() {
 
-		mList.add(mList.size() - 1, new MyJourneySetBean(
-				MyJourneySetBean.DETAIL,
-				"drawable://" + R.drawable.pictures_no, "请编辑文字"));
+		mList.add(mList.size() - 1, new TripLocal(TripLocal.DETAIL, "drawable://"
+				+ R.drawable.pictures_no, "请编辑文字"));
 		Log.i("TAG", mList.toString());
 
 		mAdapter.notifyDataSetChanged();

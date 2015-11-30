@@ -1,14 +1,14 @@
 package com.lyy.hitogether.bean;
 
-public class MyJourneySetBean {
+public class TripLocal {
 	public int beanType;
 	public String picPath;
 	public String txt;
 
-	public MyJourneySetBean() {
+	public TripLocal() {
 	}
 
-	public MyJourneySetBean(int beanType, String picPath, String txt) {
+	public TripLocal(int beanType, String picPath, String txt) {
 
 		this.beanType = beanType;
 		this.picPath = picPath;
@@ -17,8 +17,8 @@ public class MyJourneySetBean {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return beanType + " ";
+		return "MyJourneySetBean [beanType=" + beanType + ", picPath="
+				+ picPath + ", txt=" + txt + "]";
 	}
 
 	public static final int DETAIL = 0;

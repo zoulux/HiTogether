@@ -12,11 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lyy.hitogether.R;
-import com.lyy.hitogether.bean.MyJourneySetBean;
+import com.lyy.hitogether.bean.TripLocal;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class MyJourneySetAdapter extends MyBaseAdapter<MyJourneySetBean> implements OnClickListener{
+public class MyJourneySetAdapter extends MyBaseAdapter<TripLocal> implements OnClickListener{
 	private DisplayImageOptions options = DisplayImageOptions.createSimple();
 
 	private ItemClickListener mListener;
@@ -30,7 +30,7 @@ public class MyJourneySetAdapter extends MyBaseAdapter<MyJourneySetBean> impleme
 	}
 
 	public MyJourneySetAdapter(Context context,
-			List<MyJourneySetBean> commonDatas) {
+			List<TripLocal> commonDatas) {
 		super(context, commonDatas);
 
 	}
@@ -44,24 +44,24 @@ public class MyJourneySetAdapter extends MyBaseAdapter<MyJourneySetBean> impleme
 	@Override
 	public int getViewTypeCount() {
 		// TODO Auto-generated method stub
-		return MyJourneySetBean.BEAN_TYPE_COUNT;
+		return TripLocal.BEAN_TYPE_COUNT;
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder = null;
 		int type = getItemViewType(position);
-		MyJourneySetBean bean = commonDatas.get(position);
+		TripLocal bean = commonDatas.get(position);
 
 		if (convertView == null) {
 			holder = new ViewHolder();
-			if (type == MyJourneySetBean.BUTTON) {
+			if (type == TripLocal.BUTTON) {
 				
 				convertView = commomInflater
 						.inflate(R.layout.my_journey_set_item_bt, parent, false);
 				holder.add = (Button) convertView.findViewById(R.id.id_bt_add);
 
-			} else if (type == MyJourneySetBean.DETAIL) {
+			} else if (type == TripLocal.DETAIL) {
 
 				convertView = commomInflater.inflate(R.layout.my_journey_set_item_detail, parent,
 						false);
@@ -84,10 +84,10 @@ public class MyJourneySetAdapter extends MyBaseAdapter<MyJourneySetBean> impleme
 		}
 
 		Log.i("TAGTAG", "position:" + position + "  type:" + type + "");
-		if (type == MyJourneySetBean.BUTTON) {
+		if (type == TripLocal.BUTTON) {
 			holder.add.setOnClickListener(this);
 			holder.add.setTag(position + "");
-		} else if (type == MyJourneySetBean.DETAIL) {
+		} else if (type == TripLocal.DETAIL) {
 			Log.i("TAGTAG>>", holder.txt.getText() + "");
 			holder.txt.setText(bean.getTxt());
 			String path = bean.getPicPath();
