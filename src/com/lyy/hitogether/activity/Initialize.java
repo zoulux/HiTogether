@@ -24,7 +24,7 @@ public class Initialize extends BaseActivity {
 
 		ViewUtils.inject(this);
 		Bmob.initialize(this, Config.APP_KEY); // 初始化bmob
-		ShareSDK.initSDK(this); 				// 初始化mob
+		ShareSDK.initSDK(this); // 初始化mob
 		ShareSDK.registerService(Socialization.class);
 
 		new Handler().postDelayed(new Runnable() {

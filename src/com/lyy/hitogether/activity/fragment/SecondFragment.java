@@ -26,6 +26,7 @@ import cn.bmob.v3.datatype.BmobDate;
 import cn.bmob.v3.listener.GetServerTimeListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.onekeyshare.OnekeyShare;
 
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.ShareMyTravalActivity;
@@ -52,15 +53,30 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 	private int mHeight;
 
 	private long currrntTime = new Date().getTime();
-	SweetAlertDialog dialog;
+	private SweetAlertDialog dialog;
+	private OnekeyShare mShare;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		getServerTime();
 		initDialog();
+		initShare();
 
 		return inflater.inflate(R.layout.fragment_second, container, false);
+	}
+
+	private void initShare() {
+		mShare = new OnekeyShare();
+		mShare.disableSSOWhenAuthorize();
+		mShare.setSite("乐友游");
+		mShare.setTitleUrl("http://www.pgyer.com/hitogether");
+		mShare.setText("带TA去旅行，乐友游...");
+		mShare.setImageUrl("http://file.bmob.cn/M02/C8/8A/oYYBAFZb8vKAIZgRAAC1kp2SSaQ113.png");
+		mShare.setUrl("http://www.pgyer.com/hitogether");
+		mShare.setComment("我是乐友游的超级内容部分");
+		mShare.setSiteUrl("http://www.pgyer.com/hitogether");
+
 	}
 
 	private void initDialog() {
@@ -146,14 +162,14 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 			@Override
 			public void onSuccess() {
 
-				ShowToast("提交成功");
+				ShowLog("提交成功");
 				dialog.show();
 
 			}
 
 			@Override
 			public void onFailure(int arg0, String arg1) {
-				ShowToast("提交失败");
+				ShowLog("提交失败");
 
 			}
 		});
@@ -359,8 +375,8 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 		public void onClick(SweetAlertDialog sweetAlertDialog) {
 			sweetAlertDialog.dismiss();
 			ShowLog("分享成功");
-			
-		
+			mShare.setTitle(" 我们一起去" + getText(mDesTextView) + "吧！那就赶快下载这个App");
+			mShare.show(getActivity());
 
 		}
 
