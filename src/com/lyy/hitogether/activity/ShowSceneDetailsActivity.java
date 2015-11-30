@@ -78,8 +78,7 @@ public class ShowSceneDetailsActivity extends BaseActivity implements
 
 	private void initOnekeyShare() {
 	
-		ShareSDK.initSDK(this);
-		ShareSDK.registerService(Socialization.class);
+		
 		socialization = ShareSDK.getService(Socialization.class);
 		SocializationCustomPlatform platform = new MyPlatform(
 				ShowSceneDetailsActivity.this);

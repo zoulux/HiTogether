@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.view.Window;
 import cn.bmob.v3.Bmob;
 import cn.bmob.v3.update.BmobUpdateAgent;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.socialization.Socialization;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lyy.hitogether.R;
@@ -21,7 +23,9 @@ public class Initialize extends BaseActivity {
 		setContentView(R.layout.activity_initialize);
 
 		ViewUtils.inject(this);
-		Bmob.initialize(this, Config.APP_KEY);
+		Bmob.initialize(this, Config.APP_KEY); // 初始化bmob
+		ShareSDK.initSDK(this); 				// 初始化mob
+		ShareSDK.registerService(Socialization.class);
 
 		new Handler().postDelayed(new Runnable() {
 

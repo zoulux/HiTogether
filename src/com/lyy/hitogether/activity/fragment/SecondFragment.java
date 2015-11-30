@@ -1,10 +1,15 @@
 package com.lyy.hitogether.activity.fragment;
 
+import java.util.Date;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Message;
+import android.os.SystemClock;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,8 +19,19 @@ import android.widget.Button;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 
+import cn.bmob.im.BmobChatManager;
+import cn.bmob.im.BmobUserManager;
+import cn.bmob.v3.Bmob;
+import cn.bmob.v3.datatype.BmobDate;
+import cn.bmob.v3.listener.GetServerTimeListener;
+import cn.bmob.v3.listener.SaveListener;
+import cn.sharesdk.framework.ShareSDK;
+
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.activity.ShareMyTravalActivity;
+import com.lyy.hitogether.bean.Demand;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
+import com.lyy.hitogether.mydialog.SweetAlertDialog.OnSweetClickListener;
 import com.lyy.hitogether.view.SwitchDesPopUpWindow;
 import com.lyy.hitogether.view.SwitchDesPopUpWindow.onCorrectClickListener;
 import com.lyy.hitogether.view.SwitchPeoplePopUpWindow;
@@ -35,10 +51,48 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 	private SwitchPeoplePopUpWindow mSwitchPeoplePopUpWindow;
 	private int mHeight;
 
+	private long currrntTime = new Date().getTime();
+	SweetAlertDialog dialog;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
+		getServerTime();
+		initDialog();
+
 		return inflater.inflate(R.layout.fragment_second, container, false);
+	}
+
+	private void initDialog() {
+		dialog = new SweetAlertDialog(getActivity(),
+				SweetAlertDialog.SUCCESS_TYPE);
+
+		dialog.setCancelText("否");
+		dialog.setCancelClickListener(new OnSweetClickListenerFaild());
+		dialog.setConfirmText("是");
+		dialog.setTitleText("需求已提交，是否分享一下?");
+		dialog.setConfirmClickListener(new OnSweetClickListenerSuccess());
+		// dialog.setContentText();
+
+	}
+
+	private void getServerTime() {
+		Bmob.getServerTime(getActivity(), new GetServerTimeListener() {
+
+			@Override
+			public void onSuccess(long time) {
+				ShowLog(time + "");
+				currrntTime = time;
+
+			}
+
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				ShowToast("获取服务器时间错误");
+
+			}
+		});
+
 	}
 
 	@Override
@@ -53,11 +107,95 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(SecondFragment.this.getActivity(),
-						ShareMyTravalActivity.class));
+				handleData();
+
+				// startActivity(new Intent(SecondFragment.this.getActivity(),
+				// ShareMyTravalActivity.class));
 			}
 		});
 
+	}
+
+	protected void handleData() {
+		if (!dataIsLegal()) {
+			ShowToast("哥们，把三项数据都填了");
+			return;
+		}
+
+		postDataToServer();
+
+	}
+
+	private void postDataToServer() {
+
+		Demand d = new Demand();
+		d.setDemandId(SystemClock.elapsedRealtime() + ""
+				+ (int) (Math.random() * 1000));
+		d.setDemandProgress(Demand.demandProgressCommit);
+		d.setDestination(getText(mDesTextView));
+		d.setGoTime(getTime(mTimeTextView));
+
+		d.setPeopleNum(Integer.parseInt(getText(mPeopleTextView).substring(0,
+				getText(mPeopleTextView).length() - 1)));
+		d.setUserId(BmobUserManager.getInstance(getActivity())
+				.getCurrentUserObjectId());
+		d.setZan(0);
+
+		d.save(getActivity(), new SaveListener() {
+
+			@Override
+			public void onSuccess() {
+
+				ShowToast("提交成功");
+				dialog.show();
+
+			}
+
+			@Override
+			public void onFailure(int arg0, String arg1) {
+				ShowToast("提交失败");
+
+			}
+		});
+
+	}
+
+	private String getTime(TextView tv) {
+		String text = getText(tv);
+		int yIndex = text.indexOf("年");
+		int mIndex = text.indexOf("月");
+		int dIndex = text.indexOf("日");
+
+		String year = text.substring(0, yIndex);
+		String mon = text.substring(yIndex + 1, mIndex);
+		String day = text.substring(mIndex + 1, dIndex);
+
+		return year + "-" + mon + "-" + day;
+	}
+
+	private BmobDate getTime() {
+		// TODO Auto-generated method stub
+		return BmobDate.createBmobDate("yyyy-MM-dd HH:mm:ss",
+				String.valueOf(currrntTime / 1000));
+	}
+
+	private boolean dataIsLegal() {
+		if (isEmpty(getText(mTimeTextView)) || isEmpty(getText(mDesTextView))
+				|| isEmpty(getText(mPeopleTextView))) {
+			return false;
+		}
+
+		return true;
+	}
+
+	private boolean isEmpty(String text) {
+
+		return TextUtils.isEmpty(text);
+	}
+
+	private String getText(TextView view) {
+
+		return view.getText().toString();
 	}
 
 	private void initView(View view) {
@@ -136,7 +274,7 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 		int id = v.getId();
 		switch (id) {
 		case R.id.id_fragment_second_destination:
-			ShowToast(">>>");
+
 			mSwitchDesPopUpWindow.showAsDropDown(mBottomView, 0, 0);
 			setDesData();
 			lightOff();
@@ -157,14 +295,15 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 	}
 
 	private void setPeopleData() {
-		mSwitchPeoplePopUpWindow.setOnCorrectClickListener3(new onCorrectClickListener3() {
-			
-			@Override
-			public void onCorrectClick3(View v, int count) {
-				mPeopleTextView.setText(count+"人");
-			}
-		});
-		
+		mSwitchPeoplePopUpWindow
+				.setOnCorrectClickListener3(new onCorrectClickListener3() {
+
+					@Override
+					public void onCorrectClick3(View v, int count) {
+						mPeopleTextView.setText(count + "人");
+					}
+				});
+
 	}
 
 	private void setTimeData() {
@@ -174,7 +313,8 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 					@Override
 					public void onCorrectClick2(View v, String Year,
 							String Month, String Day) {
-						mTimeTextView.setText(Year+"年"+Month+"月"+Day+"日");
+						mTimeTextView.setText(Year + "年" + Month + "月" + Day
+								+ "日");
 
 					}
 				});
@@ -188,7 +328,9 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 					@Override
 					public void onCorrectClick(View v, String provinve,
 							String city) {
-						mDesTextView.setText(provinve + mSwitchDesPopUpWindow.getBigLable() + city + mSwitchDesPopUpWindow.getSmallLable());
+						mDesTextView.setText(provinve
+								+ mSwitchDesPopUpWindow.getBigLable() + city
+								+ mSwitchDesPopUpWindow.getSmallLable());
 
 					}
 				});
@@ -208,6 +350,30 @@ public class SecondFragment extends BaseFragment implements OnClickListener {
 				.getAttributes();
 		lp.alpha = .3f;
 		getActivity().getWindow().setAttributes(lp);
+
+	}
+
+	class OnSweetClickListenerSuccess implements OnSweetClickListener {
+
+		@Override
+		public void onClick(SweetAlertDialog sweetAlertDialog) {
+			sweetAlertDialog.dismiss();
+			ShowLog("分享成功");
+			
+		
+
+		}
+
+	}
+
+	class OnSweetClickListenerFaild implements OnSweetClickListener {
+
+		@Override
+		public void onClick(SweetAlertDialog sweetAlertDialog) {
+			sweetAlertDialog.dismiss();
+			ShowLog("分享失败");
+
+		}
 
 	}
 }

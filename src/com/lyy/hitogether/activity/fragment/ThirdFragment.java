@@ -108,6 +108,8 @@ public class ThirdFragment extends BaseFragment {
 		sweetAlertDialog = new SweetAlertDialog(getActivity(), 5);
 		sweetAlertDialog.setTitleText("加载中...");
 		sweetAlertDialog.showCancelButton(false);
+		
+		initIndicator();
 
 	}
 
@@ -164,7 +166,7 @@ public class ThirdFragment extends BaseFragment {
 					}.getType());
 		}
 
-		initIndicator();
+	
 		PictureAndTextAdapter adapter = new PictureAndTextAdapter(
 				getActivity(), hotScenicList);
 		gridView.setAdapter(adapter);
