@@ -73,7 +73,7 @@ public class SwitchTimePopUpWindow extends BasePopUpWindow {
 		yearArrayString = getYEARArray(c.get(Calendar.YEAR), 10);
 		monthArrayString = getMonthArray(c.get(Calendar.MONTH),
 				12 - c.get(Calendar.MONTH));
-		setLayout(context, R.layout.pop_time_window, 0.3f);
+		setLayout(context, R.layout.pop_time_window, 0.3f,0,0);
 	}
 
 	@Override

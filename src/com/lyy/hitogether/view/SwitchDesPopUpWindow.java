@@ -51,7 +51,7 @@ public class SwitchDesPopUpWindow extends BasePopUpWindow {
 
 	public SwitchDesPopUpWindow(Context context) {
 		this.context = context;
-		setLayout(context, R.layout.pop_des_window, 0.3f);
+		setLayout(context, R.layout.pop_des_window, 0.3f,0,0);
 	}
 
 	@Override

@@ -46,7 +46,7 @@ public class SwitchPeoplePopUpWindow extends BasePopUpWindow {
 		for (int i = 0; i < 100; i++) {
 			peoples[i] = i + 1 + "人";
 		}
-		setLayout(context, R.layout.pop_people_window, 0.3f);
+		setLayout(context, R.layout.pop_people_window, 0.3f,0,0);
 	}
 	
 	@Override

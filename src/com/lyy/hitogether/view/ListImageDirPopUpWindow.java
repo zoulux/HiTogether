@@ -48,7 +48,7 @@ public class ListImageDirPopUpWindow extends BasePopUpWindow {
 	public ListImageDirPopUpWindow(Context context, final List<FolderBean> mDatas) {
 		this.context = context;
 		this.mDatas = mDatas;
-		setLayout(context, R.layout.popup_main, 0.7f);
+		setLayout(context, R.layout.popup_main, 0.7f,0,0);
 	}
 	
 	@Override

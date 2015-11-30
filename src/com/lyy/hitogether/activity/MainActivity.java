@@ -76,6 +76,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private static final int MENU_ITEM_QUIT = 10;
 	private static final int MENU_ITEM_UPDATE = 9;
 	private static final int MENU_ITEM_GROUP = 4;
+	private static final int MENU_ITEM_SERVICE = 1;
 
 	private List<ChangeColorIconWithText> mTabIndicators = new ArrayList<ChangeColorIconWithText>();
 
@@ -198,7 +199,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			// Toast.makeText(MainActivity.this, "click", 1).show();
 			updateClient();
 			// BmobUpdateAgent.forceUpdate(MainActivity.this);
-		default:
+		case MENU_ITEM_SERVICE:
+			startActivity(new Intent(MainActivity.this,MyServiceActivity.class));
 			break;
 		}
 

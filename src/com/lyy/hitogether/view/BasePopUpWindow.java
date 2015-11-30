@@ -23,19 +23,25 @@ public abstract class BasePopUpWindow extends PopupWindow {
 	// 获取PopupWindow的view
 	public View mConvertView;
 	/**
-	 * 设置布局和一些初始化操作
+	 * 设置布局和一些初始化操作,若proPortion为0，则width和height不能为0，反之亦然。
 	 * @param context 
 	 * @param source
 	 * @param proPortion
 	 */
-	public void setLayout(Context context,int source,float proPortion) {
+	public void setLayout(Context context,int source,float proPortion,int width,int height) {
 		this.context = context;
-		culculateWidthAndHeight(proPortion);
+		
 		mConvertView = LayoutInflater.from(context).inflate(source, null);
 		setContentView(mConvertView);
-		setWidth(mWidth);
-		setHeight(mHeight);
-
+		if (proPortion==0) {
+			setWidth(width);
+			setHeight(height);
+		}else{
+			culculateWidthAndHeight(proPortion);
+			setWidth(mWidth);
+			setHeight(mHeight);
+		}
+		
 		setFocusable(true);
 		setTouchable(true);
 		setOutsideTouchable(true);
