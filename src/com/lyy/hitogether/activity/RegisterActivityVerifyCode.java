@@ -8,8 +8,12 @@ import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lyy.hitogether.R;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
+import com.lyy.hitogether.mydialog.SweetAlertDialog.OnSweetClickListener;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +21,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class RegisterActivityVerifyCode extends BaseActivity {
+	public static final int Verify_ERROR = 1;
+	public static final String ACTION_BROADCASTRECIVER = RegisterActivityVerifyCode.class
+			.getSimpleName();
 
 	@ViewInject(R.id.id_et_verify_code)
 	private EditText verifyCode;
@@ -25,6 +32,8 @@ public class RegisterActivityVerifyCode extends BaseActivity {
 	private TextView phoneTV;
 
 	private String phone;
+
+	private SweetAlertDialog mDialog;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +44,10 @@ public class RegisterActivityVerifyCode extends BaseActivity {
 		phone = getIntent().getStringExtra(
 				RegisterActivityGetNumber.PHONE_NUMBER);
 		phoneTV.setText(phone);
+
+		mDialog = new SweetAlertDialog(this);
+		mDialog.setCancelable(false);
+		mDialog.setConfirmText("确认");
 
 	}
 
@@ -47,11 +60,20 @@ public class RegisterActivityVerifyCode extends BaseActivity {
 					@Override
 					public void done(BmobException ex) {
 						if (ex == null) {
-							ShowToast("验证通过");
+							mDialog.setTitleText("验证通过");
+							mDialog.changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+
+							mDialog.setConfirmClickListener(new SuccessOnSweetClickListener());
+							mDialog.show();
+
 							Log.i("BmobSMS", "验证通过");
 						} else {
+							mDialog.setTitleText("验证失败");
+							mDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
 
-							ShowToast("验证失败");
+							mDialog.setConfirmClickListener(new FaildOnSweetClickListener());
+							mDialog.show();
+
 							Log.i("BmobSMS", "验证失败：code =" + ex.getErrorCode()
 									+ ",msg = " + ex.getLocalizedMessage());
 						}
@@ -59,5 +81,33 @@ public class RegisterActivityVerifyCode extends BaseActivity {
 					}
 				});
 
+	}
+
+	class SuccessOnSweetClickListener implements OnSweetClickListener {
+
+		@Override
+		public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+			Intent i = new Intent(RegisterActivityVerifyCode.this,
+					RegisterActivitySetPwd.class);
+			i.putExtra(RegisterActivityGetNumber.PHONE_NUMBER, phone);
+
+			startActivity(i);
+		}
+
+	}
+
+	class FaildOnSweetClickListener implements OnSweetClickListener {
+
+		@Override
+		public void onClick(SweetAlertDialog sweetAlertDialog) {
+			Activity c = RegisterActivityVerifyCode.this;
+
+			Intent i = new Intent();
+			i.setAction(ACTION_BROADCASTRECIVER);
+			c.sendBroadcast(i);
+			c.finish();
+
+		}
 	}
 }

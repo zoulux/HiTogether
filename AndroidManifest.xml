@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lyy.hitogether"
     android:versionCode="1"
-    android:versionName="1.2" >
+    android:versionName="1.3" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -91,14 +91,14 @@
             android:name="com.lyy.hitogether.activity.ShowSceneDetailsActivity"
             android:screenOrientation="portrait" >
         </activity>
-        
         <activity
             android:name="com.lyy.hitogether.activity.MyServiceActivity"
             android:screenOrientation="portrait" >
         </activity>
-
-        <!-- begin imlib request -->
-
+        <activity
+            android:name="com.lyy.hitogether.activity.RegisterActivitySetPwd"
+            android:screenOrientation="portrait" >
+        </activity>
 
         <!-- begin imlib request -->
 
@@ -188,8 +188,6 @@
             android:name="io.rong.imkit.widget.provider.TakingPicturesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="portrait" />
-        
-        
 
         <service
             android:name="io.rong.imlib.ipc.RongService"
