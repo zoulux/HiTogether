@@ -5,6 +5,7 @@ import io.rong.imlib.model.UserInfo;
 
 import java.util.List;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,8 +19,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -32,30 +31,28 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshGridView;
 import com.lyy.hitogether.R;
+import com.lyy.hitogether.activity.ShowGuideDetailActivity;
 import com.lyy.hitogether.activity.fragment.BaseFragment;
 import com.lyy.hitogether.adapter.MyPagerAdapter;
-import com.lyy.hitogether.adapter.PictureAndTextAdapter;
 import com.lyy.hitogether.adapter.ThirdFragmentAdapter;
 import com.lyy.hitogether.adapter.ThirdFragmentAdapter.OnThirdFragmentBtListener;
-import com.lyy.hitogether.bean.HotScenic;
+import com.lyy.hitogether.adapter.ThirdFragmentAdapter.onThirdFragmentAllViewClickListener;
 import com.lyy.hitogether.bean.MyUser;
 import com.lyy.hitogether.bean.Service;
 import com.lyy.hitogether.global.App;
 import com.lyy.hitogether.mydialog.SweetAlertDialog;
 import com.lyy.hitogether.view.MyViewPager;
 
-
 public class FirstFragmentDestination extends BaseFragment {
-	
+
 	private PullToRefreshGridView mGridView;
 	private ThirdFragmentAdapter thirdFragmentAdapter;
-//
+	//
 	private boolean isPrepared;
 	private List<Service> list;
 
-	//private PullToRefreshGridView gridView;
+	// private PullToRefreshGridView gridView;
 	private SweetAlertDialog sweetAlertDialog;
-
 
 	private MyViewPager myViewPager;
 
@@ -73,8 +70,8 @@ public class FirstFragmentDestination extends BaseFragment {
 	}
 
 	private void initIndicator() {
-		ILoadingLayout startLabels = mGridView
-				.getLoadingLayoutProxy(true, false);
+		ILoadingLayout startLabels = mGridView.getLoadingLayoutProxy(true,
+				false);
 		startLabels.setPullLabel("下拉刷新");// 刚下拉时，显示的提示
 		startLabels.setRefreshingLabel("正在刷新...");// 刷新时
 		startLabels.setReleaseLabel("松开刷新数据");// 下来达到一定距离时，显示的提示
@@ -111,32 +108,44 @@ public class FirstFragmentDestination extends BaseFragment {
 	private void init(View view) {
 		initView(view);
 
-		//initEvent();
+		// initEvent();
 	}
 
 	private void initEvent() {
 		thirdFragmentAdapter
-		.setOnThirdFragmentBtListener(new OnThirdFragmentBtListener() {
+				.setOnThirdFragmentBtListener(new OnThirdFragmentBtListener() {
 
-			@Override
-			public void onBtclick(View v, int position) {
-				// ShowToast(position + "");
+					@Override
+					public void onBtclick(View v, int position) {
+						// ShowToast(position + "");
 
-				chatWithGuide(position);
-				if (!isContain(position)) {
-					MyUser user = list.get(position).getUser();
-					Uri uri = Uri.parse(user.getAvatar());
-					App.getInsatnce()
-							.getUserInfos()
-							.add(new UserInfo(user.getObjectId(), user
-									.getNick(), uri));
-					// ConnectRong.updateFrindsInfo(null);
-				}
+						chatWithGuide(position);
+						if (!isContain(position)) {
+							MyUser user = list.get(position).getUser();
+							Uri uri = Uri.parse(user.getAvatar());
+							App.getInsatnce()
+									.getUserInfos()
+									.add(new UserInfo(user.getObjectId(), user
+											.getNick(), uri));
+							// ConnectRong.updateFrindsInfo(null);
+						}
 
-			}
-		});
+					}
+				});
+
+		thirdFragmentAdapter
+				.setOnThirdFragmentAllViewClickListener(new onThirdFragmentAllViewClickListener() {
+
+					@Override
+					public void onThirdFragmentAllViewClick(View v, int pos) {
+						//ShowToast(pos + "");
+						startActivity(new Intent(FirstFragmentDestination.this
+								.getActivity(), ShowGuideDetailActivity.class));
+
+					}
+				});
 	}
-	
+
 	protected void chatWithGuide(int position) {
 		String targetUserId = list.get(position).getUser().getObjectId();
 		String targetUserName = list.get(position).getUser().getUsername();
@@ -144,7 +153,7 @@ public class FirstFragmentDestination extends BaseFragment {
 				"与" + targetUserName + "聊天中");
 
 	}
-	
+
 	protected boolean isContain(int position) {
 
 		for (UserInfo user : App.getInsatnce().getUserInfos()) {
@@ -157,7 +166,6 @@ public class FirstFragmentDestination extends BaseFragment {
 
 		return false;
 	}
-
 
 	private void initView(View view) {
 		// alertDialog = new SweetAlertDialog(getActivity(),
@@ -295,7 +303,7 @@ public class FirstFragmentDestination extends BaseFragment {
 
 		// Log.i("lazyLoad2", isPrepared + ":" + isPrepared);
 
-		//baseProgress.show();
+		// baseProgress.show();
 		sweetAlertDialog.show();
 		postAsync("getAllService", null);
 	}
@@ -353,7 +361,7 @@ public class FirstFragmentDestination extends BaseFragment {
 
 		isVisible = false;
 		sweetAlertDialog.dismiss();
-		//baseProgress.dismiss();
+		// baseProgress.dismiss();
 
 		isPrepared = false;
 
@@ -377,13 +385,13 @@ public class FirstFragmentDestination extends BaseFragment {
 	}
 
 	private void handleFaild(String string) {
-		//baseProgress.dismiss();
+		// baseProgress.dismiss();
 		sweetAlertDialog.dismiss();
 		ShowToast("请检查网络");
 	}
 
 	private void handleSuccess(String json) {
-		//baseProgress.dismiss();
+		// baseProgress.dismiss();
 		sweetAlertDialog.dismiss();
 		Gson gson = new Gson();
 		list = gson.fromJson(json, new TypeToken<List<Service>>() {
@@ -394,7 +402,6 @@ public class FirstFragmentDestination extends BaseFragment {
 		mGridView.setAdapter(thirdFragmentAdapter);
 		initEvent();
 
-		
 	}
 
 	public void setCountMax() {
@@ -407,38 +414,32 @@ public class FirstFragmentDestination extends BaseFragment {
 		count = 1;
 
 	}
-	
+
 	@Override
 	public void onResume() {
-		
+
 		super.onResume();
-		mGridView
-		.setOnRefreshListener(new OnRefreshListener2<GridView>()
-		{
+		mGridView.setOnRefreshListener(new OnRefreshListener2<GridView>() {
 
 			@Override
 			public void onPullDownToRefresh(
-					PullToRefreshBase<GridView> refreshView)
-			{
+					PullToRefreshBase<GridView> refreshView) {
 				Log.e("TAG", "onPullDownToRefresh"); // Do work to
 				String label = DateUtils.formatDateTime(
 						FirstFragmentDestination.this.getActivity(),
-						System.currentTimeMillis(),
-						DateUtils.FORMAT_SHOW_TIME
+						System.currentTimeMillis(), DateUtils.FORMAT_SHOW_TIME
 								| DateUtils.FORMAT_SHOW_DATE
 								| DateUtils.FORMAT_ABBREV_ALL);
 
 				// Update the LastUpdatedLabel
-				refreshView.getLoadingLayoutProxy()
-						.setLastUpdatedLabel(label);
+				refreshView.getLoadingLayoutProxy().setLastUpdatedLabel(label);
 
 				new GetDataTask().execute();
 			}
 
 			@Override
 			public void onPullUpToRefresh(
-					PullToRefreshBase<GridView> refreshView)
-			{
+					PullToRefreshBase<GridView> refreshView) {
 				Log.e("TAG", "onPullUpToRefresh"); // Do work to refresh
 													// the list here.
 				new GetDataTask().execute();
