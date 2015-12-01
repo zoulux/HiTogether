@@ -95,10 +95,19 @@
             android:name="com.lyy.hitogether.activity.MyServiceActivity"
             android:screenOrientation="portrait" >
         </activity>
+
         <activity
             android:name="com.lyy.hitogether.activity.RegisterActivitySetPwd"
             android:screenOrientation="portrait" >
         </activity>
+        
+        <activity
+            android:name="com.lyy.hitogether.activity.ShowGuideDetailActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <!-- begin imlib request -->
+
 
         <!-- begin imlib request -->
 

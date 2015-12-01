@@ -11,6 +11,7 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lyy.hitogether.R;
@@ -23,14 +24,25 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 	private OnThirdFragmentBtListener mThirdFragmentBtListener;
+	private onThirdFragmentAllViewClickListener mThirdFragmentAllViewClickListener;
 
 	public interface OnThirdFragmentBtListener {
 		void onBtclick(View v, int position);
+	}
+	
+	public interface onThirdFragmentAllViewClickListener{
+		   void  onThirdFragmentAllViewClick(View v,int pos);
 	}
 
 	public void setOnThirdFragmentBtListener(
 			OnThirdFragmentBtListener thirdFragmentBtListener) {
 		this.mThirdFragmentBtListener = thirdFragmentBtListener;
+
+	}
+	
+	public void setOnThirdFragmentAllViewClickListener(
+			onThirdFragmentAllViewClickListener mThirdFragmentAllViewClickListener) {
+		this.mThirdFragmentAllViewClickListener = mThirdFragmentAllViewClickListener;
 
 	}
 
@@ -61,6 +73,8 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 					.findViewById(R.id.id_third_fragment_grade);
 			viewHolder.apointmentBt = (Button) convertView
 					.findViewById(R.id.id_fragment_bt_appointment);
+			viewHolder.allView = (RelativeLayout) convertView
+					.findViewById(R.id.id_third_fragment_all_view);
 			convertView.setTag(viewHolder);
 
 		} else {
@@ -90,6 +104,17 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 
 			}
 		});
+		
+		viewHolder.allView.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+					if (mThirdFragmentAllViewClickListener!=null) {
+						mThirdFragmentAllViewClickListener.onThirdFragmentAllViewClick(v,position);
+					}
+			}
+		});
+		
 		return convertView;
 	}
 
@@ -103,6 +128,7 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 		TextView place;
 		RatingBar grade;
 		Button apointmentBt;
+		RelativeLayout allView;
 	}
 
 }

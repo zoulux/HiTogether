@@ -22,5 +22,7 @@
     <string name="login_view_user_name">乐悠游帐号</string>
     <string name="login_view_user_passsword">密码</string>
     <string name="login_view_bt_text">登录</string>
+    
+     <string name="desc">黄山，位于中国安徽省南部，属中国南岭山脉的部分，全山面积约12 </string>
 
 </resources>
