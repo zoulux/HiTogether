@@ -38,7 +38,7 @@ public class RegisterActivityVerifyCode extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState);
+		super.onCreate(savedInstanceState); 
 		setContentView(R.layout.activity_register_verify_code);
 		ViewUtils.inject(this);
 		phone = getIntent().getStringExtra(

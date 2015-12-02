@@ -6,7 +6,7 @@ import cn.bmob.im.bean.BmobChatUser;
 import cn.bmob.v3.datatype.BmobDate;
 
 public class MyUser extends BmobChatUser {
-	String gender;  //0 女 1 男    2UnKnow
+	String gender; // 0 女 1 男 2UnKnow
 	String birthday;
 	List<String> label;
 	Boolean isAuthentication; // 是否实名认证
@@ -15,6 +15,36 @@ public class MyUser extends BmobChatUser {
 	List<String> collectionDemands; // 收藏单号
 	Integer age;
 	String token;
+
+	Integer sdkVerSion; // sdk版本
+	String model;
+	String brand;
+
+	
+	
+	public Integer getSdkVerSion() {
+		return sdkVerSion;
+	}
+
+	public void setSdkVerSion(Integer sdkVerSion) {
+		this.sdkVerSion = sdkVerSion;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getBrand() {
+		return brand;
+	}
+
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
 
 	public String getToken() {
 		return token;

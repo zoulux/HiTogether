@@ -85,6 +85,9 @@ public class RegisterActivityGetNumber extends Activity {
 					intent.putExtra(PHONE_NUMBER, phoneNumber.getText()
 							.toString());
 					startActivity(intent);
+				}else{
+					Log.i("bmob", smsId + "Success"+"BmobException:  "+ex);
+					
 				}
 
 			}

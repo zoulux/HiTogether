@@ -29,9 +29,9 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 	public interface OnThirdFragmentBtListener {
 		void onBtclick(View v, int position);
 	}
-	
-	public interface onThirdFragmentAllViewClickListener{
-		   void  onThirdFragmentAllViewClick(View v,int pos);
+
+	public interface onThirdFragmentAllViewClickListener {
+		void onThirdFragmentAllViewClick(View v, int pos);
 	}
 
 	public void setOnThirdFragmentBtListener(
@@ -39,7 +39,7 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 		this.mThirdFragmentBtListener = thirdFragmentBtListener;
 
 	}
-	
+
 	public void setOnThirdFragmentAllViewClickListener(
 			onThirdFragmentAllViewClickListener mThirdFragmentAllViewClickListener) {
 		this.mThirdFragmentAllViewClickListener = mThirdFragmentAllViewClickListener;
@@ -104,17 +104,18 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 
 			}
 		});
-		
+
 		viewHolder.allView.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-					if (mThirdFragmentAllViewClickListener!=null) {
-						mThirdFragmentAllViewClickListener.onThirdFragmentAllViewClick(v,position);
-					}
+				if (mThirdFragmentAllViewClickListener != null) {
+					mThirdFragmentAllViewClickListener
+							.onThirdFragmentAllViewClick(v, position);
+				}
 			}
 		});
-		
+
 		return convertView;
 	}
 

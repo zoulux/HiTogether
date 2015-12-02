@@ -1,20 +1,27 @@
 package com.lyy.hitogether.activity;
 
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.SystemClock;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import cn.bmob.v3.BmobInstallation;
+import cn.bmob.v3.listener.SaveListener;
+
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lyy.hitogether.R;
-
-import android.app.Activity;
-import android.os.Bundle;
-import android.os.Handler;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import com.lyy.hitogether.bean.MyUser;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
 
 public class RegisterActivitySetPwd extends BaseActivity {
+
+	private SweetAlertDialog mDialog;
 
 	@ViewInject(R.id.id_et_pwd)
 	private EditText pwd;
@@ -22,7 +29,9 @@ public class RegisterActivitySetPwd extends BaseActivity {
 	private EditText pwdAgain;
 
 	@ViewInject(R.id.id_tv_number)
-	private TextView number;
+	private TextView mTextViewNum;
+
+	private String num;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +39,23 @@ public class RegisterActivitySetPwd extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_set_pwd);
 		ViewUtils.inject(this);
+		initView();
 
 		initData();
 
 	}
 
+	private void initView() {
+		mDialog = new SweetAlertDialog(RegisterActivitySetPwd.this,
+				SweetAlertDialog.PROGRESS_TYPE);
+
+	}
+
 	private void initData() {
-		String num = getIntent().getStringExtra(
-				RegisterActivityGetNumber.PHONE_NUMBER);
+		num = getIntent()
+				.getStringExtra(RegisterActivityGetNumber.PHONE_NUMBER);
 		if (TextUtils.isEmpty(num)) {
-			number.setText("账号获取错误，请重试！");
+			mTextViewNum.setText("账号获取错误，请重试！");
 
 			new Handler().postDelayed(new Runnable() {
 
@@ -51,22 +67,74 @@ public class RegisterActivitySetPwd extends BaseActivity {
 			}, 2000);
 
 		} else {
-			number.setText(num);
+			mTextViewNum.setText(num);
 		}
 
 	}
 
 	@OnClick(R.id.id_bt_submit)
 	public void submit(View v) {
+		mDialog.show();
 		if (isLegal()) {
 
+			register();
 		}
 
 	}
 
+
+
+	private void register() {
+		MyUser user = new MyUser();
+
+		user.setPassword(getText(pwd));
+		user.setUsername(num);
+
+		String defaultPhoto = "http://file.bmob.cn/M02/CB/99/oYYBAFZdggCAdnfDAAAUqy00rwE554.jpg";
+		user.setAvatar(defaultPhoto);
+
+		String defaultNick = SystemClock.elapsedRealtime() + "";
+		user.setNick(defaultNick);
+
+		user.setMobilePhoneNumber(num);
+		user.setMobilePhoneNumberVerified(true);
+
+		user.setDeviceType("android");
+		user.setInstallId(BmobInstallation
+				.getInstallationId(RegisterActivitySetPwd.this));
+		user.setModel(Build.MODEL);
+		user.setBrand(Build.BRAND);
+		user.setSdkVerSion(Build.VERSION.SDK_INT);
+
+		user.signUp(RegisterActivitySetPwd.this, new SaveListener() {
+
+			@Override
+			public void onSuccess() {
+				// getToken(num);
+
+				mDialog.dismiss();
+
+				Intent i = new Intent(RegisterActivitySetPwd.this,
+						Initialize.class);
+				startActivity(i);
+				finish();
+
+			}
+
+			@Override
+			public void onFailure(int code, String err) {
+				mDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
+
+				mDialog.setTitleText("code:" + code + "   err:" + err);
+
+			}
+		});
+
+	}
+
 	private String getText(EditText et) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return et.getText().toString();
 	}
 
 	private boolean isLegal() {

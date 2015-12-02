@@ -10,15 +10,20 @@ import io.rong.imlib.model.UserInfo;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.Context;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 import cn.bmob.im.BmobUserManager;
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.listener.CloudCodeListener;
+import cn.bmob.v3.listener.UpdateListener;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -44,20 +49,39 @@ public class ConnectRong {
 		mContext = context;
 		setMyConnectListener(listener);
 		/**
-		 * 连接融云
+		 * 连接融云 
 		 */
 
-		String token = BmobUser.getCurrentUser(context, MyUser.class)
-				.getToken();
+		MyUser user = BmobUser.getCurrentUser(context, MyUser.class);
+		String token = user.getToken();
+		String objectId = user.getObjectId();
+		//String userId = user.getUsername();
 
-		Log.i(BmobUser.getCurrentUser(context, MyUser.class).getNick(), token);
+		if ( TextUtils.isEmpty(token)) {
+			Log.i("ConnectRong", "1");
 
+			getToken( objectId);
+
+		} else {
+			Log.i("ConnectRong", "2");
+			concent(token);
+
+		}
+
+		// Log.i(BmobUser.getCurrentUser(context, MyUser.class).getNick(),
+		// token);
+
+	}
+
+	private static void concent(String token) {
+		Log.i("ConnectRong", "6");
 		RongIM.connect(token, new ConnectCallback() {
 
 			@Override
 			public void onSuccess(String str) {
 				// mHandler.sendEmptyMessage(WHAT);
 
+				Log.i("ConnectRong", "7");
 				initUserInfo();
 
 				/**
@@ -99,6 +123,60 @@ public class ConnectRong {
 			}
 		});
 
+	}
+
+	private static void getToken(String userId) {
+
+		JSONObject params = new JSONObject();
+		try {
+			params.put("userId", userId);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		Log.i("ConnectRong", "3");
+		HttpUtils.getHttpData(mContext, "connect", params,
+				new CloudCodeListener() {
+
+					@Override
+					public void onSuccess(Object result) {
+						Log.i("ConnectRong", "4");
+						if (result != null) {
+							Log.i("ConnectRong", "5");
+							String token = result.toString();
+							// updateUser(result.toString(), objectId);
+							concent(token);
+
+						}
+
+					}
+
+					@Override
+					public void onFailure(int arg0, String arg1) {
+						// TODO Auto-generated method stub
+
+					}
+				});
+
+	}
+
+	protected static void updateUser(final String token, String objectId) {
+
+		MyUser user = new MyUser();
+		user.setToken(token);
+		user.update(mContext, objectId, new UpdateListener() {
+
+			@Override
+			public void onSuccess() {
+
+				concent(token);
+			}
+
+			@Override
+			public void onFailure(int arg0, String arg1) {
+
+			}
+		});
 	}
 
 	private static MyConnectListener mListener;
@@ -154,28 +232,29 @@ public class ConnectRong {
 		for (Conversation conversation : conversationList) {
 			userIds.add(conversation.getTargetId());
 		}
-		HttpUtils.getFrends(mContext, userIds, new MyResultListener<UserInfo>() {
+		HttpUtils.getFrends(mContext, userIds,
+				new MyResultListener<UserInfo>() {
 
-			@Override
-			public void onSuccess(List<UserInfo> users) {
+					@Override
+					public void onSuccess(List<UserInfo> users) {
 
-				App.getInsatnce().setUserInfos(users);
-				if (mListener != null) {
+						App.getInsatnce().setUserInfos(users);
+						if (mListener != null) {
 
-					mListener.onSuccess(users);
-				}
+							mListener.onSuccess(users);
+						}
 
-			}
+					}
 
-			@Override
-			public void onFaild(int code, String err) {
+					@Override
+					public void onFaild(int code, String err) {
 
-				if (mListener != null) {
+						if (mListener != null) {
 
-					mListener.onFaild(code + "" + err);
-				}
-			}
-		});
+							mListener.onFaild(code + "" + err);
+						}
+					}
+				});
 
 	}
 

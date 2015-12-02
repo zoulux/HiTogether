@@ -100,12 +100,14 @@ public class LoginActivity extends BaseActivity {
 	private Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			if (msg.what == HANDLE_WHAT) {
+				Log.i("LoginActivity", "4");
 
 				ConnectRong.connect(LoginActivity.this,
 						new MyConnectListener() {
 
 							@Override
 							public void onSuccess(List<UserInfo> users) {
+								Log.i("LoginActivity", "5");
 
 								if (users != null && users.size() > 0) {
 
@@ -180,12 +182,13 @@ public class LoginActivity extends BaseActivity {
 	protected void login() {
 
 		if (judge()) {
+			Log.i("LoginActivity", "1");
 
 			MyUser user = new MyUser();
 			user.setUsername(mEditTextUserName.getText().toString());
 			user.setPassword(mEditTextPwd.getText().toString());
 
-			Log.i("Installation", BmobInstallation.getInstallationId(this));
+			// Log.i("Installation", BmobInstallation.getInstallationId(this));
 			BmobUserManager.getInstance(LoginActivity.this)
 					.bindInstallationForRegister(user.getUsername());
 
@@ -194,13 +197,14 @@ public class LoginActivity extends BaseActivity {
 
 						@Override
 						public void onSuccess() {
-
+							Log.i("LoginActivity", "2");
 							mHandler.sendEmptyMessage(HANDLE_WHAT);
 
 						}
 
 						@Override
 						public void onFailure(int arg0, String arg1) {
+							Log.i("LoginActivity", "3");
 							sweetAlertDialog.dismiss();
 							isFirstClick = true;
 							ShowToast("账号或密码有误");
