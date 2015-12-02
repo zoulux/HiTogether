@@ -46,6 +46,17 @@ public class MyJourneySetAdapter extends MyBaseAdapter<TripLocal> implements OnC
 		// TODO Auto-generated method stub
 		return TripLocal.BEAN_TYPE_COUNT;
 	}
+	
+	//所有的item不可点击
+	@Override
+	public boolean areAllItemsEnabled() {
+		return false;
+	}
+	//下标position的item不可选中
+	@Override
+	public boolean isEnabled(int position) {
+		return false;
+	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {

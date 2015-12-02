@@ -138,9 +138,12 @@ public class FirstFragmentDestination extends BaseFragment {
 
 					@Override
 					public void onThirdFragmentAllViewClick(View v, int pos) {
-						//ShowToast(pos + "");
-						startActivity(new Intent(FirstFragmentDestination.this
+
+						Intent intent = new Intent(new Intent(FirstFragmentDestination.this
 								.getActivity(), ShowGuideDetailActivity.class));
+						intent.putExtra("targetUserId", list.get(pos).getUser().getObjectId());
+						intent.putExtra("targetUserName", list.get(pos).getUser().getUsername());
+						startActivity(intent);
 
 					}
 				});

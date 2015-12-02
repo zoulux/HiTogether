@@ -22,7 +22,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="图片编辑" />
+            android:background="@drawable/third_fragment_bt_selector"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="图片"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -35,8 +39,8 @@
             android:id="@+id/id_tv_txt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="你好" />
+            android:gravity="center"
+            android:layout_weight="4" />
 
         <TextView
             android:id="@+id/id_bt_edit_txt"
@@ -44,7 +48,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="文字编辑" />
+            android:background="@drawable/third_fragment_bt_selector"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="文字"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </LinearLayout>

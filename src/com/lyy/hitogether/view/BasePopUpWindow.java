@@ -86,6 +86,7 @@ public abstract class BasePopUpWindow extends PopupWindow {
 		activity.getWindow().setAttributes(lp);
 
 	}
+	
 
 	/**
 	 * 灯灭
