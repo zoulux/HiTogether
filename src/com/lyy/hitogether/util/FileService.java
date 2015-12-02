@@ -13,4 +13,27 @@ public class FileService {
 				}
 			}
 		}
+		/**
+		 * 递归删除文件夹及其文件夹里所有的文件
+		 * @param file
+		 */
+		 public static void delete(File file) {  
+	         if (file.isFile()) {  
+	             file.delete();  
+	             return;  
+	         }  
+	   
+	         if(file.isDirectory()){  
+	             File[] childFiles = file.listFiles();  
+	             if (childFiles == null || childFiles.length == 0) {  
+	                 file.delete();  
+	                return;  
+	             }  
+	      
+	             for (int i = 0; i < childFiles.length; i++) {  
+	                delete(childFiles[i]);  
+	             }  
+	             file.delete();  
+	         }  
+	     }
 }

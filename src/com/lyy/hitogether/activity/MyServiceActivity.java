@@ -1,5 +1,6 @@
 package com.lyy.hitogether.activity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,8 +23,7 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ListView;
-
-import cn.bmob.push.a.be;
+import android.widget.PopupWindow.OnDismissListener;
 
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.adapter.MyJourneySetAdapter;
@@ -32,6 +32,7 @@ import com.lyy.hitogether.bean.TripLocal;
 import com.lyy.hitogether.util.FileService;
 import com.lyy.hitogether.util.ImageUir;
 import com.lyy.hitogether.view.CustomTitleBarView;
+import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
 import com.lyy.hitogether.view.CustomTitleBarView.onRightBarViewClickListener;
 import com.lyy.hitogether.view.MyJourneyPopupWindow;
 import com.lyy.hitogether.view.MyJourneyPopupWindow.onToAlbumClickListener;
@@ -105,10 +106,29 @@ public class MyServiceActivity extends BaseActivity implements
 
 			}
 		});
+		titleBar.setOnLeftBarViewClickListener(new onLeftBarViewClickListener() {
+
+			@Override
+			public void onclick(View v) {
+				File file = new File(Environment.getExternalStorageDirectory()
+						+ "/Hitogether/");
+				FileService.delete(file);
+				// delete(file);
+				MyServiceActivity.this.finish();
+			}
+		});
 
 	}
 
 	private void setMyJourneyPopupWindowListener() {
+		mMyJourneyPopupWindow.setOnDismissListener(new OnDismissListener() {
+
+			@Override
+			public void onDismiss() {
+				mMyJourneyPopupWindow.lightOn(MyServiceActivity.this);
+
+			}
+		});
 		mMyJourneyPopupWindow
 				.setOnToAlbumClickListener(new onToAlbumClickListener() {
 
@@ -116,6 +136,7 @@ public class MyServiceActivity extends BaseActivity implements
 					public void onToAlbumClick(View v) {
 						pickPhoto();
 						mMyJourneyPopupWindow.dismiss();
+						mMyJourneyPopupWindow.lightOn(MyServiceActivity.this);
 
 					}
 				});
@@ -127,6 +148,7 @@ public class MyServiceActivity extends BaseActivity implements
 					public void onToCameraClick(View v) {
 						pickCamera();
 						mMyJourneyPopupWindow.dismiss();
+						mMyJourneyPopupWindow.lightOn(MyServiceActivity.this);
 					}
 
 				});
@@ -223,6 +245,7 @@ public class MyServiceActivity extends BaseActivity implements
 
 	private void editPic(View v) {
 		mMyJourneyPopupWindow.showAtLocation(v, Gravity.BOTTOM, 0, 0);
+		mMyJourneyPopupWindow.lightOff(MyServiceActivity.this);
 
 	}
 
@@ -248,8 +271,8 @@ public class MyServiceActivity extends BaseActivity implements
 
 	private void addItem() {
 
-		mList.add(mList.size() - 1, new TripLocal(TripLocal.DETAIL, "drawable://"
-				+ R.drawable.pictures_no, "请编辑文字"));
+		mList.add(mList.size() - 1, new TripLocal(TripLocal.DETAIL,
+				"drawable://" + R.drawable.pictures_no, "请编辑文字"));
 		Log.i("TAG", mList.toString());
 
 		mAdapter.notifyDataSetChanged();
