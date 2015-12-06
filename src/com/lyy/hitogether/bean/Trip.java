@@ -5,9 +5,24 @@ import java.util.List;
 import cn.bmob.v3.BmobObject;
 
 public class Trip extends BmobObject {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3829164492171967979L;
 	Integer id;
 	MyUser user;
 	List<TripItem> data;
+
+	public Trip(Trip trip) {
+
+		this.user = trip.user;
+		this.data = trip.data;
+
+	}
+
+	public Trip() {
+
+	}
 
 	public Integer getId() {
 		return id;

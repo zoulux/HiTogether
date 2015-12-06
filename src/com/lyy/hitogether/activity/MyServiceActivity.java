@@ -1,7 +1,9 @@
 package com.lyy.hitogether.activity;
 
 import java.io.File;
+import java.security.PublicKey;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import android.app.AlertDialog;
@@ -11,11 +13,14 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.Message;
 import android.provider.MediaStore;
 import android.provider.MediaStore.Images.ImageColumns;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -25,10 +30,24 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
 
+import cn.bmob.im.BmobUserManager;
+import cn.bmob.push.a.be;
+import cn.bmob.v3.datatype.BmobFile;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.ThumbnailUrlListener;
+
+import com.bmob.BmobProFile;
+import com.bmob.btp.callback.LocalThumbnailListener;
+import com.bmob.btp.callback.ThumbnailListener;
+import com.bmob.btp.callback.UploadBatchListener;
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.adapter.MyJourneySetAdapter;
 import com.lyy.hitogether.adapter.MyJourneySetAdapter.ItemClickListener;
+import com.lyy.hitogether.bean.MyUser;
+import com.lyy.hitogether.bean.Trip;
+import com.lyy.hitogether.bean.TripItem;
 import com.lyy.hitogether.bean.TripLocal;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
 import com.lyy.hitogether.util.FileService;
 import com.lyy.hitogether.util.ImageUir;
 import com.lyy.hitogether.view.CustomTitleBarView;
@@ -40,6 +59,12 @@ import com.lyy.hitogether.view.MyJourneyPopupWindow.onToCameraClickListener;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+/**
+ * 这一段太恶心了，有时间再维护吧
+ * 
+ * @author Lenovo
+ * 
+ */
 public class MyServiceActivity extends BaseActivity implements
 		ItemClickListener, OnClickListener {
 
@@ -56,6 +81,10 @@ public class MyServiceActivity extends BaseActivity implements
 	private int location;
 	String realFilePath;
 	private CustomTitleBarView titleBar;
+
+	private Trip trip;
+
+	public static final String TXT_TAG = "添加文字描述";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +110,7 @@ public class MyServiceActivity extends BaseActivity implements
 		TripLocal detail = new TripLocal();
 		detail.beanType = TripLocal.DETAIL;
 		detail.picPath = "drawable://" + R.drawable.pictures_no;
-		detail.txt = "添加文字描述";
+		detail.txt = TXT_TAG;
 		mList.add(0, detail);
 
 		mAdapter = new MyJourneySetAdapter(this, mList);
@@ -92,17 +121,75 @@ public class MyServiceActivity extends BaseActivity implements
 
 		setMyJourneyPopupWindowListener();
 		setTitleBarListener();
+
+		mFile = BmobProFile.getInstance(this);
+		trip = new Trip();
+		trip.setUser(BmobUserManager.getInstance(this).getCurrentUser(
+				MyUser.class));
+
 	}
+
+	String[] arr;
+
+	List<TripItem> tripItems = new ArrayList<TripItem>();
 
 	private void setTitleBarListener() {
 		titleBar.setOnRightBarViewClickListener(new onRightBarViewClickListener() {
 
 			@Override
 			public void onclick(View v) {
+				if (baseDialog.getAlerType() == SweetAlertDialog.NORMAL_TYPE) {
+					baseDialog.changeAlertType(SweetAlertDialog.PROGRESS_TYPE);
+				}
+
+				baseDialog.setTitleText("正在压缩图片...");
+				baseDialog.show();
+				List<String> path = new ArrayList<String>();
+				tripItems.clear();
+
+				String tagPic = "file:///";
+
 				for (TripLocal bean : mList) {
-					ShowLog(bean.toString());
+					if (bean.getBeanType() == TripLocal.DETAIL) {
+
+						TripItem item = new TripItem();
+						String picPath = bean.getPicPath();
+						String txt = bean.getTxt();
+						ShowLog(picPath + "醒目");
+
+						if (picPath.startsWith("drawable")) {
+							picPath = "";
+						} else if (picPath.startsWith(tagPic)) {
+							path.add(picPath.substring(tagPic.length()));
+						}
+
+						if (txt.startsWith(TXT_TAG)) {
+							txt = "";
+						}
+
+						item.setPhotoPath(picPath);
+						item.setPhotoDescribe(txt);
+						tripItems.add(item);
+
+					}
 
 				}
+
+				arr = new String[path.size()];
+				for (int i = 0; i < arr.length; i++) {
+					arr[i] = path.get(i);
+				}
+
+				// AsyncTask task = new CompressTask();
+				// task.execute(arr);
+				new Thread(new Runnable() {
+
+					@Override
+					public void run() {
+						compressPic(arr);
+
+					}
+				}).start();
 
 			}
 		});
@@ -115,6 +202,87 @@ public class MyServiceActivity extends BaseActivity implements
 				FileService.delete(file);
 				// delete(file);
 				MyServiceActivity.this.finish();
+			}
+		});
+
+	}
+
+	protected void upLoad(String[] path) {
+		ShowLog("666");
+		baseDialog.setTitleText("正在上传数据...");
+		BmobProFile.getInstance(this).uploadBatch(path,
+				new UploadBatchListener() {
+
+					@Override
+					public void onError(int statuscode, String errormsg) {
+						ShowLog("777");
+						ShowLog(errormsg + "hehe");
+
+					}
+
+					@Override
+					public void onSuccess(boolean isFinish, String[] fileNames,
+							String[] urls, BmobFile[] files) {
+
+						if (isFinish) {
+
+							int j = 0;
+							int size = tripItems.size();
+							for (int i = 0; i < size; i++) {
+								TripItem item = tripItems.get(i);
+
+								if (!TextUtils.isEmpty(item.getPhotoPath())) {
+									item.setPhotoPath(files[j++].getUrl());
+
+								}
+
+							}
+							trip.setData(tripItems);
+
+							postDataToServer();
+
+							//
+							// for (BmobFile fi : files) {
+							//
+							// ShowLog("getFilename:" + fi.getFilename()
+							// + "   getFileUrl:"
+							// + fi.getFileUrl(MyServiceActivity.this)
+							// + "  getGroup:" + fi.getGroup()
+							// + "   getUrl:" + fi.getUrl());
+							//
+							// }
+
+						}
+
+					}
+
+					@Override
+					public void onProgress(int curIndex, int curPercent,
+							int total, int totalPercent) {
+						ShowLog(curPercent + "" + "hahha");
+
+					}
+				});
+
+	}
+
+	protected void postDataToServer() {
+
+		Trip newTrip = new Trip(trip);
+		newTrip.save(MyServiceActivity.this, new SaveListener() {
+
+			@Override
+			public void onSuccess() {
+				baseDialog.dismiss();
+
+				ShowLog("onSuccess");
+
+			}
+
+			@Override
+			public void onFailure(int code, String err) {
+				ShowLog("code:" + code + "  err:" + err);
+
 			}
 		});
 
@@ -272,7 +440,7 @@ public class MyServiceActivity extends BaseActivity implements
 	private void addItem() {
 
 		mList.add(mList.size() - 1, new TripLocal(TripLocal.DETAIL,
-				"drawable://" + R.drawable.pictures_no, "请编辑文字"));
+				"drawable://" + R.drawable.pictures_no, TXT_TAG));
 		Log.i("TAG", mList.toString());
 
 		mAdapter.notifyDataSetChanged();
@@ -315,5 +483,152 @@ public class MyServiceActivity extends BaseActivity implements
 		}
 		return data;
 	}
+
+	// /**
+	// * i 图片编号 compressAfterPath压缩后的图片地址
+	// */
+	// int i;
+	// String[] compressAfterPath;
+	//
+	// class CompressTask extends AsyncTask<String, Integer, String[]> {
+	//
+	// @Override
+	// protected String[] doInBackground(String... path) {
+	// ShowLog("222");
+	// i = 0;
+	// compressAfterPath = new String[path.length];
+	//
+	// ShowLog(path.length + "path.length");
+	// BmobProFile bmobProFile = BmobProFile
+	// .getInstance(MyServiceActivity.this);
+	//
+	// for (String str : path) {
+	//
+	// bmobProFile.getLocalThumbnail(str, 2,
+	// new LocalThumbnailListener() {
+	//
+	// @Override
+	// public void onError(int arg0, String arg1) {
+	// ShowLog("444");
+	// Log.i("TAG", arg0 + " " + arg1);
+	//
+	// }
+	//
+	// @Override
+	// public void onSuccess(String arg0) {
+	// ShowLog("333");
+	// Log.i("TAG", arg0);
+	// publishProgress(i);
+	// compressAfterPath[i++] = arg0;
+	//
+	// }
+	// });
+	// }
+	//
+	// try {
+	// while (i <= path.length) {
+	// Thread.sleep(1000);
+	// }
+	// } catch (InterruptedException e) {
+	// e.printStackTrace();
+	// }
+	//
+	// return null;
+	// }
+	//
+	// @Override
+	// protected void onPostExecute(String[] result) {
+	// ShowLog("555");
+	// upLoad(compressAfterPath);
+	//
+	// super.onPostExecute(result);
+	// }
+	//
+	// @Override
+	// protected void onProgressUpdate(Integer... values) {
+	// ShowLog(values[0] + "个");
+	//
+	// super.onProgressUpdate(values);
+	// }
+	//
+	// }
+
+	List<String> compressAfter = new ArrayList<String>();
+
+	protected void compressPic(String[] path) {
+		final int size = path.length;
+
+		for (int i = 0; i < size; i++) {
+			final int j = i;
+			// Message msg = mHandler.obtainMessage();
+			// msg.obj = path[i];
+			// msg.arg1 = i;
+			// msg.what = MSG_WHAT_COMPRESS;
+			// if (i == path.length - 1) {
+			// msg.what = MSG_WHAT_COMPRESS;
+			// }
+			// mHandler.sendMessage(msg);
+
+			mFile.getLocalThumbnail(path[i], 2, new LocalThumbnailListener() {
+
+				@Override
+				public void onError(int arg0, String arg1) {
+
+				}
+
+				@Override
+				public void onSuccess(String path) {
+					compressAfter.add(path);
+
+					if (j == size - 1) {
+						mHandler.sendEmptyMessage(MSG_WHAT_SUCESS);
+
+					} else {
+						mHandler.sendEmptyMessage(MSG_WHAT_COMPRESS);
+					}
+
+					ShowLog("onSuccess:" + path);
+
+				}
+			});
+
+			while (flag == 0) {
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+			flag = 0;
+
+		}
+
+	}
+
+	public final static int MSG_WHAT_COMPRESS = 1;
+	public final static int MSG_WHAT_SUCESS = 2;
+
+	Integer flag = 0;
+
+	private BmobProFile mFile;
+
+	private Handler mHandler = new Handler() {
+
+		public void handleMessage(android.os.Message msg) {
+
+			if (msg.what == MSG_WHAT_COMPRESS) {
+				flag = 1;
+			} else if (msg.what == MSG_WHAT_SUCESS) {
+				flag = 1;
+				String[] arr = new String[compressAfter.size()];
+				for (int i = 0; i < arr.length; i++) {
+					arr[i] = compressAfter.get(i);
+				}
+
+				upLoad(arr);
+			}
+
+		};
+	};
 
 }

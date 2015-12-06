@@ -15,6 +15,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -38,16 +40,37 @@ public class RegisterActivityVerifyCode extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
-		super.onCreate(savedInstanceState); 
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register_verify_code);
 		ViewUtils.inject(this);
+
 		phone = getIntent().getStringExtra(
 				RegisterActivityGetNumber.PHONE_NUMBER);
-		phoneTV.setText(phone);
+
+		initData();
 
 		mDialog = new SweetAlertDialog(this);
 		mDialog.setCancelable(false);
 		mDialog.setConfirmText("确认");
+
+	}
+
+	private void initData() {
+		if (TextUtils.isEmpty(phone)) {
+			phoneTV.setText("请填写手机号后重试！");
+
+			new Handler().postDelayed(new Runnable() {
+
+				@Override
+				public void run() {
+					RegisterActivityVerifyCode.this.finish();
+
+				}
+			}, 2000);
+
+		} else {
+			phoneTV.setText(phone);
+		}
 
 	}
 
@@ -93,6 +116,7 @@ public class RegisterActivityVerifyCode extends BaseActivity {
 			i.putExtra(RegisterActivityGetNumber.PHONE_NUMBER, phone);
 
 			startActivity(i);
+			finish();
 		}
 
 	}

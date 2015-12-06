@@ -11,7 +11,10 @@ import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
 import android.content.Context;
 import android.os.Process;
+import android.util.Log;
 
+import com.bmob.BmobConfiguration;
+import com.bmob.BmobPro;
 import com.lyy.hitogether.bean.Group;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -66,11 +69,17 @@ public class App extends Application {
 			if (getApplicationInfo().packageName
 					.equals(getCurrenPro(getApplicationContext()))) {
 
-		//		RongContext.init(this);
+				// RongContext.init(this);
 
 				RongCloudEvent.init(this);
 				ImageLoader.getInstance().init(
 						ImageLoaderConfiguration.createDefault(this));
+				BmobConfiguration config = new BmobConfiguration.Builder(this)
+						.customExternalCacheDir("Hitogether_cache").build();
+				BmobPro.getInstance(this).initConfig(config);
+
+				Log.i("TAg", ""
+						+ BmobPro.getInstance(this).getCacheDownloadDir());
 			}
 		}
 

@@ -24,7 +24,7 @@ import com.lidroid.xutils.view.annotation.event.OnClick;
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.mydialog.SweetAlertDialog;
 
-public class RegisterActivityGetNumber extends Activity {
+public class RegisterActivityGetNumber extends BaseActivity {
 	@ViewInject(R.id.id_et_phone)
 	private EditText phoneNumber;
 	@ViewInject(R.id.id_bt_phone_next)
@@ -77,7 +77,7 @@ public class RegisterActivityGetNumber extends Activity {
 			@Override
 			public void done(Integer smsId, BmobException ex) {
 				if (ex == null) {
-					dialog.dismiss();
+
 					Log.i("bmob", smsId + "Success");
 
 					Intent intent = new Intent(RegisterActivityGetNumber.this,
@@ -85,10 +85,13 @@ public class RegisterActivityGetNumber extends Activity {
 					intent.putExtra(PHONE_NUMBER, phoneNumber.getText()
 							.toString());
 					startActivity(intent);
-				}else{
-					Log.i("bmob", smsId + "Success"+"BmobException:  "+ex);
-					
+				} else {
+					ShowToast("稍后再试一下吧");
+
+					Log.i("bmob", smsId + "Success" + "BmobException:  " + ex);
+
 				}
+				dialog.dismiss();
 
 			}
 		});
@@ -122,7 +125,7 @@ public class RegisterActivityGetNumber extends Activity {
 
 		mButtonNext.setClickable(false);
 
-		new Thread() {
+		new Thread() { 
 			public void run() {
 				while (i > 0) {
 					try {
@@ -137,6 +140,17 @@ public class RegisterActivityGetNumber extends Activity {
 
 			};
 		}.start();
+
+	}
+
+//	@OnClick(R.id.id_bt_phone_has_code)
+	private void hasCode(View v) {
+		Intent i=new Intent(RegisterActivityGetNumber.this, RegisterActivityVerifyCode.class);
+		i.putExtra(PHONE_NUMBER, phoneNumber.getText()
+				.toString());
+		startActivity(i);
+		
+		
 
 	}
 }

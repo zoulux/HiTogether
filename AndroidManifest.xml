@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.lyy.hitogether"
     android:versionCode="1"
-    android:versionName="1.3" >
+    android:versionName="1.4" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -10,7 +10,7 @@
 
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.CALL_PHONE"/> 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <permission
         android:name="cn.bmob.permission.push"
@@ -60,7 +60,6 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.lyy.hitogether.activity.Initialize"
-            android:launchMode="singleTask"
             android:theme="@android:style/Theme.Translucent" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -70,11 +69,15 @@
         </activity>
         <activity
             android:name="com.lyy.hitogether.activity.MainActivity"
-            android:screenOrientation="portrait" >
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.lyy.hitogether.activity.MainActivity" >
         </activity>
         <activity
             android:name="com.lyy.hitogether.activity.LoginActivity"
-            android:screenOrientation="portrait" >
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:taskAffinity="com.lyy.hitogether.activity.LoginActivity" >
         </activity>
         <activity
             android:name="com.lyy.hitogether.test.TestActivity"
@@ -96,12 +99,10 @@
             android:name="com.lyy.hitogether.activity.MyServiceActivity"
             android:screenOrientation="portrait" >
         </activity>
-
         <activity
             android:name="com.lyy.hitogether.activity.RegisterActivitySetPwd"
             android:screenOrientation="portrait" >
         </activity>
-        
         <activity
             android:name="com.lyy.hitogether.activity.ShowGuideDetailActivity"
             android:screenOrientation="portrait" >

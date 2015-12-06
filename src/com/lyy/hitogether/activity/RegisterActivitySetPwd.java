@@ -1,5 +1,7 @@
 package com.lyy.hitogether.activity;
 
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -74,21 +76,20 @@ public class RegisterActivitySetPwd extends BaseActivity {
 
 	@OnClick(R.id.id_bt_submit)
 	public void submit(View v) {
-		mDialog.show();
+
 		if (isLegal()) {
 
+			mDialog.show();
 			register();
 		}
 
 	}
 
-
-
 	private void register() {
 		MyUser user = new MyUser();
 
-		user.setPassword(getText(pwd));
 		user.setUsername(num);
+		user.setPassword(getText(pwd));
 
 		String defaultPhoto = "http://file.bmob.cn/M02/CB/99/oYYBAFZdggCAdnfDAAAUqy00rwE554.jpg";
 		user.setAvatar(defaultPhoto);
@@ -115,9 +116,9 @@ public class RegisterActivitySetPwd extends BaseActivity {
 				mDialog.dismiss();
 
 				Intent i = new Intent(RegisterActivitySetPwd.this,
-						Initialize.class);
+						LoginActivity.class);
+				// i.setAction(Intent.)
 				startActivity(i);
-				finish();
 
 			}
 
@@ -126,6 +127,7 @@ public class RegisterActivitySetPwd extends BaseActivity {
 				mDialog.changeAlertType(SweetAlertDialog.ERROR_TYPE);
 
 				mDialog.setTitleText("code:" + code + "   err:" + err);
+				ShowToast("code:" + code + "   err:" + err);
 
 			}
 		});

@@ -1,6 +1,7 @@
 package com.lyy.hitogether.activity;
 
 import com.lyy.hitogether.R;
+import com.lyy.hitogether.mydialog.SweetAlertDialog;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
@@ -17,6 +18,9 @@ import android.widget.Toast;
  * 
  */
 public class BaseActivity extends Activity {
+
+	protected SweetAlertDialog baseDialog;
+
 	protected DisplayImageOptions baseOptions = new DisplayImageOptions.Builder()
 			.showImageOnLoading(R.drawable.icon)
 			.bitmapConfig(Bitmap.Config.ARGB_8888)
@@ -28,8 +32,9 @@ public class BaseActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		baseDialog = new SweetAlertDialog(this);
 
-	}
+	} 
 
 	public void ShowLog(String msg) {
 		Log.i(">>>>", msg);
