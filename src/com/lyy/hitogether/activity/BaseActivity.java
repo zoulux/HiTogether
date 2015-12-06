@@ -2,6 +2,7 @@ package com.lyy.hitogether.activity;
 
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.mydialog.SweetAlertDialog;
+import com.lyy.hitogether.util.CommonUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
@@ -21,20 +22,14 @@ public class BaseActivity extends Activity {
 
 	protected SweetAlertDialog baseDialog;
 
-	protected DisplayImageOptions baseOptions = new DisplayImageOptions.Builder()
-			.showImageOnLoading(R.drawable.icon)
-			.bitmapConfig(Bitmap.Config.ARGB_8888)
-			.showImageForEmptyUri(R.drawable.icon)
-			.showImageOnFail(R.drawable.icon).cacheInMemory(true)
-			.cacheOnDisk(true).displayer(new FadeInBitmapDisplayer(2000))
-			.build();
+	protected DisplayImageOptions baseOptions = CommonUtils.imageOptions;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		baseDialog = new SweetAlertDialog(this);
 
-	} 
+	}
 
 	public void ShowLog(String msg) {
 		Log.i(">>>>", msg);

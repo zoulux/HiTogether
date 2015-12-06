@@ -17,9 +17,9 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
         android:layout_above="@+id/id_show_guide_detail_bottom_rlout"
-        android:layout_below="@+id/id_show_guide_detail_title" >
+        android:layout_below="@+id/id_show_guide_detail_title"
+        android:scrollbars="none" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -50,6 +50,7 @@
                 </com.lyy.hitogether.view.CircleImageView>
 
                 <TextView
+                    android:id="@+id/id_tv_guid_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -69,6 +70,7 @@
                 android:orientation="vertical" >
 
                 <TextView
+                    android:id="@+id/id_tv_service_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="安徽黄山" />
@@ -176,7 +178,6 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
-        
         android:background="@android:color/holo_orange_light" >
 
         <LinearLayout
@@ -223,19 +224,18 @@
                 android:text="18365284756"
                 android:textColor="@android:color/white" />
         </LinearLayout>
-        
+
         <Button
-            android:id="@+id/id_show_guide_detail_bottom_talk" 
+            android:id="@+id/id_show_guide_detail_bottom_talk"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:text="聊天"
-            android:textSize="14sp"
-            android:textColor="@android:color/white"
-            android:layout_alignParentRight="true"
             android:background="@drawable/third_fragment_bt_selector"
-            />
+            android:text="聊天"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
     </RelativeLayout>
 
 </RelativeLayout>

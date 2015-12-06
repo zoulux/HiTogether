@@ -627,7 +627,6 @@ public class MyServiceActivity extends BaseActivity implements
 
 				upLoad(arr);
 			}
-
 		};
 	};
 

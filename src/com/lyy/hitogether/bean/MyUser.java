@@ -11,7 +11,7 @@ public class MyUser extends BmobChatUser {
 	List<String> label;
 	Boolean isAuthentication; // 是否实名认证
 	String identity; // 身份证号
-	Integer star; // 用户评星
+	Float star; // 用户评星
 	List<String> collectionDemands; // 收藏单号
 	Integer age;
 	String token;
@@ -20,8 +20,6 @@ public class MyUser extends BmobChatUser {
 	String model;
 	String brand;
 
-	
-	
 	public Integer getSdkVerSion() {
 		return sdkVerSion;
 	}
@@ -110,22 +108,19 @@ public class MyUser extends BmobChatUser {
 		this.identity = identity;
 	}
 
-	public Integer getStar() {
+	public Float getStar() {
 		return star;
 	}
 
-	public void setStar(Integer star) {
+	public void setStar(Float star) {
 		this.star = star;
 
 	}
 
 	@Override
 	public String toString() {
-		return "MyUser [userName=" + super.getUsername() + ", gender=" + gender
-				+ ", birthday=" + birthday + ", label=" + label
-				+ ", isAuthentication=" + isAuthentication + ", identity="
-				+ identity + ", star=" + star + ", collectionDemands="
-				+ collectionDemands + ", age=" + age + ", token=" + token + "]";
+		return "MyUser [gender=" + gender + ", birthday=" + birthday
+				+ ", isAuthentication=" + isAuthentication + "]";
 	}
 
 }

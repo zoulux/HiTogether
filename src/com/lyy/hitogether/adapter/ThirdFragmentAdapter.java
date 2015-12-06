@@ -81,19 +81,18 @@ public class ThirdFragmentAdapter extends MyBaseAdapter<Service> {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 
-		ImageLoader.getInstance().displayImage(
-				commonDatas.get(position).getShowImg(), viewHolder.scenImage,
-				baseOptions);
-		ImageLoader.getInstance().displayImage(
-				commonDatas.get(position).getUser().getAvatar(),
+		Service service = commonDatas.get(position);
+
+		ImageLoader.getInstance().displayImage(service.getShowImg(),
+				viewHolder.scenImage, baseOptions);
+		ImageLoader.getInstance().displayImage(service.getUser().getAvatar(),
 				viewHolder.guideImage, baseOptions);
 
-		viewHolder.guideName.setText(commonDatas.get(position).getUser()
-				.getNick());
+		viewHolder.guideName.setText(service.getUser().getNick());
 		// viewHolder.guideImage.setImageResource(R.drawable.icon);
-		viewHolder.description.setText(commonDatas.get(position).getSummary());
-		viewHolder.place.setText(commonDatas.get(position).getDestination());
-		viewHolder.grade.setRating((float) (Math.random() * 5));
+		viewHolder.description.setText(service.getSummary());
+		viewHolder.place.setText(service.getDestination());
+		viewHolder.grade.setRating(service.getUser().getStar());
 		viewHolder.apointmentBt.setOnClickListener(new OnClickListener() {
 
 			@Override

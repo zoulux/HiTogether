@@ -1,10 +1,12 @@
 package com.lyy.hitogether.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import cn.bmob.v3.datatype.BmobDate;
 
-public class Service {
+public class Service implements Serializable{
+	public static final String TAG="Service";
 	/**
 	 * 向导单
 	 */

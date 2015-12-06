@@ -139,10 +139,16 @@ public class FirstFragmentDestination extends BaseFragment {
 					@Override
 					public void onThirdFragmentAllViewClick(View v, int pos) {
 
-						Intent intent = new Intent(new Intent(FirstFragmentDestination.this
-								.getActivity(), ShowGuideDetailActivity.class));
-						intent.putExtra("targetUserId", list.get(pos).getUser().getObjectId());
-						intent.putExtra("targetUserName", list.get(pos).getUser().getUsername());
+						Intent intent = new Intent(new Intent(
+								FirstFragmentDestination.this.getActivity(),
+								ShowGuideDetailActivity.class));
+						intent.putExtra(Service.TAG, list.get(pos));
+						// intent.putExtra(name, value)
+						// intent.putExtra("targetUserId",
+						// list.get(pos).getUser()
+						// .getObjectId());
+						// intent.putExtra("targetUserName", list.get(pos)
+						// .getUser().getUsername());
 						startActivity(intent);
 
 					}
@@ -400,7 +406,7 @@ public class FirstFragmentDestination extends BaseFragment {
 		list = gson.fromJson(json, new TypeToken<List<Service>>() {
 		}.getType());
 		initIndicator();
-		// Log.i("TAG", list.toString());
+		Log.i("TAG", list.toString());
 		thirdFragmentAdapter = new ThirdFragmentAdapter(getActivity(), list);
 		mGridView.setAdapter(thirdFragmentAdapter);
 		initEvent();
