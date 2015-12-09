@@ -14,10 +14,10 @@ import cn.sharesdk.socialization.SocializationCustomPlatform.UserGender;
 public class CommonUtils {
 
 	public static DisplayImageOptions imageOptions = new DisplayImageOptions.Builder()
-			.showImageOnLoading(R.drawable.icon)
+			.showImageOnLoading(R.drawable.pictures_no)
 			.bitmapConfig(Bitmap.Config.ARGB_8888)
-			.showImageForEmptyUri(R.drawable.icon)
-			.showImageOnFail(R.drawable.icon).cacheInMemory(true)
+			.showImageForEmptyUri(R.drawable.pictures_no)
+			.showImageOnFail(R.drawable.pictures_no).cacheInMemory(true)
 			.cacheOnDisk(true).displayer(new FadeInBitmapDisplayer(2000))
 			.build();
 

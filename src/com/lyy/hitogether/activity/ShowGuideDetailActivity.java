@@ -1,12 +1,15 @@
 package com.lyy.hitogether.activity;
 
-import java.io.Serializable;
-
 import io.rong.imkit.RongIM;
+
+import java.util.List;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,18 +19,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.listener.FindListener;
 
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 import com.lyy.hitogether.R;
 import com.lyy.hitogether.bean.MyUser;
 import com.lyy.hitogether.bean.Service;
+import com.lyy.hitogether.bean.Trip;
+import com.lyy.hitogether.bean.TripItem;
 import com.lyy.hitogether.util.CommonUtils;
 import com.lyy.hitogether.util.Config;
 import com.lyy.hitogether.view.CustomTitleBarView;
 import com.lyy.hitogether.view.CustomTitleBarView.onLeftBarViewClickListener;
 import com.lyy.hitogether.view.MyGuideDetailLayout;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class ShowGuideDetailActivity extends BaseActivity implements
 		OnClickListener {
@@ -55,6 +61,14 @@ public class ShowGuideDetailActivity extends BaseActivity implements
 	private TextView mTVScenery;
 
 	private Service currentService;
+	private MyUser currentUser;
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		loadServerData();
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +91,7 @@ public class ShowGuideDetailActivity extends BaseActivity implements
 			finish();
 		}
 
+		currentUser = currentService.getUser();
 	}
 
 	private void initView() {
@@ -110,30 +125,60 @@ public class ShowGuideDetailActivity extends BaseActivity implements
 		customTitleBarView.setCenterTextSize(18);
 
 		setListener();
+
+	}
+
+	private void loadServerData() {
+		BmobQuery<Trip> query = new BmobQuery<Trip>();
+		query.addWhereEqualTo("user", currentUser);
+		query.order("-createdAt");
+		query.setLimit(1);
+		query.findObjects(ShowGuideDetailActivity.this,
+				new FindListener<Trip>() {
+
+					@Override
+					public void onSuccess(List<Trip> trips) {
+						if (trips != null && trips.size() != 0) {
+							Trip trip = trips.get(0);
+							Message msg = mHandler.obtainMessage();
+							msg.obj = trip.getData();
+							mHandler.sendMessage(msg);
+
+						} else
+							ShowToast("没有数据！！！");
+
+					}
+
+					@Override
+					public void onError(int arg0, String arg1) {
+						ShowToast("获取数据错误！！！");
+
+					}
+				});
 	}
 
 	private void fillData() {
-		MyUser user = currentService.getUser();
 
-		if (user.getIsAuthentication() == null) {
+		if (currentUser.getIsAuthentication() == null) {
 			checkText.setText("未认证");
-		} else if (!user.getIsAuthentication()) {
+		} else if (!currentUser.getIsAuthentication()) {
 			checkText.setText("未认证");
 		} else {
 			checkText.setText("已认证");
 		}
 
-		if (user.getStar() == null) {
+		if (currentUser.getStar() == null) {
 			grade.setRating(0);
 		} else {
-			grade.setRating(user.getStar());
+			grade.setRating(currentUser.getStar());
 		}
 
-		CommonUtils.setTextView(mTVGuidName, user.getNick(), "昵称");
-		if (user.getNick() == null) {
+		CommonUtils.setTextView(mTVGuidName, currentUser.getNick(), "昵称");
+		if (currentUser.getNick() == null) {
 			customTitleBarView.setCenterText("乐友游");
+
 		} else {
-			customTitleBarView.setCenterText(user.getNick());
+			customTitleBarView.setCenterText(currentUser.getNick());
 		}
 
 		CommonUtils.setTextView(mTVDesc, currentService.getIntroduction(),
@@ -141,7 +186,7 @@ public class ShowGuideDetailActivity extends BaseActivity implements
 
 		CommonUtils.setImageView(mIVGuideDetail, currentService.getShowImg(),
 				Config.DEFAULT_PIC);
-		CommonUtils.setImageView(mIVGuideAvater, user.getAvatar(),
+		CommonUtils.setImageView(mIVGuideAvater, currentUser.getAvatar(),
 				Config.DEFAULT_AVATER);
 		CommonUtils.setTextView(mTVScenery, currentService.getDestination(),
 				"景点名称");
@@ -188,5 +233,25 @@ public class ShowGuideDetailActivity extends BaseActivity implements
 		startActivity(intent);
 
 	}
+
+	private Handler mHandler = new Handler() {
+		public void handleMessage(android.os.Message msg) {
+
+			List<TripItem> data = (List<TripItem>) msg.obj;
+
+			for (TripItem item : data) {
+
+				if (!TextUtils.isEmpty(item.getPhotoPath())) {
+					layout.addImage(item.getPhotoPath());
+
+				}
+				if (!TextUtils.isEmpty(item.getPhotoDescribe())) {
+					layout.addText(item.getPhotoDescribe());
+
+				}
+			}
+
+		};
+	};
 
 }

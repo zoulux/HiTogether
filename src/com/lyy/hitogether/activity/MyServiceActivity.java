@@ -155,7 +155,7 @@ public class MyServiceActivity extends BaseActivity implements
 						TripItem item = new TripItem();
 						String picPath = bean.getPicPath();
 						String txt = bean.getTxt();
-						ShowLog(picPath + "醒目");
+						// ShowLog(picPath + "醒目");
 
 						if (picPath.startsWith("drawable")) {
 							picPath = "";
@@ -178,6 +178,7 @@ public class MyServiceActivity extends BaseActivity implements
 				arr = new String[path.size()];
 				for (int i = 0; i < arr.length; i++) {
 					arr[i] = path.get(i);
+					ShowLog(arr[i] + "压缩图片源地址");
 				}
 
 				// AsyncTask task = new CompressTask();
@@ -208,14 +209,15 @@ public class MyServiceActivity extends BaseActivity implements
 	}
 
 	protected void upLoad(String[] path) {
-		ShowLog("666");
+		ShowLog("准备上传");
+
 		baseDialog.setTitleText("正在上传数据...");
 		BmobProFile.getInstance(this).uploadBatch(path,
 				new UploadBatchListener() {
 
 					@Override
 					public void onError(int statuscode, String errormsg) {
-						ShowLog("777");
+
 						ShowLog(errormsg + "hehe");
 
 					}
@@ -225,7 +227,7 @@ public class MyServiceActivity extends BaseActivity implements
 							String[] urls, BmobFile[] files) {
 
 						if (isFinish) {
-
+							ShowLog("上传完成");
 							int j = 0;
 							int size = tripItems.size();
 							for (int i = 0; i < size; i++) {
@@ -267,7 +269,7 @@ public class MyServiceActivity extends BaseActivity implements
 	}
 
 	protected void postDataToServer() {
-
+		ShowLog("提交数据");
 		Trip newTrip = new Trip(trip);
 		newTrip.save(MyServiceActivity.this, new SaveListener() {
 
@@ -557,8 +559,9 @@ public class MyServiceActivity extends BaseActivity implements
 
 	protected void compressPic(String[] path) {
 		final int size = path.length;
-
+		ShowLog("压缩中1");
 		for (int i = 0; i < size; i++) {
+			ShowLog("压缩中12");
 			final int j = i;
 			// Message msg = mHandler.obtainMessage();
 			// msg.obj = path[i];
@@ -573,25 +576,27 @@ public class MyServiceActivity extends BaseActivity implements
 
 				@Override
 				public void onError(int arg0, String arg1) {
+					ShowLog("压缩错误了  "+arg0+"    "+arg1);
+					flag = 1;
 
 				}
 
 				@Override
 				public void onSuccess(String path) {
 					compressAfter.add(path);
-
+					ShowLog("压缩中2：：" + j);
 					if (j == size - 1) {
 						mHandler.sendEmptyMessage(MSG_WHAT_SUCESS);
-
+ 
 					} else {
 						mHandler.sendEmptyMessage(MSG_WHAT_COMPRESS);
 					}
 
-					ShowLog("onSuccess:" + path);
+					// ShowLog("onSuccess:" + path);
 
 				}
 			});
-
+			ShowLog("压缩中13");
 			while (flag == 0) {
 				try {
 					Thread.sleep(100);
@@ -600,6 +605,7 @@ public class MyServiceActivity extends BaseActivity implements
 				}
 			}
 			flag = 0;
+			ShowLog("压缩中14");
 
 		}
 
@@ -619,6 +625,7 @@ public class MyServiceActivity extends BaseActivity implements
 			if (msg.what == MSG_WHAT_COMPRESS) {
 				flag = 1;
 			} else if (msg.what == MSG_WHAT_SUCESS) {
+				ShowLog("压缩中完成");
 				flag = 1;
 				String[] arr = new String[compressAfter.size()];
 				for (int i = 0; i < arr.length; i++) {
